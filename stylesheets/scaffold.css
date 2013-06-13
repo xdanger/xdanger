@@ -60,7 +60,7 @@ body {
   color:#373737;
   background: #212121;
   font-size: 16px;
-  font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+  font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -76,28 +76,31 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 36px;
   font-weight: 700;
+  margin-top: 30px;
 }
 
 h2 {
   padding-bottom: 10px;
-  font-size: 32px;
+  font-size: 24px;
   background: url('../images/bg_hr.png') repeat-x bottom;
+  margin-top: 20px;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 h4 {
-  font-size: 21px;
+  font-size: 16px;
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 h6 {
-  font-size: 16px;
+  font-size: 12px;
 }
 
 p {
@@ -109,10 +112,8 @@ footer p {
 }
 
 a {
-  text-decoration: none;
   color: #007edf;
   text-shadow: none;
-
   transition: color 0.5s ease;
   transition: text-shadow 0.5s ease;
   -webkit-transition: color 0.5s ease;
@@ -305,12 +306,13 @@ Full-Width Styles
   padding: 50px 10px 30px 10px;
 }
 
-#project_title {
+#project_title a, #project_title a:hover {
   margin: 0;
   color: #fff;
   font-size: 42px;
   font-weight: 700;
   text-shadow: #111 0px 0px 10px;
+  text-decoration: none;
 }
 
 #project_tagline {
@@ -374,7 +376,10 @@ Full-Width Styles
   background: #212121;
 }
 
-
+.post-date { color: #666; font-size: 24px; }
+.post-body { color: #333; font-size: 14px; line-height: 150%; }
+.post-tags { font-size: 12px; }
+.post-meta { color: #666; font-size: 12px; margin: 20px 0px; }
 
 /*******************************************************************************
 Small Device Styles

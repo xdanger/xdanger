@@ -1,0 +1,31 @@
+---
+layout:   post
+title:    "最后还是用了 Google Reader"
+date:     "2005-10-17 01:24:42"
+category: "IT"
+tags:     "Web2.0"
+---
+
+<p>　　还记得是在2003年底，在<a href="http://hedong.3322.org/">竹笋炒肉上</a>，看到了 Blog 这种形式的个人网站（此时王建硕已默默在那耕耘了整整1年），看到了 RDF、RSS 这些 XML 格式文档，虽然知道是什么东东，不过没想到 Blog 和 RSS 都会成为互联网信息革命的奠基者。虽然现在大家都知道 Blog/RSS 很热，但应该说它的深远影响还没有到来。</p>
+
+<p>　　03 年时觉得 RSS 好，但那时基本没工具可以发挥它的价值。还好那时 Blog 不多，有质量的就更少了，于是记在收藏夹里，想起来时一个个点开浏览一遍。去年是 Blog 开始飞速发展的时候，不过既要写我关心的、又质量不错的也就那么几个人，于是放到 <a href="http://www.mozilla.org/products/thunderbird/">Thunderbird</a> 里看看，结果受不了它 RSS 订阅的那么多 Bug，反复用了几次，最终还是放弃了，后来还装过 Firefox 的插件 Seige，不过没用多久。主要还是因为我不太愿意将 RSS 的应用局限于一个客户端的软件，RSS 并不具有私有数据，不像邮件或即时通讯，我深信最有前途的应用肯定是 B/S 结构，而 Bloglines 极差劲的 UI 设计不断像针一样刺痛我对于 RSS 应用的极高期望。</p>
+
+<p>　　到了今年，Web2.0 的概念被不断研究讨论，RSS 市场如火如荼，出现了很多在线订阅的网站。但是不知道怎么回事，总没有我稍微满意点的。国内的就不说了，光看国外的：<a href="http://www.pluck.com/">Pluck</a> 不支持中文，UI 也较差；<a href="http://www.rojo.com/">Rojo</a> 什么都好，唯一很晕的是不支持直接阅读全文，几乎成了一个邮件提醒……失望多时的我，看着 Blog 信息爆炸时代的到来，甚至等不及想自己动手写一个了。</p>
+
+<p>　　没想到的是，最后竟然是 Google 出了一个很酷的<a href="http://www.google.com/reader/">阅读器</a>，虽然现在还非常不稳定，Bug 造反，不支持中文 Label、中文 Feed Title，没有什么社会性元素，但极棒的 UI 让我使用起来终于得到了理想中的 RSS 的应用感觉。想想 Gmail 第一版出来时还要不堪，这个阅读器已经非常不错了……用了几天，已经成为我浏览器导航栏里一个按钮了：</p>
+
+<p><img src="http://static.flickr.com/33/53070326_e5b3714508_o.png" width="458" height="133" alt="我的浏览器导航栏" class="imgborder4" /></p>
+
+<p>　　如果你也用 Google Reader，可以将这个连接拖放至收藏夹或链接栏：<a href="javascript:var resource = location.href;var elements = document.getElementsByTagName( 'link' );for( var i = 0; i < elements.length; ++i ) {var current = elements[i];var type = current.getAttribute( 'type' );if ( type == 'application/rss+xml' || type == 'application/atom+xml' ) {resource = current.getAttribute( 'href' );break;}}document.location.href ='http://www.google.com/reader/preview/*/feed/'+resource;">加入我的 Google Reader 订阅</a></p>
+
+<p>　　链接的代码如下：<div class="code">var resource = location.href;<br />
+var elements = document.getElementsByTagName( 'link' );<br />
+for( var i = 0; i < elements.length; ++i ) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;var current = elements[i];var type = current.getAttribute( 'type' );<br />
+&nbsp;&nbsp;&nbsp;&nbsp;if ( type == 'application/rss+xml' || type == 'application/atom+xml' ) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resource = current.getAttribute( 'href' );break;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+}<br />
+document.location.href ='http://www.google.com/reader/preview/*/feed/'+resource;</div></p>
+
+
