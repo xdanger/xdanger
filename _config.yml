@@ -1,11 +1,11 @@
 name: www.xdanger.com
 
 source:      .
-destination: ../www
+destination: ./_site
 plugins:     ./_plugins
 layouts:     ./_layouts
 include:     ['.htaccess']
-exclude:     []
+exclude:     ['_log']
 keep_files:  ['.git', '.svn', 'files']
 timezone:    nil
 
