@@ -1,0 +1,275 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>利用ADSL猫的路由功能实现多台机器同时上网（基础篇）</title>
+<link href="/favicon.ico" rel="shortcut icon" />
+<link href="http://blog.xdanger.com/stylesheet.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.xdanger.com/index.rdf" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.xdanger.com/rsd.xml" />
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    /*window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+function OpenTrackback (c) {
+    /*window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+</script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2004/03/21/000116.html">
+<dc:title>利用ADSL猫的路由功能实现多台机器同时上网（基础篇）</dc:title>
+<dc:description><![CDATA[　　本人在学校利用校园网上internet，浏览教育网资源速度尚可，但是上公众网，打网络游戏等就不敢恭维了。所以就决定申请一个ADSL，几个同学用，费用平摊，很适合我们学生一族。 　　开始是利用一台机器作代理服务器，其他机器通过这台机器上网。但这样有很大弊端：一，只有这台机器开机上网了，其他机器才能上网，很不方便，且增加了这台机器的负担。 二，几个寝室网线乱拖，很影响寝室的环境。三，这样还要多投资一台HUB和一块网卡。四，校园网和ADSL互换需要换接口。 后来得知现在一般SDSL猫都有路由功能，打开猫的控制面板一看，果真有，心中窃喜，说干就干。现在我就以我现在用的猫为例，来实现猫的路由功能（各个品牌的猫差不多的）。 首先把猫和我的机器互联，我的猫的ip地址：192.168.1.1子网掩码：255.255.255.0。我把自己机器的ip地址改为192.168.1.2子网掩码相同，然后在IE里输入猫的ip地址，要求输入用户名和密码，输入后进入控制面板(各个品牌的猫的ip地址、用户名和密码可能不同，请查看猫的说明书，或到相关网站查询)。 　　这一页是更改密码，根据需要修改吧http://blog.xdanger.com/archives/sorghum/20040321a.jpg 　　这里是重点，我详细一点介绍。般猫默认是第一种RFC1483 Bridged方式，我要现在用的猫一般都是PPoE虚拟拨号方式，说一就选第三个。里面要我填上用户名和密码，就是 你ADSL猫拨号上网的用户名和密码。模式默认就可以了，空闲超时如果是包月的话就可以设的长一点，如果是计时的话就短一点。还有就是DHCP Server就是自动分配ip地址一些配置，我觉得没有必要，如果你相用就到后面的高级里面的DHCP里设置。还有上面的VPI和VCI的值，这个也蛮重要的，具体是多少，你要问你本地的电信运营商了。我的是0和32。好了，点击Add，把这个设置添加到当前的ATM PVC列表里。把其他不需要的delete好了。 http://blog.xdanger.com/archives/sorghum/20040321b.jpg 　　Lan设置里面就是猫的ip和子网掩码如果怕和别人的ip冲突或者怕别人知道就改一下吧（建议）。 http://blog.xdanger.com/archives/sorghum/20040321c.jpg 　　点击进入保存&amp;重起页面，先Save一下，然后点Reboot。http://blog.xdanger.com/archives/sorghum/20040321d.jpg 　　本机设置就是在本地连接的属性里面选择internet协议，在里面填上和猫一样网段的ip地址，如果猫的ip地址是192.168.1.1则其他机器ip可以是192.168.1.2到192.168.1.254之间任意一ip地址。子网掩码相同，网关即为猫的ip地址。DNS可以是猫的ip或者是公网的DNS服务器。 好了，这样应该就可以上网了。...]]></dc:description>
+<dc:creator>sorghum</dc:creator>
+<dc:date>2004-03-21T12:27:06+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+<link rel="start" href="http://blog.xdanger.com/" title="Home" />
+<link rel="prev" href="http://blog.xdanger.com/archives/2004/03/21/000115.html" title="静坐&amp;游行" />
+
+<link rel="next" href="http://blog.xdanger.com/archives/2004/03/21/000117.html" title="校园网和adsl二合一" />
+
+<script type="text/javascript" language="javascript">
+<!--
+var HOST = 'blog.xdanger.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+//-->
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.xdanger.com/archives/2004/03/21/000116.html"
+    trackback:ping="http://blog.xdanger.com/script/trackback.pl/118"
+    dc:title="利用ADSL猫的路由功能实现多台机器同时上网（基础篇）"
+    dc:identifier="http://blog.xdanger.com/archives/2004/03/21/000116.html"
+    dc:subject="Tech"
+    dc:description="<![CDATA[　　本人在学校利用校园网上internet，浏览教育网资源速度尚可，但是上公众网，打网络游戏等就不敢恭维了。所以就决定申请一个ADSL，几个同学用，费用平摊，很适合我们学生一族。 　　开始是利用一台机器作代理服务器，其他机器通过这台机器上网。但这样有很大弊端：一，只有这台机器开机上网了，其他机器才能上网，很不方便，且增加了这台机器的负担。 二，几个寝室网线乱拖，很影响寝室的环境。三，这样还要多投资一台HUB和一块网卡。四，校园网和ADSL互换需要换接口。 后来得知现在一般SDSL猫都有路由功能，打开猫的控制面板一看，果真有，心中窃喜，说干就干。现在我就以我现在用的猫为例，来实现猫的路由功能（各个品牌的猫差不多的）。 首先把猫和我的机器互联，我的猫的ip地址：192.168.1.1子网掩码：255.255.255.0。我把自己机器的ip地址改为192.168.1.2子网掩码相同，然后在IE里输入猫的ip地址，要求输入用户名和密码，输入后进入控制面板(各个品牌的猫的ip地址、用户名和密码可能不同，请查看猫的说明书，或到相关网站查询)。 　　这一页是更改密码，根据需要修改吧http://blog.xdanger.com/archives/sorghum/20040321a.jpg 　　这里是重点，我详细一点介绍。般猫默认是第一种RFC1483 Bridged方式，我要现在用的猫一般都是PPoE虚拟拨号方式，说一就选第三个。里面要我填上用户名和密码，就是 你ADSL猫拨号上网的用户名和密码。模式默认就可以了，空闲超时如果是包月的话就可以设的长一点，如果是计时的话就短一点。还有就是DHCP Server就是自动分配ip地址一些配置，我觉得没有必要，如果你相用就到后面的高级里面的DHCP里设置。还有上面的VPI和VCI的值，这个也蛮重要的，具体是多少，你要问你本地的电信运营商了。我的是0和32。好了，点击Add，把这个设置添加到当前的ATM PVC列表里。把其他不需要的delete好了。 http://blog.xdanger.com/archives/sorghum/20040321b.jpg 　　Lan设置里面就是猫的ip和子网掩码如果怕和别人的ip冲突或者怕别人知道就改一下吧（建议）。 http://blog.xdanger.com/archives/sorghum/20040321c.jpg 　　点击进入保存&amp;重起页面，先Save一下，然后点Reboot。http://blog.xdanger.com/archives/sorghum/20040321d.jpg 　　本机设置就是在本地连接的属性里面选择internet协议，在里面填上和猫一样网段的ip地址，如果猫的ip地址是192.168.1.1则其他机器ip可以是192.168.1.2到192.168.1.254之间任意一ip地址。子网掩码相同，网关即为猫的ip地址。DNS可以是猫的ip或者是公网的DNS服务器。 好了，这样应该就可以上网了。...]]>"
+    dc:creator="sorghum"
+    dc:date="2004-03-21T12:27:06+08:00" />
+</rdf:RDF>
+-->
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2004/03/21/000116.html">
+<dc:title>利用ADSL猫的路由功能实现多台机器同时上网（基础篇）</dc:title>
+<dc:description><![CDATA[　　本人在学校利用校园网上internet，浏览教育网资源速度尚可，但是上公众网，打网络游戏等就不敢恭维了。所以就决定申请一个ADSL，几个同学用，费用平摊，很适合我们学生一族。 　　开始是利用一台机器作代理服务器，其他机器通过这台机器上网。但这样有很大弊端：一，只有这台机器开机上网了，其他机器才能上网，很不方便，且增加了这台机器的负担。 二，几个寝室网线乱拖，很影响寝室的环境。三，这样还要多投资一台HUB和一块网卡。四，校园网和ADSL互换需要换接口。 后来得知现在一般SDSL猫都有路由功能，打开猫的控制面板一看，果真有，心中窃喜，说干就干。现在我就以我现在用的猫为例，来实现猫的路由功能（各个品牌的猫差不多的）。 首先把猫和我的机器互联，我的猫的ip地址：192.168.1.1子网掩码：255.255.255.0。我把自己机器的ip地址改为192.168.1.2子网掩码相同，然后在IE里输入猫的ip地址，要求输入用户名和密码，输入后进入控制面板(各个品牌的猫的ip地址、用户名和密码可能不同，请查看猫的说明书，或到相关网站查询)。 　　这一页是更改密码，根据需要修改吧http://blog.xdanger.com/archives/sorghum/20040321a.jpg 　　这里是重点，我详细一点介绍。般猫默认是第一种RFC1483 Bridged方式，我要现在用的猫一般都是PPoE虚拟拨号方式，说一就选第三个。里面要我填上用户名和密码，就是 你ADSL猫拨号上网的用户名和密码。模式默认就可以了，空闲超时如果是包月的话就可以设的长一点，如果是计时的话就短一点。还有就是DHCP Server就是自动分配ip地址一些配置，我觉得没有必要，如果你相用就到后面的高级里面的DHCP里设置。还有上面的VPI和VCI的值，这个也蛮重要的，具体是多少，你要问你本地的电信运营商了。我的是0和32。好了，点击Add，把这个设置添加到当前的ATM PVC列表里。把其他不需要的delete好了。 http://blog.xdanger.com/archives/sorghum/20040321b.jpg 　　Lan设置里面就是猫的ip和子网掩码如果怕和别人的ip冲突或者怕别人知道就改一下吧（建议）。 http://blog.xdanger.com/archives/sorghum/20040321c.jpg 　　点击进入保存&amp;重起页面，先Save一下，然后点Reboot。http://blog.xdanger.com/archives/sorghum/20040321d.jpg 　　本机设置就是在本地连接的属性里面选择internet协议，在里面填上和猫一样网段的ip地址，如果猫的ip地址是192.168.1.1则其他机器ip可以是192.168.1.2到192.168.1.254之间任意一ip地址。子网掩码相同，网关即为猫的ip地址。DNS可以是猫的ip或者是公网的DNS服务器。 好了，这样应该就可以上网了。...]]></dc:description>
+<dc:creator>sorghum</dc:creator>
+<dc:date>2004-03-21T12:27:06+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+<td width="6" valign="top" background="/i/shadow_left_tile.gif"><img src="/i/shadow_left.gif" width="6" height="530" /></td>
+<td width="760" valign="top" bgcolor="#E2E5E8"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td background="/i/bg01.jpg"><div id="banner"><h1><a href="http://blog.xdanger.com/">:+:xdanger:+:人，因思而变:+:Thinking up Makes Looking up:+:</h1></div>
+<div id="nav"><a
+href="http://www.xdanger.com/">Home </a> | <a
+href="http://blog.xdanger.com/">Blog </a>
+ - <a href="http://blog.xdanger.com/archives/life/index.html">Life</a>
+ - <a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+ - <a href="http://blog.xdanger.com/archives/time/index.html">Time</a>
+ | <a
+href="http://gallery.xdanger.com/">Gallery </a> | <a
+href="http://mail.xdanger.com/">Mail </a> | <a
+href="http://google.xdanger.com/">Google</a> | <a
+href="http://music.xdanger.com/">Music</a> | <a
+href="http://board.xdanger.com/">Board</a></div></td>
+</tr>
+<tr>
+<td height="8" background="/i/bg02.gif"></td>
+</tr>
+</table>
+<div id="container">
+<div class="blog">
+<div id="menu">
+<a href="http://blog.xdanger.com/archives/2004/03/21/000115.html">&laquo; 静坐&游行</a> |
+
+<a href="http://blog.xdanger.com/">Main</a>
+| <a href="http://blog.xdanger.com/archives/2004/03/21/000117.html">校园网和adsl二合一 &raquo;</a>
+
+</div>
+<h2 class="date">March 21, 2004</h2>
+<div class="blogbody">
+<h3 class="title"><a href="http://blog.xdanger.com/archives/2004/03/21/000116.html">利用ADSL猫的路由功能实现多台机器同时上网（基础篇）</a>
+[<a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+]</h3>
+<div align="center" class="googleAds1"><script type="text/javascript"><!--
+google_ad_client = "pub-3705515967346815";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="0434088231";
+google_color_border = "666666";
+google_color_bg = "FFFFFF";
+google_color_link = "FF3300";
+google_color_url = "006699";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<P>　　本人在学校利用校园网上internet，浏览教育网资源速度尚可，但是上公众网，打网络游戏等就不敢恭维了。所以就决定申请一个ADSL，几个同学用，费用平摊，很适合我们学生一族。</P>
+<P>　　开始是利用一台机器作代理服务器，其他机器通过这台机器上网。但这样有很大弊端：一，只有这台机器开机上网了，其他机器才能上网，很不方便，且增加了这台机器的负担。 二，几个寝室网线乱拖，很影响寝室的环境。三，这样还要多投资一台HUB和一块网卡。四，校园网和ADSL互换需要换接口。 后来得知现在一般SDSL猫都有路由功能，打开猫的控制面板一看，果真有，心中窃喜，说干就干。现在我就以我现在用的猫为例，来实现猫的路由功能（各个品牌的猫差不多的）。 首先把猫和我的机器互联，我的猫的ip地址：192.168.1.1子网掩码：255.255.255.0。我把自己机器的ip地址改为192.168.1.2子网掩码相同，然后在IE里输入猫的ip地址，要求输入用户名和密码，输入后进入控制面板(各个品牌的猫的ip地址、用户名和密码可能不同，请查看猫的说明书，或到相关网站查询)。</P>
+<P>　　这一页是更改密码，根据需要修改吧<A href="http://blog.xdanger.com/archives/sorghum/20040321a.jpg">http://blog.xdanger.com/archives/sorghum/20040321a.jpg</A></P>
+<P>　　这里是重点，我详细一点介绍。般猫默认是第一种RFC1483 Bridged方式，我要现在用的猫一般都是PPoE虚拟拨号方式，说一就选第三个。里面要我填上用户名和密码，就是 你ADSL猫拨号上网的用户名和密码。模式默认就可以了，空闲超时如果是包月的话就可以设的长一点，如果是计时的话就短一点。还有就是DHCP Server就是自动分配ip地址一些配置，我觉得没有必要，如果你相用就到后面的高级里面的DHCP里设置。还有上面的VPI和VCI的值，这个也蛮重要的，具体是多少，你要问你本地的电信运营商了。我的是0和32。好了，点击Add，把这个设置添加到当前的ATM PVC列表里。把其他不需要的delete好了。 <A href="http://blog.xdanger.com/archives/sorghum/20040321b.jpg">http://blog.xdanger.com/archives/sorghum/20040321b.jpg</A></P>
+<P>　　Lan设置里面就是猫的ip和子网掩码如果怕和别人的ip冲突或者怕别人知道就改一下吧（建议）。 <A href="http://blog.xdanger.com/archives/sorghum/20040321c.jpg">http://blog.xdanger.com/archives/sorghum/20040321c.jpg</A></P>
+<P>　　点击进入保存&amp;重起页面，先Save一下，然后点Reboot。<A href="http://blog.xdanger.com/archives/sorghum/20040321d.jpg">http://blog.xdanger.com/archives/sorghum/20040321d.jpg</FONT></A></P>
+<P>　　本机设置就是在本地连接的属性里面选择internet协议，在里面填上和猫一样网段的ip地址，如果猫的ip地址是192.168.1.1则其他机器ip可以是192.168.1.2到192.168.1.254之间任意一ip地址。子网掩码相同，网关即为猫的ip地址。DNS可以是猫的ip或者是公网的DNS服务器。 好了，这样应该就可以上网了。</P>
+<a name="more"></a>
+
+<span class="posted">Posted by <a target="_blank" href="http://sorghum.xdanger.com">sorghum</a> at March 21, 2004 12:27 PM
+| <a href="http://blog.xdanger.com/script/trackback.pl?__mode=view&amp;entry_id=116" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+</div>
+<div class="comments-head"><a name="comments"></a>TrackBacks</div>
+TrackBack URL for this entry: http://blog.xdanger.com/script/trackback.pl/118
+<ul>
+
+</ul>
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-head">Post a comment</div>
+<div class="comments-body">
+<form method="post" action="http://blog.xdanger.com/script/comments.pl" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="116" />
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+<label for="author">Name:</label><br />
+<input tabindex="1" id="author" name="author" /><br /><br />
+<label for="email">Email Address:</label><br />
+<input tabindex="2" id="email" name="email" /><br /><br />
+<label for="url">URL:</label><br />
+<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+</form>
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+<tr>
+<td height="125" valign="top" background="/i/bg03.png" id="foot">
+Copyleft 1999-2003, <a href="http://www.xdanger.com/">:+:xdanger:+:</a> <a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">Some Rights Reserved.</a><br /><br />
+This Page Was Last Updated on:November 17, 2004 05:28 AM</td>
+</tr>
+</table></td> 
+<td width="6" valign="top" background="/i/shadow_right_tile.gif"><img src="/i/shadow_right.gif" width="6" height="530" /></td>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</body>
+</html>

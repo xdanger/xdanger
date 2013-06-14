@@ -1,0 +1,288 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Google的PageRank概述</title>
+<link href="/favicon.ico" rel="shortcut icon" />
+<link href="http://blog.xdanger.com/stylesheet.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.xdanger.com/index.rdf" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.xdanger.com/rsd.xml" />
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    /*window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+function OpenTrackback (c) {
+    /*window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+</script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2003/12/18/000046.html">
+<dc:title>Google的PageRank概述</dc:title>
+<dc:description><![CDATA[　　前段时间看了 hedong对于PageRank算法学习的文章http://hedong.3322.org/archives/000199.html，参考了PageRank的英文原始资料，感觉hedong写的内容稍微少了点，能有原版译文就更好了！Google了一下，没任何资料……还是自己开金山词霸看吧-.- 　　想想反正都看了，索性再花点时间写成文字记下来，方便今后的同道者。可是……555，偶e文实在太Poor了，因此将原文一段段附上，如有严重错误，请一定留言指正！ 　　这是第一段，译自：Google PageRank Introduction&nbsp;- http://pr.efactory.de/...]]></dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2003-12-18T02:27:36+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+<link rel="start" href="http://blog.xdanger.com/" title="Home" />
+<link rel="prev" href="http://blog.xdanger.com/archives/2003/12/16/000050.html" title="彻底冒牌的google.net.cn！" />
+
+<link rel="next" href="http://blog.xdanger.com/archives/2003/12/19/000051.html" title="Google的PageRank算法（一）" />
+
+<script type="text/javascript" language="javascript">
+<!--
+var HOST = 'blog.xdanger.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+//-->
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.xdanger.com/archives/2003/12/18/000046.html"
+    trackback:ping="http://blog.xdanger.com/script/trackback.pl/45"
+    dc:title="Google的PageRank概述"
+    dc:identifier="http://blog.xdanger.com/archives/2003/12/18/000046.html"
+    dc:subject="Tech"
+    dc:description="<![CDATA[　　前段时间看了 hedong对于PageRank算法学习的文章http://hedong.3322.org/archives/000199.html，参考了PageRank的英文原始资料，感觉hedong写的内容稍微少了点，能有原版译文就更好了！Google了一下，没任何资料……还是自己开金山词霸看吧-.- 　　想想反正都看了，索性再花点时间写成文字记下来，方便今后的同道者。可是……555，偶e文实在太Poor了，因此将原文一段段附上，如有严重错误，请一定留言指正！ 　　这是第一段，译自：Google PageRank Introduction&nbsp;- http://pr.efactory.de/...]]>"
+    dc:creator="xdanger"
+    dc:date="2003-12-18T02:27:36+08:00" />
+</rdf:RDF>
+-->
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2003/12/18/000046.html">
+<dc:title>Google的PageRank概述</dc:title>
+<dc:description><![CDATA[　　前段时间看了 hedong对于PageRank算法学习的文章http://hedong.3322.org/archives/000199.html，参考了PageRank的英文原始资料，感觉hedong写的内容稍微少了点，能有原版译文就更好了！Google了一下，没任何资料……还是自己开金山词霸看吧-.- 　　想想反正都看了，索性再花点时间写成文字记下来，方便今后的同道者。可是……555，偶e文实在太Poor了，因此将原文一段段附上，如有严重错误，请一定留言指正！ 　　这是第一段，译自：Google PageRank Introduction&nbsp;- http://pr.efactory.de/...]]></dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2003-12-18T02:27:36+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+<td width="6" valign="top" background="/i/shadow_left_tile.gif"><img src="/i/shadow_left.gif" width="6" height="530" /></td>
+<td width="760" valign="top" bgcolor="#E2E5E8"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td background="/i/bg01.jpg"><div id="banner"><h1><a href="http://blog.xdanger.com/">:+:xdanger:+:人，因思而变:+:Thinking up Makes Looking up:+:</h1></div>
+<div id="nav"><a
+href="http://www.xdanger.com/">Home </a> | <a
+href="http://blog.xdanger.com/">Blog </a>
+ - <a href="http://blog.xdanger.com/archives/life/index.html">Life</a>
+ - <a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+ - <a href="http://blog.xdanger.com/archives/time/index.html">Time</a>
+ | <a
+href="http://gallery.xdanger.com/">Gallery </a> | <a
+href="http://mail.xdanger.com/">Mail </a> | <a
+href="http://google.xdanger.com/">Google</a> | <a
+href="http://music.xdanger.com/">Music</a> | <a
+href="http://board.xdanger.com/">Board</a></div></td>
+</tr>
+<tr>
+<td height="8" background="/i/bg02.gif"></td>
+</tr>
+</table>
+<div id="container">
+<div class="blog">
+<div id="menu">
+<a href="http://blog.xdanger.com/archives/2003/12/16/000050.html">&laquo; 彻底冒牌的google.net.cn！</a> |
+
+<a href="http://blog.xdanger.com/">Main</a>
+| <a href="http://blog.xdanger.com/archives/2003/12/19/000051.html">Google的PageRank算法（一） &raquo;</a>
+
+</div>
+<h2 class="date">December 18, 2003</h2>
+<div class="blogbody">
+<h3 class="title"><a href="http://blog.xdanger.com/archives/2003/12/18/000046.html">Google的PageRank概述</a>
+[<a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+]</h3>
+<div align="center" class="googleAds1"><script type="text/javascript"><!--
+google_ad_client = "pub-3705515967346815";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="0434088231";
+google_color_border = "666666";
+google_color_bg = "FFFFFF";
+google_color_link = "FF3300";
+google_color_url = "006699";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<P><IMG height=53 alt="Google Logo" src="http://blog.xdanger.com/archives/pics/20031218a.gif" width=128 align=left border=0>　　前段时间看了 hedong对于PageRank算法学习的文章<A href="http://hedong.3322.org/archives/000199.html">http://hedong.3322.org/archives/000199.html</A>，参考了<A href="http://pr.efactory.de/">PageRank的英文原始资料</A>，感觉hedong写的内容稍微少了点，能有原版译文就更好了！<A href="http://www.google.com/search?q=pagerank&amp;lr=lang_zh-CN%7Clang_zh-TW">Google了一下</A>，没任何资料……还是自己开金山词霸看吧-.-</P>
+<P>　　想想反正都看了，索性再花点时间写成文字记下来，方便今后的同道者。可是……555，偶e文实在太Poor了，因此将原文一段段附上，如有严重错误，请一定留言指正！</P>
+<P>　　这是第一段，译自：<A href="http://pr.efactory.de/">Google PageRank Introduction&nbsp;- http://pr.efactory.de/</A></P>
+<a name="more"></a>
+<HR>
+　　Within the past few years, Google has become the far most utilized search engine worldwide. A decisive factor therefore was, besides high performance and ease of use, the superior quality of search results compared to other search engines. This quality of search results is substantially based on PageRank, a sophisticated method to rank web documents. 
+<P></P>
+<P>　　在过去几年之内，Google成为了全世界被使用的最多的搜索引擎。与其它搜索引擎比较，除高性能和易用以外，一个决定性的因素是它的优秀的搜索结果。搜索结果的这质量极大地来源于<A href="http://www.google.com/technology/">PageRank</A>——一个精密的排序网页文件等级的方式。</P>
+<P>　　The aim of these pages is to provide a broad survey of all aspects of PageRank. The contents of these pages primarily rest upon papers by Google founders Lawrence Page and Sergey Brin from their time as graduate students at Stanford University.<BR><BR>　　本文的主要目的就是对PageRank的各个方面做一次广泛的勘测。本文内容主要依据Google创始人Lawrence Page和Sergey Brin在他们作为斯坦福大学研究生时的文章。</P>
+<P>　　It is often argued that, especially considering the dynamic of the internet, too much time has passed since the scientific work on PageRank, as that it still could be the basis for the ranking methods of the Google search engine. There is no doubt that within the past years most likely many changes, adjustments and modifications regarding the ranking methods of Google have taken place, but PageRank was absolutely crucial for Google's success, so that at least the fundamental concept behind PageRank should still be constitutive.<BR><BR>　　经常被讨论的是，尤其是考虑到互联网的动态性，自从PageRank科学工作开始，许多时间被浪费了，因为他仍然可以是Google搜索引擎的等级等级的基本依据。毋庸置疑，在过去几年内有许多关于Google等级方法的调整和修改，但PageRank是Google成功的绝对关键，因此至少PageRank的根本概念在之后应该仍然不会改变的。</P>
+<P>　　Since the early stages of the world wide web, search engines have developed different methods to rank web pages. Until today, the occurence of a search phrase within a document is one major factor within ranking techniques of virtually any search engine. The occurence of a search phrase can thereby be weighted by the length of a document (ranking by keyword density) or by its accentuation within a document by HTML tags.</P>
+<P>PageRank的概念<BR><BR>　　从万维网的早期，搜索引擎开发不同的方法排序网页。实际上，直到今天，任一个搜索引擎对网页的排序，是根据搜索的词组短语在页面中的出现次数，并用页面长度和html标签的重要性提示等进行权重修订。<BR></P>
+<P>　　For the purpose of better search results and especially to make search engines resistant against automatically generated web pages based upon the analysis of content specific ranking criteria (doorway pages), the concept of link popularity was developed. Following this concept, the number of inbound links for a document measures its general importance. Hence, a web page is generally more important, if many other web pages link to it. The concept of link popularity often avoids good rankings for pages which are only created to deceive search engines and which don't have any significance within the web, but numerous webmasters elude it by creating masses of inbound links for doorway pages from just as insignificant other web pages.</P>
+<P>　　为了得到更好的搜索结果，尤其是使搜索引擎自动抵制那些基于对详细等级标准页面（入口页）内容的分析而自动生成的网页，连接人气值的概念开始被开发了。根据这个概念，一个网页文件的入链数量通常表示此文件的重要程度。因此，一般地，如果从其他网页链接到一个网页的数量越多，那么这个网页就越重要。链接人气值的概念通常可以避免那些只被创造出来欺骗搜索引擎并且没有任何实际意义的网页得到好的等级，然而，许多网站管理员为了避免发生这种情况，他们从其他没有意义的网页创建大量入站链接，而不是从入口页（doorway pages）。</P>
+<P>　　Contrary to the concept of link popularity, PageRank is not simply based upon the total number of inbound links. The basic approach of PageRank is that a document is in fact considered the more important the more other documents link to it, but those inbound links do not count equally. First of all, a document ranks high in terms of PageRank, if other high ranking documents link to it.<BR><BR>　　与链接人气值向比较，PageRank的概念并不是简单地根据入站链接的总数。PageRank基本的方法是，越是重要的文件链接一个文件，则这个文件就越重要，但那些入站链接并不是被平等计算的。首先，如果其他高等级的文件连接到它，那么根据PageRank的规则，此文件的等级也高。</P>
+<P>　　So, within the PageRank concept, the rank of a document is given by the rank of those documents which link to it. Their rank again is given by the rank of documents which link to them. Hence, the PageRank of a document is always determined recursively by the PageRank of other documents. Since - even if marginal and via many links - the rank of any document influences the rank of any other, PageRank is, in the end, based on the linking structure of the whole web. Although this approach seems to be very broad and complex, Page and Brin were able to put it into practice by a relatively trivial algorithm.<BR><BR>　　如此, 在PageRank概念中，文件的等级由与它连接那些文件的等级决定的。它们的等级再由与他们连接文件的等级决定。因此, 文件的PageRank由其他文件的PageRank总递归之和确定。因为，即使是在边缘的少量链接，任一个文件的等级都会影响些其他文件的等级，概言之，PageRank的等级是由整个网的连接结构决定的。虽然这种方法似乎是非常宽泛和复杂的, Page和Brin已经能够通过一个微不足道的运算法则将它投入实践了。 
+<HR>
+
+<P>　　个人总结：PageRank绝对是个很科学的小创意。说他科学，你会在我以后的文章中看到Google是如何将数学（具体来说多数是统计学）理论淋漓尽致地发挥在搜索技术之中。说他“小”，因为这些理论对于搞数学的人来说实在太微不足道了，甚至稍微有些科学高数知识的人都能理解。</P>
+<P>　　我一向认为，搜索引擎对于互联网的价值就好比桌面操作系统对于计算机的价值，微软已经无可争议地占领PC桌面之后，互联网的桌面之争从Internet诞生起就异常惨烈，后来Yahoo!因为进入互联网最早而取得阶段性胜利。不过那时候的搜索引擎对于我们来说好比是马桶……不得不用，一用就恶心。那时无论是<A href="http://www.yahoo.com">Yahoo!</A> 、<A href="http://www.altavista.com/">AltaVista</A>、<A href="http://www.alltheweb">AllTheWeb</A>或者<A href="http://www.lycos.com/">Lycos</A>，搜索出来几乎都是大便。</P>
+<P>　　对于我来说，生命中出现搜索引擎的一天，是我同学的一个英国的同学告诉我用用看<A href="http://www.google.com">www.google.com</A>。</P>
+<P align=center><A href="http://blog.xdanger.com/archives/2003/12/19/000051.html">Google的PageRank算法（一）</A>&nbsp;&gt;&gt;</P>
+<span class="posted">Posted by <a target="_blank" href="http://www.xdanger.com/">xdanger</a> at December 18, 2003 02:27 AM
+| <a href="http://blog.xdanger.com/script/trackback.pl?__mode=view&amp;entry_id=46" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+</div>
+<div class="comments-head"><a name="comments"></a>TrackBacks</div>
+TrackBack URL for this entry: http://blog.xdanger.com/script/trackback.pl/45
+<ul>
+
+</ul>
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-head">Post a comment</div>
+<div class="comments-body">
+<form method="post" action="http://blog.xdanger.com/script/comments.pl" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="46" />
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+<label for="author">Name:</label><br />
+<input tabindex="1" id="author" name="author" /><br /><br />
+<label for="email">Email Address:</label><br />
+<input tabindex="2" id="email" name="email" /><br /><br />
+<label for="url">URL:</label><br />
+<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+</form>
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+<tr>
+<td height="125" valign="top" background="/i/bg03.png" id="foot">
+Copyleft 1999-2003, <a href="http://www.xdanger.com/">:+:xdanger:+:</a> <a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">Some Rights Reserved.</a><br /><br />
+This Page Was Last Updated on:November 24, 2004 01:42 PM</td>
+</tr>
+</table></td> 
+<td width="6" valign="top" background="/i/shadow_right_tile.gif"><img src="/i/shadow_right.gif" width="6" height="530" /></td>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</body>
+</html>

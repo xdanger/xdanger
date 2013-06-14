@@ -1,0 +1,312 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>初识Python</title>
+<link href="/favicon.ico" rel="shortcut icon" />
+<link href="http://blog.xdanger.com/stylesheet.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.xdanger.com/index.rdf" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.xdanger.com/rsd.xml" />
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    /*window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+function OpenTrackback (c) {
+    /*window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+</script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2004/05/08/000130.html">
+<dc:title>初识Python</dc:title>
+<dc:description><![CDATA[　　记得第一次看到 Python&nbsp;这个词是 Dash&nbsp;跟我说编 BT&nbsp;的语言号称是和 C#&nbsp;一样完美的，当时也没注意，上个月看《Thinking in Java》，Bruce Eckel&nbsp;也是大力推荐，昨天在找CMS时发现一个很好用的系统：Plone&nbsp;，也是Python编的。于是花了两天时间捉摸着入门，发现还是很让人吃惊的。 Python.cn 上是这样介绍的： 是一种解释性的，面向对象的，具有动态语义的程序设计语言 适合快速开发 代码具有优秀的可读性 具有模块和包的概念 支持各种主流平台，并具有很好的跨平台性 可以很容易地包装C/C++的代码供Python使用 　　经过短暂实践，我个人总结了以下几点，仅供参考： Python是支持带类和多继承的面向对象程序设计。虽然面向对象，但是和C++/Java的概念不太一样。在Python中“对象”这个词不一定指类实例。Python中并非所有的类型都是类（而Java几乎可以这么认为），然而，所有的Python类型在语义上都有一点相同之处：描述它们的最贴切词语不是“类”，是“对象”。 代码格式及其前卫，完全抛弃了C系列，包括Java使用的花括号{}，改用空格(Space)或制表符(Tab)控制封装块。比如 def buildConnectionString(params):&nbsp;&nbsp;&nbsp;&nbsp;"""Build a connection string from a dictionary of parameters.&nbsp;&nbsp;&nbsp; Returns string."""&nbsp;&nbsp;&nbsp;&nbsp;return ";".join(["%s=%s" % (k, params[k]) for k in params.keys()])代码块(函数，if 语句，for...]]></dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2004-05-08T20:30:07+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+<link rel="start" href="http://blog.xdanger.com/" title="Home" />
+<link rel="prev" href="http://blog.xdanger.com/archives/2004/05/07/000129.html" title="PHP之MVC" />
+
+<link rel="next" href="http://blog.xdanger.com/archives/2004/05/15/000131.html" title="MovableType(MT) 3.0 变收费软件" />
+
+<script type="text/javascript" language="javascript">
+<!--
+var HOST = 'blog.xdanger.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+//-->
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.xdanger.com/archives/2004/05/08/000130.html"
+    trackback:ping="http://blog.xdanger.com/script/trackback.pl/132"
+    dc:title="初识Python"
+    dc:identifier="http://blog.xdanger.com/archives/2004/05/08/000130.html"
+    dc:subject="Tech"
+    dc:description="<![CDATA[　　记得第一次看到 Python&nbsp;这个词是 Dash&nbsp;跟我说编 BT&nbsp;的语言号称是和 C#&nbsp;一样完美的，当时也没注意，上个月看《Thinking in Java》，Bruce Eckel&nbsp;也是大力推荐，昨天在找CMS时发现一个很好用的系统：Plone&nbsp;，也是Python编的。于是花了两天时间捉摸着入门，发现还是很让人吃惊的。 Python.cn 上是这样介绍的： 是一种解释性的，面向对象的，具有动态语义的程序设计语言 适合快速开发 代码具有优秀的可读性 具有模块和包的概念 支持各种主流平台，并具有很好的跨平台性 可以很容易地包装C/C++的代码供Python使用 　　经过短暂实践，我个人总结了以下几点，仅供参考： Python是支持带类和多继承的面向对象程序设计。虽然面向对象，但是和C++/Java的概念不太一样。在Python中“对象”这个词不一定指类实例。Python中并非所有的类型都是类（而Java几乎可以这么认为），然而，所有的Python类型在语义上都有一点相同之处：描述它们的最贴切词语不是“类”，是“对象”。 代码格式及其前卫，完全抛弃了C系列，包括Java使用的花括号{}，改用空格(Space)或制表符(Tab)控制封装块。比如 def buildConnectionString(params):&nbsp;&nbsp;&nbsp;&nbsp;"""Build a connection string from a dictionary of parameters.&nbsp;&nbsp;&nbsp; Returns string."""&nbsp;&nbsp;&nbsp;&nbsp;return ";".join(["%s=%s" % (k, params[k]) for k in params.keys()])代码块(函数，if 语句，for...]]>"
+    dc:creator="xdanger"
+    dc:date="2004-05-08T20:30:07+08:00" />
+</rdf:RDF>
+-->
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2004/05/08/000130.html">
+<dc:title>初识Python</dc:title>
+<dc:description><![CDATA[　　记得第一次看到 Python&nbsp;这个词是 Dash&nbsp;跟我说编 BT&nbsp;的语言号称是和 C#&nbsp;一样完美的，当时也没注意，上个月看《Thinking in Java》，Bruce Eckel&nbsp;也是大力推荐，昨天在找CMS时发现一个很好用的系统：Plone&nbsp;，也是Python编的。于是花了两天时间捉摸着入门，发现还是很让人吃惊的。 Python.cn 上是这样介绍的： 是一种解释性的，面向对象的，具有动态语义的程序设计语言 适合快速开发 代码具有优秀的可读性 具有模块和包的概念 支持各种主流平台，并具有很好的跨平台性 可以很容易地包装C/C++的代码供Python使用 　　经过短暂实践，我个人总结了以下几点，仅供参考： Python是支持带类和多继承的面向对象程序设计。虽然面向对象，但是和C++/Java的概念不太一样。在Python中“对象”这个词不一定指类实例。Python中并非所有的类型都是类（而Java几乎可以这么认为），然而，所有的Python类型在语义上都有一点相同之处：描述它们的最贴切词语不是“类”，是“对象”。 代码格式及其前卫，完全抛弃了C系列，包括Java使用的花括号{}，改用空格(Space)或制表符(Tab)控制封装块。比如 def buildConnectionString(params):&nbsp;&nbsp;&nbsp;&nbsp;"""Build a connection string from a dictionary of parameters.&nbsp;&nbsp;&nbsp; Returns string."""&nbsp;&nbsp;&nbsp;&nbsp;return ";".join(["%s=%s" % (k, params[k]) for k in params.keys()])代码块(函数，if 语句，for...]]></dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2004-05-08T20:30:07+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+<td width="6" valign="top" background="/i/shadow_left_tile.gif"><img src="/i/shadow_left.gif" width="6" height="530" /></td>
+<td width="760" valign="top" bgcolor="#E2E5E8"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td background="/i/bg01.jpg"><div id="banner"><h1><a href="http://blog.xdanger.com/">:+:xdanger:+:人，因思而变:+:Thinking up Makes Looking up:+:</h1></div>
+<div id="nav"><a
+href="http://www.xdanger.com/">Home </a> | <a
+href="http://blog.xdanger.com/">Blog </a>
+ - <a href="http://blog.xdanger.com/archives/life/index.html">Life</a>
+ - <a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+ - <a href="http://blog.xdanger.com/archives/time/index.html">Time</a>
+ | <a
+href="http://gallery.xdanger.com/">Gallery </a> | <a
+href="http://mail.xdanger.com/">Mail </a> | <a
+href="http://google.xdanger.com/">Google</a> | <a
+href="http://music.xdanger.com/">Music</a> | <a
+href="http://board.xdanger.com/">Board</a></div></td>
+</tr>
+<tr>
+<td height="8" background="/i/bg02.gif"></td>
+</tr>
+</table>
+<div id="container">
+<div class="blog">
+<div id="menu">
+<a href="http://blog.xdanger.com/archives/2004/05/07/000129.html">&laquo; PHP之MVC</a> |
+
+<a href="http://blog.xdanger.com/">Main</a>
+| <a href="http://blog.xdanger.com/archives/2004/05/15/000131.html">MovableType(MT) 3.0 变收费软件 &raquo;</a>
+
+</div>
+<h2 class="date">May 08, 2004</h2>
+<div class="blogbody">
+<h3 class="title"><a href="http://blog.xdanger.com/archives/2004/05/08/000130.html">初识Python</a>
+[<a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+]</h3>
+<div align="center" class="googleAds1"><script type="text/javascript"><!--
+google_ad_client = "pub-3705515967346815";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="0434088231";
+google_color_border = "666666";
+google_color_bg = "FFFFFF";
+google_color_link = "FF3300";
+google_color_url = "006699";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<P>　　记得第一次看到 <A href="http://www.python.org">Python</A>&nbsp;这个词是 <A href="http://dash.945.cn">Dash</A>&nbsp;跟我说编 <A href="http://bitconjurer.org/BitTorrent/">BT</A>&nbsp;的语言号称是和 <A href="http://msdn.microsoft.com/vcsharp/">C#</A>&nbsp;一样完美的，当时也没注意，上个月看<A href="http://www.mindview.net/Books/TIJ/">《Thinking in Java》</A>，<A href="http://www.bruceeckel.com/">Bruce Eckel</A>&nbsp;也是大力推荐，昨天在找CMS时发现一个很好用的系统：<A href="http://www.plone.org">Plone</A>&nbsp;，也是Python编的。于是花了两天时间捉摸着入门，发现还是很让人吃惊的。</P>
+<P><A href="http://www.python.cn">Python.cn</A> 上是这样介绍的：</P>
+<OL>
+<LI>是一种解释性的，面向对象的，具有动态语义的程序设计语言 
+<LI>适合快速开发 
+<LI>代码具有优秀的可读性 
+<LI>具有模块和包的概念 
+<LI>支持各种主流平台，并具有很好的跨平台性 
+<LI>可以很容易地包装C/C++的代码供Python使用</LI></OL>
+<P>　　经过短暂实践，我个人总结了以下几点，仅供参考：</P>
+<OL>
+<LI>Python是支持带类和多继承的面向对象程序设计。虽然面向对象，但是和C++/Java的概念不太一样。在Python中“对象”这个词不一定指类实例。Python中并非所有的类型都是类（而Java几乎可以这么认为），然而，所有的Python类型在语义上都有一点相同之处：描述它们的最贴切词语不是“类”，是“对象”。 
+<LI>代码格式及其前卫，完全抛弃了C系列，包括Java使用的花括号{}，改用空格(Space)或制表符(Tab)控制封装块。比如<BR>
+<P class=code>def buildConnectionString(params):<BR>&nbsp;&nbsp;&nbsp;&nbsp;"""Build a connection string from a dictionary of parameters.<BR>&nbsp;&nbsp;&nbsp; Returns string."""<BR>&nbsp;&nbsp;&nbsp;&nbsp;return ";".join(["%s=%s" % (k, params[k]) for k in params.keys()])</P>代码块(函数，if 语句，for 循环，等等)通过它们的缩排来定义。缩排表示块的开始，非缩排表示结束，不存在明显的括号，大括号，或关键字。这就意味着空白是有意义的，并且要一致。在这个例子中，函数代码(包括文档字符串)缩近了4个空格。不一定非要是4个，只要一致就可以了。第一行没有缩近，则不算在函数内。经过一段时间的适应，你将会心平气和地对待它，开始理解它的好处。一个主要的好处是，所有的Python程序看上去差不多，因为缩排是语言的要求而不是风格问题。这样就更容易阅读和理解他人的Python代码。因此Python赢得了最优美代码、最强的可读性的称号。用Phthon做程序设计，你甚至可以不太考虑你的程序的可维护性很差。 
+<LI>基本的数据类型有变量：数字型(整型,浮点型,<STRONG>复数,无限制长整型</STRONG>),指针(ASCII码和Unicode码),表,字典。 
+<P></P></LI></OL>
+<P>别人总结的其他几点：</P>
+<OL>
+<LI>代码可以被集成为模板和包。 
+<LI>这种语言支持异常处理追踪并能够列出比较清晰详细的错误提示。 
+<LI>数据类型非常的强大，而且是动态的。混合的数据类型(例如试图将指针与数相加)将被编译器提出一个异常情况信息。 
+<LI>Python包含了一些高级的程序设计特性，例如代码生成器和解释器。自动垃圾收集功能使你从内存管理的争战中解脱出来。<BR>庞大的标准库支持很多一般的程序设计任务，比如与网络服务器连接，正则表达式，文件操作。 
+<LI>Python的交互式模式使得调试小段的程序非常便捷。当然，处理大型的程序他还具备一个捆绑式的开发环境，叫做IDLE。 
+<LI>Python编译器是很容易扩展的，我们可以将C或者C++编译后的模板作为新的模板加入到其中。 
+<LI>编译器也可以被嵌入到另外一个应用程序中以提供一个可编程的界面。<BR>Python可以在很多不同种类的计算机和操作系统上运行：比如Windows, MacOS, OS/2，以及很多作为Unix分支的操作系统。</LI></OL>
+<P>
+<P>
+<HR>
+
+<P></P>
+<P>参考站点：</P>
+<UL>
+<LI>官方主页：<A href="http://www.python.org/">http://www.python.org/</A> 
+<LI>中文社区：<A href="http://python.cn/">http://python.cn/</A> 
+<LI>中蟒编成语言站点：<A href="http://www.chinesepython.org/cgi_bin/cgb.cgi/home.html">http://www.chinesepython.org/cgi_bin/cgb.cgi/home.html</A> 
+<LI>深入Python：<A href="http://cn.diveintopython.org/">http://cn.diveintopython.org/</A> 
+<LI>v2.3参考手册：<A href="http://python.cn/contents/python2.3tut/tut/">http://python.cn/contents/python2.3tut/tut/</A> 
+<LI>常见问题集：<A href="http://python.cn/contents/PythonFaq.html">http://python.cn/contents/PythonFaq.html</A> 
+<LI>Jython(Python in Java)：<A href="http://www.jython.org/">http://www.jython.org/</A> 
+<LI>IBM - Python编程系列：<A href="http://www-900.ibm.com/developerWorks/cn/linux/theme/special/#python">http://www-900.ibm.com/developerWorks/cn/linux/theme/special/#python</A> 
+<LI>Python初学(英文)：<A href="http://www.python.org/topics/learn/">http://www.python.org/topics/learn/</A> 
+<LI>Python Library Reference(英文)：<A href="http://www.python.org/doc/lib/lib.html">http://www.python.org/doc/lib/lib.html</A> 
+<LI>ActivePython(Win32环境下的Python安装及IDE)：<A href="http://www.activestate.com/Products/ActivePython/">http://www.activestate.com/Products/ActivePython/</A></LI></UL>
+<P>&nbsp;</P>
+<a name="more"></a>
+
+<span class="posted">Posted by <a target="_blank" href="http://www.xdanger.com/">xdanger</a> at May  8, 2004 08:30 PM
+| <a href="http://blog.xdanger.com/script/trackback.pl?__mode=view&amp;entry_id=130" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+</div>
+<div class="comments-head"><a name="comments"></a>TrackBacks</div>
+TrackBack URL for this entry: http://blog.xdanger.com/script/trackback.pl/132
+<ul>
+
+</ul>
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-head">Post a comment</div>
+<div class="comments-body">
+<form method="post" action="http://blog.xdanger.com/script/comments.pl" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="130" />
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+<label for="author">Name:</label><br />
+<input tabindex="1" id="author" name="author" /><br /><br />
+<label for="email">Email Address:</label><br />
+<input tabindex="2" id="email" name="email" /><br /><br />
+<label for="url">URL:</label><br />
+<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+</form>
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+<tr>
+<td height="125" valign="top" background="/i/bg03.png" id="foot">
+Copyleft 1999-2003, <a href="http://www.xdanger.com/">:+:xdanger:+:</a> <a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">Some Rights Reserved.</a><br /><br />
+This Page Was Last Updated on:November 17, 2004 05:28 AM</td>
+</tr>
+</table></td> 
+<td width="6" valign="top" background="/i/shadow_right_tile.gif"><img src="/i/shadow_right.gif" width="6" height="530" /></td>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</body>
+</html>

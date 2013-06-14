@@ -1,0 +1,273 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>如何实现同时访问不同资源使用不同的路由</title>
+<link href="/favicon.ico" rel="shortcut icon" />
+<link href="http://blog.xdanger.com/stylesheet.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.xdanger.com/index.rdf" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.xdanger.com/rsd.xml" />
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    /*window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+function OpenTrackback (c) {
+    /*window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+</script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2004/03/30/000119.html">
+<dc:title>如何实现同时访问不同资源使用不同的路由</dc:title>
+<dc:description><![CDATA[　　我所在的学校有校园网,我们由于觉得校园网访问公众网资源慢就申请了adsl，同时利用校园的硬件资源实现adsl多人共享上网，同时只要更改一下网络配置,就可以上校园网。详见3月22日G9版的《校园网和adsl宽带两不误》。能不能同时使用这两种网络呢？例如一打网络游戏（adsl）一边下载（校园网）。后来进过一段时间的琢磨，方法如下（win2000为例）：首先打开本地连接-&gt;属性-&gt;双击internet协议(tcp/ip)-&gt;高级。在ip地址这一栏里点击添加，我原来用的网络配置&nbsp;ip:192.168.143.173子网掩码:255.255.255.240&nbsp;默认网关:192.168.143.174&nbsp;这个是我使用adsl的配置，添上我使用校园网时的ip:192.168.1.1&nbsp;子网掩码:255.255.255.0在默认网关里我没有添加我使用校园网时要用的网关地址。这样就在我的网卡上绑定了两个ip地址。 http://www.shangda.net/UploadFile/2004329209410158.jpg 　　前期工作做好了，现在开始具体的来实现了。在运行里面输入cmd，在命令行中键入route。route是一个添加删除路由的命令，我们将用到route命令的几个参数，现在简单介绍一下：route&nbsp;print显示当前路由表；route&nbsp;add添加一条路由，route&nbsp;delete删除一条路由。举例如下：我所在学校的内部ip地址用的都是形如:10.x.x.x的地址，我的目的是访问这样形式的ip的计算机是我通过校园网的网关:10.126.9.254路由出去的。添加如下：route&nbsp;add&nbsp;10.0.0.0&nbsp;mask&nbsp;255.0.0.0&nbsp;10.126.9.254&nbsp;metric&nbsp;1&nbsp;稍微解释一下：route&nbsp;add&nbsp;是添加路由的命令，10.0.0.0代表学校的网络地址（代表的ip地址从10.0.0.0到10.255.255.255）；mask&nbsp;255.0.0.0&nbsp;指的是子网掩码，子网掩码和网络地址结合就可以算出其中ip地址块容量（具体的子网划分和子网掩码的意义见相关文章）；10.126.9.254是我使用校园网时的网关ip地址&nbsp;；metric&nbsp;1是指跃点数一般使用1。这条命令的意义是：如果访问10.x.x.x这样类型的ip地址的计算机，通过10.126.9.254路由出去。 http://www.shangda.net/UploadFile/20043292094813897.jpg 　　route&nbsp;delete&nbsp;是删除相应路由，如我要删掉刚才添加的路由:route&nbsp;delete&nbsp;10.0.0.0好了，通过这样你就可以指定相应网关路由出去，去访问相应的机器了。...]]></dc:description>
+<dc:creator>sorghum</dc:creator>
+<dc:date>2004-03-30T08:51:58+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+<link rel="start" href="http://blog.xdanger.com/" title="Home" />
+<link rel="prev" href="http://blog.xdanger.com/archives/2004/03/23/000118.html" title="校园网和adsl二合一(晋级篇)" />
+
+<link rel="next" href="http://blog.xdanger.com/archives/2004/03/30/000120.html" title="今天考SCJP咯" />
+
+<script type="text/javascript" language="javascript">
+<!--
+var HOST = 'blog.xdanger.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+//-->
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.xdanger.com/archives/2004/03/30/000119.html"
+    trackback:ping="http://blog.xdanger.com/script/trackback.pl/121"
+    dc:title="如何实现同时访问不同资源使用不同的路由"
+    dc:identifier="http://blog.xdanger.com/archives/2004/03/30/000119.html"
+    dc:subject="Tech"
+    dc:description="<![CDATA[　　我所在的学校有校园网,我们由于觉得校园网访问公众网资源慢就申请了adsl，同时利用校园的硬件资源实现adsl多人共享上网，同时只要更改一下网络配置,就可以上校园网。详见3月22日G9版的《校园网和adsl宽带两不误》。能不能同时使用这两种网络呢？例如一打网络游戏（adsl）一边下载（校园网）。后来进过一段时间的琢磨，方法如下（win2000为例）：首先打开本地连接-&gt;属性-&gt;双击internet协议(tcp/ip)-&gt;高级。在ip地址这一栏里点击添加，我原来用的网络配置&nbsp;ip:192.168.143.173子网掩码:255.255.255.240&nbsp;默认网关:192.168.143.174&nbsp;这个是我使用adsl的配置，添上我使用校园网时的ip:192.168.1.1&nbsp;子网掩码:255.255.255.0在默认网关里我没有添加我使用校园网时要用的网关地址。这样就在我的网卡上绑定了两个ip地址。 http://www.shangda.net/UploadFile/2004329209410158.jpg 　　前期工作做好了，现在开始具体的来实现了。在运行里面输入cmd，在命令行中键入route。route是一个添加删除路由的命令，我们将用到route命令的几个参数，现在简单介绍一下：route&nbsp;print显示当前路由表；route&nbsp;add添加一条路由，route&nbsp;delete删除一条路由。举例如下：我所在学校的内部ip地址用的都是形如:10.x.x.x的地址，我的目的是访问这样形式的ip的计算机是我通过校园网的网关:10.126.9.254路由出去的。添加如下：route&nbsp;add&nbsp;10.0.0.0&nbsp;mask&nbsp;255.0.0.0&nbsp;10.126.9.254&nbsp;metric&nbsp;1&nbsp;稍微解释一下：route&nbsp;add&nbsp;是添加路由的命令，10.0.0.0代表学校的网络地址（代表的ip地址从10.0.0.0到10.255.255.255）；mask&nbsp;255.0.0.0&nbsp;指的是子网掩码，子网掩码和网络地址结合就可以算出其中ip地址块容量（具体的子网划分和子网掩码的意义见相关文章）；10.126.9.254是我使用校园网时的网关ip地址&nbsp;；metric&nbsp;1是指跃点数一般使用1。这条命令的意义是：如果访问10.x.x.x这样类型的ip地址的计算机，通过10.126.9.254路由出去。 http://www.shangda.net/UploadFile/20043292094813897.jpg 　　route&nbsp;delete&nbsp;是删除相应路由，如我要删掉刚才添加的路由:route&nbsp;delete&nbsp;10.0.0.0好了，通过这样你就可以指定相应网关路由出去，去访问相应的机器了。...]]>"
+    dc:creator="sorghum"
+    dc:date="2004-03-30T08:51:58+08:00" />
+</rdf:RDF>
+-->
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2004/03/30/000119.html">
+<dc:title>如何实现同时访问不同资源使用不同的路由</dc:title>
+<dc:description><![CDATA[　　我所在的学校有校园网,我们由于觉得校园网访问公众网资源慢就申请了adsl，同时利用校园的硬件资源实现adsl多人共享上网，同时只要更改一下网络配置,就可以上校园网。详见3月22日G9版的《校园网和adsl宽带两不误》。能不能同时使用这两种网络呢？例如一打网络游戏（adsl）一边下载（校园网）。后来进过一段时间的琢磨，方法如下（win2000为例）：首先打开本地连接-&gt;属性-&gt;双击internet协议(tcp/ip)-&gt;高级。在ip地址这一栏里点击添加，我原来用的网络配置&nbsp;ip:192.168.143.173子网掩码:255.255.255.240&nbsp;默认网关:192.168.143.174&nbsp;这个是我使用adsl的配置，添上我使用校园网时的ip:192.168.1.1&nbsp;子网掩码:255.255.255.0在默认网关里我没有添加我使用校园网时要用的网关地址。这样就在我的网卡上绑定了两个ip地址。 http://www.shangda.net/UploadFile/2004329209410158.jpg 　　前期工作做好了，现在开始具体的来实现了。在运行里面输入cmd，在命令行中键入route。route是一个添加删除路由的命令，我们将用到route命令的几个参数，现在简单介绍一下：route&nbsp;print显示当前路由表；route&nbsp;add添加一条路由，route&nbsp;delete删除一条路由。举例如下：我所在学校的内部ip地址用的都是形如:10.x.x.x的地址，我的目的是访问这样形式的ip的计算机是我通过校园网的网关:10.126.9.254路由出去的。添加如下：route&nbsp;add&nbsp;10.0.0.0&nbsp;mask&nbsp;255.0.0.0&nbsp;10.126.9.254&nbsp;metric&nbsp;1&nbsp;稍微解释一下：route&nbsp;add&nbsp;是添加路由的命令，10.0.0.0代表学校的网络地址（代表的ip地址从10.0.0.0到10.255.255.255）；mask&nbsp;255.0.0.0&nbsp;指的是子网掩码，子网掩码和网络地址结合就可以算出其中ip地址块容量（具体的子网划分和子网掩码的意义见相关文章）；10.126.9.254是我使用校园网时的网关ip地址&nbsp;；metric&nbsp;1是指跃点数一般使用1。这条命令的意义是：如果访问10.x.x.x这样类型的ip地址的计算机，通过10.126.9.254路由出去。 http://www.shangda.net/UploadFile/20043292094813897.jpg 　　route&nbsp;delete&nbsp;是删除相应路由，如我要删掉刚才添加的路由:route&nbsp;delete&nbsp;10.0.0.0好了，通过这样你就可以指定相应网关路由出去，去访问相应的机器了。...]]></dc:description>
+<dc:creator>sorghum</dc:creator>
+<dc:date>2004-03-30T08:51:58+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+<td width="6" valign="top" background="/i/shadow_left_tile.gif"><img src="/i/shadow_left.gif" width="6" height="530" /></td>
+<td width="760" valign="top" bgcolor="#E2E5E8"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td background="/i/bg01.jpg"><div id="banner"><h1><a href="http://blog.xdanger.com/">:+:xdanger:+:人，因思而变:+:Thinking up Makes Looking up:+:</h1></div>
+<div id="nav"><a
+href="http://www.xdanger.com/">Home </a> | <a
+href="http://blog.xdanger.com/">Blog </a>
+ - <a href="http://blog.xdanger.com/archives/life/index.html">Life</a>
+ - <a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+ - <a href="http://blog.xdanger.com/archives/time/index.html">Time</a>
+ | <a
+href="http://gallery.xdanger.com/">Gallery </a> | <a
+href="http://mail.xdanger.com/">Mail </a> | <a
+href="http://google.xdanger.com/">Google</a> | <a
+href="http://music.xdanger.com/">Music</a> | <a
+href="http://board.xdanger.com/">Board</a></div></td>
+</tr>
+<tr>
+<td height="8" background="/i/bg02.gif"></td>
+</tr>
+</table>
+<div id="container">
+<div class="blog">
+<div id="menu">
+<a href="http://blog.xdanger.com/archives/2004/03/23/000118.html">&laquo; 校园网和adsl二合一(晋级篇)</a> |
+
+<a href="http://blog.xdanger.com/">Main</a>
+| <a href="http://blog.xdanger.com/archives/2004/03/30/000120.html">今天考SCJP咯 &raquo;</a>
+
+</div>
+<h2 class="date">March 30, 2004</h2>
+<div class="blogbody">
+<h3 class="title"><a href="http://blog.xdanger.com/archives/2004/03/30/000119.html">如何实现同时访问不同资源使用不同的路由</a>
+[<a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+]</h3>
+<div align="center" class="googleAds1"><script type="text/javascript"><!--
+google_ad_client = "pub-3705515967346815";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="0434088231";
+google_color_border = "666666";
+google_color_bg = "FFFFFF";
+google_color_link = "FF3300";
+google_color_url = "006699";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<P>　　我所在的学校有校园网,我们由于觉得校园网访问公众网资源慢就申请了adsl，同时利用校园的硬件资源实现adsl多人共享上网，同时只要更改一下网络配置,就可以上校园网。详见3月22日G9版的《校园网和adsl宽带两不误》。<BR>能不能同时使用这两种网络呢？例如一打网络游戏（adsl）一边下载（校园网）。后来进过一段时间的琢磨，方法如下（win2000为例）：<BR>首先打开本地连接--&gt;属性--&gt;双击internet协议(tcp/ip)--&gt;高级。在ip地址这一栏里点击添加，我原来用的网络配置&nbsp;ip:192.168.143.173子网掩码:255.255.255.240&nbsp;默认网关:192.168.143.174&nbsp;这个是我使用adsl的配置，添上我使用校园网时的ip:192.168.1.1&nbsp;子网掩码:255.255.255.0在默认网关里我没有添加我使用校园网时要用的网关地址。这样就在我的网卡上绑定了两个ip地址。</P>
+<P><A href="http://www.shangda.net/UploadFile/2004329209410158.jpg">http://www.shangda.net/UploadFile/2004329209410158.jpg</A></P>
+<P>　　前期工作做好了，现在开始具体的来实现了。在运行里面输入cmd，在命令行中键入route。route是一个添加删除路由的命令，我们将用到route命令的几个参数，现在简单介绍一下：route&nbsp;print显示当前路由表；route&nbsp;add添加一条路由，route&nbsp;delete删除一条路由。<BR>举例如下：我所在学校的内部ip地址用的都是形如:10.x.x.x的地址，我的目的是访问这样形式的ip的计算机是我通过校园网的网关:10.126.9.254路由出去的。添加如下：route&nbsp;add&nbsp;10.0.0.0&nbsp;mask&nbsp;255.0.0.0&nbsp;10.126.9.254&nbsp;metric&nbsp;1&nbsp;稍微解释一下：route&nbsp;add&nbsp;是添加路由的命令，10.0.0.0代表学校的网络地址（代表的ip地址从10.0.0.0到10.255.255.255）；mask&nbsp;255.0.0.0&nbsp;指的是子网掩码，子网掩码和网络地址结合就可以算出其中ip地址块容量（具体的子网划分和子网掩码的意义见相关文章）；10.126.9.254是我使用校园网时的网关ip地址&nbsp;；metric&nbsp;1是指跃点数一般使用1。这条命令的意义是：如果访问10.x.x.x这样类型的ip地址的计算机，通过10.126.9.254路由出去。</P>
+<P><A href="http://www.shangda.net/UploadFile/20043292094813897.jpg">http://www.shangda.net/UploadFile/20043292094813897.jpg</A></P>
+<P>　　route&nbsp;delete&nbsp;是删除相应路由，如我要删掉刚才添加的路由:route&nbsp;delete&nbsp;10.0.0.0<BR>好了，通过这样你就可以指定相应网关路由出去，去访问相应的机器了。<BR></P>
+<a name="more"></a>
+
+<span class="posted">Posted by <a target="_blank" href="http://sorghum.xdanger.com">sorghum</a> at March 30, 2004 08:51 AM
+| <a href="http://blog.xdanger.com/script/trackback.pl?__mode=view&amp;entry_id=119" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+</div>
+<div class="comments-head"><a name="comments"></a>TrackBacks</div>
+TrackBack URL for this entry: http://blog.xdanger.com/script/trackback.pl/121
+<ul>
+
+</ul>
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-head">Post a comment</div>
+<div class="comments-body">
+<form method="post" action="http://blog.xdanger.com/script/comments.pl" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="119" />
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+<label for="author">Name:</label><br />
+<input tabindex="1" id="author" name="author" /><br /><br />
+<label for="email">Email Address:</label><br />
+<input tabindex="2" id="email" name="email" /><br /><br />
+<label for="url">URL:</label><br />
+<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+</form>
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+<tr>
+<td height="125" valign="top" background="/i/bg03.png" id="foot">
+Copyleft 1999-2003, <a href="http://www.xdanger.com/">:+:xdanger:+:</a> <a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">Some Rights Reserved.</a><br /><br />
+This Page Was Last Updated on:November 17, 2004 05:28 AM</td>
+</tr>
+</table></td> 
+<td width="6" valign="top" background="/i/shadow_right_tile.gif"><img src="/i/shadow_right.gif" width="6" height="530" /></td>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</body>
+</html>

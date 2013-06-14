@@ -1,0 +1,280 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Google的PageRank算法（二）</title>
+<link href="/favicon.ico" rel="shortcut icon" />
+<link href="http://blog.xdanger.com/stylesheet.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.xdanger.com/index.rdf" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.xdanger.com/rsd.xml" />
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    /*window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+function OpenTrackback (c) {
+    /*window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+</script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2003/12/21/000053.html">
+<dc:title>Google的PageRank算法（二）</dc:title>
+<dc:description>　　Lawrence Page和Sergey Brin在不同的刊物中发表了2个不同版本的PageRank的算法公式。在第二个版本的算法里，页面A的PageRank值是这样得到的： PR(A) = (1-d) / N + d (PR(T1)/C(T1) + ... + PR(Tn)/C(Tn)) ——算法2 　　这里的Ｎ是整个互联网网页的总数。这个算法2，并不是完全不同于算法1。随机冲浪模型中，算法2中页面的PageRank值就是在点击许多链接后到达这个页面页面的实际概率。因此，互联网上所有网页的PageRank值形成一个概率分布，所有RageRank值之和为1。...</dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2003-12-21T13:07:49+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+<link rel="start" href="http://blog.xdanger.com/" title="Home" />
+<link rel="prev" href="http://blog.xdanger.com/archives/2003/12/20/000052.html" title="两任省委书记批示亿万富豪沉冤初雪" />
+
+<link rel="next" href="http://blog.xdanger.com/archives/2003/12/21/000054.html" title="冬天真冷" />
+
+<script type="text/javascript" language="javascript">
+<!--
+var HOST = 'blog.xdanger.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+//-->
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.xdanger.com/archives/2003/12/21/000053.html"
+    trackback:ping="http://blog.xdanger.com/script/trackback.pl/52"
+    dc:title="Google的PageRank算法（二）"
+    dc:identifier="http://blog.xdanger.com/archives/2003/12/21/000053.html"
+    dc:subject="Tech"
+    dc:description="　　Lawrence Page和Sergey Brin在不同的刊物中发表了2个不同版本的PageRank的算法公式。在第二个版本的算法里，页面A的PageRank值是这样得到的： PR(A) = (1-d) / N + d (PR(T1)/C(T1) + ... + PR(Tn)/C(Tn)) ——算法2 　　这里的Ｎ是整个互联网网页的总数。这个算法2，并不是完全不同于算法1。随机冲浪模型中，算法2中页面的PageRank值就是在点击许多链接后到达这个页面页面的实际概率。因此，互联网上所有网页的PageRank值形成一个概率分布，所有RageRank值之和为1。..."
+    dc:creator="xdanger"
+    dc:date="2003-12-21T13:07:49+08:00" />
+</rdf:RDF>
+-->
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2003/12/21/000053.html">
+<dc:title>Google的PageRank算法（二）</dc:title>
+<dc:description>　　Lawrence Page和Sergey Brin在不同的刊物中发表了2个不同版本的PageRank的算法公式。在第二个版本的算法里，页面A的PageRank值是这样得到的： PR(A) = (1-d) / N + d (PR(T1)/C(T1) + ... + PR(Tn)/C(Tn)) ——算法2 　　这里的Ｎ是整个互联网网页的总数。这个算法2，并不是完全不同于算法1。随机冲浪模型中，算法2中页面的PageRank值就是在点击许多链接后到达这个页面页面的实际概率。因此，互联网上所有网页的PageRank值形成一个概率分布，所有RageRank值之和为1。...</dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2003-12-21T13:07:49+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+<td width="6" valign="top" background="/i/shadow_left_tile.gif"><img src="/i/shadow_left.gif" width="6" height="530" /></td>
+<td width="760" valign="top" bgcolor="#E2E5E8"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td background="/i/bg01.jpg"><div id="banner"><h1><a href="http://blog.xdanger.com/">:+:xdanger:+:人，因思而变:+:Thinking up Makes Looking up:+:</h1></div>
+<div id="nav"><a
+href="http://www.xdanger.com/">Home </a> | <a
+href="http://blog.xdanger.com/">Blog </a>
+ - <a href="http://blog.xdanger.com/archives/life/index.html">Life</a>
+ - <a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+ - <a href="http://blog.xdanger.com/archives/time/index.html">Time</a>
+ | <a
+href="http://gallery.xdanger.com/">Gallery </a> | <a
+href="http://mail.xdanger.com/">Mail </a> | <a
+href="http://google.xdanger.com/">Google</a> | <a
+href="http://music.xdanger.com/">Music</a> | <a
+href="http://board.xdanger.com/">Board</a></div></td>
+</tr>
+<tr>
+<td height="8" background="/i/bg02.gif"></td>
+</tr>
+</table>
+<div id="container">
+<div class="blog">
+<div id="menu">
+<a href="http://blog.xdanger.com/archives/2003/12/20/000052.html">&laquo; 两任省委书记批示亿万富豪沉冤初雪</a> |
+
+<a href="http://blog.xdanger.com/">Main</a>
+| <a href="http://blog.xdanger.com/archives/2003/12/21/000054.html">冬天真冷 &raquo;</a>
+
+</div>
+<h2 class="date">December 21, 2003</h2>
+<div class="blogbody">
+<h3 class="title"><a href="http://blog.xdanger.com/archives/2003/12/21/000053.html">Google的PageRank算法（二）</a>
+[<a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+]</h3>
+<div align="center" class="googleAds1"><script type="text/javascript"><!--
+google_ad_client = "pub-3705515967346815";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="0434088231";
+google_color_border = "666666";
+google_color_bg = "FFFFFF";
+google_color_link = "FF3300";
+google_color_url = "006699";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<P>　　Lawrence Page和Sergey Brin在不同的刊物中发表了2个不同版本的PageRank的算法公式。在第二个版本的算法里，页面A的PageRank值是这样得到的：</P>
+<DIV class=code>
+<CENTER><STRONG>PR(A) = (1-d) / N + d (PR(T1)/C(T1) + ... + PR(Tn)/C(Tn))</STRONG> ——算法2</CENTER></DIV>
+<P>　　这里的<STRONG>Ｎ</STRONG>是整个互联网网页的总数。这个算法2，并不是完全不同于算法1。随机冲浪模型中，算法2中页面的PageRank值就是在点击许多链接后到达这个页面页面的实际概率。因此，互联网上所有网页的PageRank值形成一个概率分布，所有RageRank值之和为1。</P>
+<a name="more"></a>
+
+<P>　　相反地，第一种算法中随机访问到一个页面的概率受到互联网网页总数的影响。因此，算法2解得的PageRank值就是用户开始访问过程后，该页面被随机访问到的概率的期望值。如果互联网有100个网页，其中一个页面PageRank值为2；那么，如果他将访问互联网的过程重新开始100次<EM>（xdanger注：这句话具体含义是，该用户随机点击网页上的链接进入另一个页面，每点击一次都有一定概率因疲劳或厌倦或其他任何原因停止继续点击，这就是阻尼系数<STRONG>d</STRONG>的含义；每当停止点击后，即算作此次访问结束，然后随机给出一个页面让他开始另一次访问过程；让他将这样的“手续”重复进行100次）</EM>，平均就有2次访问到该页面。</P>
+<P>　　就像前面所提到的，两种算法并非彼此是本质的不同。用算法2解得的PR(A)乘以互联网的总网页数<STRONG>N</STRONG>，即得到由算法1解得的PR(A)。Page和Brin在他们最著名的刊物《The 
+Anatomy of a Large-Scale Hypertextual Web Search 
+Engine》中调和了两种算法，文中声称算法1是将PageRank形成对于互联网网页的一个概率分布，其和为1。</P>
+<P>&nbsp;　　接下来，我们将使用算法1。理由是算法1忽略了互联网的网页总数，使得更易于计算。</P>
+<P align=center>&lt;&lt; <A 
+href="http://blog.xdanger.com/archives/2003/12/19/000051.html">Google的PageRank算法（一）</A>&nbsp;| 
+<A href="http://blog.xdanger.com/archives/2003/12/27/000058.html">Google的PageRank算法（三）</A>&nbsp;&gt;&gt;</P>
+<span class="posted">Posted by <a target="_blank" href="http://www.xdanger.com/">xdanger</a> at December 21, 2003 01:07 PM
+| <a href="http://blog.xdanger.com/script/trackback.pl?__mode=view&amp;entry_id=53" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+</div>
+<div class="comments-head"><a name="comments"></a>TrackBacks</div>
+TrackBack URL for this entry: http://blog.xdanger.com/script/trackback.pl/52
+<ul>
+
+</ul>
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-head">Post a comment</div>
+<div class="comments-body">
+<form method="post" action="http://blog.xdanger.com/script/comments.pl" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="53" />
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+<label for="author">Name:</label><br />
+<input tabindex="1" id="author" name="author" /><br /><br />
+<label for="email">Email Address:</label><br />
+<input tabindex="2" id="email" name="email" /><br /><br />
+<label for="url">URL:</label><br />
+<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+</form>
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+<tr>
+<td height="125" valign="top" background="/i/bg03.png" id="foot">
+Copyleft 1999-2003, <a href="http://www.xdanger.com/">:+:xdanger:+:</a> <a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">Some Rights Reserved.</a><br /><br />
+This Page Was Last Updated on:November 17, 2004 05:28 AM</td>
+</tr>
+</table></td> 
+<td width="6" valign="top" background="/i/shadow_right_tile.gif"><img src="/i/shadow_right.gif" width="6" height="530" /></td>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ADSL路由方式实现自动拨号 彻底方便校园网使用ADSL</title>
+<link href="/favicon.ico" rel="shortcut icon" />
+<link href="http://blog.xdanger.com/stylesheet.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.xdanger.com/index.rdf" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.xdanger.com/rsd.xml" />
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    /*window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+function OpenTrackback (c) {
+    /*window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+</script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2003/12/31/000065.html">
+<dc:title>ADSL路由方式实现自动拨号 彻底方便校园网使用ADSL</dc:title>
+<dc:description>　　我平时住校，虽说有校园网，但上大的校园网，多数情况下时候网络相应速度实在那个……由于工作的需要，还是毅然装了ADSL，虽说是校园版ADSL，每个月80RMB帐单来的时候还是非常头痛的，于是决定让兄弟们一起扛——大家一起用。 　　于是想都没想，楼下教育超市就背了个Hub和一大坨网线再买了块网卡，我做主机，这样连起来用了几个月。 　　时间长了之后发现很麻烦： 每天最早开机最晚关机不要说，一大早就被吵醒（大学里总有N个网游狂男子），而且绝对不能随意重起，实在必要要事先跑一圈打招呼，否则万一人家穿着一身能卖￥Xxxx.00的装备在PvP……-.-b 楼面里不止我一个装，每个Hub拖8 台机器，所以走廊里网线就是蜘蛛网，管理员阿姨简直痛恨死了。:-) 校园网内部是100MbBit/s级的，我买的120RMB的Hub只有10MbBit/s，互相之间传东西只有校园网的1/10。 要切换ADSL与校园网及不方便，我根本不能换不去说，其他人也要拔线插线改IP……校园网内还是有很多FTP的，总不能放着高速局域网不去利用。 　　经过几天的试验，今天终于将所有问题都解决了！不设主机，ADSL的Modem开启路由，只要通电就自动拨号；省去一块Hub一块网卡一根网线，各自只要将网线插在自己台子地下的校园接口即可；理论上最多能拖254台PC；使用校园网线路，速度100MbBit/s；自编批处理文件双击即可转换ADSL/校园网！我的ADSL Modem为南京斯威特新技术创新有限公司生产，型号为SLA800D。以下步骤均仅限于此型号的Modem，其他型号的设备的参数可能不同，大体思路是一致的。...</dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2003-12-31T17:58:24+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+<link rel="start" href="http://blog.xdanger.com/" title="Home" />
+<link rel="prev" href="http://blog.xdanger.com/archives/2003/12/29/000064.html" title="远东石油线与地缘利益之争" />
+
+<link rel="next" href="http://blog.xdanger.com/archives/2004/01/02/000066.html" title="第一次做伴郎，第一次喝醉。" />
+
+<script type="text/javascript" language="javascript">
+<!--
+var HOST = 'blog.xdanger.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+//-->
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.xdanger.com/archives/2003/12/31/000065.html"
+    trackback:ping="http://blog.xdanger.com/script/trackback.pl/67"
+    dc:title="ADSL路由方式实现自动拨号 彻底方便校园网使用ADSL"
+    dc:identifier="http://blog.xdanger.com/archives/2003/12/31/000065.html"
+    dc:subject="Tech"
+    dc:description="　　我平时住校，虽说有校园网，但上大的校园网，多数情况下时候网络相应速度实在那个……由于工作的需要，还是毅然装了ADSL，虽说是校园版ADSL，每个月80RMB帐单来的时候还是非常头痛的，于是决定让兄弟们一起扛——大家一起用。 　　于是想都没想，楼下教育超市就背了个Hub和一大坨网线再买了块网卡，我做主机，这样连起来用了几个月。 　　时间长了之后发现很麻烦： 每天最早开机最晚关机不要说，一大早就被吵醒（大学里总有N个网游狂男子），而且绝对不能随意重起，实在必要要事先跑一圈打招呼，否则万一人家穿着一身能卖￥Xxxx.00的装备在PvP……-.-b 楼面里不止我一个装，每个Hub拖8 台机器，所以走廊里网线就是蜘蛛网，管理员阿姨简直痛恨死了。:-) 校园网内部是100MbBit/s级的，我买的120RMB的Hub只有10MbBit/s，互相之间传东西只有校园网的1/10。 要切换ADSL与校园网及不方便，我根本不能换不去说，其他人也要拔线插线改IP……校园网内还是有很多FTP的，总不能放着高速局域网不去利用。 　　经过几天的试验，今天终于将所有问题都解决了！不设主机，ADSL的Modem开启路由，只要通电就自动拨号；省去一块Hub一块网卡一根网线，各自只要将网线插在自己台子地下的校园接口即可；理论上最多能拖254台PC；使用校园网线路，速度100MbBit/s；自编批处理文件双击即可转换ADSL/校园网！我的ADSL Modem为南京斯威特新技术创新有限公司生产，型号为SLA800D。以下步骤均仅限于此型号的Modem，其他型号的设备的参数可能不同，大体思路是一致的。..."
+    dc:creator="xdanger"
+    dc:date="2003-12-31T17:58:24+08:00" />
+</rdf:RDF>
+-->
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2003/12/31/000065.html">
+<dc:title>ADSL路由方式实现自动拨号 彻底方便校园网使用ADSL</dc:title>
+<dc:description>　　我平时住校，虽说有校园网，但上大的校园网，多数情况下时候网络相应速度实在那个……由于工作的需要，还是毅然装了ADSL，虽说是校园版ADSL，每个月80RMB帐单来的时候还是非常头痛的，于是决定让兄弟们一起扛——大家一起用。 　　于是想都没想，楼下教育超市就背了个Hub和一大坨网线再买了块网卡，我做主机，这样连起来用了几个月。 　　时间长了之后发现很麻烦： 每天最早开机最晚关机不要说，一大早就被吵醒（大学里总有N个网游狂男子），而且绝对不能随意重起，实在必要要事先跑一圈打招呼，否则万一人家穿着一身能卖￥Xxxx.00的装备在PvP……-.-b 楼面里不止我一个装，每个Hub拖8 台机器，所以走廊里网线就是蜘蛛网，管理员阿姨简直痛恨死了。:-) 校园网内部是100MbBit/s级的，我买的120RMB的Hub只有10MbBit/s，互相之间传东西只有校园网的1/10。 要切换ADSL与校园网及不方便，我根本不能换不去说，其他人也要拔线插线改IP……校园网内还是有很多FTP的，总不能放着高速局域网不去利用。 　　经过几天的试验，今天终于将所有问题都解决了！不设主机，ADSL的Modem开启路由，只要通电就自动拨号；省去一块Hub一块网卡一根网线，各自只要将网线插在自己台子地下的校园接口即可；理论上最多能拖254台PC；使用校园网线路，速度100MbBit/s；自编批处理文件双击即可转换ADSL/校园网！我的ADSL Modem为南京斯威特新技术创新有限公司生产，型号为SLA800D。以下步骤均仅限于此型号的Modem，其他型号的设备的参数可能不同，大体思路是一致的。...</dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2003-12-31T17:58:24+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+<td width="6" valign="top" background="/i/shadow_left_tile.gif"><img src="/i/shadow_left.gif" width="6" height="530" /></td>
+<td width="760" valign="top" bgcolor="#E2E5E8"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td background="/i/bg01.jpg"><div id="banner"><h1><a href="http://blog.xdanger.com/">:+:xdanger:+:人，因思而变:+:Thinking up Makes Looking up:+:</h1></div>
+<div id="nav"><a
+href="http://www.xdanger.com/">Home </a> | <a
+href="http://blog.xdanger.com/">Blog </a>
+ - <a href="http://blog.xdanger.com/archives/life/index.html">Life</a>
+ - <a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+ - <a href="http://blog.xdanger.com/archives/time/index.html">Time</a>
+ | <a
+href="http://gallery.xdanger.com/">Gallery </a> | <a
+href="http://mail.xdanger.com/">Mail </a> | <a
+href="http://google.xdanger.com/">Google</a> | <a
+href="http://music.xdanger.com/">Music</a> | <a
+href="http://board.xdanger.com/">Board</a></div></td>
+</tr>
+<tr>
+<td height="8" background="/i/bg02.gif"></td>
+</tr>
+</table>
+<div id="container">
+<div class="blog">
+<div id="menu">
+<a href="http://blog.xdanger.com/archives/2003/12/29/000064.html">&laquo; 远东石油线与地缘利益之争</a> |
+
+<a href="http://blog.xdanger.com/">Main</a>
+| <a href="http://blog.xdanger.com/archives/2004/01/02/000066.html">第一次做伴郎，第一次喝醉。 &raquo;</a>
+
+</div>
+<h2 class="date">December 31, 2003</h2>
+<div class="blogbody">
+<h3 class="title"><a href="http://blog.xdanger.com/archives/2003/12/31/000065.html">ADSL路由方式实现自动拨号 彻底方便校园网使用ADSL</a>
+[<a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+]</h3>
+<div align="center" class="googleAds1"><script type="text/javascript"><!--
+google_ad_client = "pub-3705515967346815";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="0434088231";
+google_color_border = "666666";
+google_color_bg = "FFFFFF";
+google_color_link = "FF3300";
+google_color_url = "006699";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<P>　　我平时住校，虽说有校园网，但上大的校园网，多数情况下时候网络相应速度实在那个……由于工作的需要，还是毅然装了ADSL，虽说是校园版ADSL，每个月80RMB帐单来的时候还是非常头痛的，于是决定让兄弟们一起扛——大家一起用。</P>
+<P>　　于是想都没想，楼下教育超市就背了个Hub和一大坨网线再买了块网卡，我做主机，这样连起来用了几个月。</P>
+<P>　　时间长了之后发现很麻烦：</P>
+<UL>
+<LI>每天最早开机最晚关机不要说，一大早就被吵醒（大学里总有N个网游狂男子），而且绝对不能随意重起，实在必要要事先跑一圈打招呼，否则万一人家穿着一身能卖￥Xxxx.00的装备在PvP……-.-b 
+<LI>楼面里不止我一个装，每个Hub拖8 台机器，所以走廊里网线就是蜘蛛网，管理员阿姨简直痛恨死了。:-) 
+<LI>校园网内部是100MbBit/s级的，我买的120RMB的Hub只有10MbBit/s，互相之间传东西只有校园网的1/10。 
+<LI>要切换ADSL与校园网及不方便，我根本不能换不去说，其他人也要拔线插线改IP……校园网内还是有很多FTP的，总不能放着高速局域网不去利用。</LI></UL>
+<P>　　经过几天的试验，今天终于将所有问题都解决了！不设主机，ADSL的Modem开启路由，只要通电就自动拨号；省去一块Hub一块网卡一根网线，各自只要将网线插在自己台子地下的校园接口即可；理论上最多能拖254台PC；使用校园网线路，速度100MbBit/s；自编批处理文件双击即可转换ADSL/校园网！我的ADSL Modem为南京斯威特新技术创新有限公司生产，型号为SLA800D。以下步骤均仅限于此型号的Modem，其他型号的设备的参数可能不同，大体思路是一致的。</P>
+<a name="more"></a>
+<OL>
+<LI>向当地宽带服务提供商那里查询VPI/VCI值。上海地区是0/32。 
+<LI>设置IP。<BR>本机IP：192.168.1.xxx（只要不是192.168.1.1就行，因为这个IP要给ADSL用）。<BR>子网掩码：255.255.255.0<BR>默认网关：192.168.1.1（这就是ADSL Modem默认的IP地址） 
+<LI>打开浏览器，在地址栏输入：http://192.168.1.1，回车。<BR>用户名：<STRONG>root<BR></STRONG>密　码：<STRONG>12345</STRONG>（这是Modem默认的用户名和密码，进入后可修改密码。）<BR>点确定后进入管理页面。 
+<LI>点击左边导航栏的“WAN设置”，将“ 当前ATM PVC列表”下所有的项目全部删除。然后<A href="http://blog.xdanger.com/archives/pics/20031231a.png">如图</A>添加一项设置，保存。 
+<LI>如果有必要，可修改Modem的LAN IP地址为一个192.168.xxx.xxx的特殊数字串，这样可有效防止校园网内不认识的人无意间用到这个IP地址作为网关，而占用自己的带宽。点击导航栏的“LAN设置”即可修改。 
+<LI>点击导航栏的“保存&amp;重启”。先保存，然后重起。注意页面上的提示语句。这样Modem就设置完毕了。 
+<LI>用网线将Modem接在校园网的任意一处接口，最好是Modem自带的三星线，据ADSL客服说这样稳定，事实上五星线我根本没法用，接上去没信号，搞不懂为什么。其他机器只要像往常一样插在校园网接口就行。 
+<LI>逐台设置PC机的IP，保证不要冲突，最好子网掩码设成255.255.255.0并且前三段要和第5步中设置的Modem的Lan IP一致，网关就是Modem的Lan IP地址。到这一步基本可以完成了，只是校园网和ADSL切换起来还要手动换IP。 
+<LI>编写2个批处理文件，方便转换IP。此处举例一个为ADSL.bat，另一个为campus.bat；分别用来转换成ADSL的IP和校园网IP。<BR>ADSL.bat内容如下： 
+<DIV class=code><STRONG>netsh interface ip set address name="</STRONG><EM>网络连接里的连接名称，如 本地连接</EM><STRONG>" static</STRONG>&nbsp;<EM>PC分配到的ADSL的IP地址，如192.168.1.2</EM> <STRONG>255.255.255.0</STRONG> <EM>Modem的Lan IP地址，如192.168.1.1</EM> <STRONG>1</STRONG></DIV>campus.bat内容如下： 
+<DIV class=code><STRONG>netsh interface ip set address name="</STRONG><EM>网络连接里的连接名称，如 本地连接</EM><STRONG>" static</STRONG> <EM>PC分配到的校园网的IP地址，如10.126.12.29</EM> <STRONG>255.255.255.0</STRONG> <EM>校园网的网关IP地址，如10.126.12.254</EM> <STRONG>1</STRONG></DIV>放到桌面上吧，双击即可轻松转换所在网络，随心所欲，呵呵。</LI></OL>
+<span class="posted">Posted by <a target="_blank" href="http://www.xdanger.com/">xdanger</a> at December 31, 2003 05:58 PM
+| <a href="http://blog.xdanger.com/script/trackback.pl?__mode=view&amp;entry_id=65" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+</div>
+<div class="comments-head"><a name="comments"></a>TrackBacks</div>
+TrackBack URL for this entry: http://blog.xdanger.com/script/trackback.pl/67
+<ul>
+
+</ul>
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+<div class="comments-body">
+<p>靠，我的心血你都没提一下，偶太伤心了：(</p>
+<span class="comments-post">Posted by: sorghum at January 13, 2004 06:23 PM</span>
+</div>
+<div class="comments-body">
+<p>:-)<br />
+那就说我按照自己的思路整理成文吧。</p>
+<span class="comments-post">Posted by: <a href="http://blog.xdanger.com/script/comments.pl?__mode=red&amp;id=42">xdanger</a> at January 14, 2004 01:06 AM</span>
+</div>
+<div class="comments-body">
+<p>好东东。。。</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;goliuli&#64;public&#46;xa&#46;sn&#46;cn">LL</a> at March 15, 2004 01:44 AM</span>
+</div>
+<div class="comments-body">
+<p>好,我需要更多!</p>
+<span class="comments-post">Posted by: <a href="http://blog.xdanger.com/script/comments.pl?__mode=red&amp;id=129">xily</a> at April  7, 2004 01:14 PM</span>
+</div>
+<div class="comments-body">
+<p>正是我要的</p>
+<span class="comments-post">Posted by:  at June 23, 2004 11:18 AM</span>
+</div>
+<div class="comments-body">
+<p>请问如果我下行是1M,我家有2台PC,根据你以上的设置完后,是否<br />
+我每台PC的下行都是1M,还是2台加起来的下行是1M呢?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;jackey_wenj&#64;163&#46;com">jack</a> at July 28, 2004 08:32 PM</span>
+</div>
+
+<div class="comments-head">Post a comment</div>
+<div class="comments-body">
+<form method="post" action="http://blog.xdanger.com/script/comments.pl" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="65" />
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+<label for="author">Name:</label><br />
+<input tabindex="1" id="author" name="author" /><br /><br />
+<label for="email">Email Address:</label><br />
+<input tabindex="2" id="email" name="email" /><br /><br />
+<label for="url">URL:</label><br />
+<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+</form>
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+<tr>
+<td height="125" valign="top" background="/i/bg03.png" id="foot">
+Copyleft 1999-2003, <a href="http://www.xdanger.com/">:+:xdanger:+:</a> <a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">Some Rights Reserved.</a><br /><br />
+This Page Was Last Updated on:November 17, 2004 05:28 AM</td>
+</tr>
+</table></td> 
+<td width="6" valign="top" background="/i/shadow_right_tile.gif"><img src="/i/shadow_right.gif" width="6" height="530" /></td>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</body>
+</html>

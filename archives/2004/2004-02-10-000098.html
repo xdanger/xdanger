@@ -1,0 +1,420 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>强烈建议PHPer们使用Turck MMCache</title>
+<link href="/favicon.ico" rel="shortcut icon" />
+<link href="http://blog.xdanger.com/stylesheet.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.xdanger.com/index.rdf" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.xdanger.com/rsd.xml" />
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    /*window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+function OpenTrackback (c) {
+    /*window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');*/
+    location.href=c;
+}
+</script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2004/02/10/000098.html">
+<dc:title>强烈建议PHPer们使用Turck MMCache</dc:title>
+<dc:description>　　Turck MMCache是一个类似于Zend Optimizer/Encoder的软件，不过速度要超过后者。而且他是一个开源的软件，可以免费使用。官方网站是：http://turck-mmcache.sourceforge.net 安装方法 　　在http://sourceforge.net/project/showfiles.php?group_id=69426根据你的PHP版本下载MMCache解压至任意目录后，在PHP.ini中添加如下内容即可：(C:\PHP\mmcache是MMCache所在的目录，如果是非Windows平台则是 zend_extension_ts=mmcpath/mmcache.so) zend_extension_ts=&quot;C:\PHP\mmcache\mmcache.dll&quot; mmcache.shm_size=&quot;16&quot;mmcache.cache_dir=&quot;C:\PHP\mmcache\tmp&quot;mmcache.enable=&quot;1&quot;mmcache.optimizer=&quot;1&quot;mmcache.check_mtime=&quot;1&quot;mmcache.debug=&quot;0&quot;mmcache.filter=&quot;&quot;mmcache.shm_max=&quot;0&quot;mmcache.shm_ttl=&quot;0&quot;mmcache.shm_prune_period=&quot;0&quot;mmcache.shm_only=&quot;0&quot;mmcache.compress=&quot;1&quot; 　　目前多数的虚拟主机都没有安装Turck MMCache，实在是大大的浪费。装了之后几乎可以放多10倍的站点。而且PHP程序员用起来没有任何区别。 　　下表是同类软件的比较：...</dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2004-02-10T22:16:27+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+<link rel="start" href="http://blog.xdanger.com/" title="Home" />
+<link rel="prev" href="http://blog.xdanger.com/archives/2004/02/04/000096.html" title="考试期来临" />
+
+<link rel="next" href="http://blog.xdanger.com/archives/2004/02/11/000097.html" title="我的第一个Java版Hello,World!" />
+
+<script type="text/javascript" language="javascript">
+<!--
+var HOST = 'blog.xdanger.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+//-->
+</script>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://blog.xdanger.com/archives/2004/02/10/000098.html"
+    trackback:ping="http://blog.xdanger.com/script/trackback.pl/100"
+    dc:title="强烈建议PHPer们使用Turck MMCache"
+    dc:identifier="http://blog.xdanger.com/archives/2004/02/10/000098.html"
+    dc:subject="Tech"
+    dc:description="　　Turck MMCache是一个类似于Zend Optimizer/Encoder的软件，不过速度要超过后者。而且他是一个开源的软件，可以免费使用。官方网站是：http://turck-mmcache.sourceforge.net 安装方法 　　在http://sourceforge.net/project/showfiles.php?group_id=69426根据你的PHP版本下载MMCache解压至任意目录后，在PHP.ini中添加如下内容即可：(C:\PHP\mmcache是MMCache所在的目录，如果是非Windows平台则是 zend_extension_ts=mmcpath/mmcache.so) zend_extension_ts=&quot;C:\PHP\mmcache\mmcache.dll&quot; mmcache.shm_size=&quot;16&quot;mmcache.cache_dir=&quot;C:\PHP\mmcache\tmp&quot;mmcache.enable=&quot;1&quot;mmcache.optimizer=&quot;1&quot;mmcache.check_mtime=&quot;1&quot;mmcache.debug=&quot;0&quot;mmcache.filter=&quot;&quot;mmcache.shm_max=&quot;0&quot;mmcache.shm_ttl=&quot;0&quot;mmcache.shm_prune_period=&quot;0&quot;mmcache.shm_only=&quot;0&quot;mmcache.compress=&quot;1&quot; 　　目前多数的虚拟主机都没有安装Turck MMCache，实在是大大的浪费。装了之后几乎可以放多10倍的站点。而且PHP程序员用起来没有任何区别。 　　下表是同类软件的比较：..."
+    dc:creator="xdanger"
+    dc:date="2004-02-10T22:16:27+08:00" />
+</rdf:RDF>
+-->
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://blog.xdanger.com/archives/2004/02/10/000098.html">
+<dc:title>强烈建议PHPer们使用Turck MMCache</dc:title>
+<dc:description>　　Turck MMCache是一个类似于Zend Optimizer/Encoder的软件，不过速度要超过后者。而且他是一个开源的软件，可以免费使用。官方网站是：http://turck-mmcache.sourceforge.net 安装方法 　　在http://sourceforge.net/project/showfiles.php?group_id=69426根据你的PHP版本下载MMCache解压至任意目录后，在PHP.ini中添加如下内容即可：(C:\PHP\mmcache是MMCache所在的目录，如果是非Windows平台则是 zend_extension_ts=mmcpath/mmcache.so) zend_extension_ts=&quot;C:\PHP\mmcache\mmcache.dll&quot; mmcache.shm_size=&quot;16&quot;mmcache.cache_dir=&quot;C:\PHP\mmcache\tmp&quot;mmcache.enable=&quot;1&quot;mmcache.optimizer=&quot;1&quot;mmcache.check_mtime=&quot;1&quot;mmcache.debug=&quot;0&quot;mmcache.filter=&quot;&quot;mmcache.shm_max=&quot;0&quot;mmcache.shm_ttl=&quot;0&quot;mmcache.shm_prune_period=&quot;0&quot;mmcache.shm_only=&quot;0&quot;mmcache.compress=&quot;1&quot; 　　目前多数的虚拟主机都没有安装Turck MMCache，实在是大大的浪费。装了之后几乎可以放多10倍的站点。而且PHP程序员用起来没有任何区别。 　　下表是同类软件的比较：...</dc:description>
+<dc:creator>xdanger</dc:creator>
+<dc:date>2004-02-10T22:16:27+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nd-nc/1.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nd-nc/1.0/">
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+</License>
+</rdf:RDF>
+-->
+
+
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+<td width="6" valign="top" background="/i/shadow_left_tile.gif"><img src="/i/shadow_left.gif" width="6" height="530" /></td>
+<td width="760" valign="top" bgcolor="#E2E5E8"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td background="/i/bg01.jpg"><div id="banner"><h1><a href="http://blog.xdanger.com/">:+:xdanger:+:人，因思而变:+:Thinking up Makes Looking up:+:</h1></div>
+<div id="nav"><a
+href="http://www.xdanger.com/">Home </a> | <a
+href="http://blog.xdanger.com/">Blog </a>
+ - <a href="http://blog.xdanger.com/archives/life/index.html">Life</a>
+ - <a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+ - <a href="http://blog.xdanger.com/archives/time/index.html">Time</a>
+ | <a
+href="http://gallery.xdanger.com/">Gallery </a> | <a
+href="http://mail.xdanger.com/">Mail </a> | <a
+href="http://google.xdanger.com/">Google</a> | <a
+href="http://music.xdanger.com/">Music</a> | <a
+href="http://board.xdanger.com/">Board</a></div></td>
+</tr>
+<tr>
+<td height="8" background="/i/bg02.gif"></td>
+</tr>
+</table>
+<div id="container">
+<div class="blog">
+<div id="menu">
+<a href="http://blog.xdanger.com/archives/2004/02/04/000096.html">&laquo; 考试期来临</a> |
+
+<a href="http://blog.xdanger.com/">Main</a>
+| <a href="http://blog.xdanger.com/archives/2004/02/11/000097.html">我的第一个Java版Hello,World! &raquo;</a>
+
+</div>
+<h2 class="date">February 10, 2004</h2>
+<div class="blogbody">
+<h3 class="title"><a href="http://blog.xdanger.com/archives/2004/02/10/000098.html">强烈建议PHPer们使用Turck MMCache</a>
+[<a href="http://blog.xdanger.com/archives/tech/index.html">Tech</a>
+]</h3>
+<div align="center" class="googleAds1"><script type="text/javascript"><!--
+google_ad_client = "pub-3705515967346815";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="0434088231";
+google_color_border = "666666";
+google_color_bg = "FFFFFF";
+google_color_link = "FF3300";
+google_color_url = "006699";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<P>　　<A href="http://turck-mmcache.sourceforge.net/">Turck MMCache</A>是一个类似于<A href="http://www.zend.com/">Zend Optimizer/Encoder</A>的软件，不过速度要超过后者。而且他是一个开源的软件，可以免费使用。官方网站是：<A href="http://turck-mmcache.sourceforge.net">http://turck-mmcache.sourceforge.net</A></P><P　　我实际使用了一下，速度提升非常理想。除了新的或修改过的PHP文件第一次运行时有一点点慢，刷新后速度几乎是十分之一，该数量级由DEBUG程序做过试验。最大的优点就是不像ZEND P MMCache会自动识别文件修改时间，更新缓存，而且比zend编译好的运行还快，简直不敢相信……< Encoder那样需要事先编译好，Turck Optimizer>
+<H3>安装方法</H3>
+<P>　　在<A href="http://sourceforge.net/project/showfiles.php?group_id=69426">http://sourceforge.net/project/showfiles.php?group_id=69426</A>根据你的PHP版本下载MMCache解压至任意目录后，在PHP.ini中添加如下内容即可：(C:\PHP\mmcache是MMCache所在的目录，如果是非Windows平台则是 zend_extension_ts=mmcpath/mmcache.so)</P>
+<DIV class=code>zend_extension_ts="C:\PHP\mmcache\mmcache.dll" <BR>mmcache.shm_size="16"<BR>mmcache.cache_dir="C:\PHP\mmcache\tmp"<BR>mmcache.enable="1"<BR>mmcache.optimizer="1"<BR>mmcache.check_mtime="1"<BR>mmcache.debug="0"<BR>mmcache.filter=""<BR>mmcache.shm_max="0"<BR>mmcache.shm_ttl="0"<BR>mmcache.shm_prune_period="0"<BR>mmcache.shm_only="0"<BR>mmcache.compress="1"</DIV>
+<P dir=ltr>　　目前多数的虚拟主机都没有安装Turck MMCache，实在是大大的浪费。装了之后几乎可以放多10倍的站点。而且PHP程序员用起来没有任何区别。</P>
+<P>　　下表是同类软件的比较：</P>
+<a name="more"></a>
+<TABLE cellSpacing=1 cellPadding=0 bgColor=#cccccc border=0>
+<TBODY>
+<TR bgColor=#ffffff>
+<TH></TH>
+<TH>No Cache</TH>
+<TH>Afterburner 0.14</TH>
+<TH>APC 1.1.0 (shm)</TH>
+<TH>APC 2.0b</TH>
+<TH>PHP Accelerator 1.3.3r2</TH>
+<TH>Turck MMCache 2.4.0<SUP>*</SUP></TH>
+<TH>Zend Performance Suite 3.5.0<SUP>**</SUP></TH></TR>
+<TR bgColor=#ffffff>
+<TD>Document Path:</TD>
+<TD colSpan=7>/phpMyAdmin-2.5.1/index.php</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Concurrency Level:</TD>
+<TD colSpan=7>1</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Complete requests:</TD>
+<TD colSpan=7>200</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Document Length:</TD>
+<TD colSpan=7>2369 bytes</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Time taken for tests [sec]:</TD>
+<TD align=right>22.459</TD>
+<TD align=right>10.233</TD>
+<TD align=right>13.606</TD>
+<TD align=right>4.864</TD>
+<TD align=right>5.080</TD>
+<TD align=right>4.622</TD>
+<TD align=right>4.689</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Total transferred [bytes]:</TD>
+<TD align=right>522800</TD>
+<TD align=right>522800</TD>
+<TD align=right>522800</TD>
+<TD align=right>522800</TD>
+<TD align=right>529200</TD>
+<TD align=right>522800</TD>
+<TD align=right>522800</TD></TR>
+<TR bgColor=#ffffff>
+<TD>HTML transferred [bytes]:</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Requests per second [#/sec]:</TD>
+<TD align=right>8.91</TD>
+<TD align=right>19.54</TD>
+<TD align=right>14.70</TD>
+<TD align=right>41.12</TD>
+<TD align=right>39.37</TD>
+<TD align=right><FONT color=red><B>43.27</B></FONT></TD>
+<TD align=right><FONT color=#0481c3><B>42.65</B></FONT></TD></TR>
+<TR bgColor=#ffffff>
+<TD>Time per request [ms]:</TD>
+<TD align=right>112.30</TD>
+<TD align=right>51.16</TD>
+<TD align=right>68.03</TD>
+<TD align=right>24.32</TD>
+<TD align=right>25.40</TD>
+<TD align=right><FONT color=red><B>23.11</B></FONT></TD>
+<TD align=right><FONT color=#0481c3><B>23.45</B></FONT></TD></TR>
+<TR bgColor=#ffffff>
+<TD>Time per request [ms]:<BR><SMALL><FONT size=1>(across all concurrent 
+requests)<SMALL></SMALL></FONT></SMALL></TD>
+<TD align=right>112.30</TD>
+<TD align=right>51.16</TD>
+<TD align=right>68.03</TD>
+<TD align=right>24.32</TD>
+<TD align=right>25.40</TD>
+<TD align=right><FONT color=red><B>23.11</B></FONT></TD>
+<TD align=right><FONT color=#0481c3><B>23.45</B></FONT></TD></TR>
+<TR bgColor=#ffffff>
+<TD>Transfer rate [Kbytes/sec]:</TD>
+<TD align=right>23.28</TD>
+<TD align=right>51.09</TD>
+<TD align=right>38.42</TD>
+<TD align=right>107.48</TD>
+<TD align=right>104.17</TD>
+<TD align=right>113.11</TD>
+<TD align=right>111.49</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Connect Time (min/avg/max) [ms]:</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Processing Time (min/avg/max) [ms]:</TD>
+<TD align=right>111/112/113</TD>
+<TD align=right>50/51/52</TD>
+<TD align=right>67/68/69</TD>
+<TD align=right>24/24/25</TD>
+<TD align=right>25/25/26</TD>
+<TD align=right>22/23/24</TD>
+<TD align=right>23/23/24</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Total Time (min/avg/max) [ms]:</TD>
+<TD align=right>111/112/113</TD>
+<TD align=right>50/51/52</TD>
+<TD align=right>67/68/69</TD>
+<TD align=right>24/24/25</TD>
+<TD align=right>25/25/26</TD>
+<TD align=right>22/23/24</TD>
+<TD align=right>23/23/24</TD></TR>
+<TR bgColor=#ffffff>
+<TD><B>Speedup</B> [%]:</TD>
+<TD align=right>100</TD>
+<TD align=right>220</TD>
+<TD align=right>165</TD>
+<TD align=right>462</TD>
+<TD align=right>442</TD>
+<TD align=right><FONT color=red><B>486<BR>WINNER</B></FONT></TD>
+<TD align=right><FONT color=#0481c3><B>480<BR>The 
+second</B></FONT></TD></TR></TBODY></TABLE>
+<p></p>
+<span class="posted">Posted by <a target="_blank" href="http://www.xdanger.com/">xdanger</a> at February 10, 2004 10:16 PM
+| <a href="http://blog.xdanger.com/script/trackback.pl?__mode=view&amp;entry_id=98" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+</div>
+<div class="comments-head"><a name="comments"></a>TrackBacks</div>
+TrackBack URL for this entry: http://blog.xdanger.com/script/trackback.pl/100
+<ul>
+
+</ul>
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+<div class="comments-body">
+<p>只不过比Zend Performance 高了那么一点点而已嘛。呵呵。没想像中的那么好。</p>
+<span class="comments-post">Posted by: <a href="http://blog.xdanger.com/script/comments.pl?__mode=red&amp;id=91">avenger</a> at February 13, 2004 11:24 PM</span>
+</div>
+<div class="comments-body">
+<p>但是使用上的方便程度不能比的呀！zend是每次都要手动编译，开发中的网站根本不可能这样搞的。Turck MMCache安装好之后，编写程序没任何区别，速度快10倍，何乐而不为呢。</p>
+<span class="comments-post">Posted by: <a href="http://blog.xdanger.com/script/comments.pl?__mode=red&amp;id=92">xdanger</a> at February 13, 2004 11:36 PM</span>
+</div>
+<div class="comments-body">
+<p>你个猪头，抢我的东东:'(<br />
+还好Google的眼睛是雪亮的，我排在第一个:D</p>
+<span class="comments-post">Posted by: <a href="http://blog.xdanger.com/script/comments.pl?__mode=red&amp;id=98">Dash</a> at February 26, 2004 09:10 AM</span>
+</div>
+<div class="comments-body">
+<p>还有Zend Performance Suite也是缓存阿<br />
+不过Turck MMCache不只是缓存，他还包含了Zend Optimizer/Encoder的功能</p>
+<span class="comments-post">Posted by: <a href="http://blog.xdanger.com/script/comments.pl?__mode=red&amp;id=99">Dash</a> at February 26, 2004 09:26 AM</span>
+</div>
+<div class="comments-body">
+<p>我使用了3.6.0之后被zend过的文件执行都出现找不到服务器错误？</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;jedia&#64;qq&#46;com">Jedia</a> at August 27, 2004 02:23 PM</span>
+</div>
+
+<div class="comments-head">Post a comment</div>
+<div class="comments-body">
+<form method="post" action="http://blog.xdanger.com/script/comments.pl" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="98" />
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+<label for="author">Name:</label><br />
+<input tabindex="1" id="author" name="author" /><br /><br />
+<label for="email">Email Address:</label><br />
+<input tabindex="2" id="email" name="email" /><br /><br />
+<label for="url">URL:</label><br />
+<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+</form>
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+<tr>
+<td height="125" valign="top" background="/i/bg03.png" id="foot">
+Copyleft 1999-2003, <a href="http://www.xdanger.com/">:+:xdanger:+:</a> <a href="http://www.creativecommons.cn/licenses/by-nd-nc/1.0/">Some Rights Reserved.</a><br /><br />
+This Page Was Last Updated on:November 17, 2004 05:28 AM</td>
+</tr>
+</table></td> 
+<td width="6" valign="top" background="/i/shadow_right_tile.gif"><img src="/i/shadow_right.gif" width="6" height="530" /></td>
+<td valign="top" bgcolor="3D4146"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="/i/bg.gif"><img src="/i/0.gif" width="1" height="530" /></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</body>
+</html>
