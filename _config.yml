@@ -6,17 +6,12 @@ plugins:       ./_plugins
 layouts:       ./_layouts
 include:       ['.htaccess']
 exclude:       ['_log', 'CNAME']
-keep_files:    ['.git', '.svn', 'files']
+keep_files:    ['files']
 timezone:      Asia/Shanghai
 pygments:      true
 
 port:          4000
-baseurl:       /
-url:           http://localhost:4000
-lsi:           false
-
+assets_prefix: '//res.xdcdn.net'
 permalink:     '/:year/:month/:day/:title.html'
 paginate:      5
-paginate_path: 'blog/page:num'
-
-assets_prefix: '//res.xdcdn.net'
+lsi:           true

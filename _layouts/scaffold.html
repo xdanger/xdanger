@@ -7,43 +7,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ site.assets_prefix }}/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ site.assets_prefix }}/bootstrap/css/bootstrap-responsive.min.css">
-  <link rel="stylesheet" href="/stylesheets/scaffold.css"></head>
+  <script type="text/javascript" src="{{ site.assets_prefix }}/jquery/jquery-1.x.js"></script>
+  <script type="text/javascript" src="{{ site.assets_prefix }}/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/scaffold.css">
 <body>
-  <div id="header_wrap" class="outer">
-    <header class="inner">
-      <!--
-      <a id="forkme_banner" href="https://github.com/xdanger/www.xdanger.com">View on GitHub</a>
-      -->
-      <h1 id="project_title">
+  <div id="page-wrap" class="container">
+    <div id="head-wrap" class="container">
+      <h1 id="blog-title">
         <a href="/">{{ site.name }}</a>
       </h1>
-      <h2 id="project_tagline">Thinking up makes looking up ...</h2>
-      <!--
-        <section id="downloads">
-          <a class="zip_download_link" href="https://github.com/xdanger/www.xdanger.com/zipball/master">Download this site as a .zip file</a>
-          <a class="tar_download_link" href="https://github.com/xdanger/www.xdanger.com/tarball/master">Download this site as a tar.gz file</a>
-        </section>
-      -->
-    </header>
-  </div>
+      <h3 id="blog-tagline">Thinking up makes looking up ...</h3>
+    </div>
 
-  <div id="main_content_wrap" class="outer">
-  <section id="main_content" class="inner">{{ content }}</section>
-  </div>
+      <div class="row-fluid">
+        <div id="main-area" class="span9">{{ content }}</div>
+        <div id="side-area" class="span3">
 
-  <div id="footer_wrap" class="outer">
-  <footer class="inner">
-    <p class="copyright">
-      www.xdanger.com maintained by
-      <a href="https://github.com/xdanger">xdanger</a>
-    </p>
-    <p>
-      Published with
-      <a href="http://pages.github.com">GitHub Pages</a>
-    </p>
-  </footer>
-  </div>
+        </div>
+      </div>
 
+    <div id="foot-wrap" class="row-fluid">
+      <div class="row-fluid" style="margin-top: 10px;">
+      <div class="span10">
+        This weblog is licensed under a
+        <a href="http://creativecommons.org/licenses/by-nc-sa/1.0/">Creative Commons License</a>
+        .
+      </div>
+      <div class="span2">
+        <a href="http://www.miibeian.gov.cn/" rel="nofollow">沪ICP备05010487</a>
+      </div>
+    </div>
+    </div>
+
+  </div>
   <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
