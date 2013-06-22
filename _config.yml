@@ -4,6 +4,7 @@ source:        .
 destination:   ./_site
 plugins:       ./_plugins
 layouts:       ./_layouts
+baseurl:       'http://www.xdanger.com'
 include:       ['.htaccess']
 exclude:       ['_log', 'CNAME']
 keep_files:    ['files']

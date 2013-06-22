@@ -18,14 +18,14 @@ tags:     "Web2.0"
 
 <p>　　如果你也用 Google Reader，可以将这个连接拖放至收藏夹或链接栏：<a href="javascript:var resource = location.href;var elements = document.getElementsByTagName( 'link' );for( var i = 0; i < elements.length; ++i ) {var current = elements[i];var type = current.getAttribute( 'type' );if ( type == 'application/rss+xml' || type == 'application/atom+xml' ) {resource = current.getAttribute( 'href' );break;}}document.location.href ='http://www.google.com/reader/preview/*/feed/'+resource;">加入我的 Google Reader 订阅</a></p>
 
-<p>　　链接的代码如下：<div class="code">var resource = location.href;<br />
+<p>　　链接的代码如下：<pre class="code">var resource = location.href;<br />
 var elements = document.getElementsByTagName( 'link' );<br />
-for( var i = 0; i < elements.length; ++i ) {<br />
+for( var i = 0; i &lt; elements.length; ++i ) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;var current = elements[i];var type = current.getAttribute( 'type' );<br />
 &nbsp;&nbsp;&nbsp;&nbsp;if ( type == 'application/rss+xml' || type == 'application/atom+xml' ) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resource = current.getAttribute( 'href' );break;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}<br />
 }<br />
-document.location.href ='http://www.google.com/reader/preview/*/feed/'+resource;</div></p>
+document.location.href ='http://www.google.com/reader/preview/*/feed/'+resource;</pre></p>
 
 
