@@ -6,8 +6,8 @@ plugins:       ./_plugins
 layouts:       ./_layouts
 baseurl:       'http://www.xdanger.com'
 include:       ['.htaccess']
-exclude:       ['_log', 'CNAME']
-keep_files:    ['files']
+exclude:       ['_log']
+keep_files:    ['.git']
 timezone:      Asia/Shanghai
 pygments:      true
 
@@ -15,4 +15,5 @@ port:          4000
 assets_prefix: '//res.xdcdn.net'
 permalink:     '/:year/:month/:day/:title.html'
 paginate:      5
+#paginate_path: "blog/page:num"
 lsi:           true
