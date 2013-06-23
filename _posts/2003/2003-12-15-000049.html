@@ -1,0 +1,16 @@
+---
+layout:   post
+title:    "Windows记事本的一个Bug"
+date:     "2003-12-15 17:15:27"
+category: "Tech"
+tags:     []
+---
+
+
+<P>　　打开记事本-&gt;输入“联通”-&gt;保存-&gt;关闭-&gt;打开，结果如图所示。 <BR><IMG src="http://blog.xdanger.com/archives/pics/20031215a.png" border=0></P>
+<br /><br />
+<P>　　用UltraEdit打开此.txt文件，用二进制方式察看内容，如下图，看到“联通”的二进制代码为“FF FE 6A 00 68&nbsp;03”，多了2个字节，并且FF FE那么高的区位肯定超出GB2312的范围。<BR><IMG height=16 src="http://blog.xdanger.com/archives/pics/20031215b.png" border=0> 
+<P>　　再看正常情况下，输入“联通戴云杰”。<BR><IMG src="http://blog.xdanger.com/archives/pics/20031215c.png" border=0><BR>　　用UltraEdit以二进制方式打开，看到“联通”经GB2312编码后的二进制码应该是“C1 AA CD A8”。<IMG src="http://blog.xdanger.com/archives/pics/20031215d.png" border=0> </P>
+<P>　　在<A href="http://www.google.com/">Google</A>内检验编码正确性：<IMG src="http://blog.xdanger.com/archives/pics/20031215e.png" border=0> <IMG src="http://blog.xdanger.com/archives/pics/20031215f.png" border=0></P< body> </P>
+<P>　　此Bug已经证明出现在XP、2000，其他系统未知。</P>
+

@@ -40,13 +40,13 @@ category:
     <a href="#">&laquo;</a>
   </li>
   {% endif %}
-  <li{% if paginator.page == 1 %} class="active"{% endif %}>
-    <a href="/">1</a>
-  </li>
-  {% for count in (2..paginator.total_pages) %}
+  {% for count in (1..paginator.total_pages) %}
+  {% assign show = (count | nearby_paginator: paginator.page) %}
+  {% if show %}
   <li{% if count == paginator.page %}  class="active"{% endif %}>
     <a href="/page{{ count }}/">{{ count }}</a>
   </li>
+  {% endif %}
   {% endfor %}
     {% if paginator.next_page %}
   <li>
