@@ -12,7 +12,7 @@ timezone:      Asia/Shanghai
 pygments:      true
 
 port:          4000
-assets_prefix: '//res.xdcdn.net'
+assets_prefix: '//ast.xdcdn.net'
 permalink:     '/:year/:month/:day/:title.html'
 paginate:      5
 #paginate_path: "blog/page:num"
