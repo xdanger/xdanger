@@ -24,7 +24,22 @@ category:
 </div>
 </div>
 {% endfor %}
+
 <!-- Pagination links -->
+<ul id="post-pager" class="text-center pager">
+{% if paginator.previous_page %}
+<li><a href="/page{{ paginator.previous_page }}/">&laquo;</a></li>
+{% else %}
+<li class="disabled"><a href="#">&laquo;</a></li>
+{% endif %}
+　{{ paginator.page }}　
+{% if paginator.next_page %}
+<li><a href="/page{{ paginator.next_page }}/">&raquo;</a></li>
+{% else %}
+<li class="disabled"><a href="#">&raquo;</a></li>
+{% endif %}
+</ul>
+{% comment %}
 <div id="post-pagination" class="pagination pagination-small text-center">
 <ul>
   {% if paginator.previous_page %}
@@ -59,3 +74,4 @@ category:
   {% endif %}
 </ul>
 </div>
+{% endcomment %}
