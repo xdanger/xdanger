@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/stylesheets/scaffold.css">
   <link rel="alternate" type="application/rss+xml" title="Feed Me" href="http://www.xdanger.com/feeds/rss.xml" />
 <body>
+  {% comment %}
   <div id="site-navi" class="navbar container">
     <div class="navbar-inner">
       <a class="brand" href="/">X</a>
@@ -27,10 +28,11 @@
         <input type="text" class="search-query" placeholder="Search"></form>
     </div>
   </div>
+  {% endcomment %}
   <div id="page-wrap" class="container text-left box-shadow">
     <div id="head-wrap" class="container-fluid">
       <h1 id="site-title">
-        www.xdanger.com
+        <a href="/">www.xdanger.com</a>
         <span id="site-tagline" class="text-right hidden-phone">Thinking up makes looking up ...</span>
       </h1>
     </div>

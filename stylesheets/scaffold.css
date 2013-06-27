@@ -46,6 +46,7 @@ h6 { font-size: small-caps 100%; }
 #head-wrap { border-bottom: solid 1pt #eee; margin: 20px auto; }
 #site-title, #site-tagline { color: #c7c7c7; font-size: medium; font-weight: normal; margin: 0px; }
 #site-title { padding-left: 20px; }
+#site-title a { color: #c7c7c7; text-decoration: none; }
 #site-tagline { padding-right: 20px; float: right; }
 #main-area { margin: auto 20px; }
 /* #post-pagination { border-top: solid 1pt #eee; padding-top: 20px; margin-bottom: 0px; } */
