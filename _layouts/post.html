@@ -19,13 +19,17 @@ layout: scaffold
     | Comments (0) | TrackBacks (0)
 </div>
 <!-- Pagination links -->
+<script type="text/javascript">
+var prev_page_url = "{{ page.previous.url }}";
+var next_page_url = "{{ page.next.url }}";
+</script>
 <div class="pagination text-center">
     {% if page.previous.url %}
-    <a href="{{page.previous.url}}" class="previous">&laquo; {{page.previous.title}}</a>
+    <a href="{{page.previous.url}}" class="previous">&laquo; {{ page.previous.title }}</a>
     {% endif %}
   |
   {% if page.next.url %}
-    <a href="{{page.next.url}}" class="next">{{page.next.title}} &raquo;</a>
+    <a href="{{page.next.url}}" class="next">{{ page.next.title }} &raquo;</a>
     {% endif %}
 </div>
 <div id="disqus_thread"></div>
@@ -44,22 +48,6 @@ layout: scaffold
 </ul>
 </div>
 <script type="text/javascript">
-    $(document).keydown(function(e) {
-        var keyCode = e.keyCode
-        arrow = { left: 37, up: 38, right: 39, down: 40 };
-        switch (keyCode) {
-            {% if page.previous.url %}
-            case arrow.left:
-                location.href = "{{ page.previous.url }}";
-                break;
-            {% endif %}
-            {% if page.next.url %}
-            case arrow.right:
-                location.href = "{{ page.next.url }}";
-                break;
-            {% endif %}
-        }
-    });
     var disqus_shortname = 'xdanger';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -1,78 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>{{ page.title }} &bull; xdanger.com</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ site.assets_prefix }}/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ site.assets_prefix }}/bootstrap/css/bootstrap-responsive.min.css">
-  <script type="text/javascript" src="{{ site.assets_prefix }}/jquery/jquery-1.x.js"></script>
-  <script type="text/javascript" src="{{ site.assets_prefix }}/bootstrap/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/stylesheets/scaffold.css">
-  <link rel="alternate" type="application/rss+xml" title="Feed Me" href="http://www.xdanger.com/feeds/rss.xml" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{{ page.title }} &bull; xdanger.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ site.assets_prefix }}/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ site.assets_prefix }}/bootstrap/css/bootstrap-responsive.min.css">
+    <script type="text/javascript" src="{{ site.assets_prefix }}/jquery/jquery-1.x.js"></script>
+    <script type="text/javascript" src="{{ site.assets_prefix }}/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/scaffold.css">
+    <link rel="alternate" type="application/rss+xml" title="Feed Me" href="http://www.xdanger.com/feeds/rss.xml" />
 <body>
-  {% comment %}
-  <div id="site-navi" class="navbar container">
-    <div class="navbar-inner">
-      <a class="brand" href="/">X</a>
-      <ul class="nav">
-        <li{% if page.category != "Archives" %} class="active"{% endif %}>
-          <a href="/">Blog</a>
-        </li>
-        <li{% if page.category == "Archives" %} class="active"{% endif %}>
-          <a href="/archives/">Archives</a>
-        </li>
-      </ul>
-      <form class="navbar-search pull-right hidden-phone">
-        <input type="text" class="search-query" placeholder="Search"></form>
-    </div>
-  </div>
-  {% endcomment %}
-  <div id="page-wrap" class="container text-left box-shadow">
-    <div id="head-wrap" class="container-fluid">
-      <h1 id="site-title">
-        <a href="/">www.xdanger.com</a>
-        <span id="site-tagline" class="text-right hidden-phone">Thinking up makes looking up ...</span>
-      </h1>
-    </div>
-
-    <div id="main-area" class="container-fluid">{{ content }}</div>
-
-    <div id="foot-wrap" class="container-fluid">
-      <div class="row-fluid" style="margin-top: 10px;">
-        <div class="span8">
-          This site is licensed under a
-          <a href="http://creativecommons.org/licenses/by-nc-sa/1.0/">Creative Commons License</a>
-          .
+    {% comment %}
+    <div id="site-navi" class="navbar container">
+        <div class="navbar-inner">
+            <a class="brand" href="/">X</a>
+            <ul class="nav">
+                <li{% if page.category != "Archives" %} class="active"{% endif %}>
+                    <a href="/">Blog</a>
+                </li>
+                <li{% if page.category == "Archives" %} class="active"{% endif %}>
+                    <a href="/archives/">Archives</a>
+                </li>
+            </ul>
+            <form class="navbar-search pull-right hidden-phone">
+                <input type="text" class="search-query" placeholder="Search"></form>
         </div>
-        <div class="span4 text-right hidden-phone">
-          <a href="http://www.miibeian.gov.cn/" rel="nofollow">沪ICP备05010487</a>
-        </div>
-      </div>
     </div>
-  </div>
-  <!--
-  <div id="fb-root"></div>
+    {% endcomment %}
+    <div id="page-wrap" class="container text-left box-shadow">
+        <div id="head-wrap" class="container-fluid">
+            <h1 id="site-title">
+                <a href="/">www.xdanger.com</a>
+                <span id="site-tagline" class="text-right hidden-phone">Thinking up makes looking up ...</span>
+            </h1>
+        </div>
+
+        <div id="main-area" class="container-fluid">{{ content }}</div>
+
+        <div id="foot-wrap" class="container-fluid">
+            <div class="row-fluid" style="margin-top: 10px;">
+                <div class="span8">
+                    This site is licensed under a
+                    <a href="http://creativecommons.org/licenses/by-nc-sa/1.0/">Creative Commons License</a>
+                    .
+                </div>
+                <div class="span4 text-right hidden-phone">
+                    <a href="http://www.miibeian.gov.cn/" rel="nofollow">沪ICP备05010487</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+    <div id="fb-root"></div>
 <script type="text/javascript">
-  (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_CN/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/zh_CN/all.js#xfbml=1";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 -->
 <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
 <script type="text/javascript">
-      try {
-        var pageTracker = _gat._getTracker("UA-52878-1");
-        pageTracker._trackPageview();
-      } catch(err) {}
+try {
+    var pageTracker = _gat._getTracker("UA-52878-1");
+    pageTracker._trackPageview();
+} catch(err) {}
 
-  </script>
+$(document).keydown(function(e) {
+var keyCode = e.keyCode
+arrow = { left: 37, up: 38, right: 39, down: 40 };
+switch (keyCode) {
+    case arrow.left:
+        if (typeof prev_page_url !== undefined && prev_page_url != "")
+            location.href = prev_page_url;
+        break;
+    case arrow.right:
+        if (typeof next_page_url !== undefined && next_page_url != "")
+            location.href = next_page_url;
+        break;
+}
+});
+</script>
 </body>
 </html>
