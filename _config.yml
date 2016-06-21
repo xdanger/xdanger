@@ -2,14 +2,14 @@ name:          因思而变
 
 source:        .
 destination:   ../www
-plugins:       ./_plugins
-layouts:       ./_layouts
+plugins_dir:   ./_plugins
+layouts_dir:   ./_layouts
 baseurl:       'http://www.xdanger.com'
 include:       ['.htaccess']
 exclude:       ['_log']
 keep_files:    ['.git']
 timezone:      Asia/Shanghai
-pygments:      true
+highlighter:   pygments
 
 port:          4000
 assets_prefix: '//ast.xdcdn.net'
