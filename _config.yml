@@ -9,7 +9,7 @@ include:       ['.htaccess']
 exclude:       ['_log']
 keep_files:    ['.git']
 timezone:      Asia/Shanghai
-highlighter:   pygments
+highlighter:   rouge
 
 port:          4000
 assets_prefix: '//ast.xdcdn.net'
