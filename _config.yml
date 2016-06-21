@@ -1,5 +1,5 @@
 name:          因思而变
-
+gems:          [jekyll-paginate]
 source:        .
 destination:   ../www
 plugins_dir:   ./_plugins
