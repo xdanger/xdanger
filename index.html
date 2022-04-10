@@ -18,9 +18,8 @@ category:
     </div>
     {% endcomment %}
     <div class="post-meta">
-        Posted by xdanger on {{ post.date | date: "%Y-%m-%d" }} |
-        <a href="{{ post.url }}">Permalink</a>
-        | Comments (0) | TrackBacks (0)
+        Posted by xdanger on {{ post.date | date: "%Y-%m-%d" }}
+        · <a href="{{ post.url }}">Permalink</a> · Comments
     </div>
 </div>
 {% endfor %}
@@ -40,7 +39,7 @@ category:
         <a href="#">&laquo;</a>
     </li>
     {% endif %}
-        {{ paginator.page }}
+    {{ paginator.page }}
     {% if paginator.next_page %}
     <li>
         <a href="/page{{ paginator.next_page }}/">&raquo;</a>
