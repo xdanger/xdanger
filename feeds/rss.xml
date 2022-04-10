@@ -1,13 +1,13 @@
 ---
 title: 因思而变
-category: 
+category:
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
    <channel>
       <title>{{ page.title }}</title>
-      <link>{{ site.baseurl }}/</link>
+      <link>/</link>
       <description>Thinking up makes looking up ...</description>
       <language>en</language>{% for post in site.posts limit:1 %}
       <copyright>Copyright {{ post.date | date: "%Y" }}</copyright>
@@ -18,7 +18,7 @@ category:
       <item>
          <title>{{ post.title }}</title>
          <description>{{ post.content | xml_escape }}</description>
-         <guid isPermaLink="true">{{ site.baseurl }}{{ post.url }}</guid>
+         <guid isPermaLink="true">{{ post.url }}</guid>
           <category domain="http://www.sixapart.com/ns/types#category">{{ post.category }}</category>
          <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
       </item>
