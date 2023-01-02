@@ -1,7 +1,7 @@
 ---
 layout:   post
 title:    "2023 第一天，看看这个世界"
-date:     "2023-06-23 23:31:00"
+date:     "2023-01-01 23:31:00"
 category: "Tech"
 tags:     [MachineLearning, Insight]
 ---
