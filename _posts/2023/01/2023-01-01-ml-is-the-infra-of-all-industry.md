@@ -16,7 +16,7 @@ tags:     [MachineLearning, Insight]
 
 2022 年，让我人生第 4 次感觉到想象力跟不上 —— 机器学习演化出的 AIGC 和 ChatGPT 将来一定会深刻影响每个人的生活，就像 PC、互联网、iPhone 的出现注定会影响所有人一样。只是如何影响、最终会成为一个什么样的产业格局，还不知道。但是站在未来回看，人们会说，从 2022 年开始，科技开始延伸人类的大脑了。
 
-![Untitled](001.png)
+![Untitled](/images/001.png)
 
 相比 “信息时代” 的说法，我觉得 “软件时代” 更具象，因为 “信息” 本身不是一种科技，而软件才是（我在这对软件的定义，包含了计算能力也就是 CPU/GPU，下同）。信息只是软件解决的一部分问题，软件在更基础的层面、在全部的行业都大幅提升了生产力。比如：
 
@@ -30,7 +30,7 @@ tags:     [MachineLearning, Insight]
 
 软件正在颠覆所有行业，不管制造业还是服务业，所有有所作为的企业都是软件企业，软件能力不行的公司的价值一定会面临严峻考验。从 2000 年到现在，[中美靠软件一步步蚕食了日本和德国的制造业优势](https://www.163.com/dy/article/H923V18T051986UM.html)，成为唯二的 “发展中国家”。
 
-![数据源：[世界银行](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?end=2021&locations=CN-US-JP-DE-FR&start=2000&view=chart)](002.png)
+![数据源：[世界银行](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?end=2021&locations=CN-US-JP-DE-FR&start=2000&view=chart)](/images/002.png)
 
 数据源：[世界银行](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?end=2021&locations=CN-US-JP-DE-FR&start=2000&view=chart)
 
