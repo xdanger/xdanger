@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "jekyll"
 # gem "minima", "~> 2.5"
 gem "webrick"
 # gem "matrix", "~> 0.4.2"
