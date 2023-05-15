@@ -10,7 +10,7 @@ tags:     [MachineLearning, Insight]
 
 [ChatGPT Is a Blurry JPEG of the Web](https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web) 文章发表的时候 GPT-4 还没出来，但我觉得这篇文章真正揭示了 GPT/LLM 的本质 ——
 
-<div style="border: 1px solid; border-radius: 10px; margin: 12px; padding: 12px;">
+<div style="border: 1px solid; border-radius: 10px; color: #eee; margin: 12px; padding: 12px;">
 💡 GPTs 是一种针对巨量文本内容的有损压缩与解压算法，ChatGPT 是被 OpenAI 筛选过的互联网文本内容的一份有损压缩的离线副本。
 </div>
 
@@ -27,7 +27,7 @@ tags:     [MachineLearning, Insight]
 - 压缩后的数据质量非常取决于训练数据的 “清晰度”，反复使用模糊的图片去生成压缩图片是没任何意义的。因此 OpenAI 一定会竭尽所能，不让模型在训练时触到 GPT（或其他 LLM） 产出的语料（或者，如果发现 OpenAI 在竭尽所能把训练数据中清洗掉 GPT/LLM 生产的内容，也可以反过来印证 GPT/LLM 就是一种压缩算法的正确性）。这和现在市面上的 GPT copycats 用 ShareGPT 的语料蒸馏的路径会截然不同。
 - 训练语料的信息含量越高、原创性（独特性）越强、越是不像 GPT/LLM 能产出的语料、语料的风格特色越是丰富多样 …… 训练出的 GPT/LLM 的质量才会越高。
 - 真正具有原创能力的领域专家，将来在 GPT/LLM 的加持下，价值会十倍上升。
-- 因为是压缩，目前 GPT/LLM 的创作能力只体现在 “缝合” 而无法真正 “原创”，可以做出 AI 孙燕姿唱周杰伦的歌，但无法创作出 「半岛铁盒」、「爱在西元前」。
+- 因为是压缩，目前 GPT/LLM 的创作能力只体现在 “缝合” 而无法真正 “原创”，可以做出 [AI 孙燕姿](https://www.youtube.com/results?search_query=ai+%E5%AD%99%E7%87%95%E5%A7%BF)唱周杰伦的歌，但无法创作出 「半岛铁盒」、「爱在西元前」。
 
 后来 OpenAI 的首席科学家 Ilya Sutskever 在[与黄仁勋的对话](https://www.youtube.com/watch?v=XjSUJUL9ADw&t=625s)中确认了这个说法，他认为 “really good compression of the data would lead to unsupervised learning”，这个 insight 是创立 OpenAI 的两个 founding ideas 之一：
 
