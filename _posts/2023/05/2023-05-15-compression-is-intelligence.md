@@ -1,6 +1,6 @@
 ---
 layout:   post
-title:    "压缩即智慧"
+title:    "压缩即智慧？"
 date:     "2023-05-16 01:00:00"
 category: "Tech"
 tags:     [MachineLearning, Insight]
@@ -10,7 +10,7 @@ tags:     [MachineLearning, Insight]
 
 [ChatGPT Is a Blurry JPEG of the Web](https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web) 文章发表的时候 GPT-4 还没出来，但我觉得这篇文章真正揭示了 GPT/LLM 的本质 ——
 
-<div style="border: 1px solid #eee; border-radius: 10px; margin: 12px; padding: 12px;">
+<div style="border: 1px solid #ddd; border-radius: 10px; margin: 12px 0px; padding: 12px;">
 💡 GPTs 是一种针对巨量文本内容的有损压缩与解压算法，ChatGPT 是被 OpenAI 筛选过的互联网文本内容的一份有损压缩的离线副本。
 </div>
 
