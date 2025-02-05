@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  async rewrites() {
+    return [
+      {
+        source: '/:path*.html',
+        destination: '/:path*',
+      }
+    ];
+  },
 };
 
 export default nextConfig;

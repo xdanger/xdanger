@@ -10,29 +10,28 @@ interface PostPreviewProps {
 
 export function PostPreview({ title, date, preview, slug }: PostPreviewProps) {
     return (
-        <Link href= {`/posts/${slug}`
-} className = "block transition-all hover:scale-[1.02]" >
-    <Card className="h-full" >
-        <CardHeader>
-        <CardTitle className="text-2xl font-bold" >
-            { title }
-            </CardTitle>
-            < time className = "text-sm text-gray-500" >
-            {
-                new Date(date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                })
-            }
-                </time>
+        <Link href={`/${slug}`} className="block transition-all hover:scale-[1.02]">
+            <Card className="h-full">
+                <CardHeader>
+                    <CardTitle className="text-2xl font-bold">
+                        {title}
+                    </CardTitle>
+                    <time className="text-sm text-gray-500">
+                        {
+                            new Date(date).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            })
+                        }
+                    </time>
                 </CardHeader>
-                < CardContent >
-                <p className="text-gray-600 dark:text-gray-300" >
-                    { preview }
+                <CardContent>
+                    <p className="text-gray-600 dark:text-gray-300">
+                        {preview}
                     </p>
-                    </CardContent>
-                    </Card>
-                    </Link>
-  );
+                </CardContent>
+            </Card>
+        </Link>
+    );
 }
