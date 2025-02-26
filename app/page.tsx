@@ -1,5 +1,5 @@
 import { getLatestPosts } from '@/lib/posts';
-import { PostPreview } from '@/components/PostPreview';
+import { PostPreview } from '@/components/post-preview';
 
 // Mark the component as async since we need to fetch posts
 export default async function Home() {
