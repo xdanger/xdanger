@@ -8,6 +8,15 @@ body {
   line-height: 1.5;
 }
 
+/* 添加主题切换过渡效果
+*,
+::before,
+::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+} */
+
 :root {
   --background: hsl(48, 20%, 98%);
   --foreground: hsl(0, 0%, 3.9%);
@@ -53,6 +62,18 @@ body {
   --ring: hsl(240, 4.9%, 83.9%);
 }
 
+
+
+@layer components {
+  .prose ul {
+    @apply list-disc pl-5;
+  }
+
+  .prose ol {
+    @apply list-decimal pl-5;
+  }
+}
+
 /* Base styles */
 * {
   border-color: var(--border);
@@ -95,8 +116,9 @@ body {
 
 /* Additional prose styles for blog content */
 .prose {
-  max-width: 65ch;
+  /* max-width: 65ch; */
   color: var(--foreground);
+  text-align: justify;
 }
 
 .prose strong {
@@ -110,10 +132,12 @@ body {
   font-weight: 500;
 }
 
-.prose p,
+.prose p {
+  margin: 1.25em 0;
+}
+
 .prose li {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
+  margin: 0.5em 0;
 }
 
 .prose h1,

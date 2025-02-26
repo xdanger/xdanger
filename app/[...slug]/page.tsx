@@ -54,13 +54,13 @@ export default async function PostPage({ params }: { params: { slug: string[] } 
     <div className="min-h-screen">
       <Header />
 
-      <main className="container max-w-3xl mx-auto px-4 md:px-8 py-12">
-        <article className="prose prose-lg dark:prose-invert max-w-none">
+      <main className="container max-w-3xl mx-auto pb-48">
+        <article className="prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none">
           <h1 className="text-2xl font-bold">{post.title}</h1>
           <time className="text-md text-muted-foreground">
             {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} className="text-md" />
+          <div dangerouslySetInnerHTML={{ __html: post.content }} className="text-lg" />
 
           {/* 文章导航链接
           <div className="mt-10 pt-6 border-t border-border text-sm flex justify-center">

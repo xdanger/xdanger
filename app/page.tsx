@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default async function Home() {
   const posts = await getLatestPosts();
-  const recentPosts = posts.slice(0, 5); // 获取最新的20篇文章
+  const recentPosts = posts.slice(0, 5);
 
   return (
     <div className="min-h-screen">
