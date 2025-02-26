@@ -1,37 +1,27 @@
-import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+// components/post-preview.tsx
+import Link from "next/link"
+import { formatDate } from "@/lib/utils"
 
 interface PostPreviewProps {
-    title: string;
-    date: string;
-    preview: string;
-    slug: string;
+    title: string
+    date: string
+    preview: string
+    slug: string
+    featured?: boolean
 }
 
-export function PostPreview({ title, date, preview, slug }: PostPreviewProps) {
+export function PostPreview({ title, date, preview, slug, featured }: PostPreviewProps) {
     return (
-        <Link href={`/${slug}`} className="block transition-all hover:scale-[1.02]">
-            <Card className="h-full">
-                <CardHeader>
-                    <CardTitle className="text-2xl font-bold">
-                        {title}
-                    </CardTitle>
-                    <time className="text-sm text-gray-500">
-                        {
-                            new Date(date).toLocaleDateString('en-US', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
-                            })
-                        }
-                    </time>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-gray-600 dark:text-gray-300">
-                        {preview}
-                    </p>
-                </CardContent>
-            </Card>
-        </Link>
-    );
+        <div className={featured ? "h-full flex flex-col" : ""}>
+            <Link href={`/${slug}`}>
+                <h2 className={`font-bold hover:text-primary ${featured ? "text-lg mb-2" : "text-xl mb-2"}`}>
+                    {title}
+                </h2>
+            </Link>
+            <p className="text-muted-foreground line-clamp-2 mb-3">{preview}</p>
+            <div className={`text-sm text-muted-foreground ${featured ? "mt-auto" : ""}`}>
+                发布于 {formatDate(date)}
+            </div>
+        </div>
+    )
 }

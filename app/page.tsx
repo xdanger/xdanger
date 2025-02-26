@@ -1,39 +1,40 @@
 import { getLatestPosts } from '@/lib/posts';
-import { PostPreview } from '@/components/post-preview';
+import { Header } from '@/components/header';
+import Link from 'next/link';
 
-// Mark the component as async since we need to fetch posts
 export default async function Home() {
-  // Get the latest posts
   const posts = await getLatestPosts();
+  const recentPosts = posts.slice(0, 5); // 获取最新的20篇文章
 
   return (
     <div className="min-h-screen">
-      <main className="max-w-4xl mx-auto p-6">
-        {/* Hero Section */}
-        <section className="mb-16 text-center">
-          <h1 className="text-5xl font-bold mb-4">
-            Welcome to My Blog
-          </h1>
-          <p className="text-xl">
-            Thoughts, ideas, and explorations in technology and beyond.
-          </p>
-        </section>
+      <Header />
 
-        {/* Latest Posts Section */}
-        <section>
-          <h2 className="text-3xl font-bold mb-8">Latest Posts</h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            {posts.map((post) => (
-              <PostPreview
-                key={post.slug}
-                title={post.title}
-                date={post.date}
-                preview={post.preview}
-                slug={post.slug}
-              />
+      <main className="container max-w-3xl mx-auto px-4 md:px-8 py-12">
+        <div className="prose dark:prose-invert max-w-none mb-12">
+          <p className="text-lg">
+            Yunjie Dai is a software engineer and researcher specializing in web technologies and artificial intelligence.
+            Currently working on building innovative solutions that bridge the gap between theoretical research and practical applications.
+          </p>
+
+          <p className="text-lg">
+            Previously, Yunjie worked at various tech companies, developing scalable applications and contributing to open-source projects.
+            He holds a Master&apos;s degree in Computer Science from a prestigious university.
+          </p>
+        </div>
+
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold mb-6">Short posts</h2>
+          <ul className="list-disc pl-5 space-y-3">
+            {recentPosts.map((post) => (
+              <li key={post.slug} className="text-lg">
+                <Link href={`/${post.slug}`} className="underline font-medium">
+                  {post.title}
+                </Link> ({new Date(post.date).getFullYear()})
+              </li>
             ))}
-          </div>
-        </section>
+          </ul>
+        </div>
       </main>
     </div>
   );

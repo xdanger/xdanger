@@ -1,6 +1,8 @@
 // app/[...slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { getLatestPosts } from '@/lib/posts';
+import Link from 'next/link';
+import { Header } from '@/components/header';
 
 // 将配置移到单独的对象中，符合Next.js的静态解析需求
 export const dynamic = 'auto';
@@ -39,12 +41,45 @@ export default async function PostPage({ params }: { params: { slug: string[] } 
     return notFound();
   }
 
+  // 查找当前文章在数组中的位置
+  const currentIndex = posts.findIndex(p => p.slug === fullSlug);
+
+  // 获取上一篇（较新）和下一篇（较旧）文章
+  // 注意：由于posts是按日期从新到旧排序的，所以上一篇是currentIndex-1，下一篇是currentIndex+1
+  const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
+  const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+
   // 渲染文章页面
   return (
-    <article className="prose mx-auto p-4">
-      <h1>{post.title}</h1>
-      <time>{new Date(post.date).toLocaleDateString()}</time>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
-    </article>
+    <div className="min-h-screen">
+      <Header />
+
+      <main className="container max-w-3xl mx-auto px-4 md:px-8 py-12">
+        <article className="prose prose-lg dark:prose-invert max-w-none">
+          <h1 className="text-2xl font-bold">{post.title}</h1>
+          <time className="text-md text-muted-foreground">
+            {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} className="text-md" />
+
+          {/* 文章导航链接
+          <div className="mt-10 pt-6 border-t border-border text-sm flex justify-center">
+            {nextPost && prevPost ? (
+              <p>
+                <Link href={`/${nextPost.slug}`} className="hover:underline">&lt; {nextPost.title}</Link> • <Link href={`/${prevPost.slug}`} className="hover:underline">{prevPost.title} &gt;</Link>
+              </p>
+            ) : nextPost ? (
+              <p>
+                <Link href={`/${nextPost.slug}`} className="hover:underline">{nextPost.title} &gt;</Link>
+              </p>
+            ) : prevPost ? (
+              <p>
+                <Link href={`/${prevPost.slug}`} className="hover:underline">&lt; {prevPost.title}</Link>
+              </p>
+            ) : null}
+          </div>*/}
+        </article>
+      </main>
+    </div>
   );
 }

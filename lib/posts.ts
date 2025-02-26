@@ -29,29 +29,36 @@ export async function getLatestPosts() {
 
     // 使用Promise.all处理所有文章
     const allPostsData = await Promise.all(allFiles
-        .filter((filePath) => filePath.endsWith(".md")) // Only process markdown files
+        .filter((filePath) => filePath.endsWith(".md") || filePath.endsWith(".html")) // Process both markdown and HTML files
         .map(async (filePath) => {
             // Create slug that preserves the full path structure
             const relativePath = path.relative(postsDirectory, filePath);
+            const extension = path.extname(filePath);
+            const isHtml = extension === '.html';
 
             // Extract the filename without extension
-            const fileName = path.basename(relativePath, '.md');
+            const fileName = path.basename(relativePath, extension);
 
             let slug = "";
             // Extract the directory path (yyyy/mm/dd)
             const dirPath = path.dirname(relativePath);
 
-            // Extract date components and title from filename (yyyy-mm-dd-title.md)
+            // Extract date components and title from filename (yyyy-mm-dd-title.md/html)
             const dateMatch = fileName.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)$/);
             if (dateMatch) {
                 // 使用解构但忽略第一个元素(完整匹配)
                 const [, yyyy, mm, dd, title] = dateMatch;
                 slug = `${yyyy}/${mm}/${dd}/${title}.html`.replace(/\\/g, '/');
             } else {
-                slug = `${dirPath}/${fileName}.html`.replace(/\\/g, '/');
+                // 如果文件本身已经是HTML，保留其扩展名
+                if (isHtml) {
+                    slug = `${dirPath}/${fileName}${extension}`.replace(/\\/g, '/');
+                } else {
+                    slug = `${dirPath}/${fileName}.html`.replace(/\\/g, '/');
+                }
             }
 
-            // Read markdown file as string
+            // Read file as string
             const fileContents = fs.readFileSync(filePath, "utf8");
 
             // Use gray-matter to parse the post metadata section
@@ -60,11 +67,19 @@ export async function getLatestPosts() {
             // Extract preview (first 200 characters of content)
             const preview = content.slice(0, 200).trim() + "...";
 
-            // 正确处理异步remark处理过程
-            const processedContent = await remark()
-                .use(html)
-                .process(content);
-            const contentHtml = processedContent.toString();
+            let contentHtml;
+
+            // 根据文件类型处理内容
+            if (isHtml) {
+                // HTML文件直接使用内容，不需要额外渲染
+                contentHtml = content;
+            } else {
+                // Markdown文件需要使用remark渲染
+                const processedContent = await remark()
+                    .use(html)
+                    .process(content);
+                contentHtml = processedContent.toString();
+            }
 
             // Combine the data
             return {
