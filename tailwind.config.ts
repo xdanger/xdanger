@@ -7,7 +7,11 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    // extend: {
+    //   colors: ({ colors }) => ({
+    //     border: colors.zinc[300],
+    //   }),
+    // },
   },
   plugins: [],
 } satisfies Config;
