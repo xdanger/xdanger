@@ -29,7 +29,8 @@ export default function RootLayout({
           ${geistSans.variable}
           ${geistMono.variable}
           antialiased
-        `}>
+        `}
+      >
         {children}
       </body>
     </html>

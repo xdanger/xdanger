@@ -27,9 +27,10 @@ export async function getLatestPosts() {
 
     const allFiles = getAllFiles(postsDirectory);
 
-    const allPostsData = allFiles
+    // 使用Promise.all处理所有文章
+    const allPostsData = await Promise.all(allFiles
         .filter((filePath) => filePath.endsWith(".md")) // Only process markdown files
-        .map((filePath) => {
+        .map(async (filePath) => {
             // Create slug that preserves the full path structure
             const relativePath = path.relative(postsDirectory, filePath);
 
@@ -43,16 +44,12 @@ export async function getLatestPosts() {
             // Extract date components and title from filename (yyyy-mm-dd-title.md)
             const dateMatch = fileName.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)$/);
             if (dateMatch) {
-                const [_, yyyy, mm, dd, title] = dateMatch;
+                // 使用解构但忽略第一个元素(完整匹配)
+                const [, yyyy, mm, dd, title] = dateMatch;
                 slug = `${yyyy}/${mm}/${dd}/${title}.html`.replace(/\\/g, '/');
             } else {
                 slug = `${dirPath}/${fileName}.html`.replace(/\\/g, '/');
             }
-
-            // Log for debugging
-            // console.log('Original path:', filePath);
-            // console.log('Relative path:', relativePath);
-            // console.log('Generated slug:', slug);
 
             // Read markdown file as string
             const fileContents = fs.readFileSync(filePath, "utf8");
@@ -63,8 +60,8 @@ export async function getLatestPosts() {
             // Extract preview (first 200 characters of content)
             const preview = content.slice(0, 200).trim() + "...";
 
-            // Convert markdown to HTML
-            const processedContent = remark()
+            // 正确处理异步remark处理过程
+            const processedContent = await remark()
                 .use(html)
                 .process(content);
             const contentHtml = processedContent.toString();
@@ -78,7 +75,7 @@ export async function getLatestPosts() {
                 content: contentHtml,
                 ...(data as { [key: string]: unknown }), // Include all frontmatter data
             };
-        });
+        }));
 
     // Sort posts by date
     return allPostsData.sort((a, b) => {

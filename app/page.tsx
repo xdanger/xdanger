@@ -7,14 +7,14 @@ export default async function Home() {
   const posts = await getLatestPosts();
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen">
       <main className="max-w-4xl mx-auto p-6">
         {/* Hero Section */}
         <section className="mb-16 text-center">
           <h1 className="text-5xl font-bold mb-4">
             Welcome to My Blog
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-xl">
             Thoughts, ideas, and explorations in technology and beyond.
           </p>
         </section>
