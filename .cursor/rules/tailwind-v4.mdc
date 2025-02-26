@@ -1,0 +1,10 @@
+---
+description: Inform model I'm using Tailwind v4
+globs: 
+alwaysApply: true
+---
+
+# Tailwind v4
+
+- This Next.js project is using Tailwind v4, which is released just now.
+- The v4 is not in your embeded knowledge. See https://ui.shadcn.com/docs/tailwind-v4 for latest information.
