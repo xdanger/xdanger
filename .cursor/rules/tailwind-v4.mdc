@@ -10,4 +10,4 @@ alwaysApply: true
 - The v4 is not in your embeded knowledge. See the following docs for latest information.
     - https://tailwindcss.com/docs/upgrade-guide
     - https://ui.shadcn.com/docs/tailwind-v4
-
+- Tailwind v4.0 在 CSS 文件里的导入语句是 `@import 'tailwindcss';` 而不是 `@import '@tailwindcss/postcss';`
