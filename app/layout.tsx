@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+// import { Merriweather } from 'next/font/google';
 import "./globals.css";
 
 const geistSans = GeistSans;
 const geistMono = GeistMono;
+// const merriweather = Merriweather({
+//   subsets: ['latin'],
+//   weight: ['300', '400', '700', '900'],
+//   style: ['normal', 'italic'],
+//   variable: '--font-merriweather',
+// });
 
 export const metadata: Metadata = {
   title: "Yunjie Dai's Blog",
@@ -21,8 +28,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`
-          ${geistSans.variable}
           ${geistMono.variable}
+          ${geistSans.variable}
           antialiased
         `}>
         <ThemeProvider

@@ -12,9 +12,9 @@ export async function generateStaticParams() {
   const posts = await getLatestPosts();
 
   return posts.map((post) => {
-    console.log(post.slug);
+    // console.log(post.slug);
     const segments = post.slug.replace(/\.html$/, '').split('/');
-    console.log(segments);
+    // console.log(segments);
     return { slug: segments };
   });
 }
@@ -54,7 +54,7 @@ export default async function PostPage({ params }: { params: { slug: string[] } 
     <div className="min-h-screen">
       <Header />
 
-      <main className="container max-w-3xl mx-auto pb-48">
+      <main className="container max-w-3xl mx-auto pb-24">
         <article className="prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none">
           <h1 className="text-2xl font-bold">{post.title}</h1>
           <time className="text-md text-muted-foreground">

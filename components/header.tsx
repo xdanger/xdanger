@@ -6,9 +6,9 @@ import { ModeToggle } from "./mode-toggle"
 
 export function Header() {
   return (
-    <header className="py-6 border-b">
+    <header className="py-6">
       <div className="container max-w-3xl mx-auto px-4 md:px-8 flex items-center justify-between">
-        <Link href="/" className="text-3xl font-bold tracking-tight">
+        <Link href="/" className="text-2xl font-bold tracking-tight">
           Yunjie Dai
         </Link>
         <ModeToggle />

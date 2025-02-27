@@ -9,7 +9,7 @@ import html from "remark-html";
 const postsDirectory = path.join(process.cwd(), "posts");
 
 export async function getPostBySlug(slug: string) {
-  console.log("slug: ", slug);
+  // console.log("slug: ", slug);
   // Read markdown file as string
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
