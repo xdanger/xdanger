@@ -1,0 +1,131 @@
+/**
+ * 备份主题样式
+ * 这些样式会在静态导出模式下提供基本的亮色/暗色主题支持
+ */
+
+/* 亮色模式（默认）样式 */
+:root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 4%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 4%;
+}
+
+.light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 4%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 4%;
+}
+
+/* 暗色模式样式 */
+.dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 8%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 80%;
+}
+
+/* 基本文本颜色应用 */
+body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+}
+
+/* 常用Tailwind类的直接实现 */
+.text-foreground {
+    color: hsl(var(--foreground));
+}
+
+.bg-background {
+    background-color: hsl(var(--background));
+}
+
+.text-muted-foreground {
+    color: hsl(var(--muted-foreground));
+}
+
+/* 文章内容样式 */
+.prose {
+    color: hsl(var(--foreground));
+}
+
+.dark .prose {
+    color: hsl(var(--foreground));
+}
+
+.prose a {
+    color: hsl(var(--primary));
+    text-decoration: underline;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+    color: hsl(var(--foreground));
+    font-weight: bold;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+    color: hsl(var(--foreground));
+}
+
+/* 优化时间显示 */
+time {
+    color: hsl(var(--muted-foreground));
+}
+
+/* 修复一些特定元素在暗色模式下的颜色 */
+.dark a:not(.no-underline) {
+    color: hsl(var(--foreground));
+}

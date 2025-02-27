@@ -26,6 +26,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="/theme-styles.css" />
+        <script src="/theme-switcher.js" defer></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              try {
+                const storedTheme = localStorage.getItem('theme-preference');
+                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.classList.add(theme);
+              } catch (e) {}
+            })();
+          `
+        }} />
+      </head>
       <body
         className={`
           antialiased
