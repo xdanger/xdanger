@@ -8,8 +8,8 @@ const geistSans = GeistSans;
 const geistMono = GeistMono;
 
 export const metadata: Metadata = {
-  title: "Kros Dai's Blog",
-  description: "This is Kros Dai's Homepage and Blog.",
+  title: "Yunjie Dai's Blog",
+  description: "This is Yunjie Dai's Homepage and Blog.",
 };
 
 export default function RootLayout({
