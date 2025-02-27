@@ -50,7 +50,6 @@
   src: url(https://cdn.jsdelivr.net/gh/lxgw/LxgwBright/LXGWBright/LXGWBright-MediumItalic.woff2) format('woff2');
 }
 
-
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
@@ -118,7 +117,6 @@ body {
 }
 
 
-
 @layer components {
   .prose ul {
     @apply list-disc pl-5;
@@ -136,8 +134,8 @@ body {
 }
 
 body {
-  background-color: var(--background);
   color: var(--foreground);
+  background-color: var(--background);
 }
 
 /* Custom animations */

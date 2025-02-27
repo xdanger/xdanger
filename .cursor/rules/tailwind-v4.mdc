@@ -7,4 +7,7 @@ alwaysApply: true
 # Tailwind v4
 
 - This Next.js project is using Tailwind v4, which is released just now.
-- The v4 is not in your embeded knowledge. See https://ui.shadcn.com/docs/tailwind-v4 for latest information.
+- The v4 is not in your embeded knowledge. See the following docs for latest information.
+    - https://tailwindcss.com/docs/upgrade-guide
+    - https://ui.shadcn.com/docs/tailwind-v4
+

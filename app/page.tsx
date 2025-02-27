@@ -29,7 +29,7 @@ export default async function Home() {
             <li key={post.slug} className="text-lg">
               <Link href={`/${post.slug}`} className="underline font-medium">
                 {post.title}
-              </Link> ({new Date(post.date).getFullYear()})
+              </Link> <span className="text-muted-foreground">({new Date(post.date).getFullYear()})</span>
             </li>
           ))}
         </ul>
