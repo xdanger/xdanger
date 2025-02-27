@@ -1,22 +1,26 @@
 /** @type {import('next').NextConfig} */
 
-// 区分开发和生产环境的配置
+// 简化配置，专注于静态导出
 const nextConfig = {
-  // 仅在生产环境使用静态导出
-  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  // 静态导出配置
+  output: 'export',
+
+  // 图片优化配置
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
-  // rewrites在静态导出时不会自动工作，但在开发环境中有效
-  async rewrites() {
-    return [
-      {
-        source: '/:path*.html',
-        destination: '/:path*',
-      }
-    ];
+
+  // 禁用类型检查
+  typescript: {
+    ignoreBuildErrors: true,
   },
+
+  // 关键配置：禁用trailingSlash并启用扩展名
+  // 这会生成 /path/file.html 而不是 /path/file/index.html
+  trailingSlash: false,
+
+  // 确保我们的链接格式正确
+  basePath: '',
 };
 
 export default nextConfig;

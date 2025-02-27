@@ -27,7 +27,7 @@ export default async function Home() {
         <ul className="list-disc pl-5 space-y-2">
           {recentPosts.map((post) => (
             <li key={post.slug} className="text-lg">
-              <Link href={`/${post.slug}`} className="underline font-medium">
+              <Link href={`/${post.slug}.html`} className="underline font-medium">
                 {post.title}
               </Link> <time className="text-muted-foreground">({new Date(post.date).getFullYear()})</time>
             </li>

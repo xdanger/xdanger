@@ -1,38 +1,45 @@
 // app/[...slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { getLatestPosts } from '@/lib/posts';
-import Link from 'next/link';
 import { Header } from '@/components/header';
+import * as React from 'react';
 
 // 将配置移到单独的对象中，符合Next.js的静态解析需求
 export const dynamic = 'auto';
-export const dynamicParams = true;
 
-export async function generateStaticParams() {
+interface PageParams {
+  slug: string[];
+}
+
+// 指定正确的返回类型
+export async function generateStaticParams(): Promise<PageParams[]> {
   const posts = await getLatestPosts();
 
   return posts.map((post) => {
-    // console.log(post.slug);
-    const segments = post.slug.replace(/\.html$/, '').split('/');
-    // console.log(segments);
+    // 由于getLatestPosts现在返回不带.html后缀的slug
+    // 直接分割路径段
+    const segments = post.slug.split('/');
     return { slug: segments };
   });
 }
 
-export default async function PostPage({ params }: { params: { slug: string[] } }) {
+// 使用 type 类型而不是接口，避免 TypeScript 错误
+type PageProps = {
+  params: PageParams;
+};
 
+// 移除返回类型声明，让 TypeScript 推断它
+export default async function PostPage({ params }: PageProps) {
   // 获取所有文章
   const posts = await getLatestPosts();
 
-  // 从params中解构出slug，需要先await
-  const { slug } = await Promise.resolve(params);
+  // 从params中解构出slug
+  const { slug } = params;
 
   // 构建完整的slug路径
-  const slugWithHtml = [...slug];
-  slugWithHtml[slugWithHtml.length - 1] = `${slugWithHtml[slugWithHtml.length - 1]}.html`;
-  const fullSlug = slugWithHtml.join('/');
+  const fullSlug = slug.join('/');
 
-  // 查找匹配的文章
+  // 直接使用fullSlug匹配post.slug
   const post = posts.find(p => p.slug === fullSlug);
 
   // 如果没有找到文章，显示404页面
@@ -41,13 +48,10 @@ export default async function PostPage({ params }: { params: { slug: string[] } 
     return notFound();
   }
 
-  // 查找当前文章在数组中的位置
-  const currentIndex = posts.findIndex(p => p.slug === fullSlug);
-
-  // 获取上一篇（较新）和下一篇（较旧）文章
-  // 注意：由于posts是按日期从新到旧排序的，所以上一篇是currentIndex-1，下一篇是currentIndex+1
-  const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
-  const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+  // 导航链接功能已注释，所以不需要这些变量
+  // const currentIndex = posts.findIndex(p => p.slug === fullSlug);
+  // const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
+  // const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
 
   // 渲染文章页面
   return (
@@ -62,7 +66,7 @@ export default async function PostPage({ params }: { params: { slug: string[] } 
           </time>
           <div dangerouslySetInnerHTML={{ __html: post.content }} className="text-lg" />
 
-          {/* 文章导航链接
+          {/* 文章导航链接 - 注释掉，不显示
           <div className="mt-10 pt-6 border-t border-border text-sm flex justify-center">
             {nextPost && prevPost ? (
               <p>

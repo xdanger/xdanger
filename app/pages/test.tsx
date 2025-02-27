@@ -20,8 +20,8 @@ export default function TestPage() {
                 const posts = await getAllPosts();
                 checks.push(`✅ Found ${posts.length} blog posts`);
                 checks.push(`✅ Sample post title: ${posts[0]?.title || 'No posts found'}`);
-            } catch (error) {
-                errors.push(`❌ Error reading posts: ${error.message}`);
+            } catch (err) {
+                errors.push(`❌ Error reading posts: ${err.message}`);
             }
 
             // Test 2: Check Tailwind
@@ -29,9 +29,10 @@ export default function TestPage() {
 
             // Test 3: Check Shadcn UI
             try {
-                const { Card } = await import("@/components/ui/card");
+                // 只检查导入是否可用，不创建变量
+                await import("@/components/ui/card");
                 checks.push('✅ Shadcn UI components are available');
-            } catch (error) {
+            } catch (err) {
                 errors.push('❌ Shadcn UI components not found');
             }
 
@@ -58,9 +59,9 @@ export default function TestPage() {
                 {status.errors.length > 0 && (
                     <div className="border p-4 rounded-lg bg-red-50 dark:bg-red-900/10">
                         <h2 className="font-semibold mb-2">Errors:</h2>
-                        {status.errors.map((error, i) => (
+                        {status.errors.map((errorMsg, i) => (
                             <div key={i} className="text-red-600 dark:text-red-400">
-                                {error}
+                                {errorMsg}
                             </div>
                         ))}
                     </div>

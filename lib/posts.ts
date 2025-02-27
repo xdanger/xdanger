@@ -48,14 +48,11 @@ export async function getLatestPosts() {
             if (dateMatch) {
                 // 使用解构但忽略第一个元素(完整匹配)
                 const [, yyyy, mm, dd, title] = dateMatch;
-                slug = `${yyyy}/${mm}/${dd}/${title}.html`.replace(/\\/g, '/');
+                // 不添加.html后缀，因为Next.js会根据配置自动添加
+                slug = `${yyyy}/${mm}/${dd}/${title}`.replace(/\\/g, '/');
             } else {
-                // 如果文件本身已经是HTML，保留其扩展名
-                if (isHtml) {
-                    slug = `${dirPath}/${fileName}${extension}`.replace(/\\/g, '/');
-                } else {
-                    slug = `${dirPath}/${fileName}.html`.replace(/\\/g, '/');
-                }
+                // 无论文件类型如何，都不添加.html后缀
+                slug = `${dirPath}/${fileName}`.replace(/\\/g, '/');
             }
 
             // Read file as string
