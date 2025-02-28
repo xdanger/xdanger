@@ -72,11 +72,13 @@
   "name": "gh.xdanger.xdanger",
   "private": true,
   "scripts": {
-    "build": "SKIP_TYPE_CHECK=1 next build",
+    "build": "npm run sync-theme && SKIP_TYPE_CHECK=1 next build",
     "dev": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "export": "next export",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "sync-theme": "node scripts/sync-theme-styles.js"
   },
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "type": "module"
 }
