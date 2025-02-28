@@ -14,7 +14,7 @@ type ToasterToast = ToastProps & {
 }
 
 // 直接使用字面量类型
-type ToastActionType = "ADD_TOAST" | "UPDATE_TOAST" | "DISMISS_TOAST" | "REMOVE_TOAST"
+// type ToastActionType = "ADD_TOAST" | "UPDATE_TOAST" | "DISMISS_TOAST" | "REMOVE_TOAST"
 
 let count = 0
 

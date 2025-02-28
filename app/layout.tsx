@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 // import { GeistMono } from 'geist/font/mono';
 // import { Merriweather } from 'next/font/google';
 import "./globals.css";
+import "./theme-styles.css";
 
 // const geistSans = GeistSans;
 // const geistMono = GeistMono;
@@ -27,7 +28,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="/theme-styles.css" />
         <script src="/theme-switcher.js" defer></script>
         <script dangerouslySetInnerHTML={{
           __html: `

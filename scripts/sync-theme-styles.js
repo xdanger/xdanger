@@ -11,7 +11,9 @@ const __dirname = path.dirname(__filename);
 
 // 文件路径
 const globalsPath = path.join(__dirname, '../app/globals.css');
-const themeStylesPath = path.join(__dirname, '../public/theme-styles.css');
+const themeStylesPath = path.join(__dirname, '../app/theme-styles.css');
+// 为了兼容性，仍然保留一份在public目录
+const publicThemeStylesPath = path.join(__dirname, '../public/theme-styles.css');
 
 // 读取文件内容
 const globalsContent = fs.readFileSync(globalsPath, 'utf8');
@@ -114,8 +116,11 @@ function syncThemeStyles() {
     // 创建新内容
     const newContent = createThemeStylesContent(rootVars, darkVars);
 
-    // 写入文件
+    // 写入文件到app目录
     fs.writeFileSync(themeStylesPath, newContent, 'utf8');
+
+    // 同时保留一份到public目录（为了兼容性）
+    fs.writeFileSync(publicThemeStylesPath, newContent, 'utf8');
 
     console.log('✅ 成功同步主题变量到 theme-styles.css');
   } catch (error) {
