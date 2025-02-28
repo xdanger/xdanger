@@ -1,0 +1,32 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-89da19226da816d9.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-84b2fc390f5d90f5.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HL["/_next/static/css/10d76826af1cc107.css","style"]
+0:{"P":null,"b":"M4ECcW3k8OujI71kz3D2I","p":"","c":["","2006","07","06","000047"],"i":false,"f":[[["",{"children":[["slug","2006/07/06/000047","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/10d76826af1cc107.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2006/07/06/000047","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","uJtKCfu5bojnGi6fdF6oD",{"children":[["$","$La",null,{"children":"$Lb"}],null]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-44bd698ec973eb49.js"],"Header"]
+10:Tb99,
+<p>　　从买回第一台电脑，开始爱上 Windows；从接触 php，开始梦想挣脱 Windows。从 <a href="http://www.bluepoint.com.cn/">BluePoint</a>(<a href="#note1">1</a>) 到 <a href="http://www.redhat.com/">RadHat</a>，根本是浅尝辙止，感觉难度太大，于是很长一段时间没动过抛弃 Windows 的念头，以为自己永远离不开微软了。但3年过后，柳暗花明，伴随开源软件的迅猛发展，<a href="http://www.debian.org/">Debian 和 <a href="http://www.ubuntu.com/">Ubuntu</a> 的一路高歌猛进，使使用 Linux 系统作为开发环境的想法再度搅得我心神不宁。现在，像<a href="http://www.wuhongsheng.com/">吴洪声</a>这样将 Ubuntu 作为桌面开发环境(<a href="#note2">2</a>)，Debian 作为服务器运行环境，已经成为一个深受 GNU 文化的程序员的最理想状态。</p>
+<p>　　不过，在破记录坚持用了一星期 Ubuntu 之后，还是格式化回到了 Windows……原因大致3点：1.用惯了微软拼音，找不到可以忍受的输入法；2.没有 iTunes、Dreamweaver 和 Photoshop 之类软件，虽然可以通过 Wine 调用；3. 界面看了时间长了之后的确和 Windows 差很多，而且 UI 方面几乎没有比 Windows 出色的地方。加之之前预计到的没有网上银行之类的原因，就……(<a href="#note3">3</a>)</p>
+<p>　　上帝关上这一扇门，却打开另一扇窗。我竟然一咬牙买了 <a href="http://www.apple.com.cn/macbookpro/">MacBook Pro</a>，当时主要考虑到它能装 Windows，想不到最后被我删掉的却是 Windows 分区。在使用 Mac 一个月之后，我深深觉得已经彻底戒掉了 Windows 的毒瘾。华丽的 UI，稳定神奇的操作系统，*nix 风格的环境，<a href="http://www.sinomac.com/QIM/">QIM 输入法</a>、iTunes、Photoshop、Dreamweaver、MS Office 样样具备，更有 TextMate、BBEdit、TextWrangler 这样优秀的文本编辑器，NetNewsWire RSS阅读器，加上苹果预装的 N 个实用软件，使我已经无法想象回到 Windows 下将失去多少效率……总之现在只有唯一一个缺憾：怎样不开虚拟机调用 IE，调试网页及网上支付。</p>
+<hr />
+<a id="notes"></a>
+注：
+<ol>
+<li><a id="note1"></a>BluePoint Linux，蓝点软件技术（深圳）有限公司 2001 年时出品，当时 NASDAQ 上市公司，号称第一个中文内核的 linux 发行版。当时蓝点完全模仿 RedHat 的商业模式，但最终因为在 Linux 市场没有收益而改行做硬件防火墙了。</li>
+<li><a id="note2"></a>吴洪声现在也用 iBook 了 -_-</li>
+<li><a id="note3"></a>如果现在我没有 Mac，Ubuntu 相信也会一直用下去了。准备买个台式机就装系统玩了。</li>
+<li><a id="note4"></a>嗯，还要感谢 <a href="http://www.wuhongsheng.com/">Silence</a> 和 <a href="http://www.livid.cn/">Livid</a>，奉献了好多时间来带我这个菜鸟入门。</li>
+</ol>
+
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"过了 Mac 的阵痛期"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"July 6, 2006"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"Yunjie Dai"}],["$","meta","1",{"name":"description","content":"This is Yunjie Dai's Homepage and Blog."}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

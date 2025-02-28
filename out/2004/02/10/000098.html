@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/10d76826af1cc107.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-68f22649503f8e75.js"/><script src="/_next/static/chunks/4bd1b696-d42384067760c7b8.js" async=""></script><script src="/_next/static/chunks/587-b9ebe4e0bbee2555.js" async=""></script><script src="/_next/static/chunks/main-app-a30ecb3c5bf8d20f.js" async=""></script><script src="/_next/static/chunks/app/layout-89da19226da816d9.js" async=""></script><script src="/_next/static/chunks/app/error-84b2fc390f5d90f5.js" async=""></script><script src="/_next/static/chunks/app/%5B...slug%5D/page-44bd698ec973eb49.js" async=""></script><title>Yunjie Dai</title><meta name="description" content="This is Yunjie Dai&#x27;s Homepage and Blog."/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script src="/theme-switcher.js" defer=""></script><script>
+            (function() {
+              try {
+                const storedTheme = localStorage.getItem('theme-preference');
+                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.classList.add(theme);
+              } catch (e) {}
+            })();
+          </script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="antialiased"><script>((e,t,r,n,o,a,i,u)=>{let s=document.documentElement,l=["light","dark"];function c(t){var r;(Array.isArray(e)?e:[e]).forEach(e=>{let r="class"===e,n=r&&a?o.map(e=>a[e]||e):o;r?(s.classList.remove(...n),s.classList.add(t)):s.setAttribute(e,t)}),r=t,u&&l.includes(r)&&(s.style.colorScheme=r)}if(n)c(n);else try{let e=localStorage.getItem(t)||r,n=i&&"system"===e?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":e;c(n)}catch(e){}})("class","theme-preference","system",null,["light","dark"],null,true,false)</script><div class="min-h-screen"><header class="py-6"><div class="container max-w-3xl mx-auto px-4 md:px-8 flex items-center justify-between"><a class="text-2xl font-bold tracking-tight" href="/">Yunjie Dai</a></div></header><main class="container max-w-3xl mx-auto pb-24"><article class="prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none"><h1 class="text-2xl font-bold">强烈建议PHPer们使用Turck MMCache</h1><time class="text-md text-muted-foreground">February 10, 2004</time><div class="text-lg">
+
+<P>　　<A href="http://turck-mmcache.sourceforge.net/">Turck MMCache</A>是一个类似于<A href="http://www.zend.com/">Zend Optimizer/Encoder</A>的软件，不过速度要超过后者。而且他是一个开源的软件，可以免费使用。官方网站是：<A href="http://turck-mmcache.sourceforge.net">http://turck-mmcache.sourceforge.net</A></P><P　　我实际使用了一下，速度提升非常理想。除了新的或修改过的PHP文件第一次运行时有一点点慢，刷新后速度几乎是十分之一，该数量级由DEBUG程序做过试验。最大的优点就是不像ZEND P MMCache会自动识别文件修改时间，更新缓存，而且比zend编译好的运行还快，简直不敢相信……< Encoder那样需要事先编译好，Turck Optimizer>
+<H3>安装方法</H3>
+<P>　　在<A href="http://sourceforge.net/project/showfiles.php?group_id=69426">http://sourceforge.net/project/showfiles.php?group_id=69426</A>根据你的PHP版本下载MMCache解压至任意目录后，在PHP.ini中添加如下内容即可：(C:\PHP\mmcache是MMCache所在的目录，如果是非Windows平台则是 zend_extension_ts=mmcpath/mmcache.so)</P>
+<DIV class=code>zend_extension_ts="C:\PHP\mmcache\mmcache.dll" <BR>mmcache.shm_size="16"<BR>mmcache.cache_dir="C:\PHP\mmcache\tmp"<BR>mmcache.enable="1"<BR>mmcache.optimizer="1"<BR>mmcache.check_mtime="1"<BR>mmcache.debug="0"<BR>mmcache.filter=""<BR>mmcache.shm_max="0"<BR>mmcache.shm_ttl="0"<BR>mmcache.shm_prune_period="0"<BR>mmcache.shm_only="0"<BR>mmcache.compress="1"</DIV>
+<P dir=ltr>　　目前多数的虚拟主机都没有安装Turck MMCache，实在是大大的浪费。装了之后几乎可以放多10倍的站点。而且PHP程序员用起来没有任何区别。</P>
+<P>　　下表是同类软件的比较：</P>
+<br /><br />
+<TABLE cellSpacing=1 cellPadding=0 bgColor=#cccccc border=0>
+<TBODY>
+<TR bgColor=#ffffff>
+<TH></TH>
+<TH>No Cache</TH>
+<TH>Afterburner 0.14</TH>
+<TH>APC 1.1.0 (shm)</TH>
+<TH>APC 2.0b</TH>
+<TH>PHP Accelerator 1.3.3r2</TH>
+<TH>Turck MMCache 2.4.0<SUP>*</SUP></TH>
+<TH>Zend Performance Suite 3.5.0<SUP>**</SUP></TH></TR>
+<TR bgColor=#ffffff>
+<TD>Document Path:</TD>
+<TD colSpan=7>/phpMyAdmin-2.5.1/index.php</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Concurrency Level:</TD>
+<TD colSpan=7>1</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Complete requests:</TD>
+<TD colSpan=7>200</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Document Length:</TD>
+<TD colSpan=7>2369 bytes</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Time taken for tests [sec]:</TD>
+<TD align=right>22.459</TD>
+<TD align=right>10.233</TD>
+<TD align=right>13.606</TD>
+<TD align=right>4.864</TD>
+<TD align=right>5.080</TD>
+<TD align=right>4.622</TD>
+<TD align=right>4.689</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Total transferred [bytes]:</TD>
+<TD align=right>522800</TD>
+<TD align=right>522800</TD>
+<TD align=right>522800</TD>
+<TD align=right>522800</TD>
+<TD align=right>529200</TD>
+<TD align=right>522800</TD>
+<TD align=right>522800</TD></TR>
+<TR bgColor=#ffffff>
+<TD>HTML transferred [bytes]:</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD>
+<TD align=right>473800</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Requests per second [#/sec]:</TD>
+<TD align=right>8.91</TD>
+<TD align=right>19.54</TD>
+<TD align=right>14.70</TD>
+<TD align=right>41.12</TD>
+<TD align=right>39.37</TD>
+<TD align=right><FONT color=red><B>43.27</B></FONT></TD>
+<TD align=right><FONT color=#0481c3><B>42.65</B></FONT></TD></TR>
+<TR bgColor=#ffffff>
+<TD>Time per request [ms]:</TD>
+<TD align=right>112.30</TD>
+<TD align=right>51.16</TD>
+<TD align=right>68.03</TD>
+<TD align=right>24.32</TD>
+<TD align=right>25.40</TD>
+<TD align=right><FONT color=red><B>23.11</B></FONT></TD>
+<TD align=right><FONT color=#0481c3><B>23.45</B></FONT></TD></TR>
+<TR bgColor=#ffffff>
+<TD>Time per request [ms]:<BR><SMALL><FONT size=1>(across all concurrent 
+requests)<SMALL></SMALL></FONT></SMALL></TD>
+<TD align=right>112.30</TD>
+<TD align=right>51.16</TD>
+<TD align=right>68.03</TD>
+<TD align=right>24.32</TD>
+<TD align=right>25.40</TD>
+<TD align=right><FONT color=red><B>23.11</B></FONT></TD>
+<TD align=right><FONT color=#0481c3><B>23.45</B></FONT></TD></TR>
+<TR bgColor=#ffffff>
+<TD>Transfer rate [Kbytes/sec]:</TD>
+<TD align=right>23.28</TD>
+<TD align=right>51.09</TD>
+<TD align=right>38.42</TD>
+<TD align=right>107.48</TD>
+<TD align=right>104.17</TD>
+<TD align=right>113.11</TD>
+<TD align=right>111.49</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Connect Time (min/avg/max) [ms]:</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD>
+<TD align=right>0/0/0</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Processing Time (min/avg/max) [ms]:</TD>
+<TD align=right>111/112/113</TD>
+<TD align=right>50/51/52</TD>
+<TD align=right>67/68/69</TD>
+<TD align=right>24/24/25</TD>
+<TD align=right>25/25/26</TD>
+<TD align=right>22/23/24</TD>
+<TD align=right>23/23/24</TD></TR>
+<TR bgColor=#ffffff>
+<TD>Total Time (min/avg/max) [ms]:</TD>
+<TD align=right>111/112/113</TD>
+<TD align=right>50/51/52</TD>
+<TD align=right>67/68/69</TD>
+<TD align=right>24/24/25</TD>
+<TD align=right>25/25/26</TD>
+<TD align=right>22/23/24</TD>
+<TD align=right>23/23/24</TD></TR>
+<TR bgColor=#ffffff>
+<TD><B>Speedup</B> [%]:</TD>
+<TD align=right>100</TD>
+<TD align=right>220</TD>
+<TD align=right>165</TD>
+<TD align=right>462</TD>
+<TD align=right>442</TD>
+<TD align=right><FONT color=red><B>486<BR>WINNER</B></FONT></TD>
+<TD align=right><FONT color=#0481c3><B>480<BR>The 
+second</B></FONT></TD></TR></TBODY></TABLE>
+<p></p>
+
+</div></article></main></div><script src="/_next/static/chunks/webpack-68f22649503f8e75.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[8154,[\"177\",\"static/chunks/app/layout-89da19226da816d9.js\"],\"ThemeProvider\"]\n3:I[5244,[],\"\"]\n4:I[8725,[\"39\",\"static/chunks/app/error-84b2fc390f5d90f5.js\"],\"default\"]\n5:I[3866,[],\"\"]\n7:I[6213,[],\"OutletBoundary\"]\na:I[6213,[],\"ViewportBoundary\"]\nc:I[6213,[],\"MetadataBoundary\"]\ne:I[4835,[],\"\"]\n:HL[\"/_next/static/css/10d76826af1cc107.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"M4ECcW3k8OujI71kz3D2I\",\"p\":\"\",\"c\":[\"\",\"2004\",\"02\",\"10\",\"000098\"],\"i\":false,\"f\":[[[\"\",{\"children\":[[\"slug\",\"2004/02/10/000098\",\"c\"],{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/10d76826af1cc107.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[[\"$\",\"script\",null,{\"src\":\"/theme-switcher.js\",\"defer\":true}],[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n            (function() {\\n              try {\\n                const storedTheme = localStorage.getItem('theme-preference');\\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\\n                document.documentElement.classList.add(theme);\\n              } catch (e) {}\\n            })();\\n          \"}}]]}],[\"$\",\"body\",null,{\"className\":\"antialiased\",\"children\":[\"$\",\"$L2\",null,{\"attribute\":\"class\",\"defaultTheme\":\"system\",\"enableSystem\":true,\"disableTransitionOnChange\":true,\"storageKey\":\"theme-preference\",\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$4\",\"errorStyles\":[],\"errorScripts\":[],\"template\":[\"$\",\"$L5\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"div\",null,{\"className\":\"min-h-screen flex items-center justify-center\",\"children\":[\"$\",\"div\",null,{\"className\":\"text-center\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-4xl font-bold mb-4\",\"children\":\"404 - Page Not Found\"}],[\"$\",\"p\",null,{\"className\":\"text-gray-600\",\"children\":\"The page you're looking for doesn't exist.\"}]]}]}],\"$undefined\",[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}]]}],{\"children\":[[\"slug\",\"2004/02/10/000098\",\"c\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L5\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",\"$undefined\",null,[\"$\",\"$L7\",null,{\"children\":[\"$L8\",\"$L9\",null]}]]}],{},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"uc3cmAgaEHJxQ-v1CnWxX\",{\"children\":[[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],null]}],[\"$\",\"$Lc\",null,{\"children\":\"$Ld\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[4223,[\"48\",\"static/chunks/app/%5B...slug%5D/page-44bd698ec973eb49.js\"],\"Header\"]\n10:T16b1,"])</script><script>self.__next_f.push([1,"\n\r\n\u003cP\u003e　　\u003cA href=\"http://turck-mmcache.sourceforge.net/\"\u003eTurck MMCache\u003c/A\u003e是一个类似于\u003cA href=\"http://www.zend.com/\"\u003eZend Optimizer/Encoder\u003c/A\u003e的软件，不过速度要超过后者。而且他是一个开源的软件，可以免费使用。官方网站是：\u003cA href=\"http://turck-mmcache.sourceforge.net\"\u003ehttp://turck-mmcache.sourceforge.net\u003c/A\u003e\u003c/P\u003e\u003cP　　我实际使用了一下，速度提升非常理想。除了新的或修改过的PHP文件第一次运行时有一点点慢，刷新后速度几乎是十分之一，该数量级由DEBUG程序做过试验。最大的优点就是不像ZEND P MMCache会自动识别文件修改时间，更新缓存，而且比zend编译好的运行还快，简直不敢相信……\u003c Encoder那样需要事先编译好，Turck Optimizer\u003e\r\n\u003cH3\u003e安装方法\u003c/H3\u003e\r\n\u003cP\u003e　　在\u003cA href=\"http://sourceforge.net/project/showfiles.php?group_id=69426\"\u003ehttp://sourceforge.net/project/showfiles.php?group_id=69426\u003c/A\u003e根据你的PHP版本下载MMCache解压至任意目录后，在PHP.ini中添加如下内容即可：(C:\\PHP\\mmcache是MMCache所在的目录，如果是非Windows平台则是 zend_extension_ts=mmcpath/mmcache.so)\u003c/P\u003e\r\n\u003cDIV class=code\u003ezend_extension_ts=\"C:\\PHP\\mmcache\\mmcache.dll\" \u003cBR\u003emmcache.shm_size=\"16\"\u003cBR\u003emmcache.cache_dir=\"C:\\PHP\\mmcache\\tmp\"\u003cBR\u003emmcache.enable=\"1\"\u003cBR\u003emmcache.optimizer=\"1\"\u003cBR\u003emmcache.check_mtime=\"1\"\u003cBR\u003emmcache.debug=\"0\"\u003cBR\u003emmcache.filter=\"\"\u003cBR\u003emmcache.shm_max=\"0\"\u003cBR\u003emmcache.shm_ttl=\"0\"\u003cBR\u003emmcache.shm_prune_period=\"0\"\u003cBR\u003emmcache.shm_only=\"0\"\u003cBR\u003emmcache.compress=\"1\"\u003c/DIV\u003e\r\n\u003cP dir=ltr\u003e　　目前多数的虚拟主机都没有安装Turck MMCache，实在是大大的浪费。装了之后几乎可以放多10倍的站点。而且PHP程序员用起来没有任何区别。\u003c/P\u003e\r\n\u003cP\u003e　　下表是同类软件的比较：\u003c/P\u003e\r\n\u003cbr /\u003e\u003cbr /\u003e\r\n\u003cTABLE cellSpacing=1 cellPadding=0 bgColor=#cccccc border=0\u003e\r\n\u003cTBODY\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTH\u003e\u003c/TH\u003e\r\n\u003cTH\u003eNo Cache\u003c/TH\u003e\r\n\u003cTH\u003eAfterburner 0.14\u003c/TH\u003e\r\n\u003cTH\u003eAPC 1.1.0 (shm)\u003c/TH\u003e\r\n\u003cTH\u003eAPC 2.0b\u003c/TH\u003e\r\n\u003cTH\u003ePHP Accelerator 1.3.3r2\u003c/TH\u003e\r\n\u003cTH\u003eTurck MMCache 2.4.0\u003cSUP\u003e*\u003c/SUP\u003e\u003c/TH\u003e\r\n\u003cTH\u003eZend Performance Suite 3.5.0\u003cSUP\u003e**\u003c/SUP\u003e\u003c/TH\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eDocument Path:\u003c/TD\u003e\r\n\u003cTD colSpan=7\u003e/phpMyAdmin-2.5.1/index.php\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eConcurrency Level:\u003c/TD\u003e\r\n\u003cTD colSpan=7\u003e1\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eComplete requests:\u003c/TD\u003e\r\n\u003cTD colSpan=7\u003e200\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eDocument Length:\u003c/TD\u003e\r\n\u003cTD colSpan=7\u003e2369 bytes\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eTime taken for tests [sec]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e22.459\u003c/TD\u003e\r\n\u003cTD align=right\u003e10.233\u003c/TD\u003e\r\n\u003cTD align=right\u003e13.606\u003c/TD\u003e\r\n\u003cTD align=right\u003e4.864\u003c/TD\u003e\r\n\u003cTD align=right\u003e5.080\u003c/TD\u003e\r\n\u003cTD align=right\u003e4.622\u003c/TD\u003e\r\n\u003cTD align=right\u003e4.689\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eTotal transferred [bytes]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e522800\u003c/TD\u003e\r\n\u003cTD align=right\u003e522800\u003c/TD\u003e\r\n\u003cTD align=right\u003e522800\u003c/TD\u003e\r\n\u003cTD align=right\u003e522800\u003c/TD\u003e\r\n\u003cTD align=right\u003e529200\u003c/TD\u003e\r\n\u003cTD align=right\u003e522800\u003c/TD\u003e\r\n\u003cTD align=right\u003e522800\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eHTML transferred [bytes]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e473800\u003c/TD\u003e\r\n\u003cTD align=right\u003e473800\u003c/TD\u003e\r\n\u003cTD align=right\u003e473800\u003c/TD\u003e\r\n\u003cTD align=right\u003e473800\u003c/TD\u003e\r\n\u003cTD align=right\u003e473800\u003c/TD\u003e\r\n\u003cTD align=right\u003e473800\u003c/TD\u003e\r\n\u003cTD align=right\u003e473800\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eRequests per second [#/sec]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e8.91\u003c/TD\u003e\r\n\u003cTD align=right\u003e19.54\u003c/TD\u003e\r\n\u003cTD align=right\u003e14.70\u003c/TD\u003e\r\n\u003cTD align=right\u003e41.12\u003c/TD\u003e\r\n\u003cTD align=right\u003e39.37\u003c/TD\u003e\r\n\u003cTD align=right\u003e\u003cFONT color=red\u003e\u003cB\u003e43.27\u003c/B\u003e\u003c/FONT\u003e\u003c/TD\u003e\r\n\u003cTD align=right\u003e\u003cFONT color=#0481c3\u003e\u003cB\u003e42.65\u003c/B\u003e\u003c/FONT\u003e\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eTime per request [ms]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e112.30\u003c/TD\u003e\r\n\u003cTD align=right\u003e51.16\u003c/TD\u003e\r\n\u003cTD align=right\u003e68.03\u003c/TD\u003e\r\n\u003cTD align=right\u003e24.32\u003c/TD\u003e\r\n\u003cTD align=right\u003e25.40\u003c/TD\u003e\r\n\u003cTD align=right\u003e\u003cFONT color=red\u003e\u003cB\u003e23.11\u003c/B\u003e\u003c/FONT\u003e\u003c/TD\u003e\r\n\u003cTD align=right\u003e\u003cFONT color=#0481c3\u003e\u003cB\u003e23.45\u003c/B\u003e\u003c/FONT\u003e\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eTime per request [ms]:\u003cBR\u003e\u003cSMALL\u003e\u003cFONT size=1\u003e(across all concurrent \r\nrequests)\u003cSMALL\u003e\u003c/SMALL\u003e\u003c/FONT\u003e\u003c/SMALL\u003e\u003c/TD\u003e\r\n\u003cTD align=right\u003e112.30\u003c/TD\u003e\r\n\u003cTD align=right\u003e51.16\u003c/TD\u003e\r\n\u003cTD align=right\u003e68.03\u003c/TD\u003e\r\n\u003cTD align=right\u003e24.32\u003c/TD\u003e\r\n\u003cTD align=right\u003e25.40\u003c/TD\u003e\r\n\u003cTD align=right\u003e\u003cFONT color=red\u003e\u003cB\u003e23.11\u003c/B\u003e\u003c/FONT\u003e\u003c/TD\u003e\r\n\u003cTD align=right\u003e\u003cFONT color=#0481c3\u003e\u003cB\u003e23.45\u003c/B\u003e\u003c/FONT\u003e\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eTransfer rate [Kbytes/sec]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e23.28\u003c/TD\u003e\r\n\u003cTD align=right\u003e51.09\u003c/TD\u003e\r\n\u003cTD align=right\u003e38.42\u003c/TD\u003e\r\n\u003cTD align=right\u003e107.48\u003c/TD\u003e\r\n\u003cTD align=right\u003e104.17\u003c/TD\u003e\r\n\u003cTD align=right\u003e113.11\u003c/TD\u003e\r\n\u003cTD align=right\u003e111.49\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eConnect Time (min/avg/max) [ms]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e0/0/0\u003c/TD\u003e\r\n\u003cTD align=right\u003e0/0/0\u003c/TD\u003e\r\n\u003cTD align=right\u003e0/0/0\u003c/TD\u003e\r\n\u003cTD align=right\u003e0/0/0\u003c/TD\u003e\r\n\u003cTD align=right\u003e0/0/0\u003c/TD\u003e\r\n\u003cTD align=right\u003e0/0/0\u003c/TD\u003e\r\n\u003cTD align=right\u003e0/0/0\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eProcessing Time (min/avg/max) [ms]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e111/112/113\u003c/TD\u003e\r\n\u003cTD align=right\u003e50/51/52\u003c/TD\u003e\r\n\u003cTD align=right\u003e67/68/69\u003c/TD\u003e\r\n\u003cTD align=right\u003e24/24/25\u003c/TD\u003e\r\n\u003cTD align=right\u003e25/25/26\u003c/TD\u003e\r\n\u003cTD align=right\u003e22/23/24\u003c/TD\u003e\r\n\u003cTD align=right\u003e23/23/24\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003eTotal Time (min/avg/max) [ms]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e111/112/113\u003c/TD\u003e\r\n\u003cTD align=right\u003e50/51/52\u003c/TD\u003e\r\n\u003cTD align=right\u003e67/68/69\u003c/TD\u003e\r\n\u003cTD align=right\u003e24/24/25\u003c/TD\u003e\r\n\u003cTD align=right\u003e25/25/26\u003c/TD\u003e\r\n\u003cTD align=right\u003e22/23/24\u003c/TD\u003e\r\n\u003cTD align=right\u003e23/23/24\u003c/TD\u003e\u003c/TR\u003e\r\n\u003cTR bgColor=#ffffff\u003e\r\n\u003cTD\u003e\u003cB\u003eSpeedup\u003c/B\u003e [%]:\u003c/TD\u003e\r\n\u003cTD align=right\u003e100\u003c/TD\u003e\r\n\u003cTD align=right\u003e220\u003c/TD\u003e\r\n\u003cTD align=right\u003e165\u003c/TD\u003e\r\n\u003cTD align=right\u003e462\u003c/TD\u003e\r\n\u003cTD align=right\u003e442\u003c/TD\u003e\r\n\u003cTD align=right\u003e\u003cFONT color=red\u003e\u003cB\u003e486\u003cBR\u003eWINNER\u003c/B\u003e\u003c/FONT\u003e\u003c/TD\u003e\r\n\u003cTD align=right\u003e\u003cFONT color=#0481c3\u003e\u003cB\u003e480\u003cBR\u003eThe \r\nsecond\u003c/B\u003e\u003c/FONT\u003e\u003c/TD\u003e\u003c/TR\u003e\u003c/TBODY\u003e\u003c/TABLE\u003e\r\n\u003cp\u003e\u003c/p\u003e\r\n\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"min-h-screen\",\"children\":[[\"$\",\"$Lf\",null,{}],[\"$\",\"main\",null,{\"className\":\"container max-w-3xl mx-auto pb-24\",\"children\":[\"$\",\"article\",null,{\"className\":\"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold\",\"children\":\"强烈建议PHPer们使用Turck MMCache\"}],[\"$\",\"time\",null,{\"className\":\"text-md text-muted-foreground\",\"children\":\"February 10, 2004\"}],[\"$\",\"div\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$10\"},\"className\":\"text-lg\"}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n8:null\n"])</script><script>self.__next_f.push([1,"9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Yunjie Dai\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"This is Yunjie Dai's Homepage and Blog.\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]]\n"])</script></body></html>

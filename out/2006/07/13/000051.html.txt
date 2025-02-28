@@ -1,0 +1,44 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-89da19226da816d9.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-84b2fc390f5d90f5.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HL["/_next/static/css/10d76826af1cc107.css","style"]
+0:{"P":null,"b":"M4ECcW3k8OujI71kz3D2I","p":"","c":["","2006","07","13","000051"],"i":false,"f":[[["",{"children":[["slug","2006/07/13/000051","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/10d76826af1cc107.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2006/07/13/000051","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","tM4OPelVL57R5JqyKc-h4",{"children":[["$","$La",null,{"children":"$Lb"}],null]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-44bd698ec973eb49.js"],"Header"]
+10:Tb9e,
+<p>不知情的观众可以对比 <a href="http://plod.popoever.com/archives/000998.html">http://plod.popoever.com/archives/000998.html</a></p>
+<ol>
+<li>的确有记住七七是中国情人节而忘了这天是卢沟桥事变的，但肯定有更多人只记得卢沟桥而忘了七七也是牛郎织女一年一次见面的美好日子。那些忘记中国情人节的人是不是能算抛弃了中华民族的灿烂历史文化的败家子？</li>
+<li>国家行为的耻辱日是为了凝聚民心，卧薪尝胆奋发图强，而不应当是君子报仇十年不晚。情人节给人以美好幸福的景象；但卢沟桥给我的映像就是抗日，而不是从自身找原因，为什么落后，为什么会挨打。无论你怎么记住历史，怎么提防日本，不从自身改进，以后还是要重蹈覆辙的。</li>
+<li>都说了，是天皇表的态，怎么能说日本人就记住了呢。那是不是胡总书记表个态，中国人也就算记住了呢，那我们还急什么啊。</li>
+<li>激励人爱国太难了，相比煽动仇恨而言。</li>
+<li>我这“主义”提得一点都不随便，事实如此，为何不能提？是不是联合国宣布中国有普遍的民族极端主义才算不随便？而且对日本民族的仇恨已经完全就够得上“根深蒂固”四个字！</li>
+<li>无关。</li>
+<li>无关。</li>
+<li>在生活上，只有父母可以说你“幼稚”，而在全人类普遍的道德价值底限上，不是只有血缘才能有发言权的吧？</li>
+<li>瓜葛就是你从政治层面上侮辱了中国 IT 企业。</li>
+<li>没明白想说明什么问题……</li>
+<li>同意。</li>
+<li>说您不经过大脑思考是我不敢相信这些文字如果在经过您的大脑过滤后竟然还会是这么“幼稚”</li>
+<li>同意。</li>
+<li>无关。</li>
+<li>这个就好像你要在家保留深夜卡拉OK的权力</li>
+<li>是的。</li>
+<li>那是您一厢情愿，事实上不包容“和睦相处”的远比不包容“为了忘记国耻日而忿忿”的人要多得多哦 ^_^</li>
+<li>受监督是不错，但：1. 丁磊有没有越过法律底限？2. 丁磊有没有越过道德底限？不知您依据哪条娜款公理在实行监督权？</li>
+<li>还是在 YY ……</li>
+<li>又是一竿子打翻一船人。中国 IT 业是拿不出什么特别注重“长期健康发展”的企业，除了IT业呢，似乎我也没看到。这就想在骂中国足球，球队怎么只想骗钱，球员怎么整天赌球，裁判只会吹吹黑哨，足协根本形同虚设。有用吗？您想过本质问题是什么吗，是什么土壤成就了这些怪胎？中国 IT 企业是最为政府背黑锅的！作为网易来说，反日对他有利无害，所以之前默许反日，而政府压力来了之后不得不低头，玩家缺只知道找网易的岔，也只能这么出出气了……BTW，还有比网易更背的IT呢知道吗——百度。</li>
+<li>无关。</li>
+</ol>
+
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"1、2、3、4 答大人的话"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"July 13, 2006"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"Yunjie Dai"}],["$","meta","1",{"name":"description","content":"This is Yunjie Dai's Homepage and Blog."}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

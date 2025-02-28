@@ -1,0 +1,29 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-89da19226da816d9.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-84b2fc390f5d90f5.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HL["/_next/static/css/10d76826af1cc107.css","style"]
+0:{"P":null,"b":"M4ECcW3k8OujI71kz3D2I","p":"","c":["","2004","03","21","000116"],"i":false,"f":[[["",{"children":[["slug","2004/03/21/000116","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/10d76826af1cc107.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2004/03/21/000116","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","wCKVKi8asPTX6kHetWXmf",{"children":[["$","$La",null,{"children":"$Lb"}],null]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-44bd698ec973eb49.js"],"Header"]
+10:Tcd2,
+
+<P>　　本人在学校利用校园网上internet，浏览教育网资源速度尚可，但是上公众网，打网络游戏等就不敢恭维了。所以就决定申请一个ADSL，几个同学用，费用平摊，很适合我们学生一族。</P>
+<P>　　开始是利用一台机器作代理服务器，其他机器通过这台机器上网。但这样有很大弊端：一，只有这台机器开机上网了，其他机器才能上网，很不方便，且增加了这台机器的负担。 二，几个寝室网线乱拖，很影响寝室的环境。三，这样还要多投资一台HUB和一块网卡。四，校园网和ADSL互换需要换接口。 后来得知现在一般SDSL猫都有路由功能，打开猫的控制面板一看，果真有，心中窃喜，说干就干。现在我就以我现在用的猫为例，来实现猫的路由功能（各个品牌的猫差不多的）。 首先把猫和我的机器互联，我的猫的ip地址：192.168.1.1子网掩码：255.255.255.0。我把自己机器的ip地址改为192.168.1.2子网掩码相同，然后在IE里输入猫的ip地址，要求输入用户名和密码，输入后进入控制面板(各个品牌的猫的ip地址、用户名和密码可能不同，请查看猫的说明书，或到相关网站查询)。</P>
+<P>　　这一页是更改密码，根据需要修改吧<A href="http://blog.xdanger.com/archives/sorghum/20040321a.jpg">http://blog.xdanger.com/archives/sorghum/20040321a.jpg</A></P>
+<P>　　这里是重点，我详细一点介绍。般猫默认是第一种RFC1483 Bridged方式，我要现在用的猫一般都是PPoE虚拟拨号方式，说一就选第三个。里面要我填上用户名和密码，就是 你ADSL猫拨号上网的用户名和密码。模式默认就可以了，空闲超时如果是包月的话就可以设的长一点，如果是计时的话就短一点。还有就是DHCP Server就是自动分配ip地址一些配置，我觉得没有必要，如果你相用就到后面的高级里面的DHCP里设置。还有上面的VPI和VCI的值，这个也蛮重要的，具体是多少，你要问你本地的电信运营商了。我的是0和32。好了，点击Add，把这个设置添加到当前的ATM PVC列表里。把其他不需要的delete好了。 <A href="http://blog.xdanger.com/archives/sorghum/20040321b.jpg">http://blog.xdanger.com/archives/sorghum/20040321b.jpg</A></P>
+<P>　　Lan设置里面就是猫的ip和子网掩码如果怕和别人的ip冲突或者怕别人知道就改一下吧（建议）。 <A href="http://blog.xdanger.com/archives/sorghum/20040321c.jpg">http://blog.xdanger.com/archives/sorghum/20040321c.jpg</A></P>
+<P>　　点击进入保存&amp;重起页面，先Save一下，然后点Reboot。<A href="http://blog.xdanger.com/archives/sorghum/20040321d.jpg">http://blog.xdanger.com/archives/sorghum/20040321d.jpg</FONT></A></P>
+<P>　　本机设置就是在本地连接的属性里面选择internet协议，在里面填上和猫一样网段的ip地址，如果猫的ip地址是192.168.1.1则其他机器ip可以是192.168.1.2到192.168.1.254之间任意一ip地址。子网掩码相同，网关即为猫的ip地址。DNS可以是猫的ip或者是公网的DNS服务器。 好了，这样应该就可以上网了。</P>
+<br /><br />
+
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"利用ADSL猫的路由功能实现多台机器同时上网（基础篇）"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"March 21, 2004"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"Yunjie Dai"}],["$","meta","1",{"name":"description","content":"This is Yunjie Dai's Homepage and Blog."}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

@@ -1,0 +1,44 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-89da19226da816d9.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-84b2fc390f5d90f5.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HL["/_next/static/css/10d76826af1cc107.css","style"]
+0:{"P":null,"b":"M4ECcW3k8OujI71kz3D2I","p":"","c":["","2004","01","18","000082"],"i":false,"f":[[["",{"children":[["slug","2004/01/18/000082","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/10d76826af1cc107.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2004/01/18/000082","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","1X1BivEUKsaP0CcJQbzpM",{"children":[["$","$La",null,{"children":"$Lb"}],null]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-44bd698ec973eb49.js"],"Header"]
+10:Tb82,
+
+　　昨天看了<A href="http://home.wangjianshuo.com/">王建硕</A>在主页上做了一个名叫“我的城市，我的汽车站”的计划，感觉非常好玩：<A href="http://home.wangjianshuo.com/scripts/pmwiki/pmwiki.php">http://home.wangjianshuo.com/scripts/pmwiki/pmwiki.php</A> 
+<TABLE class=clsPics table>
+<TBODY>
+<TR>
+<TD vAlign=top>马路西(南)方向站牌 </TD>
+<TD vAlign=top>马路东(北)方向站牌 </TD></TR>
+<TR>
+<TD vAlign=top><IMG alt="" src="http://home.wangjianshuo.com/scripts/pmwiki/uploads/Bus/XiQinLu_SW_GJ43.jpg" border=0> </TD>
+<TD vAlign=top><IMG alt="" src="http://home.wangjianshuo.com/scripts/pmwiki/uploads/Bus/XiQinLu_NE_GJ43.jpg" border=0> </TD></TR>
+<TR>
+<TD vAlign=top><IMG alt="" src="http://home.wangjianshuo.com/scripts/pmwiki/uploads/Bus/XiQinLu_SW_GJ92.jpg" border=0> </TD>
+<TD vAlign=top><IMG alt="" src="http://home.wangjianshuo.com/scripts/pmwiki/uploads/Bus/XiQinLu_NE_GJ92.jpg" border=0> </TD></TR>
+<TR>
+<TD vAlign=top><IMG alt="" src="http://home.wangjianshuo.com/scripts/pmwiki/uploads/Bus/XiQinLu_SW_GJ92B.jpg" border=0> </TD>
+<TD vAlign=top><IMG alt="" src="http://home.wangjianshuo.com/scripts/pmwiki/uploads/Bus/XiQinLu_NE_GJ92B.jpg" border=0> </TD></TR>
+<TR>
+<TD vAlign=top><IMG alt="" src="http://home.wangjianshuo.com/scripts/pmwiki/uploads/Bus/XiQinLu_SW_GJ809.jpg" border=0> </TD>
+<TD vAlign=top><IMG alt="" src="http://home.wangjianshuo.com/scripts/pmwiki/uploads/Bus/XiQinLu_NE_GJ809.jpg" border=0> </TD></TR></TBODY></TABLE>
+<P></P>
+<P><EM>　　当有更多的公交站加进来的时候，我们就可以把公交车站的站牌当作城市的坐标，我们通过离自己最近的公交站牌就组成了线下(offline)的社区，可以相约打打球，喝杯咖啡什么的，也是一种前卫的交际方式。。。。</EM></P>
+<P>　　这句话可以说令我茅塞顿开。我们做个人主页，写Blog，搞wiki，说大了，就是追求一种前卫的交际方式，希望更多的人来了解自己，也给自己一个可以表现的舞台。他的这个创意不仅突破了网络上传统的交际方式——即时通信、Mail等，而且赋予了个人主页最富生命力的定义——追求高品质生活的工具。与<A href="http://geourl.org">GeoURL</A>相比，内涵明显深了许多，给人很强的城市归属感。</P>
+<P>　　不知怎么的，特别欣赏这个创意。不过要作如此大量的数据统计，<A href="http://www.pmichaud.com/wiki/PmWiki/PmWiki">PmWiki</A>是否可以承受也必须是一个需要考虑的问题。虽然PmWiki是一个相当好的小型社区式系统（今天我也把<A href="http://www.xdanger.com/">主页</A>改成PmWiki了），但局限特别是访问量大了之后，所有页面都是动态输出，而且不是使用数据库的。正在考虑是不是能够做一个简单的系统来实现，希望能得到他们的支持吧……</P>
+<br /><br />
+
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"我的城市，我的汽车站。"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"January 18, 2004"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"Yunjie Dai"}],["$","meta","1",{"name":"description","content":"This is Yunjie Dai's Homepage and Blog."}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
