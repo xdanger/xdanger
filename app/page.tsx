@@ -11,23 +11,18 @@ export default async function Home() {
       <Header />
 
       <main className="container max-w-3xl mx-auto p-4 md:p-8">
-        <div className="prose dark:prose-invert max-w-none">
-          <p className="text-lg">
-            Yunjie Dai is a software engineer and researcher specializing in web technologies and artificial intelligence.
-            Currently working on building innovative solutions that bridge the gap between theoretical research and practical applications.
-          </p>
-
-          <p className="text-lg">
-            Previously, Yunjie worked at various tech companies, developing scalable applications and contributing to open-source projects.
-            He holds a Master&apos;s degree in Computer Science from a prestigious university.
-          </p>
+        <div className="prose dark:prose-invert text-lg max-w-none">
+          <ul>
+            <li>A software engineer.</li>
+            <li>Presently as CEO of <a href="https://www.taptap.com" target="_blank" rel="noopener noreferrer">TapTap</a>, Co-founder of <a href="https://www.xd.com" target="_blank" rel="noopener noreferrer">XD</a></li>
+            <li>Previously as Co-founder of <a href="https://www.verycd.com" target="_blank" rel="noopener noreferrer">VeryCD</a>.</li>
+          </ul>
         </div>
-
-        <h2 className="text-xl font-bold mb-6">Short posts</h2>
+        <h2 className="text-xl font-bold my-6">Blog posts</h2>
         <ul className="list-disc pl-5 space-y-2">
           {recentPosts.map((post) => (
             <li key={post.slug} className="text-lg">
-              <Link href={`/${post.slug}.html`} className="underline font-medium">
+              <Link href={`/${post.slug.replace(/\.html$/, '')}`} className="underline font-medium">
                 {post.title}
               </Link> <time className="text-muted-foreground">({new Date(post.date).getFullYear()})</time>
             </li>

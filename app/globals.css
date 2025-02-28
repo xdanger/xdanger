@@ -56,13 +56,13 @@
 
 /* Base styles */
 * {
-  border-color: hsl(var(--border));
-  outline-color: color-mix(in srgb, hsl(var(--ring)) 50%, transparent);
+  border-color: var(--border);
+  outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
 }
 
 body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: "LXGW Bright", serif;
 }
 
@@ -85,7 +85,7 @@ body {
   --input: hsl(240 5.9% 90%);
   --ring: hsl(240 5.9% 10%);
   --radius: 0.5rem;
-  --background: oklch(1 0 0);
+  --background: hsl(40 18% 97%);
   --foreground: oklch(0.141 0.005 285.823);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);

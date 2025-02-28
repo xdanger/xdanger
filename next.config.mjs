@@ -12,7 +12,7 @@ const nextConfig = {
 
   // 禁用类型检查
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
 
   // 关键配置：禁用trailingSlash并启用扩展名
@@ -21,6 +21,18 @@ const nextConfig = {
 
   // 确保我们的链接格式正确
   basePath: '',
+
+  // 确保RSC数据文件(.txt)与HTML文件命名一致
+  // 这将修复客户端请求path.html.txt但实际文件是path.txt的问题
+  outputFileTracingIncludes: {
+    // 包括所有RSC数据文件
+    '/**/*.txt': ['/**/*.html.txt'],
+  },
+
+  // 其他实验性配置（如果需要）
+  experimental: {
+    // 未来可能的实验性选项
+  },
 };
 
 export default nextConfig;

@@ -1,0 +1,164 @@
+---
+description: 
+globs: *.css, scripts/*.js
+alwaysApply: false
+---
+# 主题样式与静态构建
+
+本项目实现了两套主题切换系统，以确保在客户端渲染和静态导出两种模式下都能正常工作。以下是各文件的逻辑和使用方法。
+
+## 文件结构与职责
+
+### 1. `app/globals.css`
+
+主CSS文件，包含基础样式定义：
+
+- 定义基础 CSS 变量（包括亮色/暗色模式）
+- 使用 Tailwind v4 语法定义主题
+- 通过 `@custom-variant dark` 支持 Tailwind 黑暗模式
+- 包含最基本的动画和全局样式
+
+```css
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* 其他变量 */
+}
+
+/* 使用OKLCH颜色格式定义变量 */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  /* 其他变量 */
+}
+
+.dark {
+  --background: hsl(240 10% 3.9%);
+  --foreground: hsl(0 0% 98%);
+  /* 其他变量 */
+}
+```
+
+### 2. `app/theme-styles.css` 和 `public/theme-styles.css`
+
+备份主题样式文件，由 `sync-theme-styles.js` 脚本自动生成：
+
+- 包含完整的亮色/暗色主题 CSS 变量定义
+- 直接应用基本样式（不依赖 Tailwind）
+- 提供静态导出模式下的基本样式支持
+- 两个文件内容相同，位置不同以适应不同的访问方式
+
+```css
+/* 亮色模式（默认）样式 */
+:root {
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(240 10% 3.9%);
+  /* 其他变量 */
+}
+
+/* 暗色模式样式 */
+.dark {
+  --background: hsl(240 10% 3.9%);
+  --foreground: hsl(0 0% 98%);
+  /* 其他变量 */
+}
+
+/* 基本文本颜色应用 */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+```
+
+### 3. `public/theme-switcher.js`
+
+纯 JavaScript 主题切换脚本，在静态导出模式下工作：
+
+- 运行在 `DOMContentLoaded` 事件上
+- 查找页面中的主题切换按钮
+- 从 `localStorage` 读取/保存主题偏好
+- 通过操作 HTML 类和 CSS 变量切换主题
+- 兼容系统主题偏好检测
+
+```javascript
+document.addEventListener('DOMContentLoaded', function() {
+  // 查找主题切换按钮
+  const themeToggle = document.getElementById('theme-toggle-button');
+  if (!themeToggle) return;
+
+  // 获取当前主题
+  const getTheme = () => localStorage.getItem('theme') || 'system';
+
+  // 检测系统偏好
+  const getSystemTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+  // 应用主题
+  const applyTheme = (theme) => {
+    // 更新HTML类
+    document.documentElement.classList.remove('light', 'dark');
+    // 更新其他样式和按钮状态
+    // ...
+  };
+
+  // 绑定点击事件
+  themeToggle.addEventListener('click', function() {
+    // 切换主题
+    // ...
+  });
+
+  // 初始化应用主题
+  applyTheme(getTheme());
+});
+```
+
+## 工作原理
+
+1. **客户端渲染模式**:
+   - 使用 Next.js 的 ThemeProvider 组件
+   - 通过 React 状态管理主题
+   - 利用 Tailwind 的 `.dark` 类应用样式
+
+2. **静态导出模式**:
+   - 使用 `theme-switcher.js` 脚本
+   - 通过 localStorage 存储用户偏好
+   - 直接操作 DOM 和 CSS 变量
+   - 应用 `theme-styles.css` 中定义的备份样式
+
+## 使用方法
+
+### 添加新样式时
+
+1. 在 `globals.css` 中为亮色和暗色模式都添加相应的 CSS 变量
+2. 运行 `npm run sync-theme` 同步变量到 `theme-styles.css` 文件
+3. 如果添加了新的颜色变量，需要在 `theme-switcher.js` 中的 `darkModeVars` 和 `lightModeVars` 对象中也添加相应的变量
+
+### 在组件中使用
+
+```jsx
+// 使用 Tailwind 类
+<div className="bg-background text-foreground">
+  <h1 className="text-primary">标题</h1>
+</div>
+
+// 在CSS中引用
+const styles = {
+  container: {
+    backgroundColor: 'hsl(var(--background))',
+    color: 'hsl(var(--foreground))'
+  }
+}
+```
+
+### 构建流程
+
+1. 开发时直接使用 `npm run dev`
+2. 构建前运行 `npm run sync-theme` 同步主题变量
+3. 使用 `npm run build` 构建应用（包含主题同步步骤）
+
+## 注意事项
+
+1. 静态导出模式下，主题切换仅依赖原生 JavaScript，不依赖任何框架
+2. 切换主题时，会更新 HTML 根元素的 `class`，同时直接应用 CSS 变量
+3. 主题偏好保存在 `localStorage` 中的 `theme` 键下，可能的值: `'light'`, `'dark'`, `'system'`
+4. 初始加载时，脚本会检查 `localStorage` 和系统偏好来确定初始主题
+

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider";
 // import { GeistSans } from 'geist/font/sans';
 // import { GeistMono } from 'geist/font/mono';
 // import { Merriweather } from 'next/font/google';
 import "./globals.css";
-import "./theme-styles.css";
+import { ThemeProvider } from "@/components/mode-toggle";
 
 // const geistSans = GeistSans;
 // const geistMono = GeistMono;
@@ -16,7 +15,7 @@ import "./theme-styles.css";
 // });
 
 export const metadata: Metadata = {
-  title: "Yunjie Dai's Blog",
+  title: "Yunjie Dai",
   description: "This is Yunjie Dai's Homepage and Blog.",
 };
 
@@ -28,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Theme switcher script for static export mode */}
         <script src="/theme-switcher.js" defer></script>
+        {/* Initial theme detection script for preventing flash of wrong theme */}
         <script dangerouslySetInnerHTML={{
           __html: `
             (function() {
@@ -41,10 +42,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body
-        className={`
-          antialiased
-        `}>
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -3,48 +3,56 @@ import { notFound } from 'next/navigation';
 import { getLatestPosts } from '@/lib/posts';
 import { Header } from '@/components/header';
 import * as React from 'react';
+import type { PageProps } from 'next';
 
 // 将配置移到单独的对象中，符合Next.js的静态解析需求
 export const dynamic = 'auto';
 
-interface PageParams {
-  slug: string[];
-}
+// 定义generateStaticParams的返回类型
+type StaticParams = { slug: string[] };
 
 // 指定正确的返回类型
-export async function generateStaticParams(): Promise<PageParams[]> {
+export async function generateStaticParams(): Promise<StaticParams[]> {
   const posts = await getLatestPosts();
 
   return posts.map((post) => {
-    // 由于getLatestPosts现在返回不带.html后缀的slug
-    // 直接分割路径段
-    const segments = post.slug.split('/');
+    // 完全移除.html后缀，让Next.js自己处理文件扩展名
+    const cleanSlug = post.slug.replace(/\.html$/, '');
+
+    // 分割路径段作为 slug 参数
+    const segments = cleanSlug.split('/');
+
     return { slug: segments };
   });
 }
 
-// 使用 type 类型而不是接口，避免 TypeScript 错误
-type PageProps = {
-  params: PageParams;
-};
+// 创建一个辅助函数来处理参数解包，避免直接处理Promise
+async function processParams(params: PageProps['params']): Promise<string[]> {
+  // 解析params对象
+  const resolvedParams = await params;
+  return resolvedParams.slug as string[];
+}
 
-// 移除返回类型声明，让 TypeScript 推断它
+// 使用我们在类型声明文件中定义的PageProps类型
 export default async function PostPage({ params }: PageProps) {
   // 获取所有文章
   const posts = await getLatestPosts();
 
-  // 从params中解构出slug
-  const { slug } = params;
+  // 处理params对象，解析Promise获取slug
+  const slug = await processParams(params);
 
   // 构建完整的slug路径
   const fullSlug = slug.join('/');
 
-  // 直接使用fullSlug匹配post.slug
-  const post = posts.find(p => p.slug === fullSlug);
+  // 移除可能的.html后缀以进行匹配
+  const cleanSlug = fullSlug.replace(/\.html$/, '');
+
+  // 使用cleanSlug匹配post.slug
+  const post = posts.find(p => p.slug === cleanSlug);
 
   // 如果没有找到文章，显示404页面
   if (!post) {
-    console.log('404 Not Found', fullSlug);
+    console.log('404 Not Found', cleanSlug);
     return notFound();
   }
 

@@ -1,9 +1,23 @@
 // components/mode-toggle.tsx
 'use client'
 
-import { useTheme } from "next-themes"
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
+// Export the ThemeProvider functionality from the original theme-provider.tsx
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+  return (
+    <NextThemesProvider attribute="class" enableSystem={false} enableColorScheme={false} disableTransitionOnChange={false} {...props}>
+      {children}
+    </NextThemesProvider>
+  )
+}
+
+// Original ModeToggle component
 export function ModeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
@@ -16,7 +30,7 @@ export function ModeToggle() {
     <button
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       className="w-12 h-6 rounded-full bg-gray-200 dark:bg-gray-700 relative transition-colors duration-200 ease-in-out focus:outline-none cursor-pointer hover:opacity-80"
-      aria-label="切换主题"
+      aria-label="ThemeMode-Toggle"
     >
       <div
         className={`absolute w-5 h-5 rounded-full bg-white transform transition-transform duration-200 ${theme === 'dark' ? 'translate-x-6' : 'translate-x-1'

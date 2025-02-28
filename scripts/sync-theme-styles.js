@@ -1,5 +1,6 @@
 // 同步主题变量脚本
-// 此脚本从 globals.css 提取 CSS 变量并更新 theme-styles.css
+// 此脚本仅用于兼容构建流程，实际上不会生成theme-styles.css文件
+// 原始功能是从 globals.css 提取 CSS 变量并更新 theme-styles.css
 
 import fs from 'fs';
 import path from 'path';
@@ -11,123 +12,35 @@ const __dirname = path.dirname(__filename);
 
 // 文件路径
 const globalsPath = path.join(__dirname, '../app/globals.css');
-const themeStylesPath = path.join(__dirname, '../app/theme-styles.css');
-// 为了兼容性，仍然保留一份在public目录
-const publicThemeStylesPath = path.join(__dirname, '../public/theme-styles.css');
+// 删除了对theme-styles.css路径的定义，因为我们不再使用这些文件
 
-// 读取文件内容
-const globalsContent = fs.readFileSync(globalsPath, 'utf8');
-
-// 提取根变量和暗色模式变量
-function extractCssVars(content) {
-  // 提取 :root {...} 块中的变量
-  const rootMatch = content.match(/:root\s*{([^}]*)}/s);
-  const rootVars = rootMatch ? rootMatch[1] : '';
-
-  // 提取 .dark {...} 块中的变量
-  const darkMatch = content.match(/\.dark\s*{([^}]*)}/s);
-  const darkVars = darkMatch ? darkMatch[1] : '';
-
-  return { rootVars, darkVars };
+// 仅为了保持兼容性的空函数
+function extractCssVars() {
+  // 返回空对象，不再提取实际内容
+  return { rootVars: '', darkVars: '' };
 }
 
-// 创建新的 theme-styles.css 内容
-function createThemeStylesContent(rootVars, darkVars) {
-  return `/**
- * 备份主题样式
- * 这些样式会在静态导出模式下提供基本的亮色/暗色主题支持
- * 由 sync-theme-styles.js 自动生成，请勿手动修改
- */
-
-/* 亮色模式（默认）样式 */
-:root {${rootVars}}
-
-.light {${rootVars}}
-
-/* 暗色模式样式 */
-.dark {${darkVars}}
-
-/* 基本文本颜色应用 */
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-}
-
-/* 常用Tailwind类的直接实现 */
-.text-foreground {
-  color: hsl(var(--foreground));
-}
-
-.bg-background {
-  background-color: hsl(var(--background));
-}
-
-.text-muted-foreground {
-  color: hsl(var(--muted-foreground));
-}
-
-/* 文章内容样式 */
-.prose {
-  color: hsl(var(--foreground));
-}
-
-.dark .prose {
-  color: hsl(var(--foreground));
-}
-
-.prose a {
-  color: hsl(var(--primary));
-  text-decoration: underline;
-}
-
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-  color: hsl(var(--foreground));
-  font-weight: bold;
-}
-
-.prose p,
-.prose ul,
-.prose ol {
-  color: hsl(var(--foreground));
-}
-
-/* 优化时间显示 */
-time {
-  color: hsl(var(--muted-foreground));
-}
-
-/* 修复一些特定元素在暗色模式下的颜色 */
-.dark a:not(.no-underline) {
-  color: hsl(var(--foreground));
-}`;
-}
-
-// 主函数
+// 更新主函数，不再实际创建文件
 function syncThemeStyles() {
   try {
-    // 提取变量
-    const { rootVars, darkVars } = extractCssVars(globalsContent);
+    // 检查文件是否存在
+    if (fs.existsSync(globalsPath)) {
+      console.log(`✅ 已确认globals.css文件存在: ${globalsPath}`);
+    }
 
-    // 创建新内容
-    const newContent = createThemeStylesContent(rootVars, darkVars);
+    // 调用函数但不使用返回值
+    extractCssVars();
 
-    // 写入文件到app目录
-    fs.writeFileSync(themeStylesPath, newContent, 'utf8');
-
-    // 同时保留一份到public目录（为了兼容性）
-    fs.writeFileSync(publicThemeStylesPath, newContent, 'utf8');
-
-    console.log('✅ 成功同步主题变量到 theme-styles.css');
+    console.log('✅ 主题变量同步操作已被跳过，所有样式已整合到globals.css');
+    return true;
   } catch (error) {
-    console.error('❌ 同步主题变量失败:', error);
-    process.exit(1);
+    console.error('❌ 同步主题变量时出现错误:', error);
+    return false;
   }
 }
 
-// 执行
-syncThemeStyles();
+// 执行同步操作
+const success = syncThemeStyles();
+
+// 返回适当的退出码
+process.exit(success ? 0 : 1);

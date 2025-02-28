@@ -11,9 +11,12 @@ interface PostPreviewProps {
 }
 
 export function PostPreview({ title, date, preview, slug, featured }: PostPreviewProps) {
+    // 移除可能的.html后缀，让Next.js自己处理
+    const cleanSlug = slug.replace(/\.html$/, '');
+
     return (
         <div className={featured ? "h-full flex flex-col" : ""}>
-            <Link href={`/${slug}`}>
+            <Link href={`/${cleanSlug}`}>
                 <h2 className={`font-bold hover:text-primary ${featured ? "text-lg mb-2" : "text-xl mb-2"}`}>
                     {title}
                 </h2>
