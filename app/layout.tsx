@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/mode-toggle";
+import "./globals.css";
+import { lxgwBright, lxgwBrightLight, lxgwBrightMedium } from '@/lib/fonts';
+
 // import { GeistSans } from 'geist/font/sans';
 // import { GeistMono } from 'geist/font/mono';
-// import { Merriweather } from 'next/font/google';
-import "./globals.css";
-import { ThemeProvider } from "@/components/mode-toggle";
-
-// const geistSans = GeistSans;
-// const geistMono = GeistMono;
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+// const geistMono = GeistMono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 // const merriweather = Merriweather({
 //   subsets: ['latin'],
 //   weight: ['300', '400', '700', '900'],
@@ -25,9 +31,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="zh-CN"
+      suppressHydrationWarning={true}
+      className={`${lxgwBright.variable} ${lxgwBrightMedium.variable} ${lxgwBrightLight.variable} antialiased`}>
       <head>
-        {/* Theme switcher script for static export mode */}
+        {/* Theme switcher script for stat  ic export mode */}
         <script src="/theme-switcher.js" defer></script>
         {/* Initial theme detection script for preventing flash of wrong theme */}
         <script dangerouslySetInnerHTML={{
@@ -42,7 +51,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className="antialiased">
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

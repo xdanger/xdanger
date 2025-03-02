@@ -1,58 +1,6 @@
-/* @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web@latest/style.css');
-@import url('https://cdn.jsdelivr.net/npm/@fontsource-variable/ysabeau-office@latest');
-@import url('https://fonts.googleapis.com/css2?family=Radley:ital@0;1&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap'); */
-
-@font-face {
-  font-family: 'LXGW Bright';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://cdn.jsdelivr.net/gh/lxgw/LxgwBright/LXGWBright/LXGWBright-Regular.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'LXGW Bright';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://cdn.jsdelivr.net/gh/lxgw/LxgwBright/LXGWBright/LXGWBright-Italic.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'LXGW Bright';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url(https://cdn.jsdelivr.net/gh/lxgw/LxgwBright/LXGWBright/LXGWBright-Light.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'LXGW Bright';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url(https://cdn.jsdelivr.net/gh/lxgw/LxgwBright/LXGWBright/LXGWBright-LightItalic.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'LXGW Bright';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(https://cdn.jsdelivr.net/gh/lxgw/LxgwBright/LXGWBright/LXGWBright-Medium.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'LXGW Bright';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url(https://cdn.jsdelivr.net/gh/lxgw/LxgwBright/LXGWBright/LXGWBright-MediumItalic.woff2) format('woff2');
-}
-
 @import 'tailwindcss';
-@custom-variant dark (&:is(.dark *));
 @plugin 'tailwindcss-animate';
+@custom-variant dark (&:is(.dark *));
 
 /* Base styles */
 * {
@@ -63,7 +11,7 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: "LXGW Bright", serif;
+  font-family: var(--font-lxgw-bright), system-ui, sans-serif;
 }
 
 :root {

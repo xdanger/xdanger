@@ -6,7 +6,13 @@ export default {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'lxgw-bright': ['var(--font-lxgw-bright)'],
+        'lxgw-bright-medium': ['var(--font-lxgw-bright-medium)'],
+        'lxgw-bright-light': ['var(--font-lxgw-bright-light)'],
+      },
+    },
   },
   plugins: [],
 };

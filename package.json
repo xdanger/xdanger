@@ -74,7 +74,7 @@
   "name": "gh.xdanger.xdanger",
   "private": true,
   "scripts": {
-    "build": "SKIP_TYPE_CHECK=1 next build && node scripts/post-build.js",
+    "build": "next build && node scripts/post-build.js",
     "dev": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "export": "next export",
     "lint": "next lint",
