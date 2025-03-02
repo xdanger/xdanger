@@ -10,7 +10,7 @@
  */
 import localFont from 'next/font/local';
 
-export const lxgwBright = localFont({
+export const lxgwBrightRegular = localFont({
   src: [
     // 基本拉丁字符和扩展拉丁字符集
     {

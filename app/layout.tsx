@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/mode-toggle";
 import "./globals.css";
-import { lxgwBright, lxgwBrightLight, lxgwBrightMedium } from '@/lib/fonts';
+import { lxgwBrightMedium } from '@/lib/fonts';
 
 // import { GeistSans } from 'geist/font/sans';
 // import { GeistMono } from 'geist/font/mono';
@@ -33,10 +33,9 @@ export default function RootLayout({
   return (
     <html
       lang="zh-CN"
-      suppressHydrationWarning={true}
-      className={`${lxgwBright.variable} ${lxgwBrightMedium.variable} ${lxgwBrightLight.variable} antialiased`}>
+      className={`${lxgwBrightMedium.variable} antialiased`}>
       <head>
-        {/* Theme switcher script for stat  ic export mode */}
+        {/* Theme switcher script for static export mode */}
         <script src="/theme-switcher.js" defer></script>
         {/* Initial theme detection script for preventing flash of wrong theme */}
         <script dangerouslySetInnerHTML={{
