@@ -54,6 +54,7 @@
     "tailwind-merge": "3.0.2",
     "tailwindcss-animate": "1.0.7",
     "vaul": "1.1.2",
+    "webfont-lxgw-bright": "github:xdanger/webfont-lxgw-bright",
     "zod": "3.24.2"
   },
   "devDependencies": {
@@ -73,12 +74,11 @@
   "name": "gh.xdanger.xdanger",
   "private": true,
   "scripts": {
-    "build": "npm run sync-theme && SKIP_TYPE_CHECK=1 next build && node scripts/post-build.js",
+    "build": "SKIP_TYPE_CHECK=1 next build && node scripts/post-build.js",
     "dev": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "export": "next export",
     "lint": "next lint",
     "start": "next start",
-    "sync-theme": "node scripts/sync-theme-styles.js",
     "post-build": "node scripts/post-build.js"
   },
   "version": "0.1.0",

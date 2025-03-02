@@ -7,10 +7,9 @@ alwaysApply: true
 
 - This Next.js project is using Tailwind v4, which is released just now.
 - The v4 is not in your embeded knowledge. See the following docs for latest information.
-    - https://tailwindcss.com/docs/upgrade-guide
-    - https://ui.shadcn.com/docs/tailwind-v4
+  - <https://tailwindcss.com/docs/upgrade-guide>
+  - <https://ui.shadcn.com/docs/tailwind-v4>
 - Tailwind v4.0 在 CSS 文件里的导入语句是 `@import 'tailwindcss';` 而不是 `@import '@tailwindcss/postcss';`
-
 
 ## 主要变化点
 
@@ -61,15 +60,11 @@ alwaysApply: true
 
 ## 样式文件结构
 
-- `globals.css`: 主CSS文件，包含基础样式和主题变量
-- `theme-styles.css`: 备份主题样式，在静态导出模式下提供支持
+- `globals.css`: 主CSS文件，包含基础样式、主题变量和所有所需样式
 - `theme-switcher.js`: 独立主题切换脚本，不依赖 React
 
 ## 使用建议
 
 1. 使用HSL函数访问CSS变量：`hsl(var(--foreground))`
-2. 为新组件添加暗黑模式样式时同时更新两处：
-   - `globals.css` 中的 `.dark` 类
-   - `theme-switcher.js` 中的 `darkModeVars` 和 `lightModeVars` 对象
-3. 运行构建前先执行 `npm run sync-theme` 同步主题变量
-4. 新增颜色时优先考虑 OKLCH 格式，以获得更好的颜色表现
+2. 为新组件添加暗黑模式样式时同时更新 `globals.css` 中的 `.dark` 类
+3. 新增颜色时优先考虑 OKLCH 格式，以获得更好的颜色表现
