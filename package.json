@@ -78,8 +78,7 @@
     "dev": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "export": "next export",
     "lint": "next lint",
-    "start": "next start",
-    "post-build": "node scripts/post-build.js"
+    "start": "next start"
   },
   "version": "0.1.0",
   "type": "module"

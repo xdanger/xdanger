@@ -1,4 +1,13 @@
-/** @type {import('next').NextConfig} */
+/**
+ * Next.js 配置文件
+ *
+ * 本配置专为静态博客网站导出优化，主要特点：
+ * 1. 使用静态导出模式 (output: 'export')
+ * 2. 生成干净的URL格式 (/path/file.html 而非 /path/file/index.html)
+ * 3. 确保RSC数据文件(.txt)与HTML文件命名一致，解决客户端渲染问题
+ *
+ * @type {import('next').NextConfig}
+ */
 
 // 简化配置，专注于静态导出
 const nextConfig = {

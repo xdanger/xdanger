@@ -1,9 +1,16 @@
 /**
- * Next.js静态导出后处理脚本
- * 解决RSC数据文件(.txt)命名不一致的问题
+ * Next.js 静态导出后处理脚本
  *
- * 问题：浏览器请求/path/file.html.txt但实际文件是/path/file.txt
- * 解决：将所有.txt文件重命名为.html.txt格式
+ * 主要功能：
+ * 1. 解决RSC数据文件(.txt)命名不一致问题：
+ *    - 问题：浏览器请求/path/file.html.txt但实际文件是/path/file.txt
+ *    - 解决：将所有.txt文件复制为.html.txt格式，保持原文件不变
+ *
+ * 2. 将out目录同步到docs目录：
+ *    - 复制所有文件从out到docs
+ *    - 删除docs中不存在于out的多余文件
+ *    - 清理空目录
+ *    - 类似rsync -av --delete功能
  */
 
 import fs from 'fs';

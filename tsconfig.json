@@ -1,3 +1,12 @@
+/**
+ * TypeScript 配置
+ *
+ * 主要特点:
+ * - 目标: ES2017 (支持现代浏览器同时保持良好兼容性)
+ * - 模块: ESM (与Next.js兼容)
+ * - 路径别名: 使用 @/ 指向项目根目录
+ * - 类型声明: 同时支持node_modules和项目本地types目录的声明文件
+ */
 {
   "compilerOptions": {
     "target": "ES2017",

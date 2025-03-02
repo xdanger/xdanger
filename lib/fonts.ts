@@ -1,7 +1,5 @@
 /**
- * 自动生成的 Next.js 字体配置文件
- * 由 scripts/generate-fonts.js 脚本生成
- * 生成时间: 2025-03-02T11:33:21.510Z
+ * Next.js 字体配置文件
  *
  * 包含以下字重:
  * - Regular (400)
