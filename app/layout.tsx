@@ -1,8 +1,18 @@
+/**
+ * 应用根布局组件
+ *
+ * 提供全站共享的布局结构，包括：
+ * - 主题切换支持（同时支持React状态和原生JS切换）
+ * - 字体加载和应用
+ * - HTML/Body基础结构
+ * - 元数据配置
+ */
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/mode-toggle";
 import "./globals.css";
 import { lxgwBrightMedium } from '@/lib/fonts';
 
+// 以下为备选字体配置，当前未使用
 // import { GeistSans } from 'geist/font/sans';
 // import { GeistMono } from 'geist/font/mono';
 // const geistSans = Geist({
@@ -35,9 +45,9 @@ export default function RootLayout({
       lang="zh-CN"
       className={`${lxgwBrightMedium.variable} antialiased`}>
       <head>
-        {/* Theme switcher script for static export mode */}
+        {/* 静态导出模式下的主题切换脚本 */}
         <script src="/theme-switcher.js" defer></script>
-        {/* Initial theme detection script for preventing flash of wrong theme */}
+        {/* 初始主题检测脚本，防止错误主题闪烁 */}
         <script dangerouslySetInnerHTML={{
           __html: `
             (function() {
@@ -51,6 +61,7 @@ export default function RootLayout({
         }} />
       </head>
       <body>
+        {/* 客户端React模式下的主题提供者 */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
