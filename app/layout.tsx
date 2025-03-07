@@ -31,7 +31,7 @@ import { lxgwBrightMedium } from '@/lib/fonts';
 // });
 
 export const metadata: Metadata = {
-  title: "Yunjie Dai",
+  title: "xdanger's Blog",
   description: "This is Yunjie Dai's Homepage and Blog.",
 };
 

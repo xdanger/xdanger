@@ -113,7 +113,7 @@ async function syncToDocs() {
         deletedCount++;
       }
     }
-    console.log(`🗑️ 删除了 ${deletedCount} 个多余文件`);
+    console.log(`🗑️  删除了 ${deletedCount} 个多余文件`);
 
     // 5. 删除空目录
     cleanEmptyDirs(docsDir);

@@ -4,12 +4,44 @@ import { getLatestPosts } from '@/lib/posts';
 import { Header } from '@/components/header';
 import * as React from 'react';
 import type { PageProps } from 'next';
+import type { Metadata } from 'next';
 
 // 将配置移到单独的对象中，符合Next.js的静态解析需求
 export const dynamic = 'auto';
 
 // 定义generateStaticParams的返回类型
 type StaticParams = { slug: string[] };
+
+/**
+ * 生成页面元数据，包括标题
+ */
+export async function generateMetadata(
+  { params }: PageProps
+): Promise<Metadata> {
+  // 获取所有文章
+  const posts = await getLatestPosts();
+
+  // 处理params对象，获取slug
+  const slug = await processParams(params);
+  const fullSlug = slug.join('/');
+  const cleanSlug = fullSlug.replace(/\.html$/, '');
+
+  // 查找当前文章
+  const post = posts.find(p => p.slug === cleanSlug);
+
+  // 如果没有找到文章，返回默认标题
+  if (!post) {
+    return {
+      title: 'Not Found',
+    };
+  }
+
+  // 返回以文章标题为主的元数据
+  return {
+    title: `${post.title} - xdanger's Blog`,
+    description: post.title,
+  };
+}
 
 // 指定正确的返回类型
 export async function generateStaticParams(): Promise<StaticParams[]> {
