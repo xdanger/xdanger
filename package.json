@@ -75,6 +75,7 @@
   "private": true,
   "scripts": {
     "build": "next build && node scripts/post-build.js",
+    "build:fonts": "REBUILD_FONTS=true next build && node scripts/post-build.js",
     "dev": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "export": "next export",
     "lint": "next lint",
