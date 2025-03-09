@@ -45,44 +45,61 @@ export function PostList({ initialPosts, postsPerPage = 10 }: PostListProps) {
     }
   }, [inView, hasMore, currentPage, initialPosts, postsPerPage]);
 
+  const formatDate = (date: Date) => {
+    const year = date.getFullYear();
+    const month = date.toLocaleString('default', { month: 'short' });
+    const day = date.getDate();
+    return `${month} ${day}, ${year}`;
+  };
+
+  const renderPostCard = (post: Post, isFeatured = false) => {
+    const date = new Date(post.date);
+    const cleanSlug = post.slug.replace(/\.html$/, '');
+
+    return (
+      <Link
+        key={post.slug}
+        href={`/${cleanSlug}`}
+        className={`group block ${isFeatured ? 'col-span-full' : ''}`}
+      >
+        <article className={`h-full bg-card hover:bg-accent transition-colors rounded-lg border border-border group-hover:border-border/80 ${isFeatured
+            ? 'p-8 md:p-12'
+            : 'p-6'
+          }`}>
+          <time className="text-sm text-muted-foreground">
+            {formatDate(date)}
+          </time>
+          <h3 className={`mt-2 group-hover:text-accent-foreground transition-colors ${isFeatured
+              ? 'text-3xl md:text-4xl font-bold'
+              : 'text-xl font-semibold'
+            }`}>
+            {post.title}
+          </h3>
+          {post.preview && (
+            <p className={`mt-3 text-muted-foreground ${isFeatured
+                ? 'text-lg md:text-xl line-clamp-4'
+                : 'line-clamp-3'
+              }`}>
+              {post.preview}
+            </p>
+          )}
+          <div className={`flex items-center text-sm text-muted-foreground ${isFeatured ? 'mt-6' : 'mt-4'
+            }`}>
+            <span className="group-hover:text-accent-foreground transition-colors">
+              Read more →
+            </span>
+          </div>
+        </article>
+      </Link>
+    );
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {displayedPosts.map((post) => {
-          const date = new Date(post.date);
-          const year = date.getFullYear();
-          const month = date.toLocaleString('default', { month: 'short' });
-          const day = date.getDate();
-
-          const cleanSlug = post.slug.replace(/\.html$/, '');
-
-          return (
-            <Link
-              key={post.slug}
-              href={`/${cleanSlug}.html`}
-              className="group block"
-            >
-              <article className="h-full bg-card hover:bg-accent transition-colors rounded-lg border border-border p-6 group-hover:border-border/80">
-                <time className="text-sm text-muted-foreground">
-                  {`${month} ${day}, ${year}`}
-                </time>
-                <h3 className="mt-2 text-xl font-semibold group-hover:text-accent-foreground transition-colors">
-                  {post.title}
-                </h3>
-                {post.preview && (
-                  <p className="mt-3 text-muted-foreground line-clamp-3">
-                    {post.preview}
-                  </p>
-                )}
-                <div className="mt-4 flex items-center text-sm text-muted-foreground">
-                  <span className="group-hover:text-accent-foreground transition-colors">
-                    Read more →
-                  </span>
-                </div>
-              </article>
-            </Link>
-          );
-        })}
+        {displayedPosts.map((post, index) =>
+          renderPostCard(post, index === 0)
+        )}
       </div>
 
       {/* 加载更多触发器 */}
