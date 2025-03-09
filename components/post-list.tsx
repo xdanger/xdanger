@@ -16,7 +16,7 @@ interface PostListProps {
   postsPerPage?: number;
 }
 
-export function PostList({ initialPosts, postsPerPage = 20 }: PostListProps) {
+export function PostList({ initialPosts, postsPerPage = 10 }: PostListProps) {
   const [displayedPosts, setDisplayedPosts] = useState<Post[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
