@@ -59,7 +59,7 @@ export function PostList({ initialPosts, postsPerPage = 20 }: PostListProps) {
           return (
             <Link
               key={post.slug}
-              href={`/${cleanSlug}`}
+              href={`/${cleanSlug}.html`}
               className="group block"
             >
               <article className="h-full bg-card hover:bg-accent transition-colors rounded-lg border border-border p-6 group-hover:border-border/80">

@@ -9,7 +9,7 @@ export default async function Home() {
     <div className="min-h-screen">
       <Header />
 
-      <main className="container max-w-5xl mx-auto p-4 md:p-8">
+      <main className="container max-w-3xl mx-auto p-4 md:p-8">
         <div className="prose dark:prose-invert text-lg max-w-none mb-12">
           <ul>
             <li>I&apos;m a 👨‍👩‍👦‍👦 father, a 🧑‍💻 software engineer</li>
