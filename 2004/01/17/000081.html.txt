@@ -1,0 +1,91 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HC["/",""]
+:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
+:HL["/_next/static/css/4e78de3af272c993.css","style"]
+0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2004","01","17","000081"],"i":false,"f":[[["",{"children":[["slug","2004/01/17/000081","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2004/01/17/000081","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","fgtwH5IcGTc2fSr1XI07Z",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
+10:T23a2,
+
+<P>　　以下文字的原文：<A href="http://pr.efactory.de/e-pagerank-implementation.shtml">http://pr.efactory.de/e-pagerank-implementation.shtml</A></P>
+<P>　　多数人通过<A href="http://toolbar.google.com/">Google工具栏</A>开始了解PageRank。Google工具栏是Microsoft Internet Explorer的一个浏览器插件，可以在Google网站上下载到。Google工具栏提供的一些功能使搜索Google变得更为方便。</P>
+<P><IMG style="WIDTH: 210px; HEIGHT: 190px" alt="Google Toolbar" hspace=0 src="http://blog.xdanger.com/archives/pics/20040117a.gif" align=left border=0>　　Google工具栏以<STRONG>0</STRONG>-<STRONG>10</STRONG>的刻度显示PageRank值。从显示栏中绿色部分的长度可以估计出当前正在访问的页面的PageRank值。如果用户将鼠标放于显示栏上，就是显示PageRank值。</P>
+<P>　　<STRONG>注意</STRONG>：显示PageRank值是Google工具栏的一个高级功能。如果高级功能被打开，Google就会收集用户信息。另外，工具栏会自动升级，用户无需关心。所以，Google可以访问用户的硬盘。</P>
+<P>　　如果我们进行一下计算，PageRank理论上拥有最大值<STRONG>(Nd+(1-d))</STRONG>，这里的<STRONG>N</STRONG>为互联网网页总数，<STRONG>d</STRONG>为通常被设为<STRONG>0.85</STRONG>，计算出的PageRank值和工具栏显示出的数值成一定的比例关系。普遍认同的是，它们之间的比例并非线性的，而是成<STRONG>对数关系</STRONG>。如果设阻尼系数<STRONG>d</STRONG>为<STRONG>0.85</STRONG>而PageRank的最低值为0.15<EM>（</EM><A href="http://www.xdanger.com/"><EM>xdanger</EM></A><EM>注：因为0.15+0.85=1）</EM>，并且对数的基数为6，我们得到以下的比例关系：</P>
+<P>
+<TABLE cellSpacing=0 cellPadding=0 bgColor=#ffffff border=0>
+<TBODY>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>Toolbar PageRank</FONT></TD>
+<TD vAlign=top align=middle width=301 colSpan=3><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>Real PageRank</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0.15</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0.9</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0.9</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>5.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>2/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>5.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>32.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>3/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>32.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>194.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>4/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>194.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1,166.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>5/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1,166.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>6,998.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>6/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>6,998.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>41,990.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>7/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>41,990.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>251,942.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>8/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>251,942.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1,511,654.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>9/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1,511,654.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>9,069,926.4</FONT></TD></TR>
+<TR>
+<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>10/10</FONT></TD>
+<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>9,069,926.4</FONT></TD>
+<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
+<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0.85 × N + 0.15</FONT></TD></TR></TBODY></TABLE></P>
+<P>　　现在还不确定工具栏所显示的数值和实际的PageRank值是否严格遵循对数关系。看上去的确像遵循了对数关系，因此Google工具栏仅用了一个范围的刻度值就能显示所有页面的PageRank值。对数的基数被定在6-7之间，这一点可以由一个<EM>工具栏PageRank值</EM>大于4的页面的入链数量举例演算得出，这个连接数量可以从Google那用指令式的链接得到。</P>
+<br /><br />
+<p align="center">&lt;&lt; <a href="/archives/2004/01/16/000080.html">PageRank在Google搜索中的实现</a></p>
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"使用Google工具栏显示PageRank"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"January 17, 2004"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"使用Google工具栏显示PageRank - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"使用Google工具栏显示PageRank"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

@@ -1,0 +1,68 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HC["/",""]
+:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
+:HL["/_next/static/css/4e78de3af272c993.css","style"]
+0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2004","05","08","000130"],"i":false,"f":[[["",{"children":[["slug","2004/05/08/000130","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2004/05/08/000130","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","xzkjeGKxbp1YS9HVzlqsp",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
+10:T1634,
+
+<P>　　记得第一次看到 <A href="http://www.python.org">Python</A>&nbsp;这个词是 <A href="http://dash.945.cn">Dash</A>&nbsp;跟我说编 <A href="http://bitconjurer.org/BitTorrent/">BT</A>&nbsp;的语言号称是和 <A href="http://msdn.microsoft.com/vcsharp/">C#</A>&nbsp;一样完美的，当时也没注意，上个月看<A href="http://www.mindview.net/Books/TIJ/">《Thinking in Java》</A>，<A href="http://www.bruceeckel.com/">Bruce Eckel</A>&nbsp;也是大力推荐，昨天在找CMS时发现一个很好用的系统：<A href="http://www.plone.org">Plone</A>&nbsp;，也是Python编的。于是花了两天时间捉摸着入门，发现还是很让人吃惊的。</P>
+<P><A href="http://www.python.cn">Python.cn</A> 上是这样介绍的：</P>
+<OL>
+<LI>是一种解释性的，面向对象的，具有动态语义的程序设计语言 
+<LI>适合快速开发 
+<LI>代码具有优秀的可读性 
+<LI>具有模块和包的概念 
+<LI>支持各种主流平台，并具有很好的跨平台性 
+<LI>可以很容易地包装C/C++的代码供Python使用</LI></OL>
+<P>　　经过短暂实践，我个人总结了以下几点，仅供参考：</P>
+<OL>
+<LI>Python是支持带类和多继承的面向对象程序设计。虽然面向对象，但是和C++/Java的概念不太一样。在Python中“对象”这个词不一定指类实例。Python中并非所有的类型都是类（而Java几乎可以这么认为），然而，所有的Python类型在语义上都有一点相同之处：描述它们的最贴切词语不是“类”，是“对象”。 
+<LI>代码格式及其前卫，完全抛弃了C系列，包括Java使用的花括号{}，改用空格(Space)或制表符(Tab)控制封装块。比如<BR>
+<P class=code>def buildConnectionString(params):<BR>&nbsp;&nbsp;&nbsp;&nbsp;"""Build a connection string from a dictionary of parameters.<BR>&nbsp;&nbsp;&nbsp; Returns string."""<BR>&nbsp;&nbsp;&nbsp;&nbsp;return ";".join(["%s=%s" % (k, params[k]) for k in params.keys()])</P>代码块(函数，if 语句，for 循环，等等)通过它们的缩排来定义。缩排表示块的开始，非缩排表示结束，不存在明显的括号，大括号，或关键字。这就意味着空白是有意义的，并且要一致。在这个例子中，函数代码(包括文档字符串)缩近了4个空格。不一定非要是4个，只要一致就可以了。第一行没有缩近，则不算在函数内。经过一段时间的适应，你将会心平气和地对待它，开始理解它的好处。一个主要的好处是，所有的Python程序看上去差不多，因为缩排是语言的要求而不是风格问题。这样就更容易阅读和理解他人的Python代码。因此Python赢得了最优美代码、最强的可读性的称号。用Phthon做程序设计，你甚至可以不太考虑你的程序的可维护性很差。 
+<LI>基本的数据类型有变量：数字型(整型,浮点型,<STRONG>复数,无限制长整型</STRONG>),指针(ASCII码和Unicode码),表,字典。 
+<P></P></LI></OL>
+<P>别人总结的其他几点：</P>
+<OL>
+<LI>代码可以被集成为模板和包。 
+<LI>这种语言支持异常处理追踪并能够列出比较清晰详细的错误提示。 
+<LI>数据类型非常的强大，而且是动态的。混合的数据类型(例如试图将指针与数相加)将被编译器提出一个异常情况信息。 
+<LI>Python包含了一些高级的程序设计特性，例如代码生成器和解释器。自动垃圾收集功能使你从内存管理的争战中解脱出来。<BR>庞大的标准库支持很多一般的程序设计任务，比如与网络服务器连接，正则表达式，文件操作。 
+<LI>Python的交互式模式使得调试小段的程序非常便捷。当然，处理大型的程序他还具备一个捆绑式的开发环境，叫做IDLE。 
+<LI>Python编译器是很容易扩展的，我们可以将C或者C++编译后的模板作为新的模板加入到其中。 
+<LI>编译器也可以被嵌入到另外一个应用程序中以提供一个可编程的界面。<BR>Python可以在很多不同种类的计算机和操作系统上运行：比如Windows, MacOS, OS/2，以及很多作为Unix分支的操作系统。</LI></OL>
+<P>
+<P>
+<HR>
+
+<P></P>
+<P>参考站点：</P>
+<UL>
+<LI>官方主页：<A href="http://www.python.org/">http://www.python.org/</A> 
+<LI>中文社区：<A href="http://python.cn/">http://python.cn/</A> 
+<LI>中蟒编成语言站点：<A href="http://www.chinesepython.org/cgi_bin/cgb.cgi/home.html">http://www.chinesepython.org/cgi_bin/cgb.cgi/home.html</A> 
+<LI>深入Python：<A href="http://cn.diveintopython.org/">http://cn.diveintopython.org/</A> 
+<LI>v2.3参考手册：<A href="http://python.cn/contents/python2.3tut/tut/">http://python.cn/contents/python2.3tut/tut/</A> 
+<LI>常见问题集：<A href="http://python.cn/contents/PythonFaq.html">http://python.cn/contents/PythonFaq.html</A> 
+<LI>Jython(Python in Java)：<A href="http://www.jython.org/">http://www.jython.org/</A> 
+<LI>IBM - Python编程系列：<A href="http://www-900.ibm.com/developerWorks/cn/linux/theme/special/#python">http://www-900.ibm.com/developerWorks/cn/linux/theme/special/#python</A> 
+<LI>Python初学(英文)：<A href="http://www.python.org/topics/learn/">http://www.python.org/topics/learn/</A> 
+<LI>Python Library Reference(英文)：<A href="http://www.python.org/doc/lib/lib.html">http://www.python.org/doc/lib/lib.html</A> 
+<LI>ActivePython(Win32环境下的Python安装及IDE)：<A href="http://www.activestate.com/Products/ActivePython/">http://www.activestate.com/Products/ActivePython/</A></LI></UL>
+<P>&nbsp;</P>
+<br /><br />
+
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"初识Python"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"May 8, 2004"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"初识Python - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"初识Python"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

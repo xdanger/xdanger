@@ -1,0 +1,38 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HC["/",""]
+:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
+:HL["/_next/static/css/4e78de3af272c993.css","style"]
+0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2006","04","22","000045"],"i":false,"f":[[["",{"children":[["slug","2006/04/22/000045","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2006/04/22/000045","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","yGGxJnVPgcYOfsvEgSrl2",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
+10:T1a73,
+<p><em>以下文字均是亲身经历，如有必要本人可以承担法律责任。文章观点和反日情绪无关，转载时请注明出处 —— <a href="http://www.xdanger.com/2006/04/22/00045.html">http://www.xdanger.com/2006/04/22/00045.html</a></em></p>
+<p>　　去年4月9日买了台 <a href="http://www.sonystyle.com.cn/vaio/products/tr_spec_index_alt.asp?idCategory=100&idSerial=62&keyword=spec">VAIO VGN-FS18CP</a>，由于散热一直有问题（平时 CPU 达 80+℃，运行游戏时有 90+℃），去年12月17日在合肥路 SONY 维修点有一次保修记录，当时检测不出什么问题，工程师花了5小时帮我把排风孔和风扇上面的灰清扫了一遍，然后跟我说这个机型 CPU 温度是偏高，属于正常。嗯，于是我忍着 80+℃ 的“正常”温度用到现在。</p>
+<p>　　今年3月，出于必要原因，决定重装系统。但是因为找不到当时随机一起的系统恢复光盘，就用了同事的 Windows 安装盘。装好后按常理去 SONY 网站下载驱动时，却发现主要的驱动程序都找不到。于是看了美国和日本的索尼网站，发现所有驱动都有下载，只是因为各地区的生产的型号不同，驱动通不过机型验证。然后打 SONY VAIO 800 电话询问光盘是否可以重新申领，去维修点是否能当场拿到，都得到肯定的答复。后来因为没有时间，一直没去拿光盘。</p>
+<p>　　今天下午终于有时间，想在明天去厦门前解决电源驱动的问题（没有电源驱动迅驰就不会变频，一直满频运行，本来散热不好的机器，更加火上浇油了……），再次打 800 电话询问今天（星期六）维修点是否有人，我是想拿个光盘装驱动，得到肯定的答复，并且让我带上发票保修卡。于是出发了……2点半到曹溪路 SONY 售后服务中心，排了半小时队后被告知这个光盘是需要预定的，一星期后带上本人身份证来领取，并且因为过了1年的保修期，需要另外支付 150 元的费用……晕啊，我说那我光盘不要了，就帮我装个驱动吧，答曰：我们这只能帮客户恢复系统，没有单独装驱动的服务。我站那呆了 10 秒钟，几乎没反应过来这是什么情况。系统恢复光盘和驱动盘本来就是一张，偌大个 VAIO 维修点、堂堂 SONY 售后服务中心，竟然连个驱动都没有？！我不相信天下有这么荒唐的事，质疑工作人员后，她还是对我很官方地微笑着摇摇头。</p>
+<p>　　<strong>问题总结</strong>：<ol>
+<li>电子产品的驱动程序的版权应当打进硬件的成本，厂商应该在自己的官方网站公开放出所有产品的驱动下载。官方驱动不存在购买的形式，毕竟别人下载了你的驱动还必须买你的硬件才能用。</li>
+<li>为何单单中国地区销售的 VAIO 型号没有提供全部驱动下载（事后我打过 800 确认过索尼中国的确没有在网站上提供驱动下载，也说明 SONY 中国很清楚知道这个事实）？网上没有下载可以认为负责网站维护的部分的失误，那为何我挤出时间带着机器跑到售后服务中心都找不到驱动装？非要买那个我已经为其付过钱的光盘？</li>
+<li>购买随机光盘为何需要支付版权费用？客服回答我的是因为里面还有 Windows 操作系统的费用。<ul>
+<li>我买来的 VAIO 在机器底部已经有随机预装的 Windows 的序列号，我有了这个序列号，再问 SONY 拿一张一模一样的光盘（实际上微软和笔记本生产厂商的合作方式都是为厂商做作不同机型的 OEM 版本，机底的序列号只能在相应的 OEM 的安装程序里使用，而每个 OEM 的安装程序运行时都会检测硬件型号是否相符，以此来防止盗版），只因为过了保修期就要再次买个新的操作系统？那我机底的那个序列号是否应该也加个保修期呢？</li>
+<li>系统光盘为何不能和驱动光盘分开，必须捆绑销售？</li></ul></li>
+<li>为何我去维修点前打的2个咨询电话，客服都没有向我提及需要支付那么高的费用，我当时的用词是“领光盘”。而且没有告知我需要预定，也许说了预定我就会想到可能需要支付费用。</li></ol></p>
+<p>　　以上只是基本的几点，相比我之前买华硕享受到的售后服务，真是天壤之别——此处绝非打广告，因为我前后就买过华硕和索尼2个本本，而现在女朋友就在用华硕，因此了解得比较清楚。<ol>
+<li>严重不尊重用户的时间。维修手续往往过于机械化和繁琐，维修周期过长。至少我在维修点看到很少有用户得到即时维修服务，都是要把机器放在 SONY。相比 SONY 3点就结束的即时快修，华硕的 2 小时快修服务只要你在他们下班前赶到，工作人员都会加班为你快修。我以前的那台华硕坏了一次主板，跑到广东路得知他们没有主板存货，当时已经4点多，5点他们就下班了。工作人员当即打电话到莘庄的维修点询问是否有库存，得知有库存之后我赶过去，5点左右到的，莘庄的工作人员二话不说就拿去帮我换主板了，搞到6点半左右才回家。</li>
+<li>维修时不尊重用户。SONY 的工作人员在检测时和像银行柜台那样面对面坐着，笔记本屏幕完全朝向他，用户根本看不到他在操作什么，也许我心理阴暗，但电脑里的确有不少商业机密。华硕检测时，你和工作人员是一起坐在一个小圆桌上，你可以和他并排坐在一起看到他所有的操作。以前没注意到这种小细节，相比 SONY 之后才发现原来华硕真的很用心。</li>
+<li>维修非常不爽快。向我这种平时开机 CPU 温度就在 80℃ 左右，肯定是由于主板或 CPU 散热功能有缺陷，维修人员却帮我抖抖灰就完事了，看到下降了10℃后跟我说这个温度正常了……同样是散热问题，女朋友的 V6V 拿去修，第一次工作人员把 CPU 的硅胶重新涂了遍，温度正常后他又拿了装满华硕驱动(!!)的工作移动硬盘更新了几个驱动(!!)。我说这台机器 CPU 怎么没有自动调节倍频，他看了下，马上写下需要申请 CPU 和主板……然后女朋友又说光驱似乎不太好，有的盘读不出，这下连检测都没，申请表上又加了个 COMBO……一星期后拿着本本去换了全新的 CPU、主板、光驱，CPU 因为原来的 1.73GHz 系列没货了，索性换了个 2.0GHz 的……</li></ol></p>
+<p>　　我没有抵制日货的情绪，但 SONY 真的很让人失望。总之以后不会再买了……</p>
+
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"索尼(SONY)中国售后服务存在严重缺陷"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"April 22, 2006"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"索尼(SONY)中国售后服务存在严重缺陷 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"索尼(SONY)中国售后服务存在严重缺陷"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

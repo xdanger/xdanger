@@ -1,0 +1,52 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HC["/",""]
+:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
+:HL["/_next/static/css/4e78de3af272c993.css","style"]
+0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2003","05","08","000017"],"i":false,"f":[[["",{"children":[["slug","2003/05/08/000017","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2003/05/08/000017","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","k-0gKaFd88uSqBUCZgG6y",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
+10:T2ebb,
+
+　　我觉得观众喜欢《走向共和》可能还是电视剧所提供的一些新的历史观点，对我们以前在教科书上看到的人物进行了新的评价的阐述，比如袁世凯、李鸿章等人物，以前有一种对他们的定论，这次我们对他们的评判不是以道德为标准的，而是以他在中国近代历史中起到的推动作用来评判的，相对来说，方式和角度比较新颖。<BR>　　———《走向共和》导演张黎<BR>
+<br /><br />
+　　4月，一部名为《走向共和》的电视剧引起了全国观众的注意。该片为孙中山、李鸿章、慈禧、袁世凯、光绪、康有为等塑造了全新的影视形象。<BR>　　《走向共和》是原《雍正王朝》剧组主创班子的又一次合作。《雍正王朝》的播出创下了中央电视台当时的最高收视记录，在海内外市场大获成功。《雍正王朝》的完成用了3年时间，《走向共和》用了4年。<BR>　　刘文武是《雍正王朝》的首席投资人，在全部投资中占了九成。《雍正王朝》成功以后，觉得自己在影视上大有可为的刘文武，理所当然地想要接着搞下一部电视剧，为此辞掉了海南出版社编辑部主任的职务，告别图书出版，在北京注册成立了一家名为同道的文化公司，专门从事影视制作。<BR>　　1999年3月，公司成立。刘文武想克隆《雍正王朝》的成功，再做一部无论是在内涵、思想、品质上，都要超过《雍正王朝》的电视剧。与他合作过的湖南省委宣传部副部长郑佳明向他提议，搞一部有关晚清外交历史的电视剧，这段历史是中国近代的伤口，导致封闭的大门被迫对外开放，这个过程中，世界开始进入中国，中国艰难地开始融入世界，社会发生巨变。<BR>　　在北京，刘文武遇见了中央电视台文艺中心主任高建民，高向他提议搞一部有关民国风云的电视剧。这是中国几千年历史上变化最复杂最丰富、变革最大的时期。<BR>　　刘文武决定把两个朋友的建议合起来，搞成一个有关清末民初的大戏。<BR>　　由于完整、全面反映描述这段历史的文学作品不多，这就意味着这部电视剧只能是捏土为泥、聚沙成塔，全部依靠原创。考虑到历史剧的宏大和全景性，在与总策划之一、长沙电视台台长罗浩商量时，两个人同意选择从未写电视剧的编剧盛和煜写剧本。盛和煜是湖南湘剧院的专业编剧，是曹禺戏剧文学奖获得者。<BR>　　在这一年里，刘文武、罗浩、盛和煜到处寻找有关这段历史的书和资料，进行大批量的阅读和研究讨论。在读了《剑桥中国史》等近6000万字与晚清民国有关的历史资料以后，3个人确定了电视剧的主题线索：以晚清民初波澜壮阔、跌宕起伏的社会政治生活为主要内容，以中国近代史上的民族精英为中华民族寻找出路为主题线索，塑造出一批逼近历史真实的人物群像，写出走向共和历史进程中的几个重要台阶。<BR>　　因为盛和煜的认真，剧本的进程非常缓慢，刘文武决定再找一个功力深厚的编剧加入到《走向共和》里来。在与国内的一些编剧聊的同时，刘文武读到了张建伟的5卷《晚清历史报告》，发现自己思考的很多问题在书里有了结论。张建伟是《中国青年报》的主任记者，是鲁迅文学奖获得者，报告文学作家，此前也从未写过电视剧本。<BR>　　刘文武决定请张建伟加盟编剧。盛和煜、张建伟进行分工，盛和煜负责晚清部分的剧本创作，张建伟负责民国部分的创作。<BR>　　由于题材的敏感性，加上对历史人物、历史事件的分寸把握，为顺利通过剧本审查，专门聘请文选德（湖南省委副书记）和李牧（当时的中宣部文艺局副局长）等作为顾问进行把关，剧本每写完5集，被马上送到重大革命历史题材影视创作领导小组副组长仲呈祥、李准的手上，由他们对剧本进行审读，提出的意见及时被反馈到编剧手上。如此反复，经过4次重新修改以后，剧本终于获得通过。<BR>　　在确定由张黎执导之前，刘文武也把目光投向了大牌导演和当红演员，和其中的一些人有过接触。在接触交往过程中，刘发现了合作当中可能会出现的问题：成名以后的导演和演员自我个性很强，不能与创作班子的思路吻合，而且这些人已经形成了顽固的思维模式和自己固定的艺术风格，要突破自己，很难。另外，如果请大牌导演和当红演员，价格太贵，而且付出高片酬未必有高质量的艺术回报。<BR>　　出于种种考虑，根据已有的经验，刘文武在导演、演员的选择上确定标准：不重名气重实力。<BR>　　在接受记者采访时，刘文武为自己选择张黎为导演感到得意：“当时我就觉得他水平很高，现在可以说张黎是全国最好的导演。”<BR>　　张黎曾经是《雍正王朝》的艺术总监。在影视圈内，张黎更多的是作为一名摄影师为人所知晓。张黎先后担任摄影的影片有《一声叹息》、《大腕》等作品。2000年的时候，他摄影的影片《横空出世》获得中国电影金鸡奖最佳摄影奖。<BR>　　《走向共和》是张黎导演的第一部电视剧。此前，张黎曾作为副导演参与执导了影片《红樱桃》、《红色恋人》。但是当导演，还是第一次。《走向共和》在画面上的精美讲究，与张黎有着直接关系。由于《走向共和》历史跨度大，人物又是历史上的大人物，因此在拍摄的时候张黎采用了将电影镜头与电视的高清晰技术相结合的方法，特别注意表达凝重感和历史的厚重感。近4年时间里，除了帮冯小刚拍了一个电影《大腕》，张黎的心思和时间基本上都用在这个电视剧上。<BR>　　上任之后，张黎与主创班子决定，所有的演员全部试戏，谁好用谁。结果选中的演员大多数来自艺术剧院，都有着丰富的表演经验。<BR>　　主要演员都经过主创班子的全体认可以后才得以确定。在选演员的时候，力求神形皆似。在选定的演员当中，可能除了张之洞原形不太像外，李鸿章、慈禧、孙中山、康有为，包括段祺瑞都很形似。<BR>　　在《走向共和》里李鸿章出场的年龄就70岁了，为了寻找一个年龄相配，富有艺术造诣的演员，编导们在全国范围内进行了遴选，最终确定了原青艺69岁的王冰，王冰曾经是上个世纪五六十年代北京话剧舞台上的风云人物，主演保尔·柯察金，在当年引起过轰动，另外，80年代王冰在话剧舞台上扮演过蔡锷，对清末民国年间的这段历史非常熟悉。王冰身体不好，而且20多年没有演戏，因为《走向共和》而重出江湖。跟着剧组拍了七个月的戏，一直没离开过。<BR>　　慈禧选择的是北京人艺的著名演员吕中，她虽年过六旬，却一直活跃在舞台上。她饰演的慈禧不再是狠毒凶残、不食人间烟火的女恶魔形象，而是表现出了人物人性化、有感情的一面，有血有肉，将她还原为一个女人，一个政治家。为演好这个角色，苦读剧本的吕中因准备过程的高度紧张而大病了一个月，制片方一直等她康复以后才开机，让吕中感动不已。<BR>　　袁世凯选到最后选中的是外形帅气的孙淳。孙淳这些年扮演的大多是都市型的、有文化的中年男性形象，和历史上的袁世凯相差甚远，但据史料记载，袁世凯生就一双美目，孙淳恰好符合这个条件。孙淳为了从外形上接近袁世凯，不惜“增肥”30多斤。后来拍完了又减了30多斤，如此反复，身体给减出了一场大病。<BR>　　一部《走向共和》，拍了九个月。在北京大兴搭建了全国最大的室内摄影棚，所有的内景都在9000平方米的大棚里拍摄，袁世凯的总统府、李鸿章的宅院、慈禧的皇城等都在这里搭建完成。外景更是踏遍了大江南北，民国戏在上海完成，日本戏在广东中山完成，战争戏在青岛、莱芜完成。为了追求真实的效果，在青岛还动用了大批军舰真实地还原甲午海战的悲壮场面。<BR>　　从《雍正王朝》获得的高回报不同，虽然《走向共和》火了，但是实际的投资人刘文武并没有赚到什么钱。据刘文武的说法，《走向共和》的全部投资是4100万，刘试图把成本控制在每集55到60万之间，后来发现在拍摄过程中实际成本达到了70万一集，而原来定好的是以每集75万的价格将所有的权利一次性卖给中央电视台。加上税收和自己公司的办公成本，刘文武不仅没有赚钱，反而亏了近100万。<BR>　　卖给中央电视台的理由是希望能够在没有经济压力的情况下，把电视剧的品质做好。<BR>　　“我是一个浪漫主义者，做一件事，就花心血把它做好，让自己满意。电视剧是一个集体合作的艺术，认真是成功的关键。我觉得电视剧的每一个环节，都要有一流的专业基础非常强的人来进行组合，一定要是最优秀的，否则要想做成精品太难。开拍之前，在编剧、制片人、策划每人桌子上面前放一份剧本，然后找一个工作人员念，凡是多余的字都去掉，我们自己看电视剧的时候感到反感的地方，要在这个戏里面消失。”<BR>　　刘文武总结说，“这回赚的只是名声和制作经验。我下一部电视剧决不能这么干了，现在的电视剧形势不是太好，必须控制成本，没有利润是在这个行当里维持不久的。”<BR>　　“1999年3月开始筹划、编剧，2001年10月4日正式开拍，一直到去年7月28日停机。可以说我们投入在这部剧上的精力起码是《雍正王朝》的两倍。”张黎说。<BR>　　时间跨度为80年，出场人物达270多位，59集的《走向共和》4月9日起在中央电视台一套黄金档播出。<BR><BR>
+<TABLE cellSpacing=2 cellPadding=1 width="100%" border=1>
+<TBODY>
+<TR>
+<TD>
+<P align=center><IMG alt="" hspace=0 src="http://www.nanfangdaily.com.cn/zm/20030508/wh/whtt/200305080728_186493.jpg" align=baseline border=0></P></TD>
+<TD>
+<P align=center><IMG alt="" hspace=0 src="http://www.nanfangdaily.com.cn/zm/20030508/wh/whtt/200305080728_186494.jpg" align=baseline border=0></P></TD></TR>
+<TR>
+<TD colSpan=2>　　“我们的原则是只写大人物，不写小人物。”《走向共和》编剧之一的盛和煜说。李鸿章和慈禧（左图）、孙中山和袁世凯（右图）是剧中最大的大人物。</TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+<P>
+<TABLE cellSpacing=2 cellPadding=1 width="100%" border=1>
+<TBODY>
+<TR>
+<TD>
+<P align=center><IMG alt="" hspace=0 src="http://www.nanfangdaily.com.cn/zm/20030508/wh/whtt/200305080728_186495.jpg" align=baseline border=0></P>
+<P align=center>慈禧</P></TD>
+<TD>
+<P align=center><IMG alt="" hspace=0 src="http://www.nanfangdaily.com.cn/zm/20030508/wh/whtt/200305080728_186496.jpg" align=baseline border=0></P>
+<P align=center>李鸿章</P></TD></TR>
+<TR>
+<TD>
+<P align=center><IMG alt="" hspace=0 src="http://www.nanfangdaily.com.cn/zm/20030508/wh/whtt/200305080728_186497.jpg" align=baseline border=0></P>
+<P align=center>袁世凯</P></TD>
+<TD>
+<P align=center><IMG alt="" hspace=0 src="http://www.nanfangdaily.com.cn/zm/20030508/wh/whtt/200305080728_186498.jpg" align=baseline border=0></P>
+<P align=center>孙中山</P></TD></TR></TBODY></TABLE></P>
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"《走向共和》内幕故事"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"May 8, 2003"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"《走向共和》内幕故事 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"《走向共和》内幕故事"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

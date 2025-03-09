@@ -1,0 +1,34 @@
+1:"$Sreact.fragment"
+2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
+3:I[5244,[],""]
+4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+5:I[3866,[],""]
+7:I[6213,[],"OutletBoundary"]
+a:I[6213,[],"ViewportBoundary"]
+c:I[6213,[],"MetadataBoundary"]
+e:I[4835,[],""]
+:HC["/",""]
+:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
+:HL["/_next/static/css/4e78de3af272c993.css","style"]
+0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2007","03","23","000066"],"i":false,"f":[[["",{"children":[["slug","2007/03/23/000066","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2007/03/23/000066","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","ME9dsse8Ey5Heq5k01gWd",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
+10:Tcc4,
+<p style="text-align: center;"><a href="http://www.flickr.com/photos/xdanger/431740480/" title="反对上海盗版EasyMorning"><img src="http://files.xdanger.com/phlickr/173/431740480_c97bb00678.jpg" style="border: 1px solid #ccc; margin: 6px; padding: 4px; width: 500px; height: 286px;" alt="EasyMorning官方论坛上相关帖子的标签云" /></a></p>
+<p>　　3月21日早上8点<a href="http://embraceware.com/software/awaken/">醒来</a>，打开收音机，FM87.9MHz里传来的竟然不是小飞喻舟欢快的早安，而是2个及其没营养的声音，第一反映就是频率错了。反复看了<a href="http://www.nokia.com.cn/cn/phones/models/n91/features/features.shtml">N91</a>上的数字后，确认没睡糊涂，是87.9呢，而且主持人满口称这档节目是 CRI 的 EasyMorning。算了吧，不知道为什么竟然前一天没任何说法就换主持人了，当时还以为是临时的，可能小飞和喻舟都正好有事。想不到，第二天还是那2个LR在背书，早上本来就睡意还没去，听这种声音就更起不来了……</p>
+<p>　　今天还是抱了最后一线希望打开调频，哈哈，听到的正是小飞喻舟最兴奋的问候声！真叫喜出望外，当时就感动得哭了……然而，2人从头就没提过前2天换主持人的事，而且言词隐晦，这才让我感觉到这件事情有蹊跷。上网一查才知道，原来前2天我听到的是上海地区盗版的 EasyMorning！太有意思了，原来广播节目都能盗版的！原来劫持路由定向投放盗版广告在中国不是独有的，广播都能被劫持来强奸你耳朵！据<a href="http://enpf.chinabroadcast.cn/community/forums/post/293572.aspx">网友说</a>，SMG原来打算永远劫持下去了，就是说上海地区可能再也听不到正版 EasyMorning 了，真让人长见识了……</p>
+<p>　　非常感动，幸好有那么多支持 EasyMorning 的朋友，否则上海可能永远没有飞鱼的蓝天了；幸好有<a href="http://enpf.chinabroadcast.cn/community/forums/32/ShowForum.aspx">互联网</a>，不然信息渠道的垄断会永远让多数人（包括我）以为这个节目就这么毁了。</p>
+<p>　　PS：EasyMorning 是中国国际广播电台（简称 CRI，北京91.5MHz，上海87.9MHz，石家庄91.5MHz，合肥92.4MHz，兰州98.5MHz，厦门95.8MHz，拉萨105MHz）的一档周一至周五早上8点到11点的两人综艺节目，主持人飞鱼和喻舟。内容就是两人调侃一些有意思的资讯和无聊的话题。以下是一段<a href="http://www.netnoease.com/200702/popcorn.html">网不易曾经引用过</a>的小段子：</p>
+<p id="easymorning-sample"><a href="http://www.xdanger.com/2007/03/23/000066.html">您可能正在使用RSS阅读器，请单击此链接换到浏览器收听</a></p>
+<script type="text/javascript" src="http://www.xdanger.com/javascripts/ufo.js"></script>
+<script type="text/javascript">
+	var FO = { movie:"http://www.xdanger.com/images/mp3player.swf",width:"500",height:"240",majorversion:"7",build:"0",bgcolor:"#FFFFFF",
+		flashvars:"file=http://files.xdanger.com/EasyMorning-Sample.mp3&image=http://files.xdanger.com/phlickr/161/431826315_05eb2606c0.jpg" };
+	UFO.create(FO,"easymorning-sample");
+</script>
+
+
+6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"CRI EasyMorning 惨遭劫持"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"March 23, 2007"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"CRI EasyMorning 惨遭劫持 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"CRI EasyMorning 惨遭劫持"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
