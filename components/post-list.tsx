@@ -62,8 +62,7 @@ export function PostList({ initialPosts, postsPerPage = 10 }: PostListProps) {
         href={`/${cleanSlug}`}
         className={`group block ${isFeatured ? 'col-span-full' : ''}`}
       >
-        <article className={`h-full bg-card hover:bg-accent transition-colors rounded-lg border border-border group-hover:border-border/80 ${isFeatured ? 'p-8 md:p-12' : 'p-6'
-          }`}>
+        <article className="h-full bg-card hover:bg-accent transition-colors rounded-lg border border-border p-6 group-hover:border-border/80">
           <time className="text-sm text-muted-foreground">
             {formatDate(date)}
           </time>
@@ -75,8 +74,7 @@ export function PostList({ initialPosts, postsPerPage = 10 }: PostListProps) {
               {post.preview}
             </p>
           )}
-          <div className={`flex items-center text-sm text-muted-foreground ${isFeatured ? 'mt-6' : 'mt-4'
-            }`}>
+          <div className="mt-4 flex items-center text-sm text-muted-foreground">
             <span className="group-hover:text-accent-foreground transition-colors">
               Read more →
             </span>
