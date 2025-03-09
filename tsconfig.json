@@ -6,8 +6,7 @@
  * - 模块: ESM (与Next.js兼容)
  * - 路径别名: 使用 @/ 指向项目根目录
  * - 类型声明: 同时支持node_modules和项目本地types目录的声明文件
- */
-{
+ */{
   "compilerOptions": {
     "target": "ES2017",
     "lib": [
@@ -44,11 +43,12 @@
     ]
   },
   "include": [
-    "next-env.d.ts",
-    "types/**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "types/**/*.d.ts",
+    "_sites/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
