@@ -1,12 +1,12 @@
 /**
- * 应用根布局组件
+ * Root layout component for the application
  *
- * 提供全站共享的布局结构，包括：
- * - 主题切换支持（同时支持React状态和原生JS切换）
- * - 字体加载和应用
- * - HTML/Body基础结构
- * - 元数据配置
- * - 数学公式渲染（MathJax - 仅客户端渲染）
+ * Provides shared layout structure for the entire site, including:
+ * - Theme switching support (supports both React state and native JS switching)
+ * - Font loading and application
+ * - HTML/Body basic structure
+ * - Metadata configuration
+ * - Mathematical formula rendering (MathJax - client-side only)
  */
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/mode-toggle";
@@ -46,38 +46,51 @@ export default function RootLayout({
   return (
     <html
       lang="zh-CN"
+      suppressHydrationWarning
       className={`${lxgwBrightMedium.variable} antialiased`}>
       <head>
-        {/* 静态导出模式下的主题切换脚本 */}
+        {/* Theme switching script for static export mode */}
         <script async src="/theme-switcher.js" />
-        {/* 初始主题检测脚本，防止错误主题闪烁 */}
+
+        {/* Initial theme detection script - with hydration fix */}
         <script dangerouslySetInnerHTML={{
           __html: `
             (function() {
               try {
+                // Store theme preference but don't apply it immediately
                 const storedTheme = localStorage.getItem('theme-preference');
-                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.classList.add(theme);
+                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+                // Set a data attribute instead of class to avoid hydration mismatch
+                document.documentElement.dataset.theme = preferredTheme;
+
+                // Apply the theme class after hydration
+                window.addEventListener('DOMContentLoaded', () => {
+                  setTimeout(() => {
+                    document.documentElement.classList.add(preferredTheme);
+                  }, 0);
+                });
               } catch (e) {}
             })();
           `
         }} />
 
-        {/* MathJax配置 */}
+        {/* MathJax configuration */}
         <script dangerouslySetInnerHTML={{
           __html: `
             window.MathJax = {
               tex: {
                 inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
                 displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],
-                processEscapes: true
+                processEscapes: true,
+                processEnvironments: true
               },
               svg: {
                 fontCache: 'global'
               },
               startup: {
                 ready: function() {
-                  console.log('MathJax 已准备好');
+                  console.log('MathJax is ready');
                   MathJax.startup.defaultReady();
                 }
               }
@@ -85,63 +98,51 @@ export default function RootLayout({
           `
         }} />
 
-        {/* 加载 MathJax 脚本 */}
+        {/* Load MathJax script */}
         <script
           id="MathJax-script"
           async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
         />
 
-        {/* 确保MathJax加载完成后渲染 */}
+        {/* MathJax auto-render setup */}
         <script dangerouslySetInnerHTML={{
           __html: `
-            // 监听页面加载完成事件
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
             window.addEventListener('load', function() {
-              console.log('页面完全加载完成，等待MathJax初始化');
+              console.log('Page loaded, setting up MathJax');
 
-              // 检查MathJax是否已加载
-              function checkMathJaxAndRender() {
+              // Initial render with retry
+              const checkAndRender = function() {
                 if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
-                  console.log('MathJax已加载，开始初次渲染');
-                  setTimeout(() => {
-                    window.MathJax.typesetPromise()
-                      .then(() => console.log('MathJax初次渲染完成'))
-                      .catch(err => console.error('MathJax渲染出错:', err));
-                  }, 1000);
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
 
-                  // 监听URL变化（适用于客户端路由导航）
+                  // URL change detection
                   let lastUrl = window.location.href;
                   setInterval(() => {
                     if (lastUrl !== window.location.href) {
-                      console.log('URL变化，准备重新渲染');
+                      console.log('URL changed, re-rendering');
                       lastUrl = window.location.href;
-                      setTimeout(() => {
-                        window.MathJax.typesetPromise()
-                          .then(() => console.log('导航后MathJax渲染完成'))
-                          .catch(err => console.error('导航后MathJax渲染出错:', err));
-                      }, 1000);
+                      setTimeout(window.renderMathJax, 500);
                     }
                   }, 500);
 
-                  // 监听DOM变化
+                  // Content change detection
                   if (typeof MutationObserver !== 'undefined') {
-                    console.log('设置MutationObserver监听内容变化');
                     const observer = new MutationObserver(mutations => {
-                      let shouldRender = false;
-                      for (let mutation of mutations) {
-                        if (mutation.addedNodes.length > 0) {
-                          shouldRender = true;
-                          break;
-                        }
-                      }
-
-                      if (shouldRender) {
-                        console.log('内容变化，重新渲染MathJax');
-                        setTimeout(() => {
-                          window.MathJax.typesetPromise()
-                            .then(() => console.log('内容变化后MathJax渲染完成'))
-                            .catch(err => console.error('内容变化后MathJax渲染出错:', err));
-                        }, 500);
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
                       }
                     });
 
@@ -151,19 +152,18 @@ export default function RootLayout({
                     });
                   }
                 } else {
-                  console.log('MathJax尚未加载，等待中...');
-                  setTimeout(checkMathJaxAndRender, 500);
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
                 }
-              }
+              };
 
-              // 启动MathJax检查和渲染
-              setTimeout(checkMathJaxAndRender, 1000);
+              setTimeout(checkAndRender, 1000);
             });
           `
         }} />
       </head>
       <body>
-        {/* 客户端React模式下的主题提供者 */}
+        {/* Theme provider for client-side React mode */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

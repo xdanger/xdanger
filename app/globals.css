@@ -50,7 +50,8 @@ body {
   --sidebar-ring: oklch(0.871 0.006 286.286);
 }
 
-.dark {
+.dark,
+[data-theme="dark"] {
   --background: hsl(240 10% 3.9%);
   --foreground: hsl(0 0% 98%);
   --card: hsl(240 10% 3.9%);

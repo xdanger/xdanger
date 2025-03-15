@@ -11,7 +11,14 @@ export function ThemeProvider({
   ...props
 }: React.ComponentProps<typeof NextThemesProvider>) {
   return (
-    <NextThemesProvider attribute="class" enableSystem={false} enableColorScheme={false} disableTransitionOnChange={false} {...props}>
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem={true}
+      enableColorScheme={false}
+      disableTransitionOnChange={false}
+      {...props}
+    >
       {children}
     </NextThemesProvider>
   )
