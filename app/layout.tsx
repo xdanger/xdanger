@@ -6,6 +6,7 @@
  * - 字体加载和应用
  * - HTML/Body基础结构
  * - 元数据配置
+ * - 数学公式渲染（MathJax）
  */
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/mode-toggle";
@@ -46,7 +47,7 @@ export default function RootLayout({
       className={`${lxgwBrightMedium.variable} antialiased`}>
       <head>
         {/* 静态导出模式下的主题切换脚本 */}
-        <script src="/theme-switcher.js" defer></script>
+        <script async src="/theme-switcher.js" />
         {/* 初始主题检测脚本，防止错误主题闪烁 */}
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -59,6 +60,36 @@ export default function RootLayout({
             })();
           `
         }} />
+
+        {/* MathJax配置和加载 - 用于渲染数学公式 */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.MathJax = {
+              tex: {
+                packages: ['base', 'ams', 'noerrors', 'noundefined'],
+                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],
+                processEscapes: true,
+                processEnvironments: true
+              },
+              options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                processHtmlClass: 'prose'
+              },
+              startup: {
+                typeset: true
+              },
+              chtml: {
+                fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+              }
+            };
+          `
+        }} />
+        <script
+          id="MathJax-script"
+          async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
       </head>
       <body>
         {/* 客户端React模式下的主题提供者 */}

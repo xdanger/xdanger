@@ -1,8 +1,13 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from 'remark';
-import html from 'remark-html';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import remarkMath from 'remark-math';
+import rehypeMathJaxChtml from 'rehype-mathjax/chtml';
+import rehypeStringify from 'rehype-stringify';
+import rehypeRaw from 'rehype-raw';
 
 // This function will read all posts and sort them by date
 export async function getLatestPosts() {
@@ -71,11 +76,28 @@ export async function getLatestPosts() {
                 // HTML文件直接使用内容，不需要额外渲染
                 contentHtml = content;
             } else {
-                // Markdown文件需要使用remark渲染
-                const processedContent = await remark()
-                    .use(html)
+                // Markdown文件需要使用unified处理流程，支持数学公式
+                const fileContent = await unified()
+                    .use(remarkParse) // 解析Markdown
+                    .use(remarkMath) // 解析数学公式
+                    .use(remarkRehype, { allowDangerousHtml: true }) // 转换为rehype AST
+                    .use(rehypeRaw) // 保留内联HTML
+                    .use(rehypeMathJaxChtml, {
+                        chtml: {
+                            fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+                        },
+                        tex: {
+                            packages: ['base', 'ams', 'noerrors', 'noundefined'],
+                            inlineMath: [['$', '$'], ['\\(', '\\)']],
+                            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                            processEscapes: true,
+                            processEnvironments: true
+                        }
+                    }) // 将数学公式渲染为MathJax HTML，使用与客户端一致的配置
+                    .use(rehypeStringify) // 转换为HTML字符串
                     .process(content);
-                contentHtml = processedContent.toString();
+
+                contentHtml = fileContent.toString();
             }
 
             // Combine the data
