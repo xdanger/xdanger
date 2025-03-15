@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-// 为 MathJax 定义类型
+// Define types for MathJax
 declare global {
   interface Window {
     MathJax?: {
@@ -11,25 +11,25 @@ declare global {
   }
 }
 
-export function BlogContent({ html }: { html: string }) {
-  // 当内容变化时自动渲染MathJax
+export function PostContent({ html }: { html: string }) {
+  // Auto-render MathJax when content changes
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // 立即尝试一次渲染
+      // Try rendering immediately
       setTimeout(() => {
         renderMathJax();
       }, 300);
 
-      // 然后再尝试一次延迟渲染（确保DOM完全更新）
+      // Try again after a delay (ensure DOM is fully updated)
       const timer = setTimeout(() => {
         renderMathJax();
       }, 1000);
 
       return () => clearTimeout(timer);
     }
-  }, [html]); // 当html内容变化时重新渲染
+  }, [html]); // Re-render when html content changes
 
-  // 渲染MathJax函数
+  // Function to render MathJax
   const renderMathJax = () => {
     if (typeof window === 'undefined') return;
 
