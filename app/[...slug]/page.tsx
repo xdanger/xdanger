@@ -101,7 +101,7 @@ export default async function PostPage({ params }: PageProps) {
 
       <main className="container max-w-3xl mx-auto pb-24">
         <article className="prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
+          <h1>{post.title}</h1>
           <time className="text-md text-muted-foreground">
             {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>

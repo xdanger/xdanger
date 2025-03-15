@@ -6,6 +6,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 
 // Get the posts directory path - this is where your markdown files live
 const postsDirectory = path.join(process.cwd(), "_posts");
@@ -71,6 +72,7 @@ export async function getLatestPosts() {
                 // Basic markdown to HTML conversion, preserving all HTML and math formulas
                 const processedContent = await unified()
                     .use(remarkParse)
+                    .use(remarkGfm)
                     .use(remarkRehype, { allowDangerousHtml: true })
                     .use(rehypeRaw)
                     .use(rehypeStringify, { allowDangerousHtml: true })

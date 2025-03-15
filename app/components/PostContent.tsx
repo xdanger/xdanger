@@ -52,7 +52,7 @@ export function PostContent({ html }: { html: string }) {
 
   return (
     <div className="prose max-w-full">
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="text-lg" dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 }

@@ -166,6 +166,105 @@ body {
   font-weight: 600;
 }
 
+.prose h1 {
+  font-size: 1.8em;
+}
+
+.prose h2 {
+  font-size: 1.4em;
+}
+
+.prose h3 {
+  font-size: 1.2em;
+}
+
+.prose h4 {
+  font-size: 1.0em;
+}
+
+.prose h5 {
+  font-size: 1.0em;
+}
+
+/* 添加表格样式 */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  overflow-x: auto;
+  display: block;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 0;
+}
+
+.prose table th {
+  font-weight: 700;
+  background-color: transparent;
+  color: #24292f;
+  padding: 0.66em 0.75em;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #BEBEBE;
+}
+
+.prose table td {
+  padding: 0.66em 0.75em;
+  border: none;
+  border-bottom: 1px solid #E5E5E5;
+  vertical-align: top;
+}
+
+.prose table tr {
+  background-color: transparent;
+  border: none;
+}
+
+.prose table tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+/* 处理表格圆角 - 不再需要 */
+.prose table tr:first-child th:first-child,
+.prose table tr:first-child th:last-child,
+.prose table tr:last-child td:first-child,
+.prose table tr:last-child td:last-child {
+  border-radius: 0;
+}
+
+/* 暗色模式适配 */
+.dark .prose table {
+  border: none;
+}
+
+.dark .prose table th {
+  background-color: transparent;
+  color: #c9d1d9;
+  border: none;
+  border-bottom: 2px solid #30363d;
+}
+
+.dark .prose table td {
+  border: none;
+  border-bottom: 1px solid #30363d;
+}
+
+.dark .prose table tr {
+  background-color: transparent;
+  border: none;
+}
+
+.dark .prose table tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+/* 确保表格响应式 */
+@media (min-width: 768px) {
+  .prose table {
+    display: table;
+  }
+}
+
 .blog-container {
   max-width: 1200px;
   margin: 0 auto;

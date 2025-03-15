@@ -7,6 +7,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 
 // Directory where your blog posts are stored
 const postsDirectory = path.join(process.cwd(), "posts");
@@ -22,6 +23,7 @@ export async function getPostBySlug(slug: string) {
   // Basic markdown to HTML conversion, preserving all HTML and math formulas
   const processedContent = await unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeStringify, { allowDangerousHtml: true })
