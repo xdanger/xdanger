@@ -2,14 +2,16 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypeRaw from 'rehype-raw';
 
 // Directory where your blog posts are stored
 const postsDirectory = path.join(process.cwd(), "posts");
 
 export async function getPostBySlug(slug: string) {
-  // console.log("slug: ", slug);
   // Read markdown file as string
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -17,8 +19,13 @@ export async function getPostBySlug(slug: string) {
   // Parse frontmatter and content
   const { data, content } = matter(fileContents);
 
-  // Convert markdown to HTML
-  const processedContent = await remark().use(html).process(content);
+  // Basic markdown to HTML conversion, preserving all HTML and math formulas
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(content);
   const contentHtml = processedContent.toString();
 
   return {
@@ -27,7 +34,6 @@ export async function getPostBySlug(slug: string) {
     title: data.title,
     date: data.date,
     excerpt: data.excerpt || "",
-    // Add other frontmatter fields you use in Jekyll
   };
 }
 

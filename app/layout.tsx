@@ -6,12 +6,14 @@
  * - 字体加载和应用
  * - HTML/Body基础结构
  * - 元数据配置
- * - 数学公式渲染（MathJax）
+ * - 数学公式渲染（MathJax - 仅客户端渲染）
  */
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/mode-toggle";
 import "./globals.css";
 import { lxgwBrightMedium } from '@/lib/fonts';
+// 当组件准备好后再导入
+// import { MathJaxRenderer } from "@/components/MathJaxRenderer";
 
 // 以下为备选字体配置，当前未使用
 // import { GeistSans } from 'geist/font/sans';
@@ -61,35 +63,104 @@ export default function RootLayout({
           `
         }} />
 
-        {/* MathJax配置和加载 - 用于渲染数学公式 */}
+        {/* MathJax配置 */}
         <script dangerouslySetInnerHTML={{
           __html: `
             window.MathJax = {
               tex: {
-                packages: ['base', 'ams', 'noerrors', 'noundefined'],
                 inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
                 displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],
-                processEscapes: true,
-                processEnvironments: true
+                processEscapes: true
               },
-              options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-                processHtmlClass: 'prose'
+              svg: {
+                fontCache: 'global'
               },
               startup: {
-                typeset: true
-              },
-              chtml: {
-                fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+                ready: function() {
+                  console.log('MathJax 已准备好');
+                  MathJax.startup.defaultReady();
+                }
               }
             };
           `
         }} />
+
+        {/* 加载 MathJax 脚本 */}
         <script
           id="MathJax-script"
           async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-        </script>
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+        />
+
+        {/* 确保MathJax加载完成后渲染 */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // 监听页面加载完成事件
+            window.addEventListener('load', function() {
+              console.log('页面完全加载完成，等待MathJax初始化');
+
+              // 检查MathJax是否已加载
+              function checkMathJaxAndRender() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax已加载，开始初次渲染');
+                  setTimeout(() => {
+                    window.MathJax.typesetPromise()
+                      .then(() => console.log('MathJax初次渲染完成'))
+                      .catch(err => console.error('MathJax渲染出错:', err));
+                  }, 1000);
+
+                  // 监听URL变化（适用于客户端路由导航）
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL变化，准备重新渲染');
+                      lastUrl = window.location.href;
+                      setTimeout(() => {
+                        window.MathJax.typesetPromise()
+                          .then(() => console.log('导航后MathJax渲染完成'))
+                          .catch(err => console.error('导航后MathJax渲染出错:', err));
+                      }, 1000);
+                    }
+                  }, 500);
+
+                  // 监听DOM变化
+                  if (typeof MutationObserver !== 'undefined') {
+                    console.log('设置MutationObserver监听内容变化');
+                    const observer = new MutationObserver(mutations => {
+                      let shouldRender = false;
+                      for (let mutation of mutations) {
+                        if (mutation.addedNodes.length > 0) {
+                          shouldRender = true;
+                          break;
+                        }
+                      }
+
+                      if (shouldRender) {
+                        console.log('内容变化，重新渲染MathJax');
+                        setTimeout(() => {
+                          window.MathJax.typesetPromise()
+                            .then(() => console.log('内容变化后MathJax渲染完成'))
+                            .catch(err => console.error('内容变化后MathJax渲染出错:', err));
+                        }, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax尚未加载，等待中...');
+                  setTimeout(checkMathJaxAndRender, 500);
+                }
+              }
+
+              // 启动MathJax检查和渲染
+              setTimeout(checkMathJaxAndRender, 1000);
+            });
+          `
+        }} />
       </head>
       <body>
         {/* 客户端React模式下的主题提供者 */}

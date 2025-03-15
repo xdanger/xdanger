@@ -5,6 +5,7 @@ import { Header } from '@/components/header';
 import * as React from 'react';
 import type { PageProps } from 'next';
 import type { Metadata } from 'next';
+import { BlogContent } from '../components/BlogContent';
 
 // 将配置移到单独的对象中，符合Next.js的静态解析需求
 export const dynamic = 'auto';
@@ -104,7 +105,7 @@ export default async function PostPage({ params }: PageProps) {
           <time className="text-md text-muted-foreground">
             {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} className="text-lg" />
+          <BlogContent html={post.content} />
 
           {/* 文章导航链接 - 注释掉，不显示
           <div className="mt-10 pt-6 border-t border-border text-sm flex justify-center">
@@ -127,3 +128,6 @@ export default async function PostPage({ params }: PageProps) {
     </div>
   );
 }
+
+// 确保这个页面组件正确使用BlogContent来渲染博客内容
+// BlogContent组件已添加了自动触发MathJax渲染的逻辑

@@ -225,3 +225,28 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* MathJax 样式修复 */
+.MathJax {
+  display: inline-block !important;
+  margin: 0 0.2em;
+  vertical-align: middle;
+}
+
+/* 确保行内公式不会换行 */
+mjx-container[jax="SVG"][display="false"] {
+  display: inline-block !important;
+  vertical-align: middle;
+}
+
+/* 确保公式和周围文本对齐 */
+mjx-container[jax="SVG"][display="false"]>svg {
+  vertical-align: middle;
+}
+
+/* 行间公式样式 */
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+}
