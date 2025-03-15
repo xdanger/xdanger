@@ -86,7 +86,8 @@ export default function RootLayout({
                 processEnvironments: true
               },
               svg: {
-                fontCache: 'global'
+                fontCache: 'global',
+                scale: 1.3  // 增大公式字体大小，默认为1.0
               },
               startup: {
                 ready: function() {
