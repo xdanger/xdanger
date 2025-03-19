@@ -138,34 +138,6 @@ body {
   }
 }
 
-.prose strong {
-  color: hsl(var(--foreground));
-  font-weight: 600;
-}
-
-.prose a {
-  color: hsl(var(--foreground));
-  text-decoration: underline;
-  font-weight: 500;
-}
-
-.prose p {
-  margin: 1.2em 0;
-}
-
-.prose li {
-  margin: 0.5em 0;
-}
-
-.prose h1,
-.prose h2,
-.prose h3 {
-  color: var(--foreground);
-  margin-top: 2em;
-  margin-bottom: 1em;
-  font-weight: 600;
-}
-
 .prose h1 {
   font-size: 1.8em;
 }
@@ -186,17 +158,53 @@ body {
   font-size: 1.0em;
 }
 
-.prose li:not(:first-child) {
+.prose h1,
+.prose h2,
+.prose h3 {
+  color: var(--foreground);
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-weight: 600;
+}
+
+.prose strong {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.prose a {
+  color: hsl(var(--foreground));
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.prose p {
+  margin: 1.2em 0;
+}
+
+.prose li {
   margin-top: 0.2em;
 }
 
+/* .prose ul:not(:first-child) {
+  margin-top: 0.7em;
+} */
+
 .prose blockquote {
-  border-left-color: var(--muted-background) !important;
-  border-left-width: 4px;
+  border-left-color: var(--muted-background);
+  border-left-width: 3px;
   color: var(--muted-foreground);
   font-size: 90%;
   padding-left: 1em;
   margin-left: 1em;
+}
+
+.prose blockquote h1,
+.prose blockquote h2,
+.prose blockquote h3,
+.prose blockquote h4,
+.prose blockquoteh5 {
+  color: var(--muted-foreground);
 }
 
 /* 添加表格样式 */
