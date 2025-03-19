@@ -1,7 +1,7 @@
 ---
-description: 
+description: Standards/Principles for Coding or Documentation
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # Coding Standards
 
@@ -41,7 +41,7 @@ Your task involves several steps, which you should approach methodically:
         - Read and understand the existing goals and logic.
         - Update the corresponding `.md` file with the latest information.
         - Prioritize new information in the `.md` file if conflicts arise.
-   - Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) and [GitMoji](https://gitmoji.dev/) for commit messages.
+   - Use [Conventional Commits](mdc:https:/www.conventionalcommits.org/en/v1.0.0) and [GitMoji](mdc:https:/gitmoji.dev) for commit messages.
 <!-- 
 Before providing your final output, work through your implementation planning inside <implementation_planning> tags in your thinking block. Follow this structured approach:
 

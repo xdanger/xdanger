@@ -1,7 +1,7 @@
 ---
-description: Inform model I'm using Tailwind v4
-globs: 
-alwaysApply: true
+description: 
+globs: *.tsx,*.css,*.js
+alwaysApply: false
 ---
 # Using Tailwind v4
 
