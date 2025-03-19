@@ -197,6 +197,7 @@ body {
   font-size: 90%;
   padding-left: 1em;
   margin-left: 1em;
+  text-align: left;
 }
 
 .prose blockquote h1,
@@ -258,6 +259,10 @@ body {
   font-size: 0.85em;
   margin-top: 0.5em;
   text-align: center;
+}
+
+.prose hr {
+  margin: 2em 0;
 }
 
 /* 暗色模式适配 */
