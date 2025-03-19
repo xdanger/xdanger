@@ -87,7 +87,7 @@ export default function RootLayout({
               },
               svg: {
                 fontCache: 'global',
-                scale: 1.3  // 增大公式字体大小，默认为1.0
+                scale: 1.1  // 增大公式字体大小，默认为 1.0
               },
               startup: {
                 ready: function() {

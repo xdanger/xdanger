@@ -100,9 +100,9 @@ export default async function PostPage({ params }: PageProps) {
       <Header />
 
       <main className="container max-w-3xl mx-auto pb-24">
-        <article className="prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none">
+        <article className="prose px-4 md:px-8 dark:prose-invert max-w-none">
           <h1>{post.title}</h1>
-          <time className="text-md text-muted-foreground">
+          <time className="text-muted-foreground">
             {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
           <PostContent html={post.content} />
