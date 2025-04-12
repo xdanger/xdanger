@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="zh-CN" class="__variable_c4692a antialiased"><head><meta charSet="utf-8"/><link rel="preconnect" href="/" crossorigin=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/89fe303d45fc1d3c.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-fe83f22eebcef24a.js"/><script src="/_next/static/chunks/4bd1b696-07549356623625fd.js" async=""></script><script src="/_next/static/chunks/587-c2ee8971ddae4e86.js" async=""></script><script src="/_next/static/chunks/main-app-a30ecb3c5bf8d20f.js" async=""></script><script src="/_next/static/chunks/app/layout-18d5088c99c4b723.js" async=""></script><script src="/_next/static/chunks/app/error-819170ca5010743f.js" async=""></script><script async="" src="/theme-switcher.js"></script><script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script><script src="/_next/static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js" async=""></script><meta name="next-size-adjust" content=""/><title>重力加速度 (g) 决定能否成为多行星文明 - xdanger&#x27;s Blog</title><meta name="description" content="重力加速度 (g) 决定能否成为多行星文明"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script>
+            (function() {
+              try {
+                // Store theme preference but don't apply it immediately
+                const storedTheme = localStorage.getItem('theme-preference');
+                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+                // Set a data attribute instead of class to avoid hydration mismatch
+                document.documentElement.dataset.theme = preferredTheme;
+
+                // Apply the theme class after hydration
+                window.addEventListener('DOMContentLoaded', () => {
+                  setTimeout(() => {
+                    document.documentElement.classList.add(preferredTheme);
+                  }, 0);
+                });
+              } catch (e) {}
+            })();
+          </script><script>
+            window.MathJax = {
+              tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+              },
+              svg: {
+                fontCache: 'global',
+                scale: 1.1  // 增大公式字体大小，默认为 1.0
+              },
+              startup: {
+                ready: function() {
+                  console.log('MathJax is ready');
+                  MathJax.startup.defaultReady();
+                }
+              }
+            };
+          </script><script>
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
+            window.addEventListener('load', function() {
+              console.log('Page loaded, setting up MathJax');
+
+              // Initial render with retry
+              const checkAndRender = function() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
+
+                  // URL change detection
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL changed, re-rendering');
+                      lastUrl = window.location.href;
+                      setTimeout(window.renderMathJax, 500);
+                    }
+                  }, 500);
+
+                  // Content change detection
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(mutations => {
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
+                }
+              };
+
+              setTimeout(checkAndRender, 1000);
+            });
+          </script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body><script>((e,t,r,n,o,a,i,u)=>{let s=document.documentElement,l=["light","dark"];function c(t){var r;(Array.isArray(e)?e:[e]).forEach(e=>{let r="class"===e,n=r&&a?o.map(e=>a[e]||e):o;r?(s.classList.remove(...n),s.classList.add(t)):s.setAttribute(e,t)}),r=t,u&&l.includes(r)&&(s.style.colorScheme=r)}if(n)c(n);else try{let e=localStorage.getItem(t)||r,n=i&&"system"===e?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":e;c(n)}catch(e){}})("class","theme-preference","system",null,["light","dark"],null,true,false)</script><div class="min-h-screen"><header class="py-6"><div class="container max-w-3xl mx-auto px-4 md:px-8 flex items-center justify-between"><a class="text-2xl font-bold tracking-tight" href="/">Yunjie Dai</a></div></header><main class="container max-w-3xl mx-auto pb-24"><article class="prose px-4 md:px-8 dark:prose-invert max-w-none"><h1>重力加速度 (g) 决定能否成为多行星文明</h1><time class="text-muted-foreground">March 15, 2025</time><div class="prose max-w-full"><div class="text-lg"><p>今天看到 <a href="https://x.com/elonmusk/status/1900774290682683612">Elon Musk 宣布</a> "Starship 将于明年年底搭载 Optimus 前往火星。如果着陆顺利，人类登陆火星最早可能在 2029 年开始，不过 2031 年的可能性更大。"</p>
+<p>让我想起他之前在一个 podcast 说过一句话大致这个意思：火箭技术如此之难，因为地球的重力加速度已经接近物理上火箭能逃逸地球重力的极限了，只要 $g$ 再偏差那么一点，人类就永远无法摆脱地球的引力成为多行星文明。</p>
+<p>出于好奇，我来计算一下。</p>
+<p>根据齐奥尔科夫斯基火箭方程（Tsiolkovsky rocket equation）：</p>
+<p>$$\Delta v = v_e \ln \frac{m_0}{m_f}$$</p>
+<p>其中：</p>
+<ul>
+<li>$\Delta v$ 是火箭需要进入的轨道所需的增量速度</li>
+<li>$v_e$ 是火箭引擎的排气速度</li>
+<li>$m_0$ 是火箭的起飞总质量，又称湿重（wet mass）</li>
+<li>$m_f$ 是火箭的入轨后的剩余质量，又称干重（dry mass），包括火箭的结构质量 + 有效载荷（也可能包括剩余推进剂）</li>
+</ul>
+<p>由火箭方程变化后可得：</p>
+<p>$$\frac{m_0}{m_f} = e^{\frac{\Delta v}{v_e}}$$</p>
+<p>$\frac{m_0}{m_f}$ 称为质量比（mass ratio），它随 $\frac{\Delta v}{v_e}$ 呈指数级增长</p>
+<p><img src="/images/2025/03/mass_ratio_vs_dv_ve.svg" alt="火箭质量比与 $\frac{\Delta v/v_e}$ 的关系"></p>
+<h2>$\Delta v$ 的限制</h2>
+<p>根据所需要进入的轨道，所需要的 $\Delta v$ 在教科书上有经验值：</p>
+<ul>
+<li>对于 LEO（近地轨道），取 $\Delta v_{LEO} = 9.5\text{ km/s}$（通常需要在 9.3-10 km/s 之间）</li>
+<li>对于 GSO（地球同步轨道），取 $\Delta v_{GSO} = 10.5\text{ km/s}$</li>
+</ul>
+<p>这里稍微展开下， $\Delta v = \Delta v_{orbit} + \Delta v_{loss}$，其中：</p>
+<ul>
+<li>$\Delta v_{orbit}$ 是轨道速度，$\Delta v_{orbit} = \sqrt{\frac{GM}{R+h}} ≈ 7.73\text{ km/s}$，其中 $M$ 是地球质量，$R$ 是地球半径，$h$ 是轨道高度。
+<ul>
+<li>$G = 6.6743 \times 10^{-11}\text{ m}^3/\text{ kg}\text{ s}^{2}$ 是万有引力常数</li>
+<li>$M = 5.9722 \times 10^{24}\text{ kg}$ 是地球质量</li>
+<li>$R = 6371 \times 10^3\text{ m}$ 是地球半径</li>
+</ul>
+</li>
+<li>$\Delta v_{loss}$ 是大气损失和重力损失，一般取 $1.77\text{ km/s}$，包括
+<ul>
+<li>重力损失：火箭在爬升过程中需要克服地球重力，通常增加约 $1.5–2\text{ km/s}$；</li>
+<li>大气阻力：在大气层中飞行会损失一部分速度，尤其在较低高度，约为 $0.1–0.5\text{ km/s}$；</li>
+<li>地球自转：发射地点纬度会影响 $\Delta v$，例如从赤道发射可利用地球自转速度（约 $0.46\text{ km/s}$），但这是次要因素。</li>
+</ul>
+</li>
+</ul>
+<h2>$v_e$ 的限制</h2>
+<p>化学火箭的排气速度 $v_e$ 因为以下原因存在物理极限：</p>
+<ul>
+<li>推进剂的化学能量密度，化学能量本身有限</li>
+<li>化学反应产生的燃烧产物的排气分子量无法无限降低</li>
+<li>材料承受温度的限制，燃烧室温度受材料限制通常不超过 3,000-4,000K</li>
+<li>热力学效率的约束</li>
+</ul>
+<p>对于化学火箭，理论上的比冲极限约为 500-550 秒，由 $v_e = I_{sp} \times g$ 得出对应的排气速度极限约为 4,900-5,400 m/s。
+实际上，目前最高性能的化学火箭发动机（如使用液氢和液氧的航天飞机主发动机 RS-25）能达到约 450 秒的比冲，相当于约 4,400 m/s 的排气速度。</p>
+<p>要突破这一极限，只有使用非化学推进系统，如离子发动机或核热火箭等。</p>
+<h2>质量比 $r_m$</h2>
+<p>根据 $r_m = \frac{m_0}{m_f} = e^{\frac{\Delta v}{v_e}}$，在 $\Delta v$ 固定（需要 9.5 km/s）的情况下，$v_e$ 越大，质量比 $r_m$ 越小。</p>
+<p>质量比高意味着：</p>
+<ol>
+<li>火箭需要的推进剂越多，火箭的结构尺寸越大；</li>
+<li>燃料使用效率越低，发射成本高昂；</li>
+<li>在火箭的结构体积有工程上限的情况下，留给有效载荷的空间会急剧缩小。</li>
+</ol>
+<p>可见，两级架构大大降低了每一级的质量比，降低了火箭的结构尺寸和燃料使用效率。但最终仍然有 25 的质量比，意味着火箭需要携带 25 倍于（有效载荷 + 上级火箭结构质量）的燃料。</p>
+<p>算到这里，才认识到为什么马斯克如此执着于一定要使用机械臂（Mechazilla）回收火箭，除了可以以小时为单位回收加注燃料再发射之外，任何无助于火箭升空的质量都是 dead weight，一定要尽可能减少。</p>
+<h2>有效载荷 $m_{payload}$</h2>
+<p>我们根据根据 SpaceX 的公开信息，根据 $v_e$ 计算有效载荷。</p>
+<p>Block 1 版本的 Super Heavy 和 Starship 的参数如下：</p>
+<blockquote>
+<p><strong>Super Heavy（第一级）参数</strong>：</p>
+<ul>
+<li>干重（Empty Mass）：约 275 吨，这是 Block 1 版本的估计，可能因设计调整而变化</li>
+<li>湿重（Gross Mass）：约 3675 吨，包括所有推进剂</li>
+<li>海平面推力：约 73.5 MN（百万牛顿），由 33 个 Raptor 发动机提供</li>
+<li>海平面比冲：327 秒，反映发动机在海平面下的效率</li>
+<li>有效排气速度：约 3207 m/s，基于比冲计算（327 * 9.81 m/s²）</li>
+</ul>
+<p><strong>Starship 上级（第二级）参数</strong>：</p>
+<ul>
+<li>干重：约 100 吨，Block 1 版本的估计</li>
+<li>湿重：约 1300 吨，包括约 1200 吨推进剂</li>
+<li>设计入轨载荷：约 100 吨至低地球轨道（LEO），基于设计目标，可能在未来增加至 150 吨</li>
+<li>推力：约 12.25 MN，由 6 个 Raptor 发动机（3 个海平面版和 3 个真空版）提供</li>
+<li>真空比冲：380 秒，适用于真空环境下的性能</li>
+<li>有效排气速度：约 3728 m/s，基于真空比冲计算（380 * 9.81 m/s²）</li>
+</ul>
+<p><strong>总体性能指标</strong>：</p>
+<ul>
+<li>总推重比：约 1.5，基于总推力 73.5 MN 和总起飞质量约 5000 吨（3675 吨 + 1300 吨）的计算</li>
+<li>质量比（mass ratio），假设 100 吨有效载荷，按阶段计算：
+<ul>
+<li>Super Heavy：(3675 + 1300 + 100) / (275 + 1300 + 100) ≈ 3</li>
+<li>Starship：(1300 + 100) / (100 + 100) ≈ 7</li>
+<li>总质量比：(3675 + 1300 + 100) / (100 + 100) ≈ 25.4</li>
+</ul>
+</li>
+<li>delta-v / v_e 比值：Super Heavy 约为 ln(13.36) ≈ 2.59，Starship 约为 ln(6.5) ≈ 1.87，反映各阶段的理论速度增益效率</li>
+</ul>
+</blockquote>
+<p>为符合像 Starship 这样的二级火箭架构，我们展开一下齐奥尔科夫斯基火箭方程，两级火箭的 $\Delta v_\text{LEO}$ 为：</p>
+<p>$$\Delta v_\text{LEO} = v_{e1} \ln\left(\frac{m_{01} + m_{payload}}{m_{sep} + m_{payload}}\right) + v_{e2} \ln\left(\frac{m_{sep} - m_{1,dry} + m_{payload}}{m_{2,dry} + m_{payload}}\right)$$</p>
+<p>其中：</p>
+<ul>
+<li>$m_{01}$ 是火箭起飞的总质量，Starship 大约为 4975 吨，包含：
+<ul>
+<li>一级干重：275 吨</li>
+<li>一级推进剂：3400 吨</li>
+<li>二级干重：100 吨</li>
+<li>二级推进剂：1200 吨</li>
+<li>有效载荷：$m_{payload}$</li>
+</ul>
+</li>
+<li>$m_{sep}$ 是火箭分离前一刻的质量，大约为 4975 - 3400 = 1575 吨</li>
+<li>$m_{1,dry}$ 是一级火箭的干重，大约为 275 吨</li>
+<li>$m_{2,dry}$ 是二级火箭的干重，大约为 100 吨</li>
+<li>$m_{payload}$ 是有效载荷的质量</li>
+<li>$v_{e1}$ 是一级火箭的排气速度，大约为 3.2 km/s</li>
+<li>$v_{e2}$ 是二级火箭的排气速度，大约为 3.7 km/s</li>
+</ul>
+<p>代入上式后，我们得到：</p>
+<p>$$\Delta v_\text{LEO} = 3.2 \ln\left(\frac{4975 + m_{payload}}{1575 + m_{payload}}\right) + 3.7 \ln\left(\frac{1575 - 275 + m_{payload}}{100 + m_{payload}}\right) \text{ km/s}$$</p>
+<p>当 $\Delta v_{LEO} \approx 9.5 \text{ km/s}$ 时，用插值法可以解出 $m_{payload} \approx 189.27 \text{ 吨}$。</p>
+<p>189 吨是我们计算出的理论值，与 SpaceX 公布的 "约 100 吨至低地球轨道（LEO），可能在未来增加至 150 吨" 相符。</p>
+<h2>如果重力加速度 $g$ 再大一点</h2>
+<p>这里我们暂停一下，回头看下之前的两个式子：</p>
+<ol>
+<li>质量比 $r_m = \frac{m_0}{m_f} = e^{\frac{\Delta v}{v_e}}$</li>
+<li>火箭方程 $\Delta v = \sqrt{\frac{GM}{R+h}}$</li>
+</ol>
+<p>关键的数值关系是：</p>
+<ol>
+<li>火箭的质量比 —— 带推进剂的总质量 /（火箭结构 + 有效载荷）的值 —— 与需要的 $\Delta v$ 成指数关系</li>
+<li>火箭需要的 $\Delta v$ —— 与地球质量成正比</li>
+</ol>
+<p>也就是说，运送有效载荷进入轨道所需的火箭的质量（和尺寸），与地球的质量呈现指数关系。</p>
+<p>$$ r_m =\frac{m_0}{m_f} = e^{\frac{\sqrt{\frac{GM}{R+h}}}{v_e}} = e^{\frac{\sqrt{\frac{g \cdot R^2}{R + h}}}{v_e}}$$</p>
+<p>使用现有 Starship 的性能参数计算不同重力系数下的 delta-v 和有效载荷：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">重力系数 f</th><th align="right">重力加速度 (m/s²)</th><th align="right">delta-v (km/s)</th><th align="right">理论有效载荷 (吨)</th></tr></thead><tbody><tr><td align="center">0.80</td><td align="right">7.85</td><td align="right">8.32</td><td align="right">314.76</td></tr><tr><td align="center">0.90</td><td align="right">8.83</td><td align="right">8.92</td><td align="right">244.66</td></tr><tr><td align="center">1.00</td><td align="right">9.81</td><td align="right">9.50</td><td align="right">189.39</td></tr><tr><td align="center">1.10</td><td align="right">10.79</td><td align="right">10.06</td><td align="right">145.06</td></tr><tr><td align="center">1.20</td><td align="right">11.77</td><td align="right">10.60</td><td align="right">109.00</td></tr><tr><td align="center">1.30</td><td align="right">12.75</td><td align="right">11.12</td><td align="right">79.32</td></tr><tr><td align="center">1.40</td><td align="right">13.73</td><td align="right">11.64</td><td align="right">54.66</td></tr></tbody></table>
+<p>使用取样法计算更多取值后，可以画出下图：</p>
+<p><img src="/images/2025/03/deltav_and_payload_vs_gravity_factor.svg" alt="delta-v 和有效载荷与重力系数的关系"></p>
+<p>在当前数值下，189 的理论载荷也只能优化到 150 吨的实际载荷，因此当重力加速度是现在的 1.3 倍时，几乎就无法将任何载荷送到近地轨道了。</p>
+<h2>在轨加注</h2>
+<p>以上计算，还只是将载荷送入最近的 LEO 轨道，因为只要能将一定载荷发射到 LEO，（理论上）就能通过轨道加油技术补充推进剂，获得去月球甚至火星的动力。目前人类还没实现在轨加注技术，原本 SpaceX 计划在今年进行在轨加注测试，目前看来今年完成这个目标非常困难。</p>
+<p>无论如何，在轨加注技术是人类星际探索的必经之路。停在 LEO 的一架 Starship 需要经过 10-20 次的在轨加注，才能将燃料加满（Starship 可携带 1200 吨推进剂；有效载荷是 100-150 吨，因此每次最多送上 100-150 吨的推进剂）。</p>
+<h2>结论</h2>
+<p>我们的分析表明，仅增加 30% 的重力就会使当前最先进的火箭技术无法进行任何星际探索，将文明永远禁锢在母行星上。</p>
+<p>这引发了一个有趣的宇宙学问题：技术文明是否需要起源于具有"刚好合适"引力参数的行星？太小的行星可能无法保持大气和支持复杂生命形式，而太大的行星则可能永远困住文明。宇宙中可能存在许多智能文明，但只有那些起源于引力参数恰到好处的行星上的文明才能成为星际文明。而人类文明处于一个非常幸运的引力环境中。</p>
+<p>地球的物理参数不仅恰好适合生命的演化，还刚好允许我们离开它。</p></div></div></article></main></div><script src="/_next/static/chunks/webpack-fe83f22eebcef24a.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n3:I[8154,[\"177\",\"static/chunks/app/layout-18d5088c99c4b723.js\"],\"ThemeProvider\"]\n4:I[5244,[],\"\"]\n5:I[8725,[\"39\",\"static/chunks/app/error-819170ca5010743f.js\"],\"default\"]\n6:I[3866,[],\"\"]\n8:I[6213,[],\"OutletBoundary\"]\nb:I[6213,[],\"ViewportBoundary\"]\nd:I[6213,[],\"MetadataBoundary\"]\nf:I[4835,[],\"\"]\n:HC[\"/\",\"\"]\n:HL[\"/_next/static/css/89fe303d45fc1d3c.css\",\"style\"]\n2:T879,"])</script><script>self.__next_f.push([1,"\n            // Simplified MathJax rendering handler\n            window.renderMathJax = function() {\n              if (typeof window.MathJax !== 'undefined' \u0026\u0026 window.MathJax.typesetPromise) {\n                window.MathJax.typesetPromise()\n                  .then(() =\u003e console.log('MathJax render complete'))\n                  .catch(err =\u003e console.error('MathJax render error:', err));\n              }\n            };\n\n            // Setup on page load\n            window.addEventListener('load', function() {\n              console.log('Page loaded, setting up MathJax');\n\n              // Initial render with retry\n              const checkAndRender = function() {\n                if (typeof window.MathJax !== 'undefined' \u0026\u0026 window.MathJax.typesetPromise) {\n                  console.log('MathJax loaded, rendering');\n                  setTimeout(window.renderMathJax, 500);\n\n                  // URL change detection\n                  let lastUrl = window.location.href;\n                  setInterval(() =\u003e {\n                    if (lastUrl !== window.location.href) {\n                      console.log('URL changed, re-rendering');\n                      lastUrl = window.location.href;\n                      setTimeout(window.renderMathJax, 500);\n                    }\n                  }, 500);\n\n                  // Content change detection\n                  if (typeof MutationObserver !== 'undefined') {\n                    const observer = new MutationObserver(mutations =\u003e {\n                      if (mutations.some(m =\u003e m.addedNodes.length \u003e 0)) {\n                        console.log('Content changed, re-rendering');\n                        setTimeout(window.renderMathJax, 500);\n                      }\n                    });\n\n                    observer.observe(document.body, {\n                      childList: true,\n                      subtree: true\n                    });\n                  }\n                } else {\n                  console.log('MathJax not loaded yet, retrying');\n                  setTimeout(checkAndRender, 500);\n                }\n              };\n\n              setTimeout(checkAndRender, 1000);\n            });\n          "])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"dx1xWa8yFVQvlzKNyhDP3\",\"p\":\"\",\"c\":[\"\",\"2025\",\"03\",\"15\",\"multiplanet-civilization-v-earth-gravity\"],\"i\":false,\"f\":[[[\"\",{\"children\":[[\"slug\",\"2025/03/15/multiplanet-civilization-v-earth-gravity\",\"c\"],{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/89fe303d45fc1d3c.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"zh-CN\",\"suppressHydrationWarning\":true,\"className\":\"__variable_c4692a antialiased\",\"children\":[[\"$\",\"head\",null,{\"children\":[[\"$\",\"script\",null,{\"async\":true,\"src\":\"/theme-switcher.js\"}],[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n            (function() {\\n              try {\\n                // Store theme preference but don't apply it immediately\\n                const storedTheme = localStorage.getItem('theme-preference');\\n                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\\n\\n                // Set a data attribute instead of class to avoid hydration mismatch\\n                document.documentElement.dataset.theme = preferredTheme;\\n\\n                // Apply the theme class after hydration\\n                window.addEventListener('DOMContentLoaded', () =\u003e {\\n                  setTimeout(() =\u003e {\\n                    document.documentElement.classList.add(preferredTheme);\\n                  }, 0);\\n                });\\n              } catch (e) {}\\n            })();\\n          \"}}],[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n            window.MathJax = {\\n              tex: {\\n                inlineMath: [['$', '$'], ['\\\\\\\\(', '\\\\\\\\)']],\\n                displayMath: [['$$', '$$'], ['\\\\\\\\[', '\\\\\\\\]']],\\n                processEscapes: true,\\n                processEnvironments: true\\n              },\\n              svg: {\\n                fontCache: 'global',\\n                scale: 1.1  // 增大公式字体大小，默认为 1.0\\n              },\\n              startup: {\\n                ready: function() {\\n                  console.log('MathJax is ready');\\n                  MathJax.startup.defaultReady();\\n                }\\n              }\\n            };\\n          \"}}],[\"$\",\"script\",null,{\"id\":\"MathJax-script\",\"async\":true,\"src\":\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js\"}],[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$2\"}}]]}],[\"$\",\"body\",null,{\"children\":[\"$\",\"$L3\",null,{\"attribute\":\"class\",\"defaultTheme\":\"system\",\"enableSystem\":true,\"disableTransitionOnChange\":true,\"storageKey\":\"theme-preference\",\"children\":[\"$\",\"$L4\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$5\",\"errorStyles\":[],\"errorScripts\":[],\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"div\",null,{\"className\":\"min-h-screen flex items-center justify-center\",\"children\":[\"$\",\"div\",null,{\"className\":\"text-center\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-4xl font-bold mb-4\",\"children\":\"404 - Page Not Found\"}],[\"$\",\"p\",null,{\"className\":\"text-gray-600\",\"children\":\"The page you're looking for doesn't exist.\"}]]}]}],\"$undefined\",[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}]]}],{\"children\":[[\"slug\",\"2025/03/15/multiplanet-civilization-v-earth-gravity\",\"c\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L4\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L7\",\"$undefined\",null,[\"$\",\"$L8\",null,{\"children\":[\"$L9\",\"$La\",null]}]]}],{},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"iWpWhSUUJ6JzNaD3gIhbo\",{\"children\":[[\"$\",\"$Lb\",null,{\"children\":\"$Lc\"}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],[\"$\",\"$Ld\",null,{\"children\":\"$Le\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$f\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"10:I[4223,[\"48\",\"static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js\"],\"Header\"]\n11:I[9605,[\"48\",\"static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js\"],\"PostContent\"]\n12:T2ed6,"])</script><script>self.__next_f.push([1,"\u003cp\u003e今天看到 \u003ca href=\"https://x.com/elonmusk/status/1900774290682683612\"\u003eElon Musk 宣布\u003c/a\u003e \"Starship 将于明年年底搭载 Optimus 前往火星。如果着陆顺利，人类登陆火星最早可能在 2029 年开始，不过 2031 年的可能性更大。\"\u003c/p\u003e\n\u003cp\u003e让我想起他之前在一个 podcast 说过一句话大致这个意思：火箭技术如此之难，因为地球的重力加速度已经接近物理上火箭能逃逸地球重力的极限了，只要 $g$ 再偏差那么一点，人类就永远无法摆脱地球的引力成为多行星文明。\u003c/p\u003e\n\u003cp\u003e出于好奇，我来计算一下。\u003c/p\u003e\n\u003cp\u003e根据齐奥尔科夫斯基火箭方程（Tsiolkovsky rocket equation）：\u003c/p\u003e\n\u003cp\u003e$$\\Delta v = v_e \\ln \\frac{m_0}{m_f}$$\u003c/p\u003e\n\u003cp\u003e其中：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e$\\Delta v$ 是火箭需要进入的轨道所需的增量速度\u003c/li\u003e\n\u003cli\u003e$v_e$ 是火箭引擎的排气速度\u003c/li\u003e\n\u003cli\u003e$m_0$ 是火箭的起飞总质量，又称湿重（wet mass）\u003c/li\u003e\n\u003cli\u003e$m_f$ 是火箭的入轨后的剩余质量，又称干重（dry mass），包括火箭的结构质量 + 有效载荷（也可能包括剩余推进剂）\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e由火箭方程变化后可得：\u003c/p\u003e\n\u003cp\u003e$$\\frac{m_0}{m_f} = e^{\\frac{\\Delta v}{v_e}}$$\u003c/p\u003e\n\u003cp\u003e$\\frac{m_0}{m_f}$ 称为质量比（mass ratio），它随 $\\frac{\\Delta v}{v_e}$ 呈指数级增长\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/images/2025/03/mass_ratio_vs_dv_ve.svg\" alt=\"火箭质量比与 $\\frac{\\Delta v/v_e}$ 的关系\"\u003e\u003c/p\u003e\n\u003ch2\u003e$\\Delta v$ 的限制\u003c/h2\u003e\n\u003cp\u003e根据所需要进入的轨道，所需要的 $\\Delta v$ 在教科书上有经验值：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e对于 LEO（近地轨道），取 $\\Delta v_{LEO} = 9.5\\text{ km/s}$（通常需要在 9.3-10 km/s 之间）\u003c/li\u003e\n\u003cli\u003e对于 GSO（地球同步轨道），取 $\\Delta v_{GSO} = 10.5\\text{ km/s}$\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e这里稍微展开下， $\\Delta v = \\Delta v_{orbit} + \\Delta v_{loss}$，其中：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e$\\Delta v_{orbit}$ 是轨道速度，$\\Delta v_{orbit} = \\sqrt{\\frac{GM}{R+h}} ≈ 7.73\\text{ km/s}$，其中 $M$ 是地球质量，$R$ 是地球半径，$h$ 是轨道高度。\n\u003cul\u003e\n\u003cli\u003e$G = 6.6743 \\times 10^{-11}\\text{ m}^3/\\text{ kg}\\text{ s}^{2}$ 是万有引力常数\u003c/li\u003e\n\u003cli\u003e$M = 5.9722 \\times 10^{24}\\text{ kg}$ 是地球质量\u003c/li\u003e\n\u003cli\u003e$R = 6371 \\times 10^3\\text{ m}$ 是地球半径\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e$\\Delta v_{loss}$ 是大气损失和重力损失，一般取 $1.77\\text{ km/s}$，包括\n\u003cul\u003e\n\u003cli\u003e重力损失：火箭在爬升过程中需要克服地球重力，通常增加约 $1.5–2\\text{ km/s}$；\u003c/li\u003e\n\u003cli\u003e大气阻力：在大气层中飞行会损失一部分速度，尤其在较低高度，约为 $0.1–0.5\\text{ km/s}$；\u003c/li\u003e\n\u003cli\u003e地球自转：发射地点纬度会影响 $\\Delta v$，例如从赤道发射可利用地球自转速度（约 $0.46\\text{ km/s}$），但这是次要因素。\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003e$v_e$ 的限制\u003c/h2\u003e\n\u003cp\u003e化学火箭的排气速度 $v_e$ 因为以下原因存在物理极限：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e推进剂的化学能量密度，化学能量本身有限\u003c/li\u003e\n\u003cli\u003e化学反应产生的燃烧产物的排气分子量无法无限降低\u003c/li\u003e\n\u003cli\u003e材料承受温度的限制，燃烧室温度受材料限制通常不超过 3,000-4,000K\u003c/li\u003e\n\u003cli\u003e热力学效率的约束\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e对于化学火箭，理论上的比冲极限约为 500-550 秒，由 $v_e = I_{sp} \\times g$ 得出对应的排气速度极限约为 4,900-5,400 m/s。\n实际上，目前最高性能的化学火箭发动机（如使用液氢和液氧的航天飞机主发动机 RS-25）能达到约 450 秒的比冲，相当于约 4,400 m/s 的排气速度。\u003c/p\u003e\n\u003cp\u003e要突破这一极限，只有使用非化学推进系统，如离子发动机或核热火箭等。\u003c/p\u003e\n\u003ch2\u003e质量比 $r_m$\u003c/h2\u003e\n\u003cp\u003e根据 $r_m = \\frac{m_0}{m_f} = e^{\\frac{\\Delta v}{v_e}}$，在 $\\Delta v$ 固定（需要 9.5 km/s）的情况下，$v_e$ 越大，质量比 $r_m$ 越小。\u003c/p\u003e\n\u003cp\u003e质量比高意味着：\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e火箭需要的推进剂越多，火箭的结构尺寸越大；\u003c/li\u003e\n\u003cli\u003e燃料使用效率越低，发射成本高昂；\u003c/li\u003e\n\u003cli\u003e在火箭的结构体积有工程上限的情况下，留给有效载荷的空间会急剧缩小。\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e可见，两级架构大大降低了每一级的质量比，降低了火箭的结构尺寸和燃料使用效率。但最终仍然有 25 的质量比，意味着火箭需要携带 25 倍于（有效载荷 + 上级火箭结构质量）的燃料。\u003c/p\u003e\n\u003cp\u003e算到这里，才认识到为什么马斯克如此执着于一定要使用机械臂（Mechazilla）回收火箭，除了可以以小时为单位回收加注燃料再发射之外，任何无助于火箭升空的质量都是 dead weight，一定要尽可能减少。\u003c/p\u003e\n\u003ch2\u003e有效载荷 $m_{payload}$\u003c/h2\u003e\n\u003cp\u003e我们根据根据 SpaceX 的公开信息，根据 $v_e$ 计算有效载荷。\u003c/p\u003e\n\u003cp\u003eBlock 1 版本的 Super Heavy 和 Starship 的参数如下：\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eSuper Heavy（第一级）参数\u003c/strong\u003e：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e干重（Empty Mass）：约 275 吨，这是 Block 1 版本的估计，可能因设计调整而变化\u003c/li\u003e\n\u003cli\u003e湿重（Gross Mass）：约 3675 吨，包括所有推进剂\u003c/li\u003e\n\u003cli\u003e海平面推力：约 73.5 MN（百万牛顿），由 33 个 Raptor 发动机提供\u003c/li\u003e\n\u003cli\u003e海平面比冲：327 秒，反映发动机在海平面下的效率\u003c/li\u003e\n\u003cli\u003e有效排气速度：约 3207 m/s，基于比冲计算（327 * 9.81 m/s²）\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eStarship 上级（第二级）参数\u003c/strong\u003e：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e干重：约 100 吨，Block 1 版本的估计\u003c/li\u003e\n\u003cli\u003e湿重：约 1300 吨，包括约 1200 吨推进剂\u003c/li\u003e\n\u003cli\u003e设计入轨载荷：约 100 吨至低地球轨道（LEO），基于设计目标，可能在未来增加至 150 吨\u003c/li\u003e\n\u003cli\u003e推力：约 12.25 MN，由 6 个 Raptor 发动机（3 个海平面版和 3 个真空版）提供\u003c/li\u003e\n\u003cli\u003e真空比冲：380 秒，适用于真空环境下的性能\u003c/li\u003e\n\u003cli\u003e有效排气速度：约 3728 m/s，基于真空比冲计算（380 * 9.81 m/s²）\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003e总体性能指标\u003c/strong\u003e：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e总推重比：约 1.5，基于总推力 73.5 MN 和总起飞质量约 5000 吨（3675 吨 + 1300 吨）的计算\u003c/li\u003e\n\u003cli\u003e质量比（mass ratio），假设 100 吨有效载荷，按阶段计算：\n\u003cul\u003e\n\u003cli\u003eSuper Heavy：(3675 + 1300 + 100) / (275 + 1300 + 100) ≈ 3\u003c/li\u003e\n\u003cli\u003eStarship：(1300 + 100) / (100 + 100) ≈ 7\u003c/li\u003e\n\u003cli\u003e总质量比：(3675 + 1300 + 100) / (100 + 100) ≈ 25.4\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003edelta-v / v_e 比值：Super Heavy 约为 ln(13.36) ≈ 2.59，Starship 约为 ln(6.5) ≈ 1.87，反映各阶段的理论速度增益效率\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e为符合像 Starship 这样的二级火箭架构，我们展开一下齐奥尔科夫斯基火箭方程，两级火箭的 $\\Delta v_\\text{LEO}$ 为：\u003c/p\u003e\n\u003cp\u003e$$\\Delta v_\\text{LEO} = v_{e1} \\ln\\left(\\frac{m_{01} + m_{payload}}{m_{sep} + m_{payload}}\\right) + v_{e2} \\ln\\left(\\frac{m_{sep} - m_{1,dry} + m_{payload}}{m_{2,dry} + m_{payload}}\\right)$$\u003c/p\u003e\n\u003cp\u003e其中：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e$m_{01}$ 是火箭起飞的总质量，Starship 大约为 4975 吨，包含：\n\u003cul\u003e\n\u003cli\u003e一级干重：275 吨\u003c/li\u003e\n\u003cli\u003e一级推进剂：3400 吨\u003c/li\u003e\n\u003cli\u003e二级干重：100 吨\u003c/li\u003e\n\u003cli\u003e二级推进剂：1200 吨\u003c/li\u003e\n\u003cli\u003e有效载荷：$m_{payload}$\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e$m_{sep}$ 是火箭分离前一刻的质量，大约为 4975 - 3400 = 1575 吨\u003c/li\u003e\n\u003cli\u003e$m_{1,dry}$ 是一级火箭的干重，大约为 275 吨\u003c/li\u003e\n\u003cli\u003e$m_{2,dry}$ 是二级火箭的干重，大约为 100 吨\u003c/li\u003e\n\u003cli\u003e$m_{payload}$ 是有效载荷的质量\u003c/li\u003e\n\u003cli\u003e$v_{e1}$ 是一级火箭的排气速度，大约为 3.2 km/s\u003c/li\u003e\n\u003cli\u003e$v_{e2}$ 是二级火箭的排气速度，大约为 3.7 km/s\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e代入上式后，我们得到：\u003c/p\u003e\n\u003cp\u003e$$\\Delta v_\\text{LEO} = 3.2 \\ln\\left(\\frac{4975 + m_{payload}}{1575 + m_{payload}}\\right) + 3.7 \\ln\\left(\\frac{1575 - 275 + m_{payload}}{100 + m_{payload}}\\right) \\text{ km/s}$$\u003c/p\u003e\n\u003cp\u003e当 $\\Delta v_{LEO} \\approx 9.5 \\text{ km/s}$ 时，用插值法可以解出 $m_{payload} \\approx 189.27 \\text{ 吨}$。\u003c/p\u003e\n\u003cp\u003e189 吨是我们计算出的理论值，与 SpaceX 公布的 \"约 100 吨至低地球轨道（LEO），可能在未来增加至 150 吨\" 相符。\u003c/p\u003e\n\u003ch2\u003e如果重力加速度 $g$ 再大一点\u003c/h2\u003e\n\u003cp\u003e这里我们暂停一下，回头看下之前的两个式子：\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e质量比 $r_m = \\frac{m_0}{m_f} = e^{\\frac{\\Delta v}{v_e}}$\u003c/li\u003e\n\u003cli\u003e火箭方程 $\\Delta v = \\sqrt{\\frac{GM}{R+h}}$\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e关键的数值关系是：\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e火箭的质量比 —— 带推进剂的总质量 /（火箭结构 + 有效载荷）的值 —— 与需要的 $\\Delta v$ 成指数关系\u003c/li\u003e\n\u003cli\u003e火箭需要的 $\\Delta v$ —— 与地球质量成正比\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e也就是说，运送有效载荷进入轨道所需的火箭的质量（和尺寸），与地球的质量呈现指数关系。\u003c/p\u003e\n\u003cp\u003e$$ r_m =\\frac{m_0}{m_f} = e^{\\frac{\\sqrt{\\frac{GM}{R+h}}}{v_e}} = e^{\\frac{\\sqrt{\\frac{g \\cdot R^2}{R + h}}}{v_e}}$$\u003c/p\u003e\n\u003cp\u003e使用现有 Starship 的性能参数计算不同重力系数下的 delta-v 和有效载荷：\u003c/p\u003e\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\u003ctable\u003e\u003cthead\u003e\u003ctr\u003e\u003cth align=\"center\"\u003e重力系数 f\u003c/th\u003e\u003cth align=\"right\"\u003e重力加速度 (m/s²)\u003c/th\u003e\u003cth align=\"right\"\u003edelta-v (km/s)\u003c/th\u003e\u003cth align=\"right\"\u003e理论有效载荷 (吨)\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd align=\"center\"\u003e0.80\u003c/td\u003e\u003ctd align=\"right\"\u003e7.85\u003c/td\u003e\u003ctd align=\"right\"\u003e8.32\u003c/td\u003e\u003ctd align=\"right\"\u003e314.76\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd align=\"center\"\u003e0.90\u003c/td\u003e\u003ctd align=\"right\"\u003e8.83\u003c/td\u003e\u003ctd align=\"right\"\u003e8.92\u003c/td\u003e\u003ctd align=\"right\"\u003e244.66\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd align=\"center\"\u003e1.00\u003c/td\u003e\u003ctd align=\"right\"\u003e9.81\u003c/td\u003e\u003ctd align=\"right\"\u003e9.50\u003c/td\u003e\u003ctd align=\"right\"\u003e189.39\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd align=\"center\"\u003e1.10\u003c/td\u003e\u003ctd align=\"right\"\u003e10.79\u003c/td\u003e\u003ctd align=\"right\"\u003e10.06\u003c/td\u003e\u003ctd align=\"right\"\u003e145.06\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd align=\"center\"\u003e1.20\u003c/td\u003e\u003ctd align=\"right\"\u003e11.77\u003c/td\u003e\u003ctd align=\"right\"\u003e10.60\u003c/td\u003e\u003ctd align=\"right\"\u003e109.00\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd align=\"center\"\u003e1.30\u003c/td\u003e\u003ctd align=\"right\"\u003e12.75\u003c/td\u003e\u003ctd align=\"right\"\u003e11.12\u003c/td\u003e\u003ctd align=\"right\"\u003e79.32\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd align=\"center\"\u003e1.40\u003c/td\u003e\u003ctd align=\"right\"\u003e13.73\u003c/td\u003e\u003ctd align=\"right\"\u003e11.64\u003c/td\u003e\u003ctd align=\"right\"\u003e54.66\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e使用取样法计算更多取值后，可以画出下图：\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/images/2025/03/deltav_and_payload_vs_gravity_factor.svg\" alt=\"delta-v 和有效载荷与重力系数的关系\"\u003e\u003c/p\u003e\n\u003cp\u003e在当前数值下，189 的理论载荷也只能优化到 150 吨的实际载荷，因此当重力加速度是现在的 1.3 倍时，几乎就无法将任何载荷送到近地轨道了。\u003c/p\u003e\n\u003ch2\u003e在轨加注\u003c/h2\u003e\n\u003cp\u003e以上计算，还只是将载荷送入最近的 LEO 轨道，因为只要能将一定载荷发射到 LEO，（理论上）就能通过轨道加油技术补充推进剂，获得去月球甚至火星的动力。目前人类还没实现在轨加注技术，原本 SpaceX 计划在今年进行在轨加注测试，目前看来今年完成这个目标非常困难。\u003c/p\u003e\n\u003cp\u003e无论如何，在轨加注技术是人类星际探索的必经之路。停在 LEO 的一架 Starship 需要经过 10-20 次的在轨加注，才能将燃料加满（Starship 可携带 1200 吨推进剂；有效载荷是 100-150 吨，因此每次最多送上 100-150 吨的推进剂）。\u003c/p\u003e\n\u003ch2\u003e结论\u003c/h2\u003e\n\u003cp\u003e我们的分析表明，仅增加 30% 的重力就会使当前最先进的火箭技术无法进行任何星际探索，将文明永远禁锢在母行星上。\u003c/p\u003e\n\u003cp\u003e这引发了一个有趣的宇宙学问题：技术文明是否需要起源于具有\"刚好合适\"引力参数的行星？太小的行星可能无法保持大气和支持复杂生命形式，而太大的行星则可能永远困住文明。宇宙中可能存在许多智能文明，但只有那些起源于引力参数恰到好处的行星上的文明才能成为星际文明。而人类文明处于一个非常幸运的引力环境中。\u003c/p\u003e\n\u003cp\u003e地球的物理参数不仅恰好适合生命的演化，还刚好允许我们离开它。\u003c/p\u003e"])</script><script>self.__next_f.push([1,"7:[\"$\",\"div\",null,{\"className\":\"min-h-screen\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"container max-w-3xl mx-auto pb-24\",\"children\":[\"$\",\"article\",null,{\"className\":\"prose px-4 md:px-8 dark:prose-invert max-w-none\",\"children\":[[\"$\",\"h1\",null,{\"children\":\"重力加速度 (g) 决定能否成为多行星文明\"}],[\"$\",\"time\",null,{\"className\":\"text-muted-foreground\",\"children\":\"March 15, 2025\"}],[\"$\",\"$L11\",null,{\"html\":\"$12\"}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n9:null\n"])</script><script>self.__next_f.push([1,"a:null\ne:[[\"$\",\"title\",\"0\",{\"children\":\"重力加速度 (g) 决定能否成为多行星文明 - xdanger's Blog\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"重力加速度 (g) 决定能否成为多行星文明\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]]\n"])</script></body></html>

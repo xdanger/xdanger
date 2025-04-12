@@ -1,18 +1,70 @@
 1:"$Sreact.fragment"
-2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
-3:I[5244,[],""]
-4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
-5:I[3866,[],""]
-7:I[6213,[],"OutletBoundary"]
-a:I[6213,[],"ViewportBoundary"]
-c:I[6213,[],"MetadataBoundary"]
-e:I[4835,[],""]
+3:I[8154,["177","static/chunks/app/layout-18d5088c99c4b723.js"],"ThemeProvider"]
+4:I[5244,[],""]
+5:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+6:I[3866,[],""]
+8:I[6213,[],"OutletBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[6213,[],"MetadataBoundary"]
+f:I[4835,[],""]
 :HC["/",""]
-:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
-:HL["/_next/static/css/4e78de3af272c993.css","style"]
-0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2005","10","19","000026"],"i":false,"f":[[["",{"children":[["slug","2005/10/19/000026","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2005/10/19/000026","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","cMQQj-X815CBexD3he14O",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
-f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
-10:Tc90,
+:HL["/_next/static/css/89fe303d45fc1d3c.css","style"]
+2:T879,
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
+            window.addEventListener('load', function() {
+              console.log('Page loaded, setting up MathJax');
+
+              // Initial render with retry
+              const checkAndRender = function() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
+
+                  // URL change detection
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL changed, re-rendering');
+                      lastUrl = window.location.href;
+                      setTimeout(window.renderMathJax, 500);
+                    }
+                  }, 500);
+
+                  // Content change detection
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(mutations => {
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
+                }
+              };
+
+              setTimeout(checkAndRender, 1000);
+            });
+          0:{"P":null,"b":"dx1xWa8yFVQvlzKNyhDP3","p":"","c":["","2005","10","19","000026"],"i":false,"f":[[["",{"children":[["slug","2005/10/19/000026","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/89fe303d45fc1d3c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"className":"__variable_c4692a antialiased","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"/theme-switcher.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                // Store theme preference but don't apply it immediately\n                const storedTheme = localStorage.getItem('theme-preference');\n                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n\n                // Set a data attribute instead of class to avoid hydration mismatch\n                document.documentElement.dataset.theme = preferredTheme;\n\n                // Apply the theme class after hydration\n                window.addEventListener('DOMContentLoaded', () => {\n                  setTimeout(() => {\n                    document.documentElement.classList.add(preferredTheme);\n                  }, 0);\n                });\n              } catch (e) {}\n            })();\n          "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            window.MathJax = {\n              tex: {\n                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],\n                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],\n                processEscapes: true,\n                processEnvironments: true\n              },\n              svg: {\n                fontCache: 'global',\n                scale: 1.1  // 增大公式字体大小，默认为 1.0\n              },\n              startup: {\n                ready: function() {\n                  console.log('MathJax is ready');\n                  MathJax.startup.defaultReady();\n                }\n              }\n            };\n          "}}],["$","script",null,{"id":"MathJax-script","async":true,"src":"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"children":["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$5","errorStyles":[],"errorScripts":[],"template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2005/10/19/000026","c"],["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7","$undefined",null,["$","$L8",null,{"children":["$L9","$La",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","Nr1NI-qPKP13c3LFeG5yj",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:I[4223,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"Header"]
+11:I[9605,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"PostContent"]
+12:Tc90,
 <p>　　<a href="http://www.keso.cn/">咳嗽</a>昨天拉扯到 <a href="http://blog.donews.com/keso/archive/2005/10/18/592292.aspx">IT 产业已不再重要</a>，不管是 美国的 IBM、DELL，国内的联想、方正、长城、四通，这些曾经叱咤风云的IT企业，正在慢慢地沦为配角，人们已很难再有兴趣去关注他们。我在想，不管洪波论述的是不是眼球问题，抑或是他们现在所能产生的附加值、能拉动的 GDP 的价值问题，他都肯定没考虑到还有一个正在迅速崛起的传统 IT 业巨人，其势现在已能压过人们对于 Google、对于 Web2.0、对于新一轮互联网热潮的激动：那个被咬了一口的苹果。</p>
 
 <p>　　或许 Apple 的 Logo <img src="http://static.flickr.com/26/54088269_e859250268_o.png" width="20" height="20" alt="Apple Icon" align="middle" /> 象征了他们走过的一段很不平坦的道路。曾经像 IBM 硬件+软件垄断大型计算机产业一样，苹果机也曾几一度在个人 PC 上风光无限。但随着 <a href="http://en.wikipedia.org/wiki/Steve_Jobs">Steve Jobs</a> 的离去，苹果几乎像现在没有柳传志的联想一样止步不前。十年之后，Windows 95 发布，苹果陷入财政困难。96 年 Steve 重回苹果，97 年推出了 iMac，挽狂澜于既倒。现在，苹果最为人熟知的恐怕就是 iPod + iTunes，已 90% 占有了数字音乐市场，完全击溃了 SONY 先前的垄断，也是 iPod，将苹果推向了新一轮的潮流浪尖。看看苹果这段时间的开发进度，新款 <a href="http://www.apple.com/ipod/">iPod</a>（<a href="http://www.apple.com/ipodmini/">mini</a>、<a href="http://www.apple.com/ipodshuffle/">shuffle</a>、<a href="http://www.apple.com/ipodnano/">nano</a>、及最新可播放视频的 <a href="http://www.apple.com/ipod/ipod.html">iPod</a>） 连续出击，伴随着的是 iTunes 几乎每两个星期就会有一个新版。Mac OS Tiger 全新出炉，更令人振奋的是明年年中就会有 x86 平台上的 Mac 系统了。</p>
@@ -24,8 +76,8 @@ f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Head
 <div align="center"><img src="http://static.flickr.com/26/54081823_406a76b6d5_o.png" width="425" height="140" alt="IT企业们" class="imgborder0" /></div>
 
 
-6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"有创新就是重要的"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"October 19, 2005"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
-b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-8:null
+7:["$","div",null,{"className":"min-h-screen","children":[["$","$L10",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"children":"有创新就是重要的"}],["$","time",null,{"className":"text-muted-foreground","children":"October 19, 2005"}],["$","$L11",null,{"html":"$12"}]]}]}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 9:null
-d:[["$","title","0",{"children":"有创新就是重要的 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"有创新就是重要的"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+a:null
+e:[["$","title","0",{"children":"有创新就是重要的 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"有创新就是重要的"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

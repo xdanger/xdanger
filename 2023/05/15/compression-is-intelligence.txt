@@ -1,19 +1,74 @@
 1:"$Sreact.fragment"
-2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
-3:I[5244,[],""]
-4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
-5:I[3866,[],""]
-7:I[6213,[],"OutletBoundary"]
-a:I[6213,[],"ViewportBoundary"]
-c:I[6213,[],"MetadataBoundary"]
-e:I[4835,[],""]
+3:I[8154,["177","static/chunks/app/layout-18d5088c99c4b723.js"],"ThemeProvider"]
+4:I[5244,[],""]
+5:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+6:I[3866,[],""]
+8:I[6213,[],"OutletBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[6213,[],"MetadataBoundary"]
+f:I[4835,[],""]
 :HC["/",""]
-:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
-:HL["/_next/static/css/4e78de3af272c993.css","style"]
-0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2023","05","15","compression-is-intelligence"],"i":false,"f":[[["",{"children":[["slug","2023/05/15/compression-is-intelligence","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2023/05/15/compression-is-intelligence","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","srwUgsmkf7zTxZ57fqWjt",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
-f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
-10:T16e8,<h2>GPT 是一种文本的有损压缩/解压算法</h2>
+:HL["/_next/static/css/89fe303d45fc1d3c.css","style"]
+2:T879,
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
+            window.addEventListener('load', function() {
+              console.log('Page loaded, setting up MathJax');
+
+              // Initial render with retry
+              const checkAndRender = function() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
+
+                  // URL change detection
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL changed, re-rendering');
+                      lastUrl = window.location.href;
+                      setTimeout(window.renderMathJax, 500);
+                    }
+                  }, 500);
+
+                  // Content change detection
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(mutations => {
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
+                }
+              };
+
+              setTimeout(checkAndRender, 1000);
+            });
+          0:{"P":null,"b":"dx1xWa8yFVQvlzKNyhDP3","p":"","c":["","2023","05","15","compression-is-intelligence"],"i":false,"f":[[["",{"children":[["slug","2023/05/15/compression-is-intelligence","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/89fe303d45fc1d3c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"className":"__variable_c4692a antialiased","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"/theme-switcher.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                // Store theme preference but don't apply it immediately\n                const storedTheme = localStorage.getItem('theme-preference');\n                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n\n                // Set a data attribute instead of class to avoid hydration mismatch\n                document.documentElement.dataset.theme = preferredTheme;\n\n                // Apply the theme class after hydration\n                window.addEventListener('DOMContentLoaded', () => {\n                  setTimeout(() => {\n                    document.documentElement.classList.add(preferredTheme);\n                  }, 0);\n                });\n              } catch (e) {}\n            })();\n          "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            window.MathJax = {\n              tex: {\n                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],\n                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],\n                processEscapes: true,\n                processEnvironments: true\n              },\n              svg: {\n                fontCache: 'global',\n                scale: 1.1  // 增大公式字体大小，默认为 1.0\n              },\n              startup: {\n                ready: function() {\n                  console.log('MathJax is ready');\n                  MathJax.startup.defaultReady();\n                }\n              }\n            };\n          "}}],["$","script",null,{"id":"MathJax-script","async":true,"src":"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"children":["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$5","errorStyles":[],"errorScripts":[],"template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2023/05/15/compression-is-intelligence","c"],["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7","$undefined",null,["$","$L8",null,{"children":["$L9","$La",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","MXI-lI9awdB2UUW9l6Pmb",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:I[4223,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"Header"]
+11:I[9605,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"PostContent"]
+12:T17f5,<h2>GPT 是一种文本的有损压缩/解压算法</h2>
 <p><a href="https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web">ChatGPT Is a Blurry JPEG of the Web</a> 文章发表的时候 GPT-4 还没出来，但我觉得这篇文章真正揭示了 GPT/LLM 的本质 ——</p>
+<div style="border: 1px solid #ddd; border-radius: 10px; margin: 12px 0px; padding: 12px;">
+💡 GPTs 是一种针对巨量文本内容的有损压缩与解压算法，ChatGPT 是被 OpenAI 筛选过的互联网文本内容的一份有损压缩的离线副本。
+</div>
 <ul>
 <li>互联网上的文本内容，可以认为是高维空间的人类知识在一维空间上的“投影”，GPT-like 的压缩算法是根据这些投影出来的信息，建立起的一个高维空间（XX亿参数）的模型。</li>
 <li>Instruct 的作用，是让 GPT/LLM 学会如何解压信息。在使用 ChatGPT 的时候，模型根据你的输入，在高维空间选择了一个位置，打了一盏灯，调了方向和角度，投影到一维得到 tokens。</li>
@@ -38,9 +93,8 @@ f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Head
 <ul>
 <li>睡眠有助于巩固新的记忆，将短期记忆转化为长期记忆，并提高认知功能。这很可能暗示着 GPT/LLM 的范式已经非常接近大脑了，每天睡觉的一个重要作用就是把短期记忆重新 “训练” 压缩进模型。</li>
 <li>现在的 GPT/LLM 暂时离 AGI 还差不少，主要是如何赋予（教会）模型 reasoning 的能力，以使得压缩比可以百倍提升，但 CoT 的能力不太可能可以随着模型的尺寸增加线性增长出来。</li>
-</ul>
-6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"压缩即智慧？"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"May 18, 2023"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
-b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-8:null
+</ul>7:["$","div",null,{"className":"min-h-screen","children":[["$","$L10",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"children":"压缩即智慧？"}],["$","time",null,{"className":"text-muted-foreground","children":"May 18, 2023"}],["$","$L11",null,{"html":"$12"}]]}]}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 9:null
-d:[["$","title","0",{"children":"压缩即智慧？ - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"压缩即智慧？"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+a:null
+e:[["$","title","0",{"children":"压缩即智慧？ - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"压缩即智慧？"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

@@ -1,25 +1,77 @@
 1:"$Sreact.fragment"
-2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
-3:I[5244,[],""]
-4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
-5:I[3866,[],""]
-7:I[6213,[],"OutletBoundary"]
-a:I[6213,[],"ViewportBoundary"]
-c:I[6213,[],"MetadataBoundary"]
-e:I[4835,[],""]
+3:I[8154,["177","static/chunks/app/layout-18d5088c99c4b723.js"],"ThemeProvider"]
+4:I[5244,[],""]
+5:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+6:I[3866,[],""]
+8:I[6213,[],"OutletBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[6213,[],"MetadataBoundary"]
+f:I[4835,[],""]
 :HC["/",""]
-:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
-:HL["/_next/static/css/4e78de3af272c993.css","style"]
-0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2003","10","09","000032"],"i":false,"f":[[["",{"children":[["slug","2003/10/09/000032","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2003/10/09/000032","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","SLnT6DEonGt5vE6FawUs-",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
-f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
-10:T42af,
+:HL["/_next/static/css/89fe303d45fc1d3c.css","style"]
+2:T879,
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
+            window.addEventListener('load', function() {
+              console.log('Page loaded, setting up MathJax');
+
+              // Initial render with retry
+              const checkAndRender = function() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
+
+                  // URL change detection
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL changed, re-rendering');
+                      lastUrl = window.location.href;
+                      setTimeout(window.renderMathJax, 500);
+                    }
+                  }, 500);
+
+                  // Content change detection
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(mutations => {
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
+                }
+              };
+
+              setTimeout(checkAndRender, 1000);
+            });
+          0:{"P":null,"b":"dx1xWa8yFVQvlzKNyhDP3","p":"","c":["","2003","10","09","000032"],"i":false,"f":[[["",{"children":[["slug","2003/10/09/000032","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/89fe303d45fc1d3c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"className":"__variable_c4692a antialiased","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"/theme-switcher.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                // Store theme preference but don't apply it immediately\n                const storedTheme = localStorage.getItem('theme-preference');\n                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n\n                // Set a data attribute instead of class to avoid hydration mismatch\n                document.documentElement.dataset.theme = preferredTheme;\n\n                // Apply the theme class after hydration\n                window.addEventListener('DOMContentLoaded', () => {\n                  setTimeout(() => {\n                    document.documentElement.classList.add(preferredTheme);\n                  }, 0);\n                });\n              } catch (e) {}\n            })();\n          "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            window.MathJax = {\n              tex: {\n                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],\n                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],\n                processEscapes: true,\n                processEnvironments: true\n              },\n              svg: {\n                fontCache: 'global',\n                scale: 1.1  // 增大公式字体大小，默认为 1.0\n              },\n              startup: {\n                ready: function() {\n                  console.log('MathJax is ready');\n                  MathJax.startup.defaultReady();\n                }\n              }\n            };\n          "}}],["$","script",null,{"id":"MathJax-script","async":true,"src":"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"children":["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$5","errorStyles":[],"errorScripts":[],"template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2003/10/09/000032","c"],["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7","$undefined",null,["$","$L8",null,{"children":["$L9","$La",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","d4_rsD1LFVgfq9s-gvsW3",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:I[4223,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"Header"]
+11:I[9605,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"PostContent"]
+12:T42af,
 
 <IMG src="http://www.nanfangdaily.com.cn/zm/20031009/xw/tb/200310090790_235071.jpg" align=left><BR><BR><BR><BR>　　有680年历史的北京东岳庙西路神殿被拆后将建商品房，该庙是道教在华北最大的庙宇<BR>　　谁在拆“华北第一道观”？ 
 <br /><br />
 　　□本报驻京记者　孙亚菲<BR><BR>　　道教正一派在华北地区最大的庙宇———东岳庙（全国重点文物保护单位）始建于元代延祐年间，经明、清两朝扩建，形成由中、东、西三院组成的规制宏丽的古建筑。2000年，北京市政府为解决古城众多文物年久失修的问题，启动“3.3亿文物抢险修缮计划”，东岳庙西路神殿就在这一计划之中。让人匪夷所思的是，“修缮”的结果竟然是——西路神殿被拆成一摊废墟，开发商将在上面盖均价每平米1.2万元的昂贵商品房。本报对此展开调查。<BR><BR>　　“只要有动静，我们就大喊”<BR>　　这是10月3日傍晚，几乎每隔一刻钟，北京朝阳区吉祥里东区居民王其中就要到阳台上去张望一下。<BR>　　他家的对面是一个商品房建筑工地，工地用铁皮钉的围栏圈了起来，看不清楚里面的情况。那里面有一个深十多米的大坑，开发商正在挖楼基。<BR>　　这个大坑的上面原来是全国重点文物保护单位东岳庙的西路神殿，今年6月以来被拆去一半了。<BR>　　该地吉祥里东区的百余户居民，不同意朝阳区政府拆除原东岳庙西路神殿进行商品房建设，与开发商对峙至今。<BR>　　王其中指着靠近他所在居民楼的一个大土堆说，土就是开放商从大深坑里挖出来的，由于居民不允许开放商把土运走，居民楼里十多个退休干部，每天在阳台上“监视”工地的动静，“只要有车进来施工，我们就大喊一声，大家都会冲出去拦车。”<BR>　　“一旦开发商拉走这些土，很快建起楼房来，那么被他们占的东岳庙这块地，就永远收不回来了。”王其中和另两位居民表情都有些激动，“我们誓死保卫这些土，决不让他们拉走一车！”<BR>　　他们进行的是一次无望的抗争———几年的拉锯战后，一股普通百姓几乎无法阻止的力量终于让拥有680年历史的神殿变成平地，而上面将盖起昂贵的商品房。<BR><BR>　　西路神殿“修缮”成商品房？<BR>　　住在王其中楼下，已经76岁的裴云起老先生，是地地道道的“老北京”，自小生活在东岳庙旁边。<BR>　　“小时候就爱在东岳庙玩，赶庙会，看祭祀，那时候，东岳庙是全北京最热闹的地方。”回忆起当年东岳庙的盛景，裴老先生一脸祥和。<BR>　　他告诉记者，东岳庙始建于元代，经过明清两代的扩建，于清朝道光年间形成现在中路正院和东西两个侧院的格局，而西路是行业神聚集地，有灶王庙、马王庙、送子娘娘庙、火神庙等多个神殿。现在东岳庙挂的民俗博物馆的牌子，实际上指的就是西路。<BR>　　1987年底，北京市划定120项文物保护单位的保护范围及建设控制地带，东岳庙位列其中。1995年，国家投入3000万巨资，对东岳庙中路正院进行修缮后正式对市民开放。<BR>　　1996年，这里正式成为“国家重点文物保护”单位。<BR>　　2000年，北京市政府为解决古城众多文物年久失修的问题，启动“3.3亿文物抢险修缮计划”，对98项市级以上文物进行抢险修缮，而供奉着行业神的东岳庙西路建筑群，也在这一计划当中。<BR>　　按照这个规划，2002年春天，占据东岳庙西路的朝阳区公安分局迁出，人员腾退工作基本完成。<BR>　　裴云起说，当时他在阳台上看到一些工作人员在庙里贴上“国家重点保护文物房屋”的封条，心里挺高兴，“觉得这是好事情啊，东岳庙终于可以恢复原来的模样了”。<BR>　　然而，让他没想到的是，今年6月末，也就是非典结束后不久，一些人来到西路，揭去封条，搭上脚手架，拆去了西路50％面积的房屋！<BR>　　记者在东岳庙购买了一本由庙管理处出版的《2002年北京民俗博物馆年刊》，上面有一段话写道：“2002年，朝阳区委、区政府将东岳庙二期修缮工程作为‘朝阳区重点工程’之一。东岳庙二期修缮额为西路故建筑群，共有29个店，古建筑98栋……历史上东岳西路大部分为行业祖师殿，有鲁班殿、马王殿、药王殿、仓神殿、海神殿等。二期修缮工程不但使东岳庙古建筑群趋于完整，而且对研究老北京民间信仰、行业习俗提供了丰厚的历史佐证。”<BR>　　令人痛心的是，这段话中的几个神殿，大多被拆除殆尽。<BR>　　“瓦没了，梁没了，仅几天的功夫，正对着我们楼的西路西半部分，都成了平地了。”当时裴云起和楼里的居民还想，拆了那些房子，可能是为修缮做准备，整修完还会还原，直到7月24日，一个会议才让他们了解到事实真相。<BR>　　王其中回忆，7月24日下午，吉祥里小区的居民会议。会上，两位自称是开发商和施工方代表的人拿出图纸，对居民说，他们得到朝阳区政府、市规划局和市文物局的批准，拆除了西路的鲁祖殿、眼光娘娘宝殿和岳帅殿，在西路的北边异地重建，同时在空出来的地盘上，修建四栋4－6层高、名为“御东花园”的商品房。<BR>　　两人还表示，新建筑可能影响了吉祥里东区部分居民的采光，按建设部规定，每户给予800－2000元的赔偿。<BR>　　“一宣布完，居民中马上炸开了锅。”王其中说，他们当时很气愤地对开发商说，赔偿是一回事情，但是拆东岳庙西路来建商品房，这是良心问题，群众决不会答应。<BR>　　居民们强烈要求开发商出示土地使用证、建筑施工许可证以及商品房预售证等证件，开发商称“证件没有带”。僵持一阵之后，双方不欢而散。<BR>　　变故发生在深夜。当晚11时左右，西路内突然掘土机声音大作，拉土卡车往来轰鸣，开发商在没有与居民达成一致意见之际，抢先动手施工了！<BR>　　当时有人在楼梯里一喊，男女老幼近百人就冲了出去。一时间场面相当混乱，有人拨打了110，警方出动了十多辆警车维持秩序。<BR>　　直到午夜1时，保护东岳庙的第一次交锋，以开发商的停工而告终。<BR><BR>　　自发的抗争<BR>　　事不宜迟。居民们深感事情重大，立即准备材料向有关部门反映，“坚决阻止开发商在文物古迹上建商品房”。<BR>　　“我们不图利，东岳庙被拆，我们良心难安！”一位居民这么解释自己上访的动机。<BR>　　7月28日，居民吴万华、王其中等十余人赶到了国家文物局，接待他们的是文物保护处的柴处长。这位处长表示，国家文物局对此不知情，需要进行调查。<BR>　　“于是我们把材料交给他，后来又去了朝阳区政府。”吴万华说。<BR>　　8月6日上午，吉祥里60多位居民来到朝阳区政府信访处申诉，朝阳区副区长佟克克对他们说，被拆除的部分建筑，在国家划定的文物保护范围以外，这是区政府、规划局和市文物局都同意的工程，拆除迁建完全合法。<BR>　　以前曾在朝阳区委农办工作的裴云起，在1980年代晚期参与过东岳庙周边规划事务。他向记者透露，在朝阳区政府早期的规划中，东岳庙周围的配套规划为绿地，“如果资金不够需要建房，也只允许盖不高于两层楼的高级别墅或四合院，以与东岳庙的景观相协调。”<BR>　　裴云起指给记者看西路北面的一栋两层半楼房，那是民建中央的办公楼，修建于1990年代初，其限高就来自于当初的规划。“事实上，一直到1996年，这个规划都没有变。目前区政府的这种规划，让人匪夷所思。”<BR>　　裴老先生就规划问题当面质疑佟克克，佟回答说，那是过去的事，现在规划两年一变。“我再问他，那是不是该越变越好呢？他就不说话了。”<BR>　　这次上访的结果，让居民们明白了一件事：这个“御东花园”项目，就是区政府和市文物部门、城市规划部门共同运作的一件事。<BR>　　尽管如此，居民们没有放弃努力。<BR>　　“我们又去到国家文物局，局长不在，一位姓孙的秘书答应转交材料。我们对这位秘书说，这个坑从2米变成10米，不能再等了！”<BR>　　这次努力取得了一定成效。后来居民们通过一些渠道了解到，国家文物局有关领导已经听取北京市文物局的汇报。不久，“御东花园”被北京市文物局要求停止施工。<BR>　　10月4日的上午，记者再次来到东岳庙西侧的“御东花园”项目施工现场，跟傍晚一样，这里仍旧大门紧锁，透过铁板围栏的缝隙，只见一位身穿保安服的人坐在绿色帏护前打瞌睡，场面十分冷清。<BR>　　开发商虽然被勒令停工，但仍偷着干，在国庆节的前三天，几辆大车拉了钢条进工地，“加班加点地往大坑里灌”。<BR>　　居民曾透露，开发商没有施工许可证，只有临时的“开工证”———只准动土，不准开工的那种，而开发商如此行为，“完全属于非法施工”。<BR><BR>　　几经曲折的审批<BR>　　一个房地产项目，为何能够取得在此地的开发权？文物部门又为何同意这个项目实施？其中究竟有什么原因？<BR>　　记者拨通了北京市文物局一位负责人的电话。听完记者的采访意图，他说：“西路有十几个单位，还有398户居民在里面。要对西路进行全面保护，必须让他们腾退出来，但我们文物部门只有修缮的经费，朝阳区政府也没有这笔巨大的拆迁费用？怎么办？”<BR>　　这位负责人说，面对经费紧缺和文物保护急迫性的两难局面，朝阳区政府就想了一个办法，联手房地产商，由他们负责拆迁的一切费用，然后腾出一块地来，对其进行“补偿”。<BR>　　朝阳区的方案报到北京市文物局，文物局认为这种思路符合当时的情况和有关规定，也就同意了区里的做法。<BR>　　就这样，2000年初，朝阳区政府和区里一个房地产开发公司达成协议，由房地产公司来拆迁这398户居民和十几个单位，作为“平衡资金”考虑，把后来西路八个殿的位置以及西路以北的一块空地让给其开发。到2002年春季，西路拆迁腾退全部完毕，他说，开发商为此付出1.5亿元左右的费用。<BR>　　据悉，朝阳区政府内部对东岳庙西路的处理方式也意见不一。在开发商结束拆迁工作之后，当时区里一位领导提出，搬迁西路部分建筑到北面的方法对文物保护不利，可以给开发商一些补偿措施，把那些建筑都留下来。<BR>　　“这对我们文物部门来说，当然是最好的结果，所以就根据区里的意见，撤销了原来同意开发的决定。但开发商不干了，就到法制办要求行政复议，要我们对他们进行补偿。法制办就说，你们原来作的这个行政决定是有效力的，要么你作出补偿，要么继续这个行政决定。那要1个多亿，我们哪里拿去？没法补偿，所以又让他们继续开发了。”<BR>　　他有几分无奈地表示，文物局行政复议不是输了，而是确实没有经济实力来承担这部分费用。<BR>　　“说实话，北京市这几年也拿了不少钱来进行文物的搬迁整治，比如3.3亿修缮工程，但那是100处啊，你算算吧，每项才300多万，一个西路地腾退就要1个多亿，都用了，其他地方的保护怎么办？”<BR>　　为什么不在其他地方给予开发商补偿？他表示，朝阳区没有已经没有地方了。<BR><BR>　　西路神殿没受保护，是将错就错？<BR>　　9月28日，北京市政协文史委员会在接到吉祥里居民的举报后，就东岳庙保护问题，率十余位政协委员和专家到东岳庙西路进行实地考察。当时就有专家提出，像北京东岳庙西路这样把各行各业的神灵都汇聚起来的庙宇并不多见，对研究北京地区的民俗和行业行规，具有相当重要的意义。<BR>　　但陪同考察的北京市文物局和朝阳区的某些领导认为，只有中路正院才是真正的东岳庙，而西路和东路都不是东岳庙自身的建筑，“不具备很高的保护价值”。<BR>　　北京文物局一位负责人说：“我们局里有1988年北京市政府公布的文物保护地带和建控范围的图纸，上面明确标定，东岳庙的保护范围，是中路正院大墙西侧大概40米以内，而开发商拆除的建筑，都在40米以外，不属于保护范围。”<BR>　　把不属于保护范围内的西路部分建筑迁建，并交由房地产商开发，是朝阳区以开发来带动文物保护的“一种新思路”。<BR>　　然而，专家们对这样的说法进行了质疑。这个图纸是1988年划的，但东岳庙是1996年成为全国重点文物保护单位，西路神殿是今年才拆的，道理一看即明。<BR>　　原国家文物局顾问、著名文物学专家谢辰生认为，原来没划入保护范围，在法律程序上是没有问题的，但从文物保护本身来说，如果没划进去本身就是错误的，那么就不能将错就错。<BR>　　谢教授指出，每个时代对文物的保护意识都不一样，这是一个不断深化的过程，“文物部门有责任重新组织专家，对它的价值进行认定。”<BR>　　古建筑专家郑孝燮当时就向带队的北京市政协文史委员会主任贾凯林表示，不能孤立考虑东岳庙中路，而排除其他小庙宇。<BR>　　“中国的建筑一般是一个主轴线，左右两个辅轴线，比如故宫紫禁城。东岳庙也是一样，中路是主轴线，西路和东路是两条辅轴线，这些小庙是因为东岳庙而产生的，所以保护时应连带保护在内。”<BR>　　一位参加考察的人员向记者表示，他当时就因西路是不是东岳庙的组成部分问题，与市文物部门的有关人员发生了冲突。<BR>　　“那位文物局的官员说，西路西侧没划入保护范围，就不属于东岳庙的。我很生气，说开发商不负责任也就罢了，文物部门怎么也能这样？你的地图，你在中路正院展览室里模型，都把那拆除了的八个殿包含在内的，这怎么说呢？不能因为自己作出了错误决策，就使劲贬低西路的价值，一错再错。”<BR>　　虽然目前文物部门已经叫停“御东花园”项目，但只是暂时的，一旦政府不能对开发商进行补偿，或者找出其他解决措施，这个“手续程序均合法的项目”，还得继续实施。届时，居民们在旧址上恢复西路的愿望，将永远成为一个梦想。<BR><BR>　　商品房高度之疑<BR>　　记者在现场观察发现，正如居民所说，施工场地的围栏上，没有任何对整个项目作出描述的标牌。不仅如此，在它临街的围墙上，甚至连“御东花园”几个字都看不见，只写有CBD的英文字样，容易让人误以为是朝阳区的宣传画。<BR>　　与它接邻的，就是是红墙碧瓦的东岳庙。一边是杂乱无章的建筑工地，一边是幽深古庙，对比悬殊，极不协调。<BR>　　居民还提出一个问题，“御东花园”楼高4－6层，完全超出了新《文物法》规定的在国家重点文物保护单位周围建筑控制高度。<BR>　　北京市文物局批给“御东花园”的楼高16米，“高度上作了些调整，但不多”，目的是为了平衡开发商资金。据悉，根据《文物法》规定，紧挨文物保护单位修建的建筑不能超过9米高度，16米已大大突破极限，但北京文物局的一位负责人说，即使这样，开发商也不能平衡资金，“因为他们投资1个多亿搞拆迁，政府还拖了他们那么长的时间，损失颇重。现在正要求我们增加高度，我们文物部门一直没有松口。”<BR>　　而记者曾致电御东花园售楼处。一位售楼小姐介绍道，这个“一月后开盘”的高档商品房楼盘，楼高6层，总面积5万平米（北京市文物局的说法是3万多平米），每平方米1.2万元，仅此一项，进账就在数亿元，还不算大型地下会所、休闲娱乐中心。<BR>
 
-6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"谁在拆“华北第一道观”？"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"October 9, 2003"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
-b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-8:null
+7:["$","div",null,{"className":"min-h-screen","children":[["$","$L10",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"children":"谁在拆“华北第一道观”？"}],["$","time",null,{"className":"text-muted-foreground","children":"October 9, 2003"}],["$","$L11",null,{"html":"$12"}]]}]}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 9:null
-d:[["$","title","0",{"children":"谁在拆“华北第一道观”？ - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"谁在拆“华北第一道观”？"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+a:null
+e:[["$","title","0",{"children":"谁在拆“华北第一道观”？ - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"谁在拆“华北第一道观”？"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

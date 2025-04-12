@@ -1,18 +1,70 @@
 1:"$Sreact.fragment"
-2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
-3:I[5244,[],""]
-4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
-5:I[3866,[],""]
-7:I[6213,[],"OutletBoundary"]
-a:I[6213,[],"ViewportBoundary"]
-c:I[6213,[],"MetadataBoundary"]
-e:I[4835,[],""]
+3:I[8154,["177","static/chunks/app/layout-18d5088c99c4b723.js"],"ThemeProvider"]
+4:I[5244,[],""]
+5:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+6:I[3866,[],""]
+8:I[6213,[],"OutletBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[6213,[],"MetadataBoundary"]
+f:I[4835,[],""]
 :HC["/",""]
-:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
-:HL["/_next/static/css/4e78de3af272c993.css","style"]
-0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2004","01","13","000076"],"i":false,"f":[[["",{"children":[["slug","2004/01/13/000076","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2004/01/13/000076","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","3SdQj-keavHcpAO_FOrp9",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
-f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
-10:T350b,
+:HL["/_next/static/css/89fe303d45fc1d3c.css","style"]
+2:T879,
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
+            window.addEventListener('load', function() {
+              console.log('Page loaded, setting up MathJax');
+
+              // Initial render with retry
+              const checkAndRender = function() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
+
+                  // URL change detection
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL changed, re-rendering');
+                      lastUrl = window.location.href;
+                      setTimeout(window.renderMathJax, 500);
+                    }
+                  }, 500);
+
+                  // Content change detection
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(mutations => {
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
+                }
+              };
+
+              setTimeout(checkAndRender, 1000);
+            });
+          0:{"P":null,"b":"dx1xWa8yFVQvlzKNyhDP3","p":"","c":["","2004","01","13","000076"],"i":false,"f":[[["",{"children":[["slug","2004/01/13/000076","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/89fe303d45fc1d3c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"className":"__variable_c4692a antialiased","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"/theme-switcher.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                // Store theme preference but don't apply it immediately\n                const storedTheme = localStorage.getItem('theme-preference');\n                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n\n                // Set a data attribute instead of class to avoid hydration mismatch\n                document.documentElement.dataset.theme = preferredTheme;\n\n                // Apply the theme class after hydration\n                window.addEventListener('DOMContentLoaded', () => {\n                  setTimeout(() => {\n                    document.documentElement.classList.add(preferredTheme);\n                  }, 0);\n                });\n              } catch (e) {}\n            })();\n          "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            window.MathJax = {\n              tex: {\n                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],\n                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],\n                processEscapes: true,\n                processEnvironments: true\n              },\n              svg: {\n                fontCache: 'global',\n                scale: 1.1  // 增大公式字体大小，默认为 1.0\n              },\n              startup: {\n                ready: function() {\n                  console.log('MathJax is ready');\n                  MathJax.startup.defaultReady();\n                }\n              }\n            };\n          "}}],["$","script",null,{"id":"MathJax-script","async":true,"src":"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"children":["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$5","errorStyles":[],"errorScripts":[],"template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2004/01/13/000076","c"],["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7","$undefined",null,["$","$L8",null,{"children":["$L9","$La",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","0_F5efGigDF554d1UyDom",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:I[4223,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"Header"]
+11:I[9605,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"PostContent"]
+12:T350b,
 
 <P>南方周末　 　2004-01-08 13:07:34</P>
 <P>　　■现在和将来的格局都可能既不是单极、两极，也不是多极，而是三者并存的新格局　　■中国人对多极化过于乐观。事实是，多极化存在多种而不是一种趋势，利弊掺杂，对世界和平与中国而言，可能有利，但也存在不利的和不确定的因素</P>
@@ -42,8 +94,8 @@ f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Head
 <P>　　多极化的最大好处在于它能反对单边主义，阻止任何一个大国主宰国际事务，形成国际局势中相对制衡的格局，从这个意义上说，它对维护世界和平与稳定的确是有利的；但这只是其中的一种趋势和可能。现在的多极化趋势并没有完全排除竞争性多极的可能性，成为一极的欧洲、俄罗斯、日本、中国和美国的相互关系可能是很复杂的，也有可能对世界和平与稳定不利；对中国来说，多极化趋势发展也有两种可能：中国成为一极，能提高中国的国际作用，如果其他几极也能与中俄合作反对美国的单边主义和霸权主义，能减轻美国对中国的压力，这对中国是有利的。</P>
 <P>　　但是这其中也有不确定因素。从现在情况来看，最不确定的因素是如果日本摆脱美国的控制和影响，成为真正独立的一极，它与中国的关系会是什么样的，现在很难预料，也可能对中国有利，也可能对中国不利；印度是否成为一极，现在不好说，现在多数人预料印度具有成为一极的较大的可能性，那么成为一极的印度与中国是什么关系，是否会出现有人担心的美日印联手制约中国的情况，现在也不能完全排除。因此下结论说多极化对中国就一定有利，也没有足够的根据。（待续） </P>
 
-6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"超越“极化”思维（上）———关于中国外交战略的思索"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"January 13, 2004"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
-b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-8:null
+7:["$","div",null,{"className":"min-h-screen","children":[["$","$L10",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"children":"超越“极化”思维（上）———关于中国外交战略的思索"}],["$","time",null,{"className":"text-muted-foreground","children":"January 13, 2004"}],["$","$L11",null,{"html":"$12"}]]}]}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 9:null
-d:[["$","title","0",{"children":"超越“极化”思维（上）———关于中国外交战略的思索 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"超越“极化”思维（上）———关于中国外交战略的思索"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+a:null
+e:[["$","title","0",{"children":"超越“极化”思维（上）———关于中国外交战略的思索 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"超越“极化”思维（上）———关于中国外交战略的思索"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

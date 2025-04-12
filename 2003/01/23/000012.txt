@@ -1,25 +1,77 @@
 1:"$Sreact.fragment"
-2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
-3:I[5244,[],""]
-4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
-5:I[3866,[],""]
-7:I[6213,[],"OutletBoundary"]
-a:I[6213,[],"ViewportBoundary"]
-c:I[6213,[],"MetadataBoundary"]
-e:I[4835,[],""]
+3:I[8154,["177","static/chunks/app/layout-18d5088c99c4b723.js"],"ThemeProvider"]
+4:I[5244,[],""]
+5:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+6:I[3866,[],""]
+8:I[6213,[],"OutletBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[6213,[],"MetadataBoundary"]
+f:I[4835,[],""]
 :HC["/",""]
-:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
-:HL["/_next/static/css/4e78de3af272c993.css","style"]
-0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2003","01","23","000012"],"i":false,"f":[[["",{"children":[["slug","2003/01/23/000012","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2003/01/23/000012","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","7BMj1C6HqQR7mjrFPUxNQ",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
-f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
-10:T112d,
+:HL["/_next/static/css/89fe303d45fc1d3c.css","style"]
+2:T879,
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
+            window.addEventListener('load', function() {
+              console.log('Page loaded, setting up MathJax');
+
+              // Initial render with retry
+              const checkAndRender = function() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
+
+                  // URL change detection
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL changed, re-rendering');
+                      lastUrl = window.location.href;
+                      setTimeout(window.renderMathJax, 500);
+                    }
+                  }, 500);
+
+                  // Content change detection
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(mutations => {
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
+                }
+              };
+
+              setTimeout(checkAndRender, 1000);
+            });
+          0:{"P":null,"b":"dx1xWa8yFVQvlzKNyhDP3","p":"","c":["","2003","01","23","000012"],"i":false,"f":[[["",{"children":[["slug","2003/01/23/000012","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/89fe303d45fc1d3c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"className":"__variable_c4692a antialiased","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"/theme-switcher.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                // Store theme preference but don't apply it immediately\n                const storedTheme = localStorage.getItem('theme-preference');\n                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n\n                // Set a data attribute instead of class to avoid hydration mismatch\n                document.documentElement.dataset.theme = preferredTheme;\n\n                // Apply the theme class after hydration\n                window.addEventListener('DOMContentLoaded', () => {\n                  setTimeout(() => {\n                    document.documentElement.classList.add(preferredTheme);\n                  }, 0);\n                });\n              } catch (e) {}\n            })();\n          "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            window.MathJax = {\n              tex: {\n                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],\n                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],\n                processEscapes: true,\n                processEnvironments: true\n              },\n              svg: {\n                fontCache: 'global',\n                scale: 1.1  // 增大公式字体大小，默认为 1.0\n              },\n              startup: {\n                ready: function() {\n                  console.log('MathJax is ready');\n                  MathJax.startup.defaultReady();\n                }\n              }\n            };\n          "}}],["$","script",null,{"id":"MathJax-script","async":true,"src":"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"children":["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$5","errorStyles":[],"errorScripts":[],"template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2003/01/23/000012","c"],["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7","$undefined",null,["$","$L8",null,{"children":["$L9","$La",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","6Z92LhrdMiS983AKCqweO",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:I[4223,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"Header"]
+11:I[9605,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"PostContent"]
+12:T112d,
 
 　　□Robert&nbsp;&nbsp;Rountree编译／何力<BR>　　日元的急剧贬值和人民币的大幅度升值都不能解决日本现有的问题。<BR>　　日本政府终于脱掉了“稳定日元”的伪装，财政大臣关于日元贬值的喊话在汇市中得到了充分的反映。该大臣根据购买力平价法，甚至计算出日元的汇率应在150至160美元的价位，不管政府是否愿意看到这个汇率水平，但市场很可能接受它。<BR>　　谈论日元走弱的一个重要话题就是中国是否应该重新估价人民币。我们很容易发现日本政府担惊受怕的原因：1990年代初，美国商务部的数据显示，日本出口到美国的商品占美国总进口额的18％，中国只占3％，而现在中日各占11％。更糟的是，这两年来，日本在美国市场的份额继续下滑，而中国在美国的市场份额急速上升。 
 <br /><br />
 　　日本的出口动力不足，使得其政府很自然地把这一切归罪于中国的竞争。由于人民币与美元实行半挂钩政策，如果布什的“新经济”班底采取弱势美元的政策，那就意味着人民币会跟着贬值，中国的出口将变得更有竞争力。<BR>　　如果日本要寻找通货紧缩的替罪羊，中国显然不是元凶。理由之一是，日本要求中国重新估价人民币似乎与中国向日本的出口增加相关。日本认为，他们不仅进口了中国产品，而且从中国“进口”了通货紧缩。但这个争论不值一驳，因为从中国的进口商品只占日本经济的2％，而且主要集中于低端产品。<BR>　　至于中国向第三方的出口对日本构成竞争的担忧倒是有一些根据，但这不是问题的全部。自1999年以来，中国向美国的出口上升了45％，同期，日本向美国的出口下降了10％。<BR>　　在2000年之前，出口到美国市场的中、日产品有较大的互补性。中国主要出口玩具、服装、家具和鞋类，日本主要向美国出口半导体、集成电路、通讯设备及汽车等，两者根本无法相提并论。<BR>　　但从2001年以来，这种情况发生了变化。中国输美产品急剧增加，其中包括办公设备、数据装置及其他元件，出口额达到108亿美元，而同期，日本输美的类似产品却下滑39％，减少到69亿美元。<BR>　　中国在抢占美国市场方面的确抢了一些日本人的饭碗，但不是惟一的一家。例如马来西亚输往美国的产品增加23％，达到70亿美元，甚至超过了日本。<BR>　　同样的故事还发生在电话设备及手机市场。当时，中国输美电话类产品上升63％，而日本下降43％，韩国出口到美国的此类产品上升了110％，马来西亚上升了106％。在电视及视听产品方面，美国从亚洲国家的进口大幅度增加，使得日本再次落后。在半导体和集成电路方面，来自韩国和台湾的出口明显上升，他们在美国市场份额的增加是以日本市场份额的缩小为代价的。<BR>　　当然，日本有足够的例子来说明人民币重新估价的必要性，而且中国在世界市场上份额的扩大也表明，人民币是有竞争力的。假如中国当局让人民币升值，这并不是一项糟糕的决定。德国是欧洲的发动机，在整个1980年代，是以强势马克、强势经济增长及强大的经常赤字盈余的形象出现的。1990年代的新加坡也是推行类似的政策，两者都走上了良性循环的道路。<BR>　　即使中国人民币升值，对日本就有利吗？笔者看也未必。如果中国在上述形势变迁中是惟一的赢家，也许对日本来说不公平，但问题在于还有其他因素在起作用。<BR>　　在1990年初，日本大量的直接投资涌入亚洲，特别是中国。而过去几年，日本输入亚洲的直接投资急剧下降，但对中国却是一个例外。日本在海外市场生产的产品比率已从1990年的5％上升到2000年的13％，日本公司在海外的收入也大幅度增加。<BR>　　笔者预计，这两年，日本在海外企业的产品比例可能会进一步升高。换句话说，日本正在失去市场份额的说法是空洞无力的。<BR>　　（本文作者为日本野村证券、美国培基证券前策略师） 
 
-6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"中国不是日本通缩的替罪羊"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"January 23, 2003"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
-b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-8:null
+7:["$","div",null,{"className":"min-h-screen","children":[["$","$L10",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"children":"中国不是日本通缩的替罪羊"}],["$","time",null,{"className":"text-muted-foreground","children":"January 23, 2003"}],["$","$L11",null,{"html":"$12"}]]}]}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 9:null
-d:[["$","title","0",{"children":"中国不是日本通缩的替罪羊 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"中国不是日本通缩的替罪羊"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+a:null
+e:[["$","title","0",{"children":"中国不是日本通缩的替罪羊 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"中国不是日本通缩的替罪羊"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

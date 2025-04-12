@@ -11,12 +11,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 设置主题
   const setTheme = (theme) => {
-    // 1. 更新HTML类
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
+    // 1. 首先更新data属性(为了避免hydration错误)
+    document.documentElement.dataset.theme = theme;
+
+    // 2. 延迟更新类名(等待hydration完成)
+    setTimeout(() => {
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme);
+    }, 0);
+
+    // 3. 保存到localStorage
     localStorage.setItem('theme-preference', theme);
 
-    // 2. 更新滑块位置
+    // 4. 更新滑块位置
     const slider = themeToggle.querySelector('div');
     if (slider) {
       if (theme === 'dark') {
@@ -28,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // 3. 触发一个自定义事件，通知其他可能需要响应主题变化的脚本
+    // 5. 触发一个自定义事件，通知其他可能需要响应主题变化的脚本
     const event = new CustomEvent('themeChanged', { detail: { theme } });
     document.dispatchEvent(event);
   };

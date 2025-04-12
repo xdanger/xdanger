@@ -1,25 +1,77 @@
 1:"$Sreact.fragment"
-2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
-3:I[5244,[],""]
-4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
-5:I[3866,[],""]
-7:I[6213,[],"OutletBoundary"]
-a:I[6213,[],"ViewportBoundary"]
-c:I[6213,[],"MetadataBoundary"]
-e:I[4835,[],""]
+3:I[8154,["177","static/chunks/app/layout-18d5088c99c4b723.js"],"ThemeProvider"]
+4:I[5244,[],""]
+5:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+6:I[3866,[],""]
+8:I[6213,[],"OutletBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[6213,[],"MetadataBoundary"]
+f:I[4835,[],""]
 :HC["/",""]
-:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
-:HL["/_next/static/css/4e78de3af272c993.css","style"]
-0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2003","06","05","000023"],"i":false,"f":[[["",{"children":[["slug","2003/06/05/000023","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2003/06/05/000023","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","cc6QCNAlIgHkn5EOeOJvb",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
-f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
-10:T2c8f,
+:HL["/_next/static/css/89fe303d45fc1d3c.css","style"]
+2:T879,
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
+            window.addEventListener('load', function() {
+              console.log('Page loaded, setting up MathJax');
+
+              // Initial render with retry
+              const checkAndRender = function() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
+
+                  // URL change detection
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL changed, re-rendering');
+                      lastUrl = window.location.href;
+                      setTimeout(window.renderMathJax, 500);
+                    }
+                  }, 500);
+
+                  // Content change detection
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(mutations => {
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
+                }
+              };
+
+              setTimeout(checkAndRender, 1000);
+            });
+          0:{"P":null,"b":"dx1xWa8yFVQvlzKNyhDP3","p":"","c":["","2003","06","05","000023"],"i":false,"f":[[["",{"children":[["slug","2003/06/05/000023","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/89fe303d45fc1d3c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"className":"__variable_c4692a antialiased","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"/theme-switcher.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                // Store theme preference but don't apply it immediately\n                const storedTheme = localStorage.getItem('theme-preference');\n                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n\n                // Set a data attribute instead of class to avoid hydration mismatch\n                document.documentElement.dataset.theme = preferredTheme;\n\n                // Apply the theme class after hydration\n                window.addEventListener('DOMContentLoaded', () => {\n                  setTimeout(() => {\n                    document.documentElement.classList.add(preferredTheme);\n                  }, 0);\n                });\n              } catch (e) {}\n            })();\n          "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            window.MathJax = {\n              tex: {\n                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],\n                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],\n                processEscapes: true,\n                processEnvironments: true\n              },\n              svg: {\n                fontCache: 'global',\n                scale: 1.1  // 增大公式字体大小，默认为 1.0\n              },\n              startup: {\n                ready: function() {\n                  console.log('MathJax is ready');\n                  MathJax.startup.defaultReady();\n                }\n              }\n            };\n          "}}],["$","script",null,{"id":"MathJax-script","async":true,"src":"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"children":["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$5","errorStyles":[],"errorScripts":[],"template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2003/06/05/000023","c"],["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7","$undefined",null,["$","$L8",null,{"children":["$L9","$La",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","At-3bl6S5qYiI9WYU5UaX",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:I[4223,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"Header"]
+11:I[9605,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"PostContent"]
+12:T2c8f,
 
 <IMG src="http://www.nanfangdaily.com.cn/zm/20030605/xw/tx/200306050759_195561.JPG" align=left><BR><BR><BR><BR>　　（9版、12版）<BR>　　编者按：中国新任国家主席胡锦涛首次出访备受瞩目，这长达11天紧锣密鼓的外事活动是中国新元首在国际社会集中体现个人特质的舞台，更是观察中国外交新“光谱”的“三棱镜”。<BR><BR>　　俄罗斯：胡锦涛初战告捷 
 <br /><br />
 　　□林　竹　发自俄罗斯莫斯科<BR>　　5月31日晚上，亲眼目睹中国国家主席胡锦涛所乘专机从圣彼得堡普尔科沃机场腾空而起，闪烁的信号灯慢慢遁入天幕之后，圣彼得堡国立大学一位自愿去送行的老教授回过头对记者说：“胡锦涛先生给我们留下了好印象：敬业、务实、朴素、友善……”<BR>　　而此间俄罗斯舆论界普遍认为，在当前国际形势的大背景下，中国国家主席胡锦涛的首次出访第一站选择了俄罗斯，其指向是耐人寻味的。这从根本上表达出，面对美国力量独步世界的压力，俄罗斯在中国的外交图谱中，再次排到了第一队列。<BR>　　普京的接风家宴<BR>　　当地时间5月26日晚，莫斯科西郊新奥加廖沃总统别墅。<BR>　　受俄总统普京夫妇的盛情邀请，中国国家主席胡锦涛和夫人刘永清从下榻的总统饭店出发，驱车来到莫斯科西郊普京的总统别墅进行拜访。<BR>　　总统别墅掩在一片幽静的白桦林中。看到车队通过院门，普京手捧一束红黄相间的鲜花与夫人柳德米拉一起，站在别墅门前笑迎胡锦涛。<BR>　　胡锦涛下车，这位普京总统的贵宾身着西装，却没系领带。身着便装的普京跨步上前，将鲜花献给胡锦涛夫人刘永清，与胡锦涛握手寒暄，神态一如老友。<BR>　　现场有一个小型的记者招待会，普京向在场的记者们介绍：“这是两年来我与胡锦涛先生的第三次见面。我们彼此已经相当熟悉，并建立起了良好的个人关系。俄罗斯非常高兴地了解到，中国新一代领袖是一位经验十分丰富的政治家，并且对俄罗斯怀有深厚的友好感情。我和夫人很高兴今天能在家里接待我们的朋友。”<BR>　　记者会后，普京和夫人柳德米拉带领胡锦涛夫妇参观了别墅，并举行了丰盛的家宴，为他们接风洗尘。出席晚宴的只有两国元首夫妇和翻译，宾主数人围坐桌边，与那种高朋满座、觥筹交错的国宴大异其趣。<BR>　　当日，俄罗斯有媒体刊文评说：在领导人正式会谈开始之前，总统先邀请外国领导人进行家访，这在俄罗斯外交活动中相当罕见。<BR>　　合作的重头戏在于能源<BR>　　当地时间5月27日下午，克里姆林宫。<BR>　　在等待新闻发布会的漫长过程中，记者同周围的俄罗斯同行们就双方首脑会谈的主要内容进行了猜测。<BR>　　《俄罗斯报》一位叫伊利奇的记者认为：“中国国家主席这次到俄罗斯访问的主要目的是为了石油。普京去年在北京同贵国前主席江泽民签署的石油管道输送项目，因日本的介入和我国石油集团之间的激烈竞争而搁浅下来。”<BR>　　下午4时左右，中俄两国元首经过3个多小时的会谈后，签署了《中俄联合声明》。随后，两国元首出面会见在此等候的各国记者。为了验证这一推测是否正确，新闻发布会一开始，就有记者向普京总统提出了这个问题。<BR>　　普京对此并不讳言，他说：“俄中两国在这一方面可以相互帮忙。”<BR>　　在回答“双方是否就石油管道工程签署合同”的问题时，普京强调说：“石油管道如何兴建以及按照哪一条线路兴建的问题，应该由双方的专家们来决定。俄罗斯政府愿意推动这些项目尽快得到落实。但在任何情况下，俄罗斯对开拓中国市场都十分感兴趣。为此，俄罗斯将在去年的基础上有计划进一步增加对中国的原油出口量。”<BR>　　此外，普京指出，俄中在核能领域也有相当良好的合作前景，在热电站、水电站等项目上有好的合作经验，俄方愿意推进这些领域的合作进一步发展。<BR>　　对于访俄的顺利进展，胡锦涛指出：“虽然访问还没有结束，但我感到，这次访问是成功的。”<BR><BR>　　大学演讲<BR>　　当地时间28日上午，俄罗斯国际关系学院。<BR>　　中国国家主席胡锦涛在这里发表演讲，演讲题目为《世代睦邻友好，共同发展繁荣》。在这场演讲中，胡锦涛提出了“建立国际政治经济新秩序”的五项主张。并认为中俄关系又到了一个良好的历史机遇时期。<BR>　　演讲之后有短暂的提问时间。当听到俄方师生用一口流利而标准的汉语向自己提问时，胡锦涛优雅地为对方鼓掌。当被问到“您对中俄两国青年有何期望”时，胡锦涛显然被触动了感情，他答道：“80年代初期，我曾经做过青年工作。因此，我对青年人有着一种特殊的感情。”<BR>　　演讲结束后，现场的师生意犹未尽，纷纷聚在一起兴奋地谈论。记者混在其中四处收集这些俄罗斯年轻人对中国新领导人的印象。<BR>　　听到有同学比较起两国元首来，站在一旁的玛琴柯教授插进来向记者表达自己的观点：“都说普京总统很务实，很敬业。依我看，中国国家主席胡锦涛也同样如此。您看，他于26日下午一走下飞机，就开始了工作，在机场发表即兴讲话，昨天（27日）上午向无名烈士墓献花后，接着马上又去胜利广场参观卫国战争博物馆。中午，在克里姆林宫的宴请一结束，就迫不及待地同普京总统展开了全面的会谈。简直连一点空隙时间都没有。他这种务实和敬业的精神，肯定会博得我国元首的好感，因为我们的普京总统也是这样的人，这样双方在许多具体事情上很容易找到共同语言，会谈起来必然轻松自如，一帆风顺……”<BR>　　对宇航技术感兴趣的国家元首<BR>　　当地时间5月28日下午，俄罗斯赫鲁尼切夫宇航科研生产中心。<BR>　　位于莫斯科市区的俄罗斯赫鲁尼切夫宇航科研生产中心是俄罗斯航天工业领域的领头企业。<BR>　　国家主席胡锦涛和夫人刘永清来到该中心，第一个参观项目是第一总装车间———宇宙飞船车间。在俄航天局局长尤·科普捷夫和中心总经理阿·梅德韦杰夫的陪同下，胡锦涛走进庞大的“和平”号空间站实体模型，并且颇有兴致地不断发问。一位陪同的专家后来对记者说，这次算是遇到了一位对宇航技术格外感兴趣的国家元首。<BR>　　在参观第二总装车间——运载火箭车间时，梅德韦杰夫向胡锦涛重点展示了“质子”号、“安加拉”号运载火箭和“贝加尔”号航天运输器。梅德韦杰夫告诉胡锦涛说：“就是凭借这些运载工具，俄罗斯的宇宙飞船一次次飞向了太空。宇航员们乘坐这些运载工具在太空和地球之间安全地往返穿行。”<BR>　　一位俄罗斯专家听说中国“神州”号载人飞船将在今年秋天飞上太空时，特意在胡锦涛面前伸出了大拇指。他对记者说：“衷心祝贺中国即将成为世界上第三个发射载人飞船走向宇宙的国家。”<BR>　　上海合作组织的圆桌会<BR>　　当地时间5月29日上午，克里姆林宫，亚历山大厅。<BR>　　东道国俄罗斯总统普京、轮值主席国哈萨克斯坦总统纳扎尔巴耶夫、中国国家主席胡锦涛、吉尔吉斯斯坦总统阿卡耶夫、塔吉克斯坦总统拉赫莫诺夫、乌兹别克斯坦总统卡里莫夫，围坐在一张巨大的圆桌边，正在举行上海合作组织元首第三次峰会。六国元首共同签署了《莫斯科宣言》。<BR>　　宣言认为：“非法贩卖毒品、麻醉品及易制毒化学品问题已日益构成严重威胁，在很大程度上，这已成为国际恐怖主义的一个重要资金来源。在联合国领导下，六国应采取果断有效的应对措施，在本地区内切断国际恐怖主义财源。”<BR>　　令人瞩目的是，《莫斯科宣言》中对于原本只承载安全合作功能的上海合作组织赋予了更多的合作内容，“上海合作组织旨在通过共同努力，全面发展六国伙伴关系，开展政治、经贸等领域合作，以应对新的威胁和挑战。”要“加快已开始的关于制定贸易投资便利化措施的谈判进程。根据2001年9月14日签署的上海合作组织成员国政府间备忘录，完成《上海合作组织长期多边经贸合作纲要》的制定工作”。<BR>　　宣言一公布，一位俄罗斯中国问题专家马上分析说：“从上海合作组织开始重视反恐与经济两手抓来看，该组织将全面演变成为国际社会的一股强大组合力量。俄罗斯和中国将在这一舞台上扮演重要的角色，并在地区安全和经济利益方面得利于这一平台。”<BR>　　提醒小泉<BR>　　当地时间5月31日上午，圣彼得堡。<BR>　　俄罗斯有观察家在此间分析说：“中国国家主席胡锦涛在圆满完成对莫斯科的国事访问之后，于30日上午乘专机飞抵圣彼得堡。他是受总统普京的邀请，来参加圣彼得堡建市300周年盛会的，同时也是接受普京的建议，来与小泉会晤的。”<BR>　　由于日本政府在这两年来不断以事实引发中日两国间在历史认识问题上的摩擦，导致中日关系一度坠入低谷，日本的外交也受此影响出现难局。小泉多次试图通过访华来缓和矛盾，但都被中国政府婉拒。今年5月初，借日本三执政党干事长访华的机会，小泉捎给胡锦涛一封信，表示希望在圣彼得堡建市300周年的庆典上跟胡锦涛会晤。为此，小泉还特意拜托普京妥为撮合安排。有分析指出：圣彼得堡会晤只是第一步，小泉想借此先弄清胡锦涛对中日恢复关系的态度，下一步则好在埃维昂峰会上作进一步周旋……<BR>　　不过，胡锦涛和小泉的圣彼得堡会谈，双方是在一派温文尔雅、彬彬有礼的气度中进行的。<BR>　　一开始，胡锦涛首先感谢日本在中国防治SARS方面所提供的对策援助，继而就日本非常关注的朝核问题阐述了中国政府的立场。<BR>　　当最终双方谈到核心的中日关系问题时，胡锦涛依然还是选择了“以史为鉴”这四个字，着重告诫对方要慎重处理好历史问题和台湾问题，因为“这关系到两国关系的政治基础”。不过胡锦涛同时也指出今年是《中日和平友好条约》缔结25周年，双方应以此为契机发展中日关系，因而，在“以史为鉴”的后面，胡锦涛还意味深长地增添了“面向未来，着眼长远、筹谋大局”的12字期许。<BR><BR>　　图：<BR>　　胡锦涛给俄罗斯留下了一个敬业、务实、朴素、友善的好印象<BR>
 
-6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"锦涛外交"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"June 5, 2003"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
-b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-8:null
+7:["$","div",null,{"className":"min-h-screen","children":[["$","$L10",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"children":"锦涛外交"}],["$","time",null,{"className":"text-muted-foreground","children":"June 5, 2003"}],["$","$L11",null,{"html":"$12"}]]}]}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 9:null
-d:[["$","title","0",{"children":"锦涛外交 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"锦涛外交"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+a:null
+e:[["$","title","0",{"children":"锦涛外交 - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"锦涛外交"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]

@@ -1,18 +1,70 @@
 1:"$Sreact.fragment"
-2:I[8154,["177","static/chunks/app/layout-453863cac12a7d94.js"],"ThemeProvider"]
-3:I[5244,[],""]
-4:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
-5:I[3866,[],""]
-7:I[6213,[],"OutletBoundary"]
-a:I[6213,[],"ViewportBoundary"]
-c:I[6213,[],"MetadataBoundary"]
-e:I[4835,[],""]
+3:I[8154,["177","static/chunks/app/layout-18d5088c99c4b723.js"],"ThemeProvider"]
+4:I[5244,[],""]
+5:I[8725,["39","static/chunks/app/error-819170ca5010743f.js"],"default"]
+6:I[3866,[],""]
+8:I[6213,[],"OutletBoundary"]
+b:I[6213,[],"ViewportBoundary"]
+d:I[6213,[],"MetadataBoundary"]
+f:I[4835,[],""]
 :HC["/",""]
-:HL["/_next/static/css/3b82974f02ab29a6.css","style"]
-:HL["/_next/static/css/4e78de3af272c993.css","style"]
-0:{"P":null,"b":"wNefP43iRwmdtLatwC5rJ","p":"","c":["","2004","03","09","000108"],"i":false,"f":[[["",{"children":[["slug","2004/03/09/000108","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3b82974f02ab29a6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/4e78de3af272c993.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","className":"__variable_4686ee antialiased","children":[["$","head",null,{"children":[["$","script",null,{"src":"/theme-switcher.js","defer":true}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                const storedTheme = localStorage.getItem('theme-preference');\n                const theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n                document.documentElement.classList.add(theme);\n              } catch (e) {}\n            })();\n          "}}]]}],["$","body",null,{"children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$4","errorStyles":[],"errorScripts":[],"template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2004/03/09/000108","c"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","d0MW26EHQ97nzVuBHFmsK",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
-f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Header"]
-10:T3b15,
+:HL["/_next/static/css/89fe303d45fc1d3c.css","style"]
+2:T879,
+            // Simplified MathJax rendering handler
+            window.renderMathJax = function() {
+              if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise()
+                  .then(() => console.log('MathJax render complete'))
+                  .catch(err => console.error('MathJax render error:', err));
+              }
+            };
+
+            // Setup on page load
+            window.addEventListener('load', function() {
+              console.log('Page loaded, setting up MathJax');
+
+              // Initial render with retry
+              const checkAndRender = function() {
+                if (typeof window.MathJax !== 'undefined' && window.MathJax.typesetPromise) {
+                  console.log('MathJax loaded, rendering');
+                  setTimeout(window.renderMathJax, 500);
+
+                  // URL change detection
+                  let lastUrl = window.location.href;
+                  setInterval(() => {
+                    if (lastUrl !== window.location.href) {
+                      console.log('URL changed, re-rendering');
+                      lastUrl = window.location.href;
+                      setTimeout(window.renderMathJax, 500);
+                    }
+                  }, 500);
+
+                  // Content change detection
+                  if (typeof MutationObserver !== 'undefined') {
+                    const observer = new MutationObserver(mutations => {
+                      if (mutations.some(m => m.addedNodes.length > 0)) {
+                        console.log('Content changed, re-rendering');
+                        setTimeout(window.renderMathJax, 500);
+                      }
+                    });
+
+                    observer.observe(document.body, {
+                      childList: true,
+                      subtree: true
+                    });
+                  }
+                } else {
+                  console.log('MathJax not loaded yet, retrying');
+                  setTimeout(checkAndRender, 500);
+                }
+              };
+
+              setTimeout(checkAndRender, 1000);
+            });
+          0:{"P":null,"b":"dx1xWa8yFVQvlzKNyhDP3","p":"","c":["","2004","03","09","000108"],"i":false,"f":[[["",{"children":[["slug","2004/03/09/000108","c"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/89fe303d45fc1d3c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","suppressHydrationWarning":true,"className":"__variable_c4692a antialiased","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"/theme-switcher.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            (function() {\n              try {\n                // Store theme preference but don't apply it immediately\n                const storedTheme = localStorage.getItem('theme-preference');\n                const preferredTheme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');\n\n                // Set a data attribute instead of class to avoid hydration mismatch\n                document.documentElement.dataset.theme = preferredTheme;\n\n                // Apply the theme class after hydration\n                window.addEventListener('DOMContentLoaded', () => {\n                  setTimeout(() => {\n                    document.documentElement.classList.add(preferredTheme);\n                  }, 0);\n                });\n              } catch (e) {}\n            })();\n          "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n            window.MathJax = {\n              tex: {\n                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],\n                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],\n                processEscapes: true,\n                processEnvironments: true\n              },\n              svg: {\n                fontCache: 'global',\n                scale: 1.1  // 增大公式字体大小，默认为 1.0\n              },\n              startup: {\n                ready: function() {\n                  console.log('MathJax is ready');\n                  MathJax.startup.defaultReady();\n                }\n              }\n            };\n          "}}],["$","script",null,{"id":"MathJax-script","async":true,"src":"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"children":["$","$L3",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"storageKey":"theme-preference","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$5","errorStyles":[],"errorScripts":[],"template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-gray-600","children":"The page you're looking for doesn't exist."}]]}]}],"$undefined",[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["slug","2004/03/09/000108","c"],["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7","$undefined",null,["$","$L8",null,{"children":["$L9","$La",null]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","Zo_TTW7Fx1fr4u2zMNQSK",{"children":[["$","$Lb",null,{"children":"$Lc"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Ld",null,{"children":"$Le"}]]}],false]],"m":"$undefined","G":["$f","$undefined"],"s":false,"S":true}
+10:I[4223,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"Header"]
+11:I[9605,["48","static/chunks/app/%5B...slug%5D/page-fc406cbb95aa160c.js"],"PostContent"]
+12:T3b15,
 
 <P>　　前两天同学突然在MSN上发了个地址给我：<A href="http://www.5535.net/fm996live.asx">http://www.5535.net/fm996live.asx</A>&nbsp;说每天星期一到星期五每天晚上10点有相声听……让我准时搬好凳子。</P>
 <P>　　我当时听了一个小时就实在受不了了。一个旨在宣传性知识，普及性教育的节目，主持人（<STRONG>万峰</STRONG>）竟然是这样的<STRONG>封建庸俗</STRONG>，<STRONG>哗众取宠</STRONG>。我问了隔壁寝室的浙江兄弟，他说在浙江，特别是杭州的学生、民工每晚必受这位仁兄的“赐教”。</P>
@@ -27,8 +79,8 @@ f:I[4223,["48","static/chunks/app/%5B...slug%5D/page-41f650bb5210dcdd.js"],"Head
 <br /><br />
 <p>　　以下是网上看到的<strong>万峰老师的经典回顾</strong>，人家当笑话看的：</p><p>  〖几年前在杭州读书时，就听过这个万峰的节目。熄灯后，寝室里的兄弟们把收音机调的很大声，就为听这老小子教训别人。基本上，在杭州读过书的GGDD，都应该听过他的午夜性节目的。当然，什么样的节目要是一成不变的话，是会让人厌倦的。这家伙的风格就一直没改过。当时风传正因为他的风格，该节目一度被上级部门要求限期整改。而我们，也听厌倦了。…… 在相当一段时间之后，室友偶尔把收音机再次调到了那个波段，听到这个万峰的声音，寝室里也再次哗然。〗 〖现在想来，其中的笑话还真是不少，令人喷饭。这不，刚在某处看到有整理成文字的，就急着拿来献宝了。还希望各位笑纳了。〗 <br /><br />　　★某日节目中,有听众打进热线询问阴虱事宜,以下为对话记录: <br />　　(“万”即万峰，“听”即听众) <br />　　听：万~~万峰老师，我有一个问题要问。 <br />　　万：(不耐烦地)说吧。 <br />　　听：我长了阴虱，怎么办？ <br />　　万：怎么办？你还敢来问我？你有没有不洁性行为啊？ <br />　　听：没~~没有~~ <br />　　万：没有(语气尖刻)?!那你爱人，也就是你老婆有没有啊？ <br />　　听：也没有~~~ <br />　　万：也没有？胡说!!你老婆没有乱搞，你也没有乱搞，那不老实？那你说你的阴虱是那 里来的？空降兵?! </p><p> 　★ 还有一次，听众问万峰，口交卫生吗？ <br />　　万峰答到，你想想看，大便小便一块出来的地方，能不脏吗？ <br />　　（我是学医的，我想不学医的也知道，不管男的还是女的，大便小便好象都不是一块出来吗。 当然，个别有生理或者病理的畸形的不算。）</p><p>　　★ 我没听过几次但有一个我印象深刻：<br />　　听众：万风老师，我射精无力啊~ <br />　　万风：射精无力？！你想射多远？？非洲有种鱼，能把树上的虫子射下来…… <br />　　后来我给衍生了一个：<br />　　听众：万风老师，我阴毛很少啊~ <br />　　万风：阴毛少？！你想有多少？？非洲有种大猩猩……</p><p>　　其实很多时候 <br />　　这个人确实让人气愤 <br />　　因为他实在是太封建了 <br />　　认为一提到性就是该脸红 <br />　　谁一有相关的毛病不是乱搞就是想乱搞 <br />　　但他在我的大学时光里留下了快乐的一笔~~ </p><p>　　当年，万峰到医大来讲座。那真的是万人空巷，大家都想看看这个什么都不懂的性学 <br />专家长什么样。</p><p>　　他说：“当年在新疆，我和一个20岁的姑娘在一个空房子里呆了三天三夜，什么事都没有发生。同学们，有人要问，你忍的牢吗？我说，现在的年轻人太差，我那个时候意志 <br />力很强的，什么都能忍住。...这有什么忍不住的，我就觉得奇怪.....”  </p><p>　　★听：我女朋友怀孕了... <br />　　万：又是一个女朋友怀孕的，现在的年轻人太不负责！你们不采取预防措施么？ <br />　　听：太急，忘了 <br />　　万：这个有什么急的，这点时间总有的 <br />　　听：是第一次，没有什么经验 <br />　　万：第一次？心里就不是第一次了吧。你肯定准备了很长时间了，老想着要把你女朋友怎么样，是不是？<br />　　听：... ... <br />　　万：现在出了事情怎么办？啊？ 真是小改不了吃，老想着这些事... ... <br />　　听：你个卖比儿子... ...（被掐断） <br />　　万：这个听众... ...(骂人) </p><p>　　★听：万峰老师，我明天要结婚了！（兴奋状）<br />　　万：这个小伙子，结婚了还打什么电话？<br />　　听：我和我女朋友还没有那个过，万峰老师，我想问你，第一次我该怎么做比较好？我现在很紧张。 <br />　　万：是么！这个年轻人要表扬！现在像你这样的年轻人已经不多了！有毅力！我要好好表扬表扬你！<br />　　听：谢谢！您说我该怎么办？我很紧张，我女朋友也很紧张。 <br />　　万：这个吗，你难道一点都不懂么？可以到书店里去翻翻书吗，也可以买碟片学习的吗。 不要紧张。 在这里讲这个好象不是很合适，有很多人在听的。今天就不讲了，好不好？<br />　　听：哪里有？我..... <br />　　万：其实吗，你只要等勃起以后...　 <br />　　接着他就把整个过程在广播里讲了一遍，不带停的。<br />　　口淫。。。。。。</p><p>　　★经典的老段子：<br />　　听众：万老师，老听您的节目，真的是很长见识。可听您节目老听您阴茎。。阴茎的叫，觉得好别扭，能不能。。。。。。（话未完，被打断） <br />　　万：不叫阴茎叫什么？难道要我叫八叼，马巧儿啊。。。。。。。。 </p><p>　　★好!回顾的好啊 <br />　　我好像很以久没有听到万峰的讲话了~~ <br />　　有次一个女的打电话进去 <br />　　问：“万峰老师我看到一个露阴僻，我好害怕。怎么办” <br />　　答：“害怕,害什么怕,你只要大喊一声-----耍流氓(万峰高音)” </p><p>　　★ 前两天刚听来的 <br />　　女：我和我男朋友分手了，可是我还是很爱他，怎么办 <br />　　万：分手了就分手了呗 <br />　　女：可是我还是很爱他啊~~ <br />　　万：你现在啊就是一只在井底的蛤蟆，只看到身边的这一只蛤蟆。等有一天你爬上来了，看到更好的蛤蟆了，你就不会想着这只蛤蟆了。外面的蛤蟆多的是，干吗老缠着一只 <br />蛤蟆~~ 我们寝室的都笑晕了~怎么用蛤蟆来比喻人家一个MM啊~~好歹也是青蛙嘛~ <br />　　★ 他里面说话，和外面矛盾的　　 <br />　　万：欢迎收听伊甸园，我是万峰。我们在杭州xxxxx...欢迎听众朋友拨答热线。讨论有关性.健康和情感方面的事~~~~~~~~~~~~~~~ <br />　　男：万老师.我发现我下面不舒服..... <br />　　万：阿??什么？什么下面？说清楚..你的腿阿，脚阿，都是下面.. <br />　　男：.....就是..就是..生殖器.. <br />　　万：..你有没不洁性行为阿??有没有乱搞??我们说阿....(此处省略) <br />　　男：那你说........ <br />　　万：去医院那..好好的医院放着不去..我这里有不医院.我又不是大夫... </p><p>　　★女：万疯老师,,, <br />　　万：阿..你好.不要叫窝老师嘛.. <br />　　女：我和我男朋友...(没说完.. <br />　　万：哎呀...我们说阿..你们小小年纪不学好...找什么急.... <br />　　女：不是不是...我们没..我们感情有点问题........但我还爱他...你说怎么办啊 <br />　　万：阿...这事你们自己解决好不好??关键看你了牢..问我有什么用.<br />　　好像我们时间差不多到了..欢迎收听伊甸园信箱.......................</p><p>　　★听：“万峰老师，我不知道怎么回事一见到我的女朋友阴茎就会勃起怎么办？” <br />　　万：“怎么办?!你个年轻人思想那么复杂干什么？老是勃起象举着个手枪一样干吗？抓特务啊？</p><p>　　★ 某女：“嘻嘻……”<br />　　万：“乐什么？有什么好乐的？”<br />　　某女：“是万锋老师吗？”<br />　　万：“我是万锋，请说！”<br />　　某女：“是这样……我老公早上醒来不勃起来……”<br />　　万：“干吗要勃起来？没事老硬着干吗？”<br />　　某女：“他们说早上要勃的……”<br />　　万：“谁跟你说的，没事勃起来，老勃着，硬堂堂呆梆梆的，那是病！！没事勃上10分钟，赶快要去检查、割掉……”<br />　　某女：“啊……他们说这样好……”<br />　　万：“不要他们说，他们说！！晨勃是有，但不是每个人都一样，你早上憋泡尿，想不硬都不行！！哧！好不好？……我们说…………”</p><p>　　★有一回一个电话打进来说：是万峰老师吗？？<br />　　然后他说：是啊！！ <br />　　一个说：哦，你就是啊！万疯啊，我操你妈大B <br />　　万（卡电话）：什么啊！什么啊！！如果我没听错？啊！！ <br />　　然后就是放录音：妈妈我是从哪里来的啊！！专家呼吁性教育从零岁开始！！ </p><p>　　★有一次,有个人打电话进去, <br />　　问：是万峰老师吗????? <br />　　答：是啊!! <br />　　问：我和我女朋友发生了关系，结果，到现在她还没来月经，我们现在很担心!!! <br />　　答：这种情况有两种可能，一种就是真的怀孕了，另一种就是在你快来月经的时候，被你自己被吓了一吓,被吓进去了!! <br />　　问:.............这种能吓进去????????强!!!!!!!!!!!! </p><p>　　★男生：“哦，我和我女朋友明天要结婚了，我不知道新婚之夜怎么过，请问……？” <br />　　万疯：“唉？？这种事情你问我？问你父母去啊………他们不是有经验吗，啊？” <br /></p><p>　　★万：这位听众…… <br />　　听：万老师啊，我的阴茎不是很直，请问有没有问题啊…… <br />　　万：你要那么直干什么，又不是当尺子来用！</p><p>　★这厮也不知道是怎么进电台地，晕~~ <br />　　还记的初中时的一段：：： <br />　　听：万疯老虱啊？ <br />　　万：请说？<br />　　听：我觉的自己的阴茎很短啊…… <br />　　万：短，你怎么知道短？ <br />　　听：我不勃起是只有…CM…… <br />　　万：那你怎么就知道自己的比别人短？ <br />　　听：………… <br />　　万：啊~！．！#．我说过多少次了，不要动不动就说自己的阴茎短啊。只有经过医生确证的才是病，才学要手术。啊~曾经看到过一篇报道，说是科学家在非洲发现某原始部落，男性的阴茎在不勃起的情况下也有30-40公分，平时劳动时都要用一根绳子寄在腰间……啊~你说你带那么个大家伙很碍事地……哪来这么大地八叼，估计也就只有这厮才有~!@#$%^&amp;*</p>
 
-6:["$","div",null,{"className":"min-h-screen","children":[["$","$Lf",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose prose-lg px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"className":"text-2xl font-bold","children":"国耻主持人——万峰！国耻节目——浙江文艺电台伊甸园！"}],["$","time",null,{"className":"text-md text-muted-foreground","children":"March 9, 2004"}],["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$10"},"className":"text-lg"}]]}]}]]}]
-b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-8:null
+7:["$","div",null,{"className":"min-h-screen","children":[["$","$L10",null,{}],["$","main",null,{"className":"container max-w-3xl mx-auto pb-24","children":["$","article",null,{"className":"prose px-4 md:px-8 dark:prose-invert max-w-none","children":[["$","h1",null,{"children":"国耻主持人——万峰！国耻节目——浙江文艺电台伊甸园！"}],["$","time",null,{"className":"text-muted-foreground","children":"March 9, 2004"}],["$","$L11",null,{"html":"$12"}]]}]}]]}]
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 9:null
-d:[["$","title","0",{"children":"国耻主持人——万峰！国耻节目——浙江文艺电台伊甸园！ - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"国耻主持人——万峰！国耻节目——浙江文艺电台伊甸园！"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
+a:null
+e:[["$","title","0",{"children":"国耻主持人——万峰！国耻节目——浙江文艺电台伊甸园！ - xdanger's Blog"}],["$","meta","1",{"name":"description","content":"国耻主持人——万峰！国耻节目——浙江文艺电台伊甸园！"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
