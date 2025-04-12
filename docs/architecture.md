@@ -6,7 +6,7 @@
 
 该项目采用 Next.js 15 的 App Router 架构，这是一种基于文件系统的路由方法：
 
-```
+```plaintext
                   ┌─────────────────┐
                   │     Layout      │
                   │  (app/layout.tsx) │
@@ -49,6 +49,7 @@
 ### 1. 布局组件 (app/layout.tsx)
 
 提供全局布局框架，包含：
+
 - HTML 和 body 标签配置
 - 主题提供者 (ThemeProvider)
 - 字体配置
@@ -90,6 +91,7 @@
 ### 4. UI 库组件 (components/ui/)
 
 shadcn/ui 组件集合，提供：
+
 - 按钮、卡片、输入框等基本 UI 元素
 - 导航组件
 - 对话框、抽屉等交互组件
@@ -104,7 +106,7 @@ shadcn/ui 组件集合，提供：
    - `getAllPosts()`: 获取所有文章元数据
    - `getPostBySlug()`: 获取特定文章内容
    - `markdownToHtml()`: 转换 Markdown 到 HTML
-3. **显示层**: 
+3. **显示层**:
    - 主页的 `PostList` 和 `PostPreview` 组件
    - 文章页面渲染完整内容
 

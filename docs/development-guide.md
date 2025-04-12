@@ -12,18 +12,21 @@
 
 ### 初始设置
 
-1. 克隆仓库：
+克隆仓库：
+
 ```bash
 git clone https://github.com/xdanger/xdanger.github.io.git
 cd xdanger.github.io
 ```
 
-2. 安装依赖：
+安装依赖：
+
 ```bash
 yarn install
 ```
 
-3. 启动开发服务器：
+启动开发服务器：
+
 ```bash
 npm run dev
 ```
@@ -54,8 +57,8 @@ npm run dev
 ### 创建新博客文章
 
 1. 在 `_posts/{year}/{month}/` 目录中创建新的 Markdown 文件
-2. 文件名格式: `YYYY-MM-DD-slug.md`
-3. 添加前置元数据:
+2. 文件名格式：`YYYY-MM-DD-slug.md`
+3. 添加前置元数据：
 
 ```markdown
 ---
@@ -66,13 +69,13 @@ date: YYYY-MM-DD
 文章内容...
 ```
 
-4. 重新构建项目以生成新页面
+重新构建项目以生成新页面
 
 ### 添加新组件
 
 1. 在 `components/` 目录中创建新文件
 2. 命名使用 PascalCase (如 `NewComponent.tsx`)
-3. 使用类型化的函数组件:
+3. 使用类型化的函数组件：
 
 ```tsx
 interface NewComponentProps {
@@ -104,7 +107,7 @@ export function NewComponent({ prop1, prop2 }: NewComponentProps) {
 
 ## 博客文章处理
 
-文章处理流程:
+文章处理流程：
 
 1. 从 `_posts` 目录收集所有 Markdown 和 HTML 文件
 2. 使用 gray-matter 解析前置元数据
@@ -119,7 +122,7 @@ export function NewComponent({ prop1, prop2 }: NewComponentProps) {
 
 ### 构建流程
 
-项目使用 Next.js 构建系统，并有自定义的后构建脚本:
+项目使用 Next.js 构建系统，并有自定义的后构建脚本：
 
 1. `next build` 生成优化的生产构建
 2. `scripts/post-build.js` 执行额外的构建后处理
@@ -127,7 +130,7 @@ export function NewComponent({ prop1, prop2 }: NewComponentProps) {
 
 ### 字体处理
 
-字体处理需特殊注意:
+字体处理需特殊注意：
 
 1. 使用 `npm run build:fonts` 重新构建字体资源
 2. 项目使用 LXGW Wenkai Screen Webfont 和其他网络字体
@@ -146,7 +149,7 @@ export function NewComponent({ prop1, prop2 }: NewComponentProps) {
 
 ## 测试
 
-目前项目没有自动化测试。推荐添加:
+目前项目没有自动化测试。推荐添加：
 
 - Jest 单元测试
 - React Testing Library 组件测试

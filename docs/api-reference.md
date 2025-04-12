@@ -9,11 +9,13 @@
 获取所有博客文章的元数据，按日期排序。
 
 **返回值**:
+
 ```typescript
 Post[] // 所有文章对象的数组
 ```
 
 **示例**:
+
 ```typescript
 import { getAllPosts } from '@/lib/posts';
 
@@ -29,9 +31,11 @@ const recentPosts = getAllPosts().slice(0, 5);
 根据 slug 获取特定文章的完整内容。
 
 **参数**:
+
 - `slug: string[]` - 文章的 URL 路径部分，作为字符串数组
 
 **返回值**:
+
 ```typescript
 {
   title: string;
@@ -42,6 +46,7 @@ const recentPosts = getAllPosts().slice(0, 5);
 ```
 
 **示例**:
+
 ```typescript
 import { getPostBySlug } from '@/lib/posts';
 
@@ -54,19 +59,22 @@ const post = getPostBySlug(['2023', '01', '01-hello-world']);
 将 Markdown 文本转换为 HTML。
 
 **参数**:
+
 - `markdown: string` - 原始 Markdown 内容
 
 **返回值**:
+
 ```typescript
 string // HTML 字符串
 ```
 
 **示例**:
+
 ```typescript
 import { markdownToHtml } from '@/lib/posts';
 
 const htmlContent = await markdownToHtml('# Hello World');
-// 返回: '<h1>Hello World</h1>'
+// 返回：'<h1>Hello World</h1>'
 ```
 
 ## 组件 API
@@ -76,6 +84,7 @@ const htmlContent = await markdownToHtml('# Hello World');
 网站顶部导航组件。
 
 **属性**:
+
 ```typescript
 interface HeaderProps {
   className?: string;
@@ -83,6 +92,7 @@ interface HeaderProps {
 ```
 
 **示例**:
+
 ```tsx
 import { Header } from '@/components/header';
 
@@ -94,6 +104,7 @@ import { Header } from '@/components/header';
 文章列表组件，支持无限滚动。
 
 **属性**:
+
 ```typescript
 interface PostListProps {
   initialPosts: Post[];
@@ -102,6 +113,7 @@ interface PostListProps {
 ```
 
 **示例**:
+
 ```tsx
 import { PostList } from '@/components/post-list';
 import { getAllPosts } from '@/lib/posts';
@@ -116,6 +128,7 @@ const posts = getAllPosts();
 文章预览卡片组件。
 
 **属性**:
+
 ```typescript
 interface PostPreviewProps {
   post: {
@@ -129,10 +142,11 @@ interface PostPreviewProps {
 ```
 
 **示例**:
+
 ```tsx
 import { PostPreview } from '@/components/post-preview';
 
-<PostPreview 
+<PostPreview
   post={{
     title: "Hello World",
     date: "2023-01-01",
@@ -149,6 +163,7 @@ import { PostPreview } from '@/components/post-preview';
 **属性**: 无
 
 **示例**:
+
 ```tsx
 import { ModeToggle } from '@/components/mode-toggle';
 
@@ -162,14 +177,17 @@ import { ModeToggle } from '@/components/mode-toggle';
 合并 Tailwind CSS 类名，解决类名冲突。
 
 **参数**:
+
 - `...inputs: ClassValue[]` - 要合并的类名
 
 **返回值**:
+
 ```typescript
 string // 合并后的类名字符串
 ```
 
 **示例**:
+
 ```typescript
 import { cn } from '@/lib/utils';
 
@@ -185,19 +203,22 @@ const className = cn(
 格式化日期字符串为易读形式。
 
 **参数**:
+
 - `date: string` - ISO 格式的日期字符串
 
 **返回值**:
+
 ```typescript
 string // 格式化后的日期字符串
 ```
 
 **示例**:
+
 ```typescript
 import { formatDate } from '@/lib/utils';
 
 const formattedDate = formatDate('2023-01-01');
-// 返回: 'January 1, 2023'
+// 返回：'January 1, 2023'
 ```
 
 ## 钩子 API (hooks/)
@@ -207,17 +228,19 @@ const formattedDate = formatDate('2023-01-01');
 检测当前视口是否为移动设备尺寸。
 
 **返回值**:
+
 ```typescript
 boolean // 如果是移动设备视口则为 true
 ```
 
 **示例**:
+
 ```typescript
 import { useMobile } from '@/hooks/use-mobile';
 
 function ResponsiveComponent() {
   const isMobile = useMobile();
-  
+
   return (
     <div>
       {isMobile ? (
@@ -237,6 +260,7 @@ function ResponsiveComponent() {
 JetBrains Mono 字体配置，用于代码显示。
 
 **示例**:
+
 ```typescript
 import { jetBrainsMono } from '@/lib/fonts';
 
@@ -250,6 +274,7 @@ import { jetBrainsMono } from '@/lib/fonts';
 Recursive 字体配置，用于标题。
 
 **示例**:
+
 ```typescript
 import { recursive } from '@/lib/fonts';
 
@@ -263,6 +288,7 @@ import { recursive } from '@/lib/fonts';
 LXGW Bright 字体配置，用于中文内容。
 
 **示例**:
+
 ```typescript
 import { lxgwBright } from '@/lib/fonts';
 

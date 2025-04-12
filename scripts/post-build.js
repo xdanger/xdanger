@@ -2,13 +2,13 @@
  * Next.js 静态导出后处理脚本
  *
  * 主要功能：
- * 1. 处理RSC数据文件(.txt)命名不一致问题：
- *    - 问题：浏览器请求/path/file.html.txt但实际文件是/path/file.txt
- *    - 解决：将所有.txt文件复制为.html.txt格式，保持原文件不变
- * 2. 将out目录同步到_sites目录：
- *    - 复制所有文件从out到_sites
- *    - 删除_sites中不存在于out的多余文件（保留.git目录）
- *    - 清理空目录（保留.git目录）
+ * 1. 处理 RSC 数据文件 (.txt) 命名不一致问题：
+ *    - 问题：浏览器请求/path/file.html.txt 但实际文件是/path/file.txt
+ *    - 解决：将所有.txt 文件复制为.html.txt 格式，保持原文件不变
+ * 2. 将 out 目录同步到_sites 目录：
+ *    - 复制所有文件从 out 到_sites
+ *    - 删除_sites 中不存在于 out 的多余文件（保留.git 目录）
+ *    - 清理空目录（保留.git 目录）
  */
 
 import fs from 'fs';
@@ -20,11 +20,11 @@ const outDir = path.join(process.cwd(), 'out');
 const sitesDir = path.join(process.cwd(), '_sites');
 
 /**
- * 处理RSC数据文件
+ * 处理 RSC 数据文件
  */
 async function processTxtFiles() {
   try {
-    console.log('🔄 开始处理RSC数据文件...');
+    console.log('🔄 开始处理 RSC 数据文件...');
 
     // 使用 glob.sync 而非 promisify
     const txtFiles = globModule.sync('**/*.txt', { cwd: outDir });
@@ -35,15 +35,15 @@ async function processTxtFiles() {
     for (const txtFile of txtFiles) {
       const txtPath = path.join(outDir, txtFile);
 
-      // 创建.html.txt目标路径
+      // 创建.html.txt 目标路径
       const txtDirname = path.dirname(txtPath);
       const txtBasename = path.basename(txtPath, '.txt');
       const htmlTxtPath = path.join(txtDirname, `${txtBasename}.html.txt`);
 
-      // 检查对应的.html文件是否存在
+      // 检查对应的.html 文件是否存在
       const htmlPath = path.join(txtDirname, `${txtBasename}.html`);
       if (fs.existsSync(htmlPath)) {
-        console.log(`📄 处理: ${txtFile} -> ${txtBasename}.html.txt`);
+        console.log(`📄 处理：${txtFile} -> ${txtBasename}.html.txt`);
 
         // 复制为新文件而不是重命名
         // 这样可以保留原文件，避免兼容性问题
@@ -52,9 +52,9 @@ async function processTxtFiles() {
       }
     }
 
-    console.log(`✅ 处理完成! 复制了 ${processedCount}/${txtFiles.length} 个文件`);
+    console.log(`✅ 处理完成！复制了 ${processedCount}/${txtFiles.length} 个文件`);
   } catch (error) {
-    console.error('❌ 处理RSC数据文件时出错:', error);
+    console.error('❌ 处理 RSC 数据文件时出错：', error);
     process.exit(1);
   }
 }
@@ -62,7 +62,7 @@ async function processTxtFiles() {
 /**
  * 递归获取目录中的所有文件
  * @param {string} dir - 要扫描的目录
- * @param {boolean} excludeGit - 是否排除.git目录
+ * @param {boolean} excludeGit - 是否排除.git 目录
  * @returns {string[]} 文件路径列表
  */
 function getAllFiles(dir, excludeGit = false) {
@@ -72,7 +72,7 @@ function getAllFiles(dir, excludeGit = false) {
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
 
-    // 如果设置了excludeGit，跳过.git目录
+    // 如果设置了 excludeGit，跳过.git 目录
     if (excludeGit && entry.name === '.git') {
       continue;
     }
@@ -104,7 +104,7 @@ async function syncToSites() {
     const outFiles = getAllFiles(outDir);
     console.log(`📝 out 目录中共有 ${outFiles.length} 个文件`);
 
-    // 2. 获取 _sites 目录中的所有文件（排除.git目录）
+    // 2. 获取 _sites 目录中的所有文件（排除.git 目录）
     const siteFiles = getAllFiles(sitesDir, true);
     console.log(`📝 _sites 目录中共有 ${siteFiles.length} 个文件（不含.git）`);
 
@@ -126,7 +126,7 @@ async function syncToSites() {
     }
     console.log(`📋 复制了 ${copiedCount} 个文件到 _sites 目录`);
 
-    // 4. 删除 _sites 目录中有但 out 目录中没有的文件（排除.git目录）
+    // 4. 删除 _sites 目录中有但 out 目录中没有的文件（排除.git 目录）
     let deletedCount = 0;
     for (const file of siteFiles) {
       const relativePath = path.relative(sitesDir, file);
@@ -140,18 +140,18 @@ async function syncToSites() {
     }
     console.log(`🗑️  删除了 ${deletedCount} 个多余文件`);
 
-    // 5. 清理空目录（保留.git目录）
+    // 5. 清理空目录（保留.git 目录）
     cleanEmptyDirs(sitesDir);
 
-    console.log('✅ 目录同步完成!');
+    console.log('✅ 目录同步完成！');
   } catch (error) {
-    console.error('❌ 同步目录时出错:', error);
+    console.error('❌ 同步目录时出错：', error);
     process.exit(1);
   }
 }
 
 /**
- * 递归清理空目录（保留.git目录）
+ * 递归清理空目录（保留.git 目录）
  */
 function cleanEmptyDirs(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -164,10 +164,10 @@ function cleanEmptyDirs(dir) {
     }
   }
 
-  // 再次检查当前目录是否为空（不包括.git目录）
+  // 再次检查当前目录是否为空（不包括.git 目录）
   const afterEntries = fs.readdirSync(dir);
   if (afterEntries.length === 0 || (afterEntries.length === 1 && afterEntries[0] === '.git')) {
-    // 不删除 _sites 根目录和包含.git的目录
+    // 不删除 _sites 根目录和包含.git 的目录
     if (dir !== sitesDir && !afterEntries.includes('.git')) {
       fs.rmdirSync(dir);
     }
@@ -175,10 +175,10 @@ function cleanEmptyDirs(dir) {
 }
 
 async function run() {
-  // 处理RSC数据文件
+  // 处理 RSC 数据文件
   await processTxtFiles();
 
-  // 同步到_sites目录
+  // 同步到_sites 目录
   await syncToSites();
 }
 

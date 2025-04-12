@@ -6,7 +6,7 @@
 
 项目采用基于年份和月份的目录结构组织博客文章：
 
-```
+```plaintext
 _posts/
 ├── 2002/
 │   ├── 2002-12-12-000007.html
@@ -53,7 +53,7 @@ _posts/
 title: 文章标题
 date: 2023-12-25
 description: 可选描述，将用于预览
-categories: [技术, 思考]
+categories: [技术，思考]
 ---
 
 这是文章内容。
@@ -95,7 +95,7 @@ Markdown 文章使用 YAML 格式的前置元数据，位于文件顶部的三�
 对于需要优化的图像，推荐使用 Next.js Image 组件：
 
 ```jsx
-<Image 
+<Image
   src="/images/my-image.jpg"
   alt="图片描述"
   width={800}

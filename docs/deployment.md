@@ -13,6 +13,7 @@ npm run build
 ```
 
 这个命令会：
+
 1. 运行 `next build` 生成优化的生产构建
 2. 执行 `scripts/post-build.js` 脚本进行后处理
 3. 将构建输出放在 `/out` 目录
@@ -43,11 +44,13 @@ npm run build:fonts
 项目配置为使用 GitHub Pages 托管。
 
 **流程**：
+
 1. 将代码推送到 GitHub 仓库
 2. GitHub Actions 工作流会自动构建项目
 3. 构建输出被发布到 GitHub Pages
 
 **注意事项**：
+
 - GitHub Pages 使用 `_sites` 目录作为静态站点的根目录
 - 项目根目录中的 `CNAME` 文件指定自定义域名
 
@@ -56,11 +59,13 @@ npm run build:fonts
 项目完全兼容 Vercel 平台。
 
 **流程**：
+
 1. 将项目连接到 Vercel
 2. 配置构建命令为 `npm run build`
 3. 设置输出目录为 `out`
 
 **优势**：
+
 - 自动预览部署
 - 边缘函数支持
 - 集成分析和监控
@@ -70,6 +75,7 @@ npm run build:fonts
 任何支持静态站点的服务都可以托管此项目。
 
 **通用流程**：
+
 1. 运行 `npm run build` 生成静态文件
 2. 将 `out` 目录中的文件上传到托管服务
 3. 配置任何必要的重定向或自定义域名
@@ -133,12 +139,14 @@ jobs:
 ### 缓存策略
 
 构建输出包含具有长期缓存的静态资产：
+
 - JS 文件使用内容哈希命名
 - 图像使用优化压缩和适当的缓存头
 
 ### CDN 配置
 
 当使用 CDN 时，推荐以下配置：
+
 - 缓存静态资产 (JS, CSS, 图像) 至少 1 年
 - HTML 文件不缓存或短期缓存
 - 使用内容哈希进行缓存破坏
@@ -148,6 +156,7 @@ jobs:
 ### 错误追踪
 
 可以集成错误追踪服务，如：
+
 - Sentry
 - LogRocket
 - New Relic
@@ -155,6 +164,7 @@ jobs:
 ### 性能监控
 
 推荐监控以下指标：
+
 - Largest Contentful Paint (LCP)
 - First Input Delay (FID)
 - Cumulative Layout Shift (CLS)
