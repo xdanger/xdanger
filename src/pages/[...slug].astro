@@ -1,0 +1,40 @@
+---
+import { render } from "astro:content";
+import { getAllPosts } from "@/data/post";
+import PostLayout from "@/layouts/BlogPost.astro";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+
+// 创建低优先级路由，用于直接从根路径访问博客文章
+export const getStaticPaths = (async () => {
+  const blogEntries = await getAllPosts();
+  // 为每篇文章创建两个路由：一个不带后缀，一个带.html后缀
+  return blogEntries.flatMap((post) => {
+    // 提取文章id作为slug
+    const slug = post.id;
+    
+    return [
+      {
+        params: { slug },
+        props: { post },
+        // 设置为最低优先级，仅在其他路由都不匹配时才使用此路由
+        priority: -1, 
+      },
+      {
+        params: { slug: `${slug}.html` },
+        props: { post },
+        // 设置为最低优先级，仅在其他路由都不匹配时才使用此路由
+        priority: -1,
+      }
+    ];
+  });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<PostLayout post={post}>
+  <Content />
+</PostLayout>
