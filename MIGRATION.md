@@ -91,7 +91,7 @@
 - [x] `2003/07/17/000027.mdx`: Essay about Tan Sitong's heroic martyrdom during the Wuxu Reform Movement of 1898
 - [x] `2003/07/31/000028.mdx`: Investigative report on the controversial plan to build Yangliuhu Dam 1310 meters upstream from the Dujiangyan UNESCO World Heritage Site
 - [x] `2003/08/14/000029.mdx`: In-depth report on China's upcoming judicial system reform and the "three-izations" problems in the current system
-- [ ] `2003/09/04/000030.mdx`
+- [x] `2003/09/04/000030.mdx`: In-depth analysis of China's urban demolition and relocation policies over a decade, examining how they've evolved from "public welfare" to commercial projects, causing social conflicts
 - [ ] `2003/09/18/000031.mdx`
 - [ ] `2003/10/09/000032.mdx`
 - [ ] `2003/10/09/000033.mdx`
