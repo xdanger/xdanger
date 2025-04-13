@@ -83,9 +83,9 @@
 - [x] `2003/05/08/000018.mdx`: Analysis of the online gaming industry in China, especially disputes between major companies
 - [x] `2003/05/15/000019.mdx`: Report on how a SARS-related rumor spread across 14 Chinese provinces in just 4 days
 - [x] `2003/05/29/000020.mdx`: In-depth report on property owners' rights movement against government and developer in Guangzhou
-- [ ] `2003/06/05/000021.mdx`
-- [ ] `2003/06/05/000022.mdx`
-- [ ] `2003/06/05/000023.mdx`
+- [x] `2003/06/05/000021.mdx`: Report on Three Gorges Dam relocation of Zigui county residents and their struggles
+- [x] `2003/06/05/000022.mdx`: In-depth investigation into Zhou Zhengyi's rise and fall as "Shanghai's richest man" and his business empire collapse
+- [x] `2003/06/05/000023.mdx`: Comprehensive report on President Hu Jintao's first diplomatic tour to Russia, including meetings with Putin and Koizumi
 - [ ] `2003/07/03/000024.mdx`
 - [ ] `2003/07/10/000025.mdx`
 - [ ] `2003/07/17/000026.mdx`
