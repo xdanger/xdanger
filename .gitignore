@@ -21,6 +21,10 @@
 /out/
 /_sites/
 
+# cache
+/scripts/.cache
+/scripts/.*
+
 # production
 /build
 
