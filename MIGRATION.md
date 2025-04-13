@@ -68,225 +68,224 @@
 
 需要处理的博客的文件列表如下（已省略相对路径前缀 `src/content/post/` ）：
 
-- [x] `2002/12/12/000007.mdx`: Investigative report on the Dalian plane crash caused by arson
-- [x] `2002/12/19/000008.mdx`: News report about Ba Jin's donated books found in secondhand bookstores
-- [x] `2002/12/26/000009.mdx`: South China Weekend's 2002 special report on Hu Jintao as the new CCP leader
-- [x] `2003/01/01/000010.mdx`: Interview with Kang Xiaoguang on elite social responsibility in China
-- [x] `2003/01/09/000011.mdx`: Article about forgotten legal elites from Soochow University Law School
-- [x] `2003/01/23/000012.mdx`: Analysis on why China is not to blame for Japan's deflation
-- [x] `2003/02/13/000013.mdx`: Report on early SARS outbreak in Guangzhou in February 2003
-- [x] `2003/03/13/000014.mdx`: In-depth analysis of constitutionalism in China featuring interviews with legal and political experts
-- [x] `2003/03/20/000015.mdx`: Essay reflecting on China's historical choices during three "Guiwei" years (1883, 1943, 2003)
-- [x] `2003/04/03/000016.mdx`: Investigative report on the Chinese fishing boat sunk by pirates in Sri Lankan waters
-- [x] `2003/05/08/000017.mdx`: Behind-the-scenes story about the production of TV series "Towards the Republic"
-- [x] `2003/05/08/000018.mdx`: Analysis of the online gaming industry in China, especially disputes between major companies
-- [x] `2003/05/15/000019.mdx`: Report on how a SARS-related rumor spread across 14 Chinese provinces in just 4 days
-- [x] `2003/05/29/000020.mdx`: In-depth report on property owners' rights movement against government and developer in Guangzhou
-- [x] `2003/06/05/000021.mdx`: Report on Three Gorges Dam relocation of Zigui county residents and their struggles
-- [x] `2003/06/05/000022.mdx`: In-depth investigation into Zhou Zhengyi's rise and fall as "Shanghai's richest man" and his business empire collapse
-- [x] `2003/06/05/000023.mdx`: Comprehensive report on President Hu Jintao's first diplomatic tour to Russia, including meetings with Putin and Koizumi
-- [x] `2003/07/03/000024.mdx`: Report on the literary battle between Jin Wenming and Yu Qiuyue over historical inaccuracies in Yu's essays
-- [x] `2003/07/10/000025.mdx`: In-depth report on Peking University's radical reform of faculty appointment and promotion system
-- [x] `2003/07/17/000026.mdx`: Investigative report on the British Museum's preservation of Chinese artifacts and its funding and staffing issues
-- [x] `2003/07/17/000027.mdx`: Essay about Tan Sitong's heroic martyrdom during the Wuxu Reform Movement of 1898
-- [x] `2003/07/31/000028.mdx`: Investigative report on the controversial plan to build Yangliuhu Dam 1310 meters upstream from the Dujiangyan UNESCO World Heritage Site
-- [x] `2003/08/14/000029.mdx`: In-depth report on China's upcoming judicial system reform and the "three-izations" problems in the current system
-- [x] `2003/09/04/000030.mdx`: In-depth analysis of China's urban demolition and relocation policies over a decade, examining how they've evolved from "public welfare" to commercial projects, causing social conflicts
-- [x] `2003/09/18/000031.mdx`: Analysis of Western criticism of China's RMB currency policy in 2003, showing how US and EU officials incorrectly blamed China's fixed exchange rate for manufacturing job losses
-- [x] `2003/10/09/000032.mdx`: Investigative report on the controversial demolition of Dongyue Temple's west wing, a 680-year-old Taoist temple in Beijing, for commercial real estate development
-- [x] `2003/10/09/000033.mdx`: Profile of 2003 Nobel Literature Prize winner J.M. Coetzee, exploring his life, literary works, and self-imposed exile from South Africa
-- [x] `2003/10/16/000034.mdx`: Report on martial arts novelist Jin Yong's cultural events in China, including being named "Wulin Alliance Chief" at Huashan mountain and participating in discussions about wuxia culture
-- [x] `2003/11/06/000035.mdx`: Profile of Chinese entrepreneur Sun Dawu who built a rural enterprise empire while maintaining Confucian ethics, but faced legal troubles for "illegal public deposits"
-- [x] `2003/11/06/000036.mdx`: Analysis of the 2003 arrest of Russian oligarch Khodorkovsky, examining its political significance, the relationship between business and government in Russia's constitutional transition, and the balance between state power and business rights
-- [x] `2003/11/13/000037.mdx`: In-depth investigative report on the 2003 Hengyang fire disaster that killed 20 firefighters, revealing systematic corruption and regulatory failures behind the tragedy
-- [x] `2003/11/23/000005.mdx`: Brief commentary contrasting US and Chinese approaches to child safety regulations, prompted by news of a 2-year-old girl falling from a 5th-floor window
-- [x] `2003/11/26/000006.mdx`: Short post about creating a custom Google search interface, inspired by the soaso project
-- [x] `2003/11/27/000038.mdx`: In-depth report on the 50-year history of the Sanmenxia Dam project, examining its decision-making process, technical failures, and ongoing upstream-downstream conflicts
-- [x] `2003/12/04/000001.mdx`: Tutorial on installing MovableType blogging platform on Windows XP with Apache, ActivePerl, and MySQL, including troubleshooting common installation issues
-- [x] `2003/12/05/000003.mdx`: Translation and commentary on Jeremy Zawodny's "PageRank is Dead" article, discussing how Google's search algorithm evolved to downrank blogs despite their proper use of hyperlinks
-- [x] `2003/12/05/000004.mdx`: Brief post about installing the htmlArea WYSIWYG editor for MovableType and configuration tips
-- [x] `2003/12/07/000039.mdx`: Short post noting that Chinese resource sharing site VeryCD achieved Google PageRank 4
-- [x] `2003/12/08/000040.mdx`: Observations about Google's fast indexing of new web pages and Chinese character encoding issues compared to Baidu
-- [x] `2003/12/08/000041.mdx`: Commentary on China's football team's long-term failure against South Korea, with screenshots of rough play from a 2003 match
-- [x] `2003/12/09/000042.mdx`: Personal reflection on the sudden death of Taiwanese stuntman Ke Shouliang and comparisons to other celebrity deaths
-- [x] `2003/12/12/000043.mdx`: Negative review of Infernal Affairs III movie after Shanghai premiere, with comparisons to other disappointing sequels
-- [x] `2003/12/13/000044.mdx`: Technical guide for setting up cronolog with Apache on Windows to split logs for AWStats processing, with troubleshooting information
-- [x] `2003/12/13/000045.mdx`: In-depth analysis of Premier Wen Jiabao's 2003 US visit, examining the strategic significance and historical continuity in China's foreign policy
-- [x] `2003/12/14/000047.mdx`: News report about Saddam Hussein's capture with commentary on media coverage differences and quotes from MSNBC
-- [x] `2003/12/15/000048.mdx`: Brief post sharing a link to a Flash game for testing reaction speed
-- [x] `2003/12/15/000049.mdx`: Technical analysis of a Windows Notepad encoding bug when saving files with specific Chinese characters
-- [x] `2003/12/16/000050.mdx`: Investigative report exposing a fake Google site (google.net.cn) with detailed technical evidence of its inauthenticity
-- [x] `2003/12/18/000046.mdx`: Translation and overview of Google's PageRank algorithm with detailed technical explanation and mathematical formula
-- [x] `2003/12/18/000051.mdx`: Continuation of PageRank algorithm explanation focusing on the mathematical formula and the random surfer model
-- [x] `2003/12/19/000051.mdx`: Duplicate of the previous article about PageRank's mathematical formula and random surfer model (republished)
-- [ ] `2003/12/20/000052.mdx`
-- [ ] `2003/12/21/000053.mdx`
-- [ ] `2003/12/21/000054.mdx`
-- [ ] `2003/12/23/000055.mdx`
-- [ ] `2003/12/24/000056.mdx`
-- [ ] `2003/12/25/000057.mdx`
-- [ ] `2003/12/27/000058.mdx`
-- [ ] `2003/12/28/000059.mdx`
-- [ ] `2003/12/29/000060.mdx`
-- [ ] `2003/12/29/000061.mdx`
-- [ ] `2003/12/29/000062.mdx`
-- [ ] `2003/12/29/000063.mdx`
-- [ ] `2003/12/29/000064.mdx`
-- [ ] `2003/12/31/000065.mdx`
-- [ ] `2004/01/02/000066.mdx`
-- [ ] `2004/01/04/000067.mdx`
-- [ ] `2004/01/05/000068.mdx`
-- [ ] `2004/01/06/000069.mdx`
-- [ ] `2004/01/07/000070.mdx`
-- [ ] `2004/01/08/000071.mdx`
-- [ ] `2004/01/09/000072.mdx`
-- [ ] `2004/01/10/000073.mdx`
-- [ ] `2004/01/11/000074.mdx`
-- [ ] `2004/01/12/000075.mdx`
-- [ ] `2004/01/13/000076.mdx`
-- [ ] `2004/01/14/000077.mdx`
-- [ ] `2004/01/14/000078.mdx`
-- [ ] `2004/01/15/000079.mdx`
-- [ ] `2004/01/16/000080.mdx`
-- [ ] `2004/01/17/000081.mdx`
-- [ ] `2004/01/18/000082.mdx`
-- [ ] `2004/01/19/000083.mdx`
-- [ ] `2004/01/20/000085.mdx`
-- [ ] `2004/01/21/000086.mdx`
-- [ ] `2004/01/22/000087.mdx`
-- [ ] `2004/01/23/000088.mdx`
-- [ ] `2004/01/25/000089.mdx`
-- [ ] `2004/01/26/000090.mdx`
-- [ ] `2004/01/28/000091.mdx`
-- [ ] `2004/01/29/000092.mdx`
-- [ ] `2004/01/30/000093.mdx`
-- [ ] `2004/01/31/000094.mdx`
-- [ ] `2004/02/03/000095.mdx`
-- [ ] `2004/02/04/000096.mdx`
-- [ ] `2004/02/10/000098.mdx`
-- [ ] `2004/02/11/000097.mdx`
-- [ ] `2004/02/12/000099.mdx`
-- [ ] `2004/02/13/000100.mdx`
-- [ ] `2004/02/14/000101.mdx`
-- [ ] `2004/02/14/000102.mdx`
-- [ ] `2004/02/15/000102.mdx`
-- [ ] `2004/02/20/000103.mdx`
-- [ ] `2004/02/24/000104.mdx`
-- [ ] `2004/02/28/000105.mdx`
-- [ ] `2004/03/05/000106.mdx`
-- [ ] `2004/03/08/000107.mdx`
-- [ ] `2004/03/09/000108.mdx`
-- [ ] `2004/03/10/000109.mdx`
-- [ ] `2004/03/11/000110.mdx`
-- [ ] `2004/03/12/000111.mdx`
-- [ ] `2004/03/13/000112.mdx`
-- [ ] `2004/03/14/000110.mdx`
-- [ ] `2004/03/18/000113.mdx`
-- [ ] `2004/03/20/000114.mdx`
-- [ ] `2004/03/21/000115.mdx`
-- [ ] `2004/03/21/000116.mdx`
-- [ ] `2004/03/21/000117.mdx`
-- [ ] `2004/03/23/000118.mdx`
-- [ ] `2004/03/30/000119.mdx`
-- [ ] `2004/03/30/000120.mdx`
-- [ ] `2004/04/10/000122.mdx`
-- [ ] `2004/04/10/000123.mdx`
-- [ ] `2004/04/12/000124.mdx`
-- [ ] `2004/04/23/000125.mdx`
-- [ ] `2004/04/30/000126.mdx`
-- [ ] `2004/05/02/000127.mdx`
-- [ ] `2004/05/03/000128.mdx`
-- [ ] `2004/05/07/000129.mdx`
-- [ ] `2004/05/08/000130.mdx`
-- [ ] `2004/05/15/000131.mdx`
-- [ ] `2004/06/06/000132.mdx`
-- [ ] `2004/06/24/000133.mdx`
-- [ ] `2004/09/03/000134.mdx`
-- [ ] `2004/09/05/000136.mdx`
-- [ ] `2004/09/06/000135.mdx`
-- [ ] `2004/09/07/000137.mdx`
-- [ ] `2004/09/08/000138.mdx`
-- [ ] `2004/09/09/000139.mdx`
-- [ ] `2004/09/11/000140.mdx`
-- [ ] `2004/09/21/000141.mdx`
-- [ ] `2004/09/22/000142.mdx`
-- [ ] `2004/11/14/000143.mdx`
-- [ ] `2004/11/16/000144.mdx`
-- [ ] `2004/11/18/000145.mdx`
-- [ ] `2004/11/19/000146.mdx`
-- [ ] `2004/11/20/000147.mdx`
-- [ ] `2004/11/22/000148.mdx`
-- [ ] `2005/07/10/000001.mdx`
-- [ ] `2005/07/11/000002.mdx`
-- [ ] `2005/07/12/000004.mdx`
-- [ ] `2005/07/13/000003.mdx`
-- [ ] `2005/07/14/000005.mdx`
-- [ ] `2005/07/15/000006.mdx`
-- [ ] `2005/07/16/000007.mdx`
-- [ ] `2005/07/17/000008.mdx`
-- [ ] `2005/07/19/000009.mdx`
-- [ ] `2005/07/22/000010.mdx`
-- [ ] `2005/07/26/000011.mdx`
-- [ ] `2005/08/18/000013.mdx`
-- [ ] `2005/08/21/000014.mdx`
-- [ ] `2005/08/22/000015.mdx`
-- [ ] `2005/08/24/000016.mdx`
-- [ ] `2005/08/28/000017.mdx`
-- [ ] `2005/08/28/000018.mdx`
-- [ ] `2005/08/31/000020.mdx`
-- [ ] `2005/08/31/000022.mdx`
-- [ ] `2005/10/17/000023.mdx`
-- [ ] `2005/10/17/000024.mdx`
-- [ ] `2005/10/18/000025.mdx`
-- [ ] `2005/10/19/000026.mdx`
-- [ ] `2005/10/22/000027.mdx`
-- [ ] `2005/10/23/000028.mdx`
-- [ ] `2005/11/17/000029.mdx`
-- [ ] `2005/12/28/000030.mdx`
-- [ ] `2006/01/05/000031.mdx`
-- [ ] `2006/01/17/000032.mdx`
-- [ ] `2006/01/18/000033.mdx`
-- [ ] `2006/01/20/000034.mdx`
-- [ ] `2006/01/28/000035.mdx`
-- [ ] `2006/06/07/000046.mdx`
-- [x] `2006/07/06/000047.mdx`: Author's experience transitioning from Windows to Linux to Mac OS
-- [x] `2006/07/13/000050.mdx`: Critique of blind nationalism and mob mentality in online discussions
-- [x] `2006/07/13/000051.mdx`: Numbered responses about nationalism and China-Japan relations
-- [x] `2006/09/14/000052.mdx`: Reflections on XML and XSL academic assignment
-- [ ] `2006/09/15/000053.mdx`
-- [ ] `2006/09/16/000054.mdx`
-- [ ] `2006/09/25/000055.mdx`
-- [ ] `2006/12/20/000057.mdx`
-- [ ] `2006/12/22/000058.mdx`
-- [ ] `2007/01/01/000059.mdx`
-- [ ] `2007/03/10/000061.mdx`
-- [ ] `2007/03/12/000062.mdx`
-- [ ] `2007/03/20/000064.mdx`
-- [ ] `2007/03/22/000065.mdx`
-- [ ] `2007/03/23/000066.mdx`
-- [ ] `2007/03/30/000067.mdx`
-- [ ] `2007/06/10/000068.mdx`
-- [ ] `2007/10/28/000069.mdx`
-- [ ] `2009/01/01/000199.mdx`
-- [ ] `2009/02/13/000207.mdx`
-- [x] `2006/02/15/000036.mdx`: Commentary on internet censorship in China from 2006
-- [x] `2006/02/16/000037.mdx`: Exposure of CDN server manipulation in 2006
-- [x] `2006/02/17/000039.mdx`: Brief post about Windows Defender from 2006
-- [x] `2006/03/07/000040.mdx`: Post about NetEase news from 2006
-- [x] `2006/04/12/000043.mdx`: Eyewitness account of Google's Chinese branding event from 2006
-- [x] `2006/04/13/000044.mdx`: Analysis of Baidu vs Google in China from 2006
-- [x] `2006/04/22/000045.mdx`: Critique of Sony's customer service in China from 2006
-- [x] `2006/07/07/000048.mdx`: Analysis of Baidu's community strategy vs Google from 2006
-- [x] `2006/07/08/000049.mdx`: Essay warning against chauvinism from 2006
-- [x] `2008/03/11/000130.mdx`: School memories post from 2008
-- [x] `2008/04/24/000147.mdx`: Article about critique of Chinese state-owned companies from 2008
-- [x] `2013/06/23/rebuild-blog-with-jekyll.mdx`
-- [x] `2023/01/01/ml-is-the-infra-of-all-industry.mdx`
-- [x] `2023/05/15/compression-is-intelligence.mdx`
-- [x] `2023/05/18/montanas-ban-on-tiktok-is-unconstitutional.mdx`
-- [x] `2023/06/24/wagner-is-helping-putin.mdx`
-- [x] `2023/09/12/its-been-12-years-for-tim.mdx`
-- [x] `2025/03/15/multiplanet-civilization-v-earth-gravity.mdx`
+- [x] `2002/12/12/000007.mdx`: dalian plane crash arson investigation
+- [x] `2002/12/19/000008.mdx`: ba jin donated books secondhand stores
+- [x] `2002/12/26/000009.mdx`: hu jintao new ccp leader report
+- [x] `2003/01/01/000010.mdx`: kang xiaoguang elite social responsibility
+- [x] `2003/01/09/000011.mdx`: soochow university legal elites
+- [x] `2003/01/23/000012.mdx`: china japan deflation relationship
+- [x] `2003/02/13/000013.mdx`: guangzhou sars outbreak february 2003
+- [x] `2003/03/13/000014.mdx`: china constitutionalism expert interviews
+- [x] `2003/03/20/000015.mdx`: china historical guiwei years choices
+- [x] `2003/04/03/000016.mdx`: chinese fishing boat sri lanka pirates
+- [x] `2003/05/08/000017.mdx`: towards the republic tv series backstory
+- [x] `2003/05/08/000018.mdx`: china online gaming industry disputes
+- [x] `2003/05/15/000019.mdx`: sars rumors 14 chinese provinces
+- [x] `2003/05/29/000020.mdx`: guangzhou property owners rights movement
+- [x] `2003/06/05/000021.mdx`: three gorges dam relocation
+- [x] `2003/06/05/000022.mdx`: zhou zhengyi shanghai richest man
+- [x] `2003/06/05/000023.mdx`: hu jintao russia diplomatic tour
+- [x] `2003/07/03/000024.mdx`: literary historical inaccuracies battle
+- [x] `2003/07/10/000025.mdx`: peking university faculty reform
+- [x] `2003/07/17/000026.mdx`: british museum chinese artifacts
+- [x] `2003/07/17/000027.mdx`: tan sitong wuxu reform martyrdom
+- [x] `2003/07/31/000028.mdx`: yangliuhu dam dujiangyan heritage
+- [x] `2003/08/14/000029.mdx`: china judicial system reform
+- [x] `2003/09/04/000030.mdx`: china urban demolition policies
+- [x] `2003/09/18/000031.mdx`: western criticism china rmb policy
+- [x] `2003/10/09/000032.mdx`: dongyue temple wing demolition
+- [x] `2003/10/09/000033.mdx`: nobel winner jm coetzee profile
+- [x] `2003/10/16/000034.mdx`: jin yong wulin alliance huashan
+- [x] `2003/11/06/000035.mdx`: sun dawu confucian business empire
+- [x] `2003/11/06/000036.mdx`: khodorkovsky russia arrest analysis
+- [x] `2003/11/13/000037.mdx`: hengyang fire regulatory failures
+- [x] `2003/11/23/000005.mdx`: us chinese child safety comparison
+- [x] `2003/11/26/000006.mdx`: custom google search interface
+- [x] `2003/11/27/000038.mdx`: sanmenxia dam 50-year history
+- [x] `2003/12/04/000001.mdx`: movabletype windows xp installation
+- [x] `2003/12/05/000003.mdx`: pagerank is dead article translation
+- [x] `2003/12/05/000004.mdx`: htmlarea movabletype wysiwyg editor
+- [x] `2003/12/07/000039.mdx`: verycd google pagerank 4 achievement
+- [x] `2003/12/08/000040.mdx`: google baidu encoding issues comparison
+- [x] `2003/12/08/000041.mdx`: china football south korea failures
+- [x] `2003/12/09/000042.mdx`: ke shouliang taiwanese stuntman death
+- [x] `2003/12/12/000043.mdx`: infernal affairs iii negative review
+- [x] `2003/12/13/000044.mdx`: cronolog apache windows setup
+- [x] `2003/12/13/000045.mdx`: wen jiabao us visit analysis
+- [x] `2003/12/14/000047.mdx`: saddam hussein capture news coverage
+- [x] `2003/12/15/000048.mdx`: flash reaction speed test game
+- [x] `2003/12/15/000049.mdx`: windows notepad chinese encoding bug
+- [x] `2003/12/16/000050.mdx`: fake google.net.cn website exposure
+- [x] `2003/12/18/000046.mdx`: google pagerank algorithm translation
+- [x] `2003/12/18/000051.mdx`: pagerank formula random surfer model
+- [x] `2003/12/19/000051.mdx`: duplicate pagerank formula
+- [x] `2003/12/20/000052.mdx`: xiao anning company assets seizure
+- [x] `2003/12/21/000053.mdx`: pagerank formula versions comparison
+- [x] `2003/12/21/000054.mdx`: campus life pirated lotr movie
+- [x] `2003/12/23/000055.mdx`: china fourth constitutional amendment
+- [x] `2003/12/24/000056.mdx`: msn messenger holiday icons
+- [x] `2003/12/25/000057.mdx`: christmas day illness
+- [x] `2003/12/27/000058.mdx`: pagerank iterative calculation
+- [x] `2003/12/28/000059.mdx`: catching a cold note
+- [x] `2003/12/29/000060.mdx`: wenzhou real estate investment
+- [x] `2003/12/29/000061.mdx`: plaintiff requesting case loss
+- [x] `2003/12/29/000062.mdx`: science magazine 2003 breakthroughs
+- [x] `2003/12/29/000063.mdx`: us china trade tensions
+- [x] `2003/12/29/000064.mdx`: russia japan china oil pipeline
+- [x] `2003/12/31/000065.mdx`: adsl router setup
+- [x] `2004/01/02/000066.mdx`: best man experience
+- [x] `2004/01/04/000067.mdx`: chinese new year reflections
+- [x] `2004/01/05/000068.mdx`: sars virus mutation report
+- [x] `2004/01/06/000069.mdx`: google meta search code
+- [x] `2004/01/07/000070.mdx`: einstein logic puzzle
+- [x] `2004/01/08/000071.mdx`: lu xun style parodies
+- [x] `2004/01/09/000072.mdx`: superstitions about 2003 challenges
+- [x] `2004/01/10/000073.mdx`: vobsub subtitle timing adjustment
+- [x] `2004/01/11/000074.mdx`: han king city destroyed by yellow river
+- [x] `2004/01/12/000075.mdx`: website reaches pagerank 5
+- [x] `2004/01/13/000076.mdx`: china's multipolar diplomatic strategy
+- [x] `2004/01/14/000077.mdx`: population density and industrial accidents
+- [x] `2004/01/14/000078.mdx`: hms amethyst yangtze river incident
+- [x] `2004/01/15/000079.mdx`: paypal registration and verification guide
+- [x] `2004/01/16/000080.mdx`: pagerank implementation in google search
+- [x] `2004/01/17/000081.mdx`: google toolbar pagerank display explained
+- [x] `2004/01/18/000082.mdx`: urban social networking via bus stops
+- [x] `2004/01/19/000083.mdx`: pmwiki windows setup with chinese support
+- [x] `2004/01/20/000085.mdx`: sleep schedule disruption during vacation
+- [x] `2004/01/21/000086.mdx`: chinese new year greeting with audio
+- [x] `2004/01/22/000087.mdx`: preserving chinese new year festive atmosphere
+- [x] `2004/01/23/000088.mdx`: movabletype subcategories plugin review
+- [x] `2004/01/25/000089.mdx`: chinese new year as cultural birthmark
+- [x] `2004/01/26/000090.mdx`: new music search engine announcement
+- [x] `2004/01/28/000091.mdx`: saint seiya anime chinese animation critique
+- [x] `2004/01/29/000092.mdx`: sars bird flu pandemics comparison
+- [x] `2004/01/30/000093.mdx`: shanghai bird flu school return
+- [x] `2004/01/31/000094.mdx`: novarg mydoom virus prevention
+- [x] `2004/02/03/000095.mdx`: wang jianshuo shanghai map viewer
+- [x] `2004/02/04/000096.mdx`: shanghai map project challenges
+- [x] `2004/02/10/000098.mdx`: turck mmcache php optimization
+- [x] `2004/02/11/000097.mdx`: java hello world environment setup
+- [x] `2004/02/12/000099.mdx`: shanghai city map download links
+- [x] `2004/02/13/000100.mdx`: removing windows messenger from xp
+- [x] `2004/02/14/000101.mdx`: putin wealth disclosure reelection
+- [x] `2004/02/15/000102.mdx`: yan lingjun youth reading course
+- [x] `2004/02/20/000103.mdx`: han wang city yellow river destruction
+- [x] `2004/02/24/000104.mdx`: multiple lans windows connection
+- [x] `2004/02/28/000105.mdx`: china higher education job market critique
+- [x] `2004/03/05/000106.mdx`: java 24 points math game calculator
+- [x] `2004/03/08/000107.mdx`: 2003 film industry year of finales
+- [x] `2004/03/09/000108.mdx`: chinese radio sex education critique
+- [x] `2004/03/10/000109.mdx`: shanghai high temperature record
+- [x] `2004/03/11/000110.mdx`: assembly 7-segment display control
+- [x] `2004/03/12/000111.mdx`: joyes.com free mobile games
+- [x] `2004/03/13/000112.mdx`: java terminal snake game code
+- [x] `2004/03/14/000110.mdx`: duplicate assembly program
+- [x] `2004/03/18/000113.mdx`: friend blog hacking joke
+- [x] `2004/03/20/000114.mdx`: taiwan presidential election controversy
+- [x] `2004/03/21/000115.mdx`: taiwan election protests update
+- [x] `2004/03/21/000116.mdx`: adsl modem routing guide
+- [x] `2004/03/21/000117.mdx`: adsl campus network followup
+- [x] `2004/03/23/000118.mdx`: multiple network connections tutorial
+- [x] `2004/03/30/000119.mdx`: advanced networking with route command
+- [x] `2004/03/30/000120.mdx`: passing scjp exam announcement
+- [x] `2004/04/10/000122.mdx`: server migration performance
+- [x] `2004/04/10/000123.mdx`: fu sinian historiography chinese history
+- [x] `2004/04/12/000124.mdx`: cleanliness obsession cultural analysis
+- [x] `2004/04/23/000125.mdx`: yasukuni shrine japan politics controversy
+- [x] `2004/04/30/000126.mdx`: kang youwei economic life residences
+- [x] `2004/05/02/000127.mdx`: blog absence work update
+- [x] `2004/05/03/000128.mdx`: notebook shopping bargaining tips
+- [x] `2004/05/07/000129.mdx`: mvc php architecture development
+- [x] `2004/05/08/000130.mdx`: python programming first impression
+- [x] `2004/05/15/000131.mdx`: movabletype becoming paid software
+- [x] `2004/06/06/000132.mdx`: rational political analysis article share
+- [x] `2004/06/24/000133.mdx`: saying goodbye after dawn graduation
+- [x] `2004/09/03/000134.mdx`: baidu acquisition of hao123 analysis
+- [x] `2004/09/05/000136.mdx`: verycd p2p platform development commitment
+- [x] `2004/09/06/000135.mdx`: heartbreak after long relationship
+- [x] `2004/09/07/000137.mdx`: gmail invitation from friend windix
+- [x] `2004/09/08/000138.mdx`: flash escape games walkthrough guide
+- [x] `2004/09/09/000139.mdx`: google chinese news service launch
+- [x] `2004/09/11/000140.mdx`: verycd invision power board localization
+- [x] `2004/09/21/000141.mdx`: humorous chinese history one-liners
+- [x] `2004/09/22/000142.mdx`: satirical dating guide for taken women
+- [x] `2004/11/14/000143.mdx`: persistence focus and blog return
+- [x] `2004/11/16/000144.mdx`: apache logs management technical guide
+- [x] `2004/11/18/000145.mdx`: verycd server infrastructure changes
+- [x] `2004/11/19/000146.mdx`: gfans.org domain for google fansite
+- [x] `2004/11/20/000147.mdx`: firefox 1.0 success and google support
+- [x] `2004/11/22/000148.mdx`: zend sales director meeting php china
+- [x] `2005/07/10/000001.mdx`: blog setup on linux
+- [x] `2005/07/11/000002.mdx`: tech office team at verycd
+- [x] `2005/07/12/000004.mdx`: google adsense optimization
+- [x] `2005/07/13/000003.mdx`: china internet evolution
+- [x] `2005/07/14/000005.mdx`: online community websites analysis
+- [x] `2005/07/15/000006.mdx`: defense of 3721 browser plugin
+- [x] `2005/07/16/000007.mdx`: idg capital critique
+- [x] `2005/07/17/000008.mdx`: ma ying-jeou election commentary
+- [x] `2005/07/19/000009.mdx`: personal transportation mishaps
+- [x] `2005/07/22/000010.mdx`: chinese internet copycat culture
+- [x] `2005/07/26/000011.mdx`: google competitor relationships
+- [x] `2005/08/18/000013.mdx`: flickr technical and historical analysis
+- [x] `2005/08/21/000014.mdx`: internet democracy essay
+- [x] `2005/08/22/000015.mdx`: verycd emule translation battle
+- [x] `2005/08/24/000016.mdx`: google talk launch commentary
+- [x] `2005/08/28/000017.mdx`: loreal hao123 comparison
+- [x] `2005/08/28/000018.mdx`: personal quirks blog meme
+- [x] `2005/08/31/000020.mdx`: yahoo flickr acquisition critique
+- [x] `2005/08/31/000022.mdx`: google talk minimalist ui review
+- [x] `2005/10/17/000023.mdx`: rss reader google reader adoption
+- [x] `2005/10/17/000024.mdx`: becoming a ning developer
+- [x] `2005/10/18/000025.mdx`: choosing feedburner for rss services
+- [x] `2005/10/19/000026.mdx`: it industry importance apple example
+- [x] `2005/10/22/000027.mdx`: google sitemap for movabletype
+- [x] `2005/10/23/000028.mdx`: google original web2.0 model
+- [x] `2005/11/17/000029.mdx`: million dollar homepage copycat sites
+- [x] `2005/12/28/000030.mdx`: chen yizhou donews acquisition questions
+- [x] `2006/01/05/000031.mdx`: chinese new year zodiac goals
+- [x] `2006/01/17/000032.mdx`: shanghai xiamen service comparison
+- [x] `2006/01/18/000033.mdx`: msn account accidental deletion
+- [x] `2006/01/20/000034.mdx`: verycd forum 200000 topics milestone
+- [x] `2006/01/28/000035.mdx`: cctv spring festival gala critique
+- [x] `2006/06/07/000046.mdx`: 2006 gaokao essay prompts
+- [x] `2006/07/06/000047.mdx`: windows linux mac os transition
+- [x] `2006/07/13/000050.mdx`: blind nationalism online critique
+- [x] `2006/07/13/000051.mdx`: china japan relations responses
+- [x] `2006/09/14/000052.mdx`: xml xsl academic assignment
+- [x] `2006/09/15/000053.mdx`: itunes apple product anticipation
+- [x] `2006/09/16/000054.mdx`: breast cancer treatment help request
+- [x] `2006/09/25/000055.mdx`: shanghai social security corruption
+- [x] `2006/12/20/000057.mdx`: movabletype 500 errors apache timeout
+- [x] `2006/12/22/000058.mdx`: sunrise sunset calculator google maps
+- [x] `2007/01/01/000059.mdx`: hong kong 1997 handover reflections
+- [x] `2007/03/10/000061.mdx`: google chinese portal design critique
+- [x] `2007/03/12/000062.mdx`: shanghai changning food spots nostalgia
+- [x] `2007/03/20/000064.mdx`: blogs seo fighting online fraud
+- [x] `2007/03/22/000065.mdx`: heavenfox young programming prodigy
+- [x] `2007/03/23/000066.mdx`: easymorning show shanghai media takeover
+- [x] `2007/03/30/000067.mdx`: quicksilver mac recommendation
+- [x] `2007/06/10/000068.mdx`: accessing blocked flickr in china
+- [x] `2007/10/28/000069.mdx`: currency wars book analysis
+- [x] `2009/01/01/000199.mdx`: china real estate market analysis
+- [x] `2009/02/13/000207.mdx`: unix timestamp 1234567890 milestone
+- [x] `2006/02/15/000036.mdx`: internet censorship in china
+- [x] `2006/02/16/000037.mdx`: cdn server manipulation exposure
+- [x] `2006/02/17/000039.mdx`: windows defender overview
+- [x] `2006/03/07/000040.mdx`: netease news update
+- [x] `2006/04/12/000043.mdx`: google chinese branding event
+- [x] `2006/04/13/000044.mdx`: baidu google china comparison
+- [x] `2006/04/22/000045.mdx`: sony customer service critique
+- [x] `2006/07/07/000048.mdx`: baidu community strategy google comparison
+- [x] `2006/07/08/000049.mdx`: warning against chauvinism
+- [x] `2008/03/11/000130.mdx`: school memories
+- [x] `2008/04/24/000147.mdx`: chinese state-owned companies critique
+- [x] `2013/06/23/rebuild-blog-with-jekyll.mdx`: blog jekyll migration
+- [x] `2023/01/01/ml-is-the-infra-of-all-industry.mdx`: ml as industry infrastructure
+- [x] `2023/05/15/compression-is-intelligence.mdx`: compression as intelligence concept
+- [x] `2023/05/18/montanas-ban-on-tiktok-is-unconstitutional.mdx`: montana tiktok ban unconstitutional
+- [x] `2023/06/24/wagner-is-helping-putin.mdx`: wagner group putin assistance
+- [x] `2023/09/12/its-been-12-years-for-tim.mdx`: tim cook 12-year anniversary
+- [x] `2025/03/15/multiplanet-civilization-v-earth-gravity.mdx`: multiplanet civilization earth gravity
 
 follow these steps:
 

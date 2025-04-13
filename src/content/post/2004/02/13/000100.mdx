@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "从XP中彻底移除Windows Messenger"
-category: "Tech"
-tags: []
-description: "想必很多人和我一样，在XP上使用MSN Messenger，但是Windows Messenger又始终关不掉，即使在选项中设置不自动启动、不自动登录，他还是会随系统启动，并且关闭进程后还会自动启动自动登录，并注销掉正在运行的MSN Messenger。最可恶的是，我明明没有登录MSN Messenger，突然就会有人..."
+title: "从 XP 中彻底移除 Windows Messenger"
+tags: ["tech", "windows xp", "messenger", "msn", "windows messenger", "tip", "system tweaks"]
+description: "介绍了如何在 Windows XP 系统中彻底移除 Windows Messenger 的简单方法，解决了 Windows Messenger 自动启动和与 MSN Messenger 冲突的问题。"
 publishDate: "2004-02-13 17:21:42"
 ---
 
+想必很多人和我一样，在[XP](http://www.microsoft.com/windowsxp/)上使用[MSN Messenger](http://messenger.msn.com/)，但是[Windows Messenger](http://www.microsoft.com/windows/messenger/)又始终关不掉，即使在选项中设置不自动启动、不自动登录，他还是会随系统启动，并且关闭进程后还会自动启动自动登录，并注销掉正在运行的 MSN Messenger。最可恶的是，我明明没有登录 MSN Messenger，突然就会有人冒出来句话……最后只能改掉程序的文件名了事。
 
-<P>　　想必很多人和我一样，在<A href="http://www.microsoft.com/windowsxp/">XP</A>上使用<A href="http://messenger.msn.com/">MSN Messenger</A>，但是<A href="http://www.microsoft.com/windows/messenger/">Windows Messenger</A>又始终关不掉，即使在选项中设置不自动启动、不自动登录，他还是会随系统启动，并且关闭进程后还会自动启动自动登录，并注销掉正在运行的MSN Messenger。最可恶的是，我明明没有登录MSN Messenger，突然就会有人冒出来句话……最后只能改掉程序的文件名了事。</P>
-<P>　　今天<A href="http://www.google.com/search?q=remove+windows+messenger">Google了一下</A>，想不到有那么多解决办法。其中有一个办法最简单：开始-&gt;运行-&gt;键入</P>
-<DIV class=code>RunDll32 advpack.dll,LaunchINFSection %windir%\inf\msmsgs.inf,BLC.Remove</DIV>
-<P>　　哈哈，整个世界清静了……此方式适应所有XP系统。</P>
-<br /><br />
+今天[Google 了一下](http://www.google.com/search?q=remove+windows+messenger)，想不到有那么多解决办法。其中有一个办法最简单：开始->运行->键入
 
+```batch
+RunDll32 advpack.dll,LaunchINFSection %windir%\inf\msmsgs.inf,BLC.Remove
+```
 
+哈哈，整个世界清静了……此方式适应所有 XP 系统。

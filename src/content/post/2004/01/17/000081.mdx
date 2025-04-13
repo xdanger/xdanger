@@ -1,80 +1,37 @@
 ---
 layout: post
-title: "使用Google工具栏显示PageRank"
-category: "Tech"
-tags: []
-description: "以下文字的原文：http://pr.efactory.de/e-pagerank-implementation.shtml 多数人通过Google工具栏开始了解PageRank。Google工具栏是Microsoft Internet Explorer的一个浏览器插件，可以在Google网站上下载到。Google工具栏..."
+title: "使用 Google 工具栏显示 PageRank"
+tags: ["pagerank", "google", "toolbar", "seo", "tech", "browser plugin", "internet explorer"]
+description: "本文详细解释了 Google 工具栏如何显示网页的 PageRank 值。文章介绍了 Google 工具栏的功能，PageRank 显示方式，并探讨了工具栏显示的 0-10 刻度值与实际 PageRank 计算值之间的对数关系，包含完整的对数转换表格。同时指出了使用工具栏高级功能可能涉及的隐私问题。"
 publishDate: "2004-01-17 02:08:22"
 ---
 
+以下文字的原文：[http://pr.efactory.de/e-pagerank-implementation.shtml](http://pr.efactory.de/e-pagerank-implementation.shtml)
 
-<P>　　以下文字的原文：<A href="http://pr.efactory.de/e-pagerank-implementation.shtml">http://pr.efactory.de/e-pagerank-implementation.shtml</A></P>
-<P>　　多数人通过<A href="http://toolbar.google.com/">Google工具栏</A>开始了解PageRank。Google工具栏是Microsoft Internet Explorer的一个浏览器插件，可以在Google网站上下载到。Google工具栏提供的一些功能使搜索Google变得更为方便。</P>
-<P><IMG style="WIDTH: 210px; HEIGHT: 190px" alt="Google Toolbar" hspace=0 src="http://blog.xdanger.com/archives/pics/20040117a.gif" align=left border=0>　　Google工具栏以<STRONG>0</STRONG>-<STRONG>10</STRONG>的刻度显示PageRank值。从显示栏中绿色部分的长度可以估计出当前正在访问的页面的PageRank值。如果用户将鼠标放于显示栏上，就是显示PageRank值。</P>
-<P>　　<STRONG>注意</STRONG>：显示PageRank值是Google工具栏的一个高级功能。如果高级功能被打开，Google就会收集用户信息。另外，工具栏会自动升级，用户无需关心。所以，Google可以访问用户的硬盘。</P>
-<P>　　如果我们进行一下计算，PageRank理论上拥有最大值<STRONG>(Nd+(1-d))</STRONG>，这里的<STRONG>N</STRONG>为互联网网页总数，<STRONG>d</STRONG>为通常被设为<STRONG>0.85</STRONG>，计算出的PageRank值和工具栏显示出的数值成一定的比例关系。普遍认同的是，它们之间的比例并非线性的，而是成<STRONG>对数关系</STRONG>。如果设阻尼系数<STRONG>d</STRONG>为<STRONG>0.85</STRONG>而PageRank的最低值为0.15<EM>（</EM><A href="http://www.xdanger.com/"><EM>xdanger</EM></A><EM>注：因为0.15+0.85=1）</EM>，并且对数的基数为6，我们得到以下的比例关系：</P>
-<P>
-<TABLE cellSpacing=0 cellPadding=0 bgColor=#ffffff border=0>
-<TBODY>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>Toolbar PageRank</FONT></TD>
-<TD vAlign=top align=middle width=301 colSpan=3><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>Real PageRank</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0.15</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0.9</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0.9</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>5.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>2/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>5.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>32.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>3/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>32.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>194.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>4/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>194.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1,166.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>5/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1,166.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>6,998.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>6/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>6,998.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>41,990.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>7/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>41,990.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>251,942.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>8/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>251,942.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1,511,654.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>9/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>1,511,654.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>9,069,926.4</FONT></TD></TR>
-<TR>
-<TD vAlign=top align=middle width=150><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>10/10</FONT></TD>
-<TD vAlign=top align=right width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>9,069,926.4</FONT></TD>
-<TD vAlign=top align=middle width=21><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>-</FONT></TD>
-<TD vAlign=top align=left width=140><FONT class=TEXT face=Verdana,Arial,Geneva,Helvetica,sans-serif color=#000000 size=2>0.85 × N + 0.15</FONT></TD></TR></TBODY></TABLE></P>
-<P>　　现在还不确定工具栏所显示的数值和实际的PageRank值是否严格遵循对数关系。看上去的确像遵循了对数关系，因此Google工具栏仅用了一个范围的刻度值就能显示所有页面的PageRank值。对数的基数被定在6-7之间，这一点可以由一个<EM>工具栏PageRank值</EM>大于4的页面的入链数量举例演算得出，这个连接数量可以从Google那用指令式的链接得到。</P>
-<br /><br />
-<p align="center">&lt;&lt; <a href="/archives/2004/01/16/000080.html">PageRank在Google搜索中的实现</a></p>
+多数人通过[Google 工具栏](http://toolbar.google.com/)开始了解 PageRank。Google 工具栏是 Microsoft Internet Explorer 的一个浏览器插件，可以在 Google 网站上下载到。Google 工具栏提供的一些功能使搜索 Google 变得更为方便。
 
+![Google Toolbar](http://blog.xdanger.com/archives/pics/20040117a.gif)
+
+Google 工具栏以**0**-**10**的刻度显示 PageRank 值。从显示栏中绿色部分的长度可以估计出当前正在访问的页面的 PageRank 值。如果用户将鼠标放于显示栏上，就是显示 PageRank 值。
+
+**注意**：显示 PageRank 值是 Google 工具栏的一个高级功能。如果高级功能被打开，Google 就会收集用户信息。另外，工具栏会自动升级，用户无需关心。所以，Google 可以访问用户的硬盘。
+
+如果我们进行一下计算，PageRank 理论上拥有最大值**(Nd+(1-d))**，这里的**N**为互联网网页总数，**d**为通常被设为**0.85**，计算出的 PageRank 值和工具栏显示出的数值成一定的比例关系。普遍认同的是，它们之间的比例并非线性的，而是成**对数关系**。如果设阻尼系数**d**为**0.85**而 PageRank 的最低值为 0.15*（*[*xdanger*](http://www.xdanger.com/)*注：因为 0.15+0.85=1）*，并且对数的基数为 6，我们得到以下的比例关系：
+
+| Toolbar PageRank | Real PageRank |
+|------------------|---------------|
+| 0/10 | 0.15 - 0.9 |
+| 1/10 | 0.9 - 5.4 |
+| 2/10 | 5.4 - 32.4 |
+| 3/10 | 32.4 - 194.4 |
+| 4/10 | 194.4 - 1,166.4 |
+| 5/10 | 1,166.4 - 6,998.4 |
+| 6/10 | 6,998.4 - 41,990.4 |
+| 7/10 | 41,990.4 - 251,942.4 |
+| 8/10 | 251,942.4 - 1,511,654.4 |
+| 9/10 | 1,511,654.4 - 9,069,926.4 |
+| 10/10 | 9,069,926.4 - 0.85 × N + 0.15 |
+
+现在还不确定工具栏所显示的数值和实际的 PageRank 值是否严格遵循对数关系。看上去的确像遵循了对数关系，因此 Google 工具栏仅用了一个范围的刻度值就能显示所有页面的 PageRank 值。对数的基数被定在 6-7 之间，这一点可以由一个*工具栏 PageRank 值*大于 4 的页面的入链数量举例演算得出，这个连接数量可以从 Google 那用指令式的链接得到。
+
+<< [PageRank 在 Google 搜索中的实现](/archives/2004/01/16/000080.html)

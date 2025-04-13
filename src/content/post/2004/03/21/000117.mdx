@@ -1,21 +1,30 @@
 ---
 layout: post
-title: "校园网和adsl二合一"
-category: "Tech"
-tags: []
-description: "前面介绍过了如何利用Adsl猫的路由实现多台机器同时上网具体见利用ADSL猫的路由功能实现多台机器同时上网（基础篇）。 现在我们利用校园网的硬件资源来实现免拖线和换线我们只要把Adsl猫接到一个闲置的校园网的端口上其他机器也接到自己的校园网端口上，网段和猫在同一网段，子网掩码相同网关是猫的ip，为了不和其他机器ip冲突..."
+title: "校园网和 adsl 二合一"
+tags: ["adsl", "campus network", "networking", "router", "netsh", "network configuration", "ip settings", "connection switching", "batch script", "tech tutorial"]
+description: "本文是「利用 ADSL 猫的路由功能实现多台机器同时上网」的后续，介绍如何结合校园网硬件资源实现 ADSL 与校园网的便捷切换。作者详细说明了如何将 ADSL 调制解调器连接到校园网端口，配置正确的网段和子网掩码以避免 IP 冲突，以及使用不同类型的网线（交叉线/直通线）进行连接。文章还提供了 Windows 2000/XP下使用netsh命令创建自动切换批处理脚本的详细步骤。"
 publishDate: "2004-03-21 14:19:57"
 ---
 
+前面介绍过了如何利用 Adsl 猫的路由实现多台机器同时上网具体见[利用 ADSL 猫的路由功能实现多台机器同时上网（基础篇）](http://blog.xdanger.com/archives/2004/03/21/000116.html)。
 
-<P>　　前面介绍过了如何利用Adsl猫的路由实现多台机器同时上网具体见<A href="http://blog.xdanger.com/archives/2004/03/21/000116.html">利用ADSL猫的路由功能实现多台机器同时上网（基础篇）</A>。</P>
-<P>　　现在我们利用校园网的硬件资源来实现免拖线和换线我们只要把Adsl猫接到一个闲置的校园网的端口上其他机器也接到自己的校园网端口上，网段和猫在同一网段，子网掩码相同网关是猫的ip，为了不和其他机器ip冲突，请改到一个觉得不会发生冲突的网段。<BR>还有一点注意，adsl和机器网卡相连的是交叉线，adsl和校园网端口连的是直通线。<BR>这样就可以校园网和adsl切换不用换线了，而且不要拖线了。</P>
-<P>　　下面我介绍一个win2000和winxp下一个脚本执行命令，netsh。利用这个命令可以<BR>实现校园网和adsl的自动切换。格式如下：</P>
-<DIV class=code>netsh&nbsp;interface&nbsp;ip&nbsp;set&nbsp;address&nbsp;name="用于连接网卡的名称(如本地连接)"&nbsp;source=static&nbsp;&nbsp;你的ip&nbsp;你的子网掩码&nbsp;你的网关&nbsp;默认网关的跃点数一般为1</DIV>
-<P>例如我网卡连接名称叫本地连结,ip:192.168.1.2&nbsp;子网掩码:255.255.255.0&nbsp;网关:192.168.1.1则命令如下：</P>
-<DIV class=code>netsh&nbsp;interface&nbsp;ip&nbsp;set&nbsp;address&nbsp;name="本地连接"&nbsp;source=static&nbsp;192.168.1.2&nbsp;255.255.255.0&nbsp;192.168.1.1&nbsp;1</DIV>
-<P>注意中间的空格</P>
-<P>　　校园网的配置也一样，把上面的一段存为批处理文件，使用时只要双击即可。</P>
-<br /><br />
+现在我们利用校园网的硬件资源来实现免拖线和换线我们只要把 Adsl 猫接到一个闲置的校园网的端口上其他机器也接到自己的校园网端口上，网段和猫在同一网段，子网掩码相同网关是猫的 ip，为了不和其他机器 ip 冲突，请改到一个觉得不会发生冲突的网段。
+还有一点注意，adsl 和机器网卡相连的是交叉线，adsl 和校园网端口连的是直通线。
+这样就可以校园网和 adsl 切换不用换线了，而且不要拖线了。
 
+下面我介绍一个 win2000 和 winxp 下一个脚本执行命令，netsh。利用这个命令可以
+实现校园网和 adsl 的自动切换。格式如下：
 
+```batch
+netsh interface ip set address name="用于连接网卡的名称(如本地连接)" source=static 你的ip 你的子网掩码 你的网关 默认网关的跃点数一般为1
+```
+
+例如我网卡连接名称叫本地连结，ip:192.168.1.2 子网掩码:255.255.255.0 网关:192.168.1.1 则命令如下：
+
+```batch
+netsh interface ip set address name="本地连接" source=static 192.168.1.2 255.255.255.0 192.168.1.1 1
+```
+
+注意中间的空格
+
+校园网的配置也一样，把上面的一段存为批处理文件，使用时只要双击即可。

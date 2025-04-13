@@ -1,38 +1,85 @@
 ---
 layout: post
-title: "我的第一个Java版Hello,World!"
-category: "Tech"
-tags: []
-description: "总算暂时放下断断续续弄了3年的PHP，今天开始全面攻克Java！先读3个月的SCJP&amp;SCWD。 不过万万没想到一开始试编经典的Hello,World!竟然遇到那么大的困难……反反复复编译、运行，始终出现各种各样的错误，真的差点心力交瘁……网上类似的文章太多了，不过我还是马上总结一下吧，懂的朋友见笑了： 设置3..."
+title: "我的第一个 Java 版 Hello, World!"
+tags: ["tech", "java", "programming", "beginner", "hello world", "environment setup", "classpath", "java sdk"]
+description: "这是作者初学 Java 时的经验分享，记录了从 PHP 转向 Java 开发的第一步尝试。文章详细介绍了编写最基础的 Hello World 程序时遇到的各种困难，以及针对初学者的环境配置指南，包括 JAVA_HOME、Path、CLASSPATH 等变量的设置，源文件命名规则，编译与执行命令的正确用法，以及 Java 主函数格式的严格要求。对于同样初入 Java 世界的新手来说，这是一篇有用的入门参考。"
 publishDate: "2004-02-11 21:53:01"
 ---
 
+总算暂时放下断断续续弄了 3 年的 [PHP](http://www.php.net/)，今天开始全面攻克 [Java](http://java.sun.com/)！先读 3 个月的 [SCJP](http://www.wenhua.org/article/132.htm) & [SCWD](http://www.wenhua.org/article/130.htm)。
 
-<P>　　总算暂时放下断断续续弄了3年的<A href="http://www.php.net/">PHP</A>，今天开始全面攻克<A href="http://java.sun.com/">Java</A>！先读3个月的<A href="http://www.wenhua.org/article/132.htm">SCJP</A>&amp;<A href="http://www.wenhua.org/article/130.htm">SCWD</A>。</P>
-<P>　　不过万万没想到一开始试编经典的<A href="http://www2.latech.edu/~acm/HelloWorld.shtml">Hello,World!</A>竟然遇到那么大的困难……反反复复编译、运行，始终出现各种各样的错误，真的差点心力交瘁……网上类似的文章太多了，不过我还是马上总结一下吧，懂的朋友见笑了：</P>
-<OL>
-<LI>设置3个系统环境变量：JAVA_HOME/Path/CLASSPATH： 
-<UL>
-<LI>新增JAVA_HOME：<A href="http://java.sun.com/j2se/">j2sdk</A>的安装路径，结尾没有/，下同。如 
-<DIV class=code>C:\j2sdk_nb\j2sdk1.4.2</DIV>
-<LI>编辑Path：加上： 
-<DIV class=code>.;%JAVA_HOME%/bin/;</DIV>
-<LI>新增CLASSPATH： 
-<DIV class=code>.;%JAVA_HOME%\lib\tools.jar;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\bin</DIV></LI></UL>设置方法： 
-<UL>
-<LI>Win9x ：编辑系统所在盘根目录下Autoexec.bat，加上 
-<DIV class=code>set JAVA_HOME=以上的JAVAHOME<BR>set path=以上的path<BR>set CLASSPATH=以上的CLASSPATH</DIV>重新启动。 
-<LI>Win2000/xp/2003：我的电脑(My Computer)-&gt;属性(Properties)-&gt;高级(Advanced)-&gt;环境变量(Environment Variables)。保存，重新启动。</LI></UL>
-<LI>源文件名必须取.java，否则不能正常编译。 
-<LI>编译时源文件和命令行当前路径可以不一致，如C:\&gt;javac src\HelloWorld.java而执行.class时命令行的当前路径似乎只能是.class文件的路径，这点还没有完全搞清楚，反正像 
-<DIV class=code>C:\&gt;java src\HelloWorld</DIV>不能正常运行，而只能是 
-<DIV class=code>C:\src&gt;java HelloWorld</DIV>
-<LI>执行时不能打完整的文件名，一定是 
-<DIV class=code>C:\src&gt;java HelloWorld</DIV>类似 
-<DIV class=code>C:\src&gt;java HelloWorld.class</DIV>的命令，java可能会寻找 
-<DIV class=code>C:\src\HelloWorld\HelloWorld.class.class</DIV>这样的文件（猜想）。 
-<LI>Java开始的函数必须写成 
-<DIV class=code>public static void main(&nbsp;String args[]&nbsp;) {}</DIV>必须一字不差，包括大小写。感觉像法国资产阶级革命时的《人权宣言》，“私有财产神圣不可侵犯”……</LI></OL>
-<br /><br />
+不过万万没想到一开始试编经典的 [Hello, World!](http://www2.latech.edu/~acm/HelloWorld.shtml) 竟然遇到那么大的困难……反反复复编译、运行，始终出现各种各样的错误，真的差点心力交瘁……网上类似的文章太多了，不过我还是马上总结一下吧，懂的朋友见笑了：
 
+1. 设置 3 个系统环境变量：JAVA_HOME/Path/CLASSPATH：
+   - 新增 JAVA_HOME：[j2sdk](http://java.sun.com/j2se/) 的安装路径，结尾没有 /，下同。如
+
+     ```plaintext
+     C:\j2sdk_nb\j2sdk1.4.2
+     ```
+
+   - 编辑 Path：加上：
+
+     ```plaintext
+     .;%JAVA_HOME%/bin/;
+     ```
+
+   - 新增 CLASSPATH：
+
+     ```plaintext
+     .;%JAVA_HOME%\lib\tools.jar;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\bin
+     ```
+
+   设置方法：
+   - Win9x：编辑系统所在盘根目录下 Autoexec.bat，加上
+
+     ```batch
+     set JAVA_HOME=以上的 JAVAHOME
+     set path=以上的 path
+     set CLASSPATH=以上的 CLASSPATH
+     ```
+
+     重新启动。
+   - Win2000/xp/2003：我的电脑(My Computer)->属性 (Properties)->高级 (Advanced)->环境变量 (Environment Variables)。保存，重新启动。
+
+2. 源文件名必须取 .java，否则不能正常编译。
+
+3. 编译时源文件和命令行当前路径可以不一致，如 C:\\>javac src\\HelloWorld.java 而执行 .class 时命令行的当前路径似乎只能是 .class 文件的路径，这点还没有完全搞清楚，反正像
+
+   ```shell
+   C:\>java src\HelloWorld
+   ```
+
+   不能正常运行，而只能是
+
+   ```shell
+   C:\src>java HelloWorld
+   ```
+
+4. 执行时不能打完整的文件名，一定是
+
+   ```shell
+   C:\src>java HelloWorld
+   ```
+
+   类似
+
+   ```shell
+   C:\src>java HelloWorld.class
+   ```
+
+   的命令，java 可能会寻找
+
+   ```plaintext
+   C:\src\HelloWorld\HelloWorld.class.class
+   ```
+
+   这样的文件（猜想）。
+
+5. Java 开始的函数必须写成
+
+   ```java
+   public static void main( String args[] ) {}
+   ```
+
+   必须一字不差，包括大小写。感觉像法国资产阶级革命时的《人权宣言》，"私有财产神圣不可侵犯"……
 

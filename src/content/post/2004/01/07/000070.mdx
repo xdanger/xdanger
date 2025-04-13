@@ -1,64 +1,67 @@
 ---
 layout: post
 title: "爱因斯坦的思考题"
-category: "Tech"
-tags: []
-description: "昨天报纸上看到个有趣的逻辑推理题，爱因斯坦声称世界上只有2%的人能解出： 有五个具有五种不同颜色的房间排成一排； 每个房间里分别住着一个不同国籍的人； 每个人都在喝一种特定品牌的饮料，抽一特定品牌的烟，养一特定的宠物； 没有任意两个人在抽相同品牌的香烟，或喝相同品牌的饮料，或养相同的宠物。 问题：谁在养鱼作为宠物？ 爱..."
+tags: ["logic", "puzzle", "einstein", "programming", "c++", "problem solving", "riddle", "mathematics"]
+description: "分享爱因斯坦的著名逻辑推理题——五个不同颜色的房子里住着五个不同国籍的人，他们各自有不同的饮料、香烟和宠物，通过 15 条线索推断谁养鱼作为宠物。文章同时提供了 C++ 解题程序的链接，并附有中英文版本的完整题目描述。"
 publishDate: "2004-01-07 23:06:27"
 ---
 
+![Einstein](http://blog.xdanger.com/archives/pics/20040107a.jpg)
 
-<IMG alt=Einstein src="http://blog.xdanger.com/archives/pics/20040107a.jpg" align=right border=0> 
-<P>　　昨天报纸上看到个有趣的逻辑推理题，爱因斯坦声称世界上只有2%的人能解出：</P>
-<UL>
-<LI>有五个具有五种不同颜色的房间排成一排； 
-<LI>每个房间里分别住着一个不同国籍的人； 
-<LI>每个人都在喝一种特定品牌的饮料，抽一特定品牌的烟，养一特定的宠物； 
-<LI>没有任意两个人在抽相同品牌的香烟，或喝相同品牌的饮料，或养相同的宠物。</LI></UL>
-<H3>问题：谁在养鱼作为宠物？</H3>
-<P>爱因斯坦给出如下线索：</P>
-<OL>
-<LI>英国人住在红色的房子里； 
-<LI>瑞典人养狗作为宠物； 
-<LI>丹麦人喝茶； 
-<LI>绿房子紧挨着白房子，在白房子的左边； 
-<LI>绿房子的主人喝咖啡； 
-<LI>抽Pall Mall牌香烟的人养鸟； 
-<LI>黄色房子里的人抽Dunhill牌香烟； 
-<LI>住在中间那个房子里的人喝牛奶； 
-<LI>挪威人住在第一个房子里面； 
-<LI>抽Blends牌香烟的人和养猫的人相邻； 
-<LI>养马的人和抽Dunhill牌香烟的人相邻； 
-<LI>抽BlueMaster牌香烟的人和啤酒； 
-<LI>德国人抽Prince牌香烟； 
-<LI>挪威人和住在蓝房子的人相邻； 
-<LI>抽Blends牌香烟的人和喝矿泉水的人相邻。</LI></OL>
-<br /><br />
-<P>　　在<A href="http://www.codeproject.com/cpp/Einstein.asp">http://www.codeproject.com/cpp/Einstein.asp</A>上有人用C++编出一个exe，在我Celeron 2.4G的机器上运行时间基本为0.002秒。可惜偶不懂C++，看不懂他的思路……是该安排时间好好学学真正面向对象的语言了。<A href="http://blog.xdanger.com/archives/docs/20040107a.zip">下载C++的源代码</A>。</P>
-<HR>
+昨天报纸上看到个有趣的逻辑推理题，爱因斯坦声称世界上只有 2% 的人能解出：
 
-<H3>Einstein's riddle</H3>
-<UL>
-<LI>There are 5 houses in five different colors in a row. 
-<LI>In each house lives a person with a different nationality. 
-<LI>These five owners drink a certain type of beverage, smoke a certain brand of cigar and keep a certain pet. 
-<LI>No owners have the same pet, smoke the same brand of cigar or drink the same beverage.</LI></UL>
-<H4>The question is: Who owns the fish?</H4>
-<H3>Einstein's hints</H3>
-<OL>
-<LI>The Brit lives in the red house. 
-<LI>The Swede keeps dogs as pets. 
-<LI>The Dane drinks tea. 
-<LI>The green house is on the immediate left of the white house. 
-<LI>The green house's owner drinks coffee. 
-<LI>The person who smokes Pall Mall rears birds. 
-<LI>The owner of the yellow house smokes Dunhill. 
-<LI>The man living in the center house drinks milk. 
-<LI>The Norwegian lives in the first house. 
-<LI>The man who smokes Blends lives next to the one who keeps cats. 
-<LI>The man who keeps horses lives next to the man who smokes Dunhill. 
-<LI>The owner who smokes BlueMaster drinks beer. 
-<LI>The German smokes Prince. 
-<LI>The Norwegian lives next to the blue house. 
-<LI>The man who smokes Blends has a neighbor who drinks water.</LI></OL>
+- 有五个具有五种不同颜色的房间排成一排；
+- 每个房间里分别住着一个不同国籍的人；
+- 每个人都在喝一种特定品牌的饮料，抽一特定品牌的烟，养一特定的宠物；
+- 没有任意两个人在抽相同品牌的香烟，或喝相同品牌的饮料，或养相同的宠物。
 
+### 问题：谁在养鱼作为宠物？
+
+爱因斯坦给出如下线索：
+
+1. 英国人住在红色的房子里；
+2. 瑞典人养狗作为宠物；
+3. 丹麦人喝茶；
+4. 绿房子紧挨着白房子，在白房子的左边；
+5. 绿房子的主人喝咖啡；
+6. 抽 Pall Mall 牌香烟的人养鸟；
+7. 黄色房子里的人抽 Dunhill 牌香烟；
+8. 住在中间那个房子里的人喝牛奶；
+9. 挪威人住在第一个房子里面；
+10. 抽 Blends 牌香烟的人和养猫的人相邻；
+11. 养马的人和抽 Dunhill 牌香烟的人相邻；
+12. 抽 BlueMaster 牌香烟的人和啤酒；
+13. 德国人抽 Prince 牌香烟；
+14. 挪威人和住在蓝房子的人相邻；
+15. 抽 Blends 牌香烟的人和喝矿泉水的人相邻。
+
+在[http://www.codeproject.com/cpp/Einstein.asp](http://www.codeproject.com/cpp/Einstein.asp)上有人用 C++ 编出一个 exe，在我 Celeron 2.4G 的机器上运行时间基本为 0.002 秒。可惜偶不懂 C++，看不懂他的思路……是该安排时间好好学学真正面向对象的语言了。[下载 C++ 的源代码](http://blog.xdanger.com/archives/docs/20040107a.zip)。
+
+---
+
+### Einstein's riddle
+
+- There are 5 houses in five different colors in a row.
+- In each house lives a person with a different nationality.
+- These five owners drink a certain type of beverage, smoke a certain brand of cigar and keep a certain pet.
+- No owners have the same pet, smoke the same brand of cigar or drink the same beverage.
+
+#### The question is: Who owns the fish?
+
+### Einstein's hints
+
+1. The Brit lives in the red house.
+2. The Swede keeps dogs as pets.
+3. The Dane drinks tea.
+4. The green house is on the immediate left of the white house.
+5. The green house's owner drinks coffee.
+6. The person who smokes Pall Mall rears birds.
+7. The owner of the yellow house smokes Dunhill.
+8. The man living in the center house drinks milk.
+9. The Norwegian lives in the first house.
+10. The man who smokes Blends lives next to the one who keeps cats.
+11. The man who keeps horses lives next to the man who smokes Dunhill.
+12. The owner who smokes BlueMaster drinks beer.
+13. The German smokes Prince.
+14. The Norwegian lives next to the blue house.
+15. The man who smokes Blends has a neighbor who drinks water.

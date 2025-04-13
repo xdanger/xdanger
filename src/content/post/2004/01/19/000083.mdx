@@ -1,120 +1,182 @@
 ---
 layout: post
-title: "PmWiki安装全攻略"
-category: "Tech"
-tags: []
-description: "昨天说到已经将我的主页改为PmWiki的构架，刚才忙活了一晚上，终于全部搞定了，于是写下来。 PmWiki简介：PmWiki是一个不需要数据库的以PHP为主要语言编写的wiki，遵循General Public License (GPL)协议，小巧方便，很适合个人网站用来制作规模不大的互动资源平台。 我的安装平台：Wi..."
+title: "PmWiki 安装全攻略"
+tags: ["tech", "pmwiki", "wiki", "php", "windows", "apache", "tutorial", "installation", "chinese support"]
+description: "这篇文章是关于如何在 Windows XP + Apache + PHP 环境下安装配置 PmWiki 的详细教程，特别解决了 Windows 下的页面修订历史无效和中文支持问题。文章提供了从下载、安装、配置 local.php 到解决 Windows 特有问题的完整步骤，适合想要建立小型社区式 Wiki 的个人网站。"
 publishDate: "2004-01-19 03:24:35"
 ---
 
+![pmwiki](http://blog.xdanger.com/archives/pics/20040119a.gif) 昨天说到已经将我的主页改为[PmWiki](http://www.xdanger.com/index.php/PmWiki/PmWiki)的构架，刚才忙活了一晚上，终于全部搞定了，于是写下来。
 
-<P><IMG style="WIDTH: 43px; HEIGHT: 50px" height=50 alt=pmwiki hspace=0 src="http://blog.xdanger.com/archives/pics/20040119a.gif" width=43 align=left border=0> 　　昨天说到已经将我的主页改为<A href="http://www.xdanger.com/index.php/PmWiki/PmWiki">PmWiki</A>的构架，刚才忙活了一晚上，终于全部搞定了，于是写下来。</P>
-<P>　　PmWiki简介：PmWiki是一个不需要数据库的以<A href="http://www.php.net/">PHP</A>为主要语言编写的<A href="http://directory.google.com/Top/Computers/Software/Groupware/Wiki/">wiki</A>，遵循<A href="http://www.gnu.org/copyleft/gpl.html">General Public License (GPL)</A>协议，小巧方便，很适合个人网站用来制作规模不大的互动资源平台。</P>
-<P>　　我的安装平台：<A href="http://www.microsoft.com/windowsxp/">Windows XP Pro SP1</A>&nbsp;+&nbsp;<A href="http://www.apache.org/dyn/closer.cgi">Apache-1.3.*</A>&nbsp;+ <A href="http://cn2.php.net/get/php-4.3.4-Win32.zip/from/a/mirror">PHP-4.3.* </A><BR>　　理论上可拖宽为：<A href="http://www.microsoft.com/windows/">Windows</A> + <A href="http://www.apache.org/">Apache</A>/<A href="http://www.microsoft.com/iis/">IIS</A> + <A href="http://www.php.net/">PHP</A><BR>　　本文不讨论PmWiki的使用问题，几乎任何使用上的问题都可以在其<A href="http://www.pmichaud.com/wiki/PmWiki/PmWiki">帮助文档</A>中找到详细的说明，并且已经有人开始<A href="http://xemacs.cosoft.org.cn/pmwiki/pmwiki.php/PmWikiZhCnUtf8/PmWiki">汉化这些文档</A>了，还可以参见<A href="http://blogs.51.net/">zheng</A>的<A href="http://blogs.51.net/pmwiki/pmwiki.php/WikiLearning/WikiLearning">PmWiki学习笔记</A>。</P>
-<br /><br />
+PmWiki 简介：PmWiki 是一个不需要数据库的以[PHP](http://www.php.net/)为主要语言编写的[wiki](http://directory.google.com/Top/Computers/Software/Groupware/Wiki/)，遵循[General Public License (GPL)](http://www.gnu.org/copyleft/gpl.html)协议，小巧方便，很适合个人网站用来制作规模不大的互动资源平台。
 
-<H3>下载&amp;安装</H3>
-<OL>
-<LI><A 
-href="http://www.pmichaud.com/pub/pmwiki/">下载PmWiki的最新版</A>，我使用的是目前最新的0.5.27版：<A 
-href="http://www.pmichaud.com/pub/pmwiki/pmwiki-0.5.27.zip">pmwiki-0.5.27.zip</A> 
+我的安装平台：[Windows XP Pro SP1](http://www.microsoft.com/windowsxp/) + [Apache-1.3.*](http://www.apache.org/dyn/closer.cgi) + [PHP-4.3.*](http://cn2.php.net/get/php-4.3.4-Win32.zip/from/a/mirror)  
+理论上可拖宽为：[Windows](http://www.microsoft.com/windows/) + [Apache](http://www.apache.org/)/[IIS](http://www.microsoft.com/iis/) + [PHP](http://www.php.net/)  
+本文不讨论 PmWiki 的使用问题，几乎任何使用上的问题都可以在其[帮助文档](http://www.pmichaud.com/wiki/PmWiki/PmWiki)中找到详细的说明，并且已经有人开始[汉化这些文档](http://xemacs.cosoft.org.cn/pmwiki/pmwiki.php/PmWikiZhCnUtf8/PmWiki)了，还可以参见[zheng](http://blogs.51.net/)的[PmWiki 学习笔记](http://blogs.51.net/pmwiki/pmwiki.php/WikiLearning/WikiLearning)。
 
-<LI>解压缩至目标文件夹，或解压缩之后FTP上传到你的服务器的相应目录。 
-<LI>无需任何配置，直接使用浏览器访问pmwiki.php，如果一切正常，应该看到一个默认的欢迎页面说你已经安装成功了。</LI></OL>
-<P>　　呵呵，就是那么容易上手。不过要在windows下能够完全使用PmWiki，并且让他对于简体中文有良好的支持的话，还必须进行一些必要的设置。接下去的工作稍微有点繁琐。</P>
-<P>　　默认的PmWiki需要Web服务器开启PATH_INFO，以支持类似<A 
-href="http://www.xdanger.com/index.php/Main/HomePage">http://www.xdanger.com/index.php/Main/HomePage</A> 
-这样的URL美化。关于为何要以这样的形式表现URL，PATH_INFO的具体介绍以及如何在IIS上利用PHP支持PATH_INFO，可以参考<A 
-href="http://www.chedong.com/tech/google_url.html">车东的文章：“Search Engine 
-Friendly的URL设计”</A>。虽然PmWiki会自动测试服务器是否开启PATH_INFO而输出不同的URL格式，但是强烈建议你尽量开启使用这一功能，原因还是参见<A 
-href="http://www.chedong.com/">车东</A>的这篇文章。 
-<P>　　PATH_INFO是一个CGI 1.1的标准，在Apache 
-1.3.*上默认开启，但是在Apache-2.*上默认是不开启的，需要在http.conf中的相应位置设置 
-<DIV class=code>AcceptPathInfo on</DIV>
-<P>如果是虚拟主机用户的话，只能期望于你的Apache在你web目录下设置了 </P>
-<DIV class=code>AllowOverride FileInfo</DIV>
-<P>这样就可以上传一个.htaccess的文件到pmwiki的目录下，内容为 </P>
-<DIV class=code>AcceptPathInfo on</DIV>
-<P>否则就只能放弃这一功能。 </P>
-<H3>配置local.php</H3>
-<P>　　PmWiki允许你将配置文件单独存放于local/目录下，或者是PmWiki的根目录，命名为local.php（可以将scripts/sample-local.php移动到PmWiki安装的根目录或local/目录，改名即可）。这样可以避免直接修改pmwiki.php的主程序，以防升级时被覆盖掉。你可以将pmwiki.php内主程序之前的所有php内容（原版pmwiki.php的第29-210行）都复制出来，放在local.php内，并且以php标识符<FONT 
-color=#ff0000>&lt;?PHP 
-?&gt;</FONT>包裹起来（好的习惯是PHP三个字母大写，原因这里就不说了）。然后就可以在local.php内修改一些参数。以下只介绍常用的一些：</P>
-<UL>
-<LI><STRONG>$WikiTitle</STRONG> 
-：所有页面的&lt;title&gt;&lt;/title&gt;都会以这个字符串开始。可以放上网站的名称，我的就是<FONT 
-color=#0000ff>:+:xdanger:+:</FONT> :-)。 
-<LI><STRONG>$ScriptUrl</STRONG> ：pmwiki.php的URL。可以填： 
-<DIV class=code>$ScriptUrl = 
-'http://'.$HTTP_SERVER_VARS['HTTP_HOST'].$HTTP_SERVER_VARS['SCRIPT_NAME'];</DIV>如果是PHP 
-4.1.0+的话，建议使用： 
-<DIV class=code>$ScriptUrl = 
-'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'];</DIV>
-<LI><STRONG>$ScriptDir</STRONG> ：如果你修改过$ScriptUrl，那就必须增加次项： 
-<DIV class=code><STRONG>$ScriptDir</STRONG> = 
-preg_replace("#/[^/]*\$#","",$ScriptUrl,1);</DIV>
-<LI><STRONG>$WikiImgUrl</STRONG> ：默认左上角Logo的图片路径。 
-<LI><STRONG>$DiffKeepDays</STRONG> ：页面修改历史的保存天数。 
-<LI><STRONG>$WikiDir</STRONG> ：自定义页面的存放路径。 
-<LI><STRONG>$WikiLibDirs</STRONG> 
-：默认存在的页面的存放路径，此项和$WikiDir分开设置是为了防止升级时覆盖已有页面。如果你在上面修改过$WikiDir，那就必须设置此项： 
-<DIV class=code><STRONG>$WikiLibDirs</STRONG> = 
-array(&amp;$WikiDir,"wikilib.d");</DIV>
-<LI><STRONG>$SysDiffCmd</STRONG> ：这个参数和以下的$SysPathCmd在Windows下必须修改，后文会提到如何配置。 
-<LI><STRONG>$SysPatchCmd</STRONG> ： 
-<LI><STRONG>$DefaultPasswords</STRONG> ：密码的概念有点复杂，详细的文档可以参考<A 
-href="http://www.pmichaud.com/wiki/PmWiki/Passwords">PmWiki的帮助文档</A>，这里有一个<A 
-href="http://xemacs.cosoft.org.cn/pmwiki/pmwiki.php/PmWikiZhCnUtf8/Passwords">汉化的版本</A>。 
+### 下载&安装
 
-<LI>还有一些页面显示的参数，基本都很容易看懂。</LI></UL>
-<H3>解决Windows下Page Revisions无效 </H3>
-<P>　　关于这个问题的解决，完全参考了<A href="http://www.wangjianshuo.com/">王建硕</A>的文章：<A 
-href="http://home.wangjianshuo.com/archives/20040103_pmwiki_successfully_installed_on_windows_2000.htm">PmWiki 
-Successfully Installed on Windows 2000</A>。不过由于是英文的，我再简单地描述一遍。</P>
-<P>　　情况：随意编辑一个页面，保存，然后在页面的右上或左下有一个"Edit Page"的连接，进入后随意编辑，保存。然后点Page 
-Revisions，看到的都是一个空的表格。再多编辑几次，这页始终都是一个个空的表格，只有日期，并没有页面修改的历史记录，而正常的情况应该是<A 
-href="http://www.pmichaud.com/wiki/PmWiki/PmWiki?action=diff">这样的</A>。不能显示编辑记录当然就不能随意开放编辑权限，否则辛辛苦苦整理的东东随时可能被人家有意或无意地删除掉而不能恢复。不开放编辑功能就不能谈得上是Wiki了。不过还好，这个问题还是比较容易地解决了。</P>
-<OL>
-<LI>从<A href="http://sourceforge.net/">sf.net</A>下载<A 
-href="http://sourceforge.net/projects/gnuwin32/">GNU的Win32</A>版本。快捷链接：<A 
-href="http://prdownloads.sourceforge.net/sourceforge/gnuwin32/diffutils-2.8.1-3-bin.exe?use_mirror=aleron">diffutils</A>、&nbsp;<A 
-href="http://umn.dl.sourceforge.net/sourceforge/gnuwin32/patch-2.5.4-3-bin.exe">patch</A>。 
+1. [下载 PmWiki 的最新版](http://www.pmichaud.com/pub/pmwiki/)，我使用的是目前最新的 0.5.27 版：[pmwiki-0.5.27.zip](http://www.pmichaud.com/pub/pmwiki/pmwiki-0.5.27.zip)
+2. 解压缩至目标文件夹，或解压缩之后 FTP 上传到你的服务器的相应目录。
+3. 无需任何配置，直接使用浏览器访问 pmwiki.php，如果一切正常，应该看到一个默认的欢迎页面说你已经安装成功了。
 
-<LI>双击下载的diffutils-2.8.1-3-bin.exe安装。建议修改默认的安装目录 
-<DIV class=code>C:\Program Files\GnuWin32\</DIV>为 
-<DIV 
-class=code>C:\GnuWin32\</DIV>这些*nix转化过来的程序最好绝对路径中都不要包含空格，否则基本都会出错。这个也不例外，虽然可以成功安装，但是等一下还是无法使用。 
+呵呵，就是那么容易上手。不过要在 windows 下能够完全使用 PmWiki，并且让他对于简体中文有良好的支持的话，还必须进行一些必要的设置。接下去的工作稍微有点繁琐。
 
-<LI>将下载的patch-2.5.4-3-bin.exe更名为patch.exe放到C:\GnuWin32\bin\下。 
-<LI>设置local.php，加上刚才没有设置的 $SysDiffCmd 和 $DefaultPasswords ： 
-<DIV class=code>$SysDiffCmd = 'C:\\GnuWin32\\bin\\diff.exe';<BR>$SysPatchCmd = 
-'C:\\GnuWin32\\bin\\patch.exe';</DIV></LI></OL>
-<H3>解决与简体中文的不兼容</H3>
-<P>　　关于解决这个问题，可以参考这篇文章：<A 
-href="http://www.pmichaud.com/wiki/Cookbook/ChineseSupportGB2312">http://www.pmichaud.com/wiki/Cookbook/ChineseSupportGB2312</A></P>
-<P>　　主要就是内建的换行符需要改一下，修改pmwiki.php，他的是按照0.5.5版的，我稍加修改了几个函数，行号对应于0.5.7版，步骤如下：</P>
-<OL>
-<LI>Line 207~209： 
-<DIV class=code>$Newline = "\262";<BR>$KeepToken = "\263"; <BR>$LinkToken = 
-"\264";</DIV>改为 
-<DIV class=code>$Newline = "\x81"; //$Newline = "\262";<BR>$KeepToken = "\x82"; 
-//$KeepToken = "\263";<BR>$LinkToken = "\x83"; //$LinkToken = "\264";</DIV>
-<LI>新建函数Patch_GB2312()和Patch_BackOld()： 
-<DIV class=code>function Patch_GB2312($pagefilename){<BR>&nbsp;global 
-$Newline,$KeepToken,$LinkToken,$WikiLibDirs;<BR>&nbsp;if 
-(file_exists($WikiLibDirs[1]."/".$pagefilename)&amp;!file_exists($WikiLibDirs[0]."/".$pagefilename)){<BR>&nbsp;&nbsp;$Newline 
-= "\262";<BR>&nbsp;&nbsp;$KeepToken = "\263";<BR>&nbsp;&nbsp;$LinkToken = 
-"\264";<BR>&nbsp;}<BR>}<BR><BR>function Patch_BackOld(){<BR>&nbsp;global 
-$Newline,$KeepToken,$LinkToken;<BR>&nbsp;$Newline = "\262";<BR>&nbsp;$KeepToken 
-= "\263";<BR>&nbsp;$LinkToken = "\264";<BR>} </DIV>
-<LI>修改HandleBrowse()的Line867 和HandleEdit()的Line 890： 
-<DIV class=code>if (!$page) {Abort("Invalid page name");}</DIV>改为 
-<DIV class=code>if (!$page) {Abort("Invalid page name"); 
-}&nbsp;<BR>Patch_GB2312($pagename); </DIV>
-<LI>修改Line 897： 
-<DIV class=code>$HTMLTitle = "Edit $pagename";$GCount = 0; </DIV>改为： 
-<DIV class=code>$HTMLTitle = "Edit $pagename";$GCount = 
-0;<BR>Patch_BackOld();</DIV>
-<LI>最后别忘了在$HTTPHeaders（如果local.php里有的$HTTPHeaders话，在local.php里修改）中，将charset设为gb2312。</LI></OL>
-<P>　　这个方法不适合UTF-8的编码方式。</P>
+默认的 PmWiki 需要 Web 服务器开启 PATH_INFO，以支持类似[http://www.xdanger.com/index.php/Main/HomePage](http://www.xdanger.com/index.php/Main/HomePage)这样的 URL 美化。关于为何要以这样的形式表现 URL，PATH_INFO 的具体介绍以及如何在 IIS 上利用 PHP 支持 PATH_INFO，可以参考[车东的文章："Search Engine Friendly 的 URL 设计"](http://www.chedong.com/tech/google_url.html)。虽然 PmWiki 会自动测试服务器是否开启 PATH_INFO 而输出不同的 URL 格式，但是强烈建议你尽量开启使用这一功能，原因还是参见[车东](http://www.chedong.com/)的这篇文章。
 
+PATH_INFO 是一个 CGI 1.1 的标准，在 Apache 1.3.*上默认开启，但是在 Apache-2.*上默认是不开启的，需要在 http.conf 中的相应位置设置
+
+```
+AcceptPathInfo on
+```
+
+如果是虚拟主机用户的话，只能期望于你的 Apache 在你 web 目录下设置了
+
+```
+AllowOverride FileInfo
+```
+
+这样就可以上传一个.htaccess 的文件到 pmwiki 的目录下，内容为
+
+```
+AcceptPathInfo on
+```
+
+否则就只能放弃这一功能。
+
+### 配置 local.php
+
+PmWiki 允许你将配置文件单独存放于 local/目录下，或者是 PmWiki 的根目录，命名为 local.php（可以将 scripts/sample-local.php 移动到 PmWiki 安装的根目录或 local/目录，改名即可）。这样可以避免直接修改 pmwiki.php 的主程序，以防升级时被覆盖掉。你可以将 pmwiki.php 内主程序之前的所有 php 内容（原版 pmwiki.php 的第 29-210 行）都复制出来，放在 local.php 内，并且以 php 标识符<font color="#ff0000"><?PHP ?></font>包裹起来（好的习惯是 PHP 三个字母大写，原因这里就不说了）。然后就可以在 local.php 内修改一些参数。以下只介绍常用的一些：
+
+- **$WikiTitle** ：所有页面的<title></title>都会以这个字符串开始。可以放上网站的名称，我的就是<font color="#0000ff">:+:xdanger:+:</font> :-)。
+- **$ScriptUrl** ：pmwiki.php 的 URL。可以填：
+
+  ```
+  $ScriptUrl = 'http://'.$HTTP_SERVER_VARS['HTTP_HOST'].$HTTP_SERVER_VARS['SCRIPT_NAME'];
+  ```
+
+  如果是 PHP 4.1.0+ 的话，建议使用：
+
+  ```
+  $ScriptUrl = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'];
+  ```
+
+- **$ScriptDir** ：如果你修改过$ScriptUrl，那就必须增加次项：
+
+  ```
+  $ScriptDir = preg_replace("#/[^/]*$#","",$ScriptUrl,1);
+  ```
+
+- **$WikiImgUrl** ：默认左上角 Logo 的图片路径。
+- **$DiffKeepDays** ：页面修改历史的保存天数。
+- **$WikiDir** ：自定义页面的存放路径。
+- **$WikiLibDirs** ：默认存在的页面的存放路径，此项和$WikiDir 分开设置是为了防止升级时覆盖已有页面。如果你在上面修改过$WikiDir，那就必须设置此项：
+
+  ```
+  $WikiLibDirs = array(&$WikiDir,"wikilib.d");
+  ```
+
+- **$SysDiffCmd** ：这个参数和以下的$SysPathCmd 在 Windows 下必须修改，后文会提到如何配置。
+- **$SysPatchCmd** ：
+- **$DefaultPasswords** ：密码的概念有点复杂，详细的文档可以参考[PmWiki 的帮助文档](http://www.pmichaud.com/wiki/PmWiki/Passwords)，这里有一个[汉化的版本](http://xemacs.cosoft.org.cn/pmwiki/pmwiki.php/PmWikiZhCnUtf8/Passwords)。
+- 还有一些页面显示的参数，基本都很容易看懂。
+
+### 解决 Windows 下 Page Revisions 无效
+
+关于这个问题的解决，完全参考了[王建硕](http://www.wangjianshuo.com/)的文章：[PmWiki Successfully Installed on Windows 2000](http://home.wangjianshuo.com/archives/20040103_pmwiki_successfully_installed_on_windows_2000.htm)。不过由于是英文的，我再简单地描述一遍。
+
+情况：随意编辑一个页面，保存，然后在页面的右上或左下有一个"Edit Page"的连接，进入后随意编辑，保存。然后点 Page Revisions，看到的都是一个空的表格。再多编辑几次，这页始终都是一个个空的表格，只有日期，并没有页面修改的历史记录，而正常的情况应该是[这样的](http://www.pmichaud.com/wiki/PmWiki/PmWiki?action=diff)。不能显示编辑记录当然就不能随意开放编辑权限，否则辛辛苦苦整理的东东随时可能被人家有意或无意地删除掉而不能恢复。不开放编辑功能就不能谈得上是 Wiki 了。不过还好，这个问题还是比较容易地解决了。
+
+1. 从[sf.net](http://sourceforge.net/)下载[GNU 的 Win32](http://sourceforge.net/projects/gnuwin32/)版本。快捷链接：[diffutils](http://prdownloads.sourceforge.net/sourceforge/gnuwin32/diffutils-2.8.1-3-bin.exe?use_mirror=aleron)、 [patch](http://umn.dl.sourceforge.net/sourceforge/gnuwin32/patch-2.5.4-3-bin.exe)。
+2. 双击下载的 diffutils-2.8.1-3-bin.exe 安装。建议修改默认的安装目录
+
+   ```
+   C:\Program Files\GnuWin32\
+   ```
+
+   为
+
+   ```
+   C:\GnuWin32\
+   ```
+
+   这些*nix 转化过来的程序最好绝对路径中都不要包含空格，否则基本都会出错。这个也不例外，虽然可以成功安装，但是等一下还是无法使用。
+3. 将下载的 patch-2.5.4-3-bin.exe 更名为 patch.exe 放到 C:\GnuWin32\bin\下。
+4. 设置 local.php，加上刚才没有设置的 $SysDiffCmd 和 $DefaultPasswords：
+
+   ```
+   $SysDiffCmd = 'C:\\GnuWin32\\bin\\diff.exe';
+   $SysPatchCmd = 'C:\\GnuWin32\\bin\\patch.exe';
+   ```
+
+### 解决与简体中文的不兼容
+
+关于解决这个问题，可以参考这篇文章：[http://www.pmichaud.com/wiki/Cookbook/ChineseSupportGB2312](http://www.pmichaud.com/wiki/Cookbook/ChineseSupportGB2312)
+
+主要就是内建的换行符需要改一下，修改 pmwiki.php，他的是按照 0.5.5 版的，我稍加修改了几个函数，行号对应于 0.5.7 版，步骤如下：
+
+1. Line 207~209:
+
+   ```
+   $Newline = "\262";
+   $KeepToken = "\263";
+   $LinkToken = "\264";
+   ```
+
+   改为
+
+   ```
+   $Newline = "\x81"; //$Newline = "\262";
+   $KeepToken = "\x82"; //$KeepToken = "\263";
+   $LinkToken = "\x83"; //$LinkToken = "\264";
+   ```
+
+2. 新建函数 Patch_GB2312() 和 Patch_BackOld()：
+
+   ```php
+   function Patch_GB2312($pagefilename){
+     global $Newline,$KeepToken,$LinkToken,$WikiLibDirs;
+     if (file_exists($WikiLibDirs[1]."/".$pagefilename)&!file_exists($WikiLibDirs[0]."/".$pagefilename)){
+       $Newline = "\262";
+       $KeepToken = "\263";
+       $LinkToken = "\264";
+     }
+   }
+   
+   function Patch_BackOld(){
+     global $Newline,$KeepToken,$LinkToken;
+     $Newline = "\262";
+     $KeepToken = "\263";
+     $LinkToken = "\264";
+   }
+   ```
+
+3. 修改 HandleBrowse() 的 Line867 和 HandleEdit() 的 Line 890：
+
+   ```
+   if (!$page) {Abort("Invalid page name");}
+   ```
+
+   改为
+
+   ```
+   if (!$page) {Abort("Invalid page name");}
+   Patch_GB2312($pagename);
+   ```
+
+4. 修改 Line 897：
+
+   ```
+   $HTMLTitle = "Edit $pagename";$GCount = 0;
+   ```
+
+   改为：
+
+   ```
+   $HTMLTitle = "Edit $pagename";$GCount = 0;
+   Patch_BackOld();
+   ```
+
+5. 最后别忘了在$HTTPHeaders（如果 local.php 里有的$HTTPHeaders 话，在 local.php 里修改）中，将 charset 设为 gb2312。
+
+这个方法不适合 UTF-8 的编码方式。

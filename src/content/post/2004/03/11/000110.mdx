@@ -1,16 +1,194 @@
 ---
 layout: post
-title: "MCS-51(8086)的一个汇编"
-category: "Tech"
-tags: []
-description: "到昨天为止，用了一个星期写了一个汇编程序，是这个学期课程设计的作业。这大概是我接触到的最长的一个汇编了吧，感觉真BT。 目的很简单，就是有八个按钮，分别控制千、百、十、个位的+-（比如按百位的+数字就加100），带进位，在4个7晶体管上显示相应的4位数字，初始值为0000。 ORG 8000H &nbsp;&nbsp;..."
+title: "MCS-51(8086) 的一个汇编"
+tags: ["assembly", "mcs-51", "8086", "programming", "embedded systems", "coursework", "microcontroller", "7-segment display", "tech", "computer science"]
+description: "本文分享了作者花一周时间为课程设计完成的一个较长的汇编程序。该程序运行在 MCS-51(8086) 架构上，实现了一个简单的数字显示和控制系统：通过八个按钮分别控制千、百、十、个位数字的增减，带进位功能，并在四个七段显示器上显示相应的四位数字，初始值为 0000。作者详细展示了完整的汇编代码，包括初始化、按键输入处理、数字增减逻辑和显示输出等各个模块，呈现了在嵌入式系统编程中使用汇编语言直接操作硬件的方法。"
 publishDate: "2004-03-11 03:00:32"
 ---
 
+到昨天为止，用了一个星期写了一个汇编程序，是这个学期课程设计的作业。这大概是我接触到的最长的一个汇编了吧，感觉真 BT。
 
-<P>　　到昨天为止，用了一个星期写了一个汇编程序，是这个学期课程设计的作业。这大概是我接触到的最长的一个汇编了吧，感觉真BT。</P>
-<P>　　目的很简单，就是有八个按钮，分别控制千、百、十、个位的+-（比如按百位的+数字就加100），带进位，在4个7晶体管上显示相应的4位数字，初始值为0000。</P>
-<br /><br />
-<DIV class=code>
-<P>ORG 8000H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP MAIN<BR>ORG 8003H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP PKEYI<BR>ORG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8100H<BR>MAIN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV R1,#7BH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV R6,#4H<BR>START:&nbsp;&nbsp;&nbsp;&nbsp; MOV @R1,#0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEC R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DJNZ R6,START<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL INI79<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL RDIR<BR>PROGN:&nbsp;&nbsp;&nbsp;&nbsp; JNB 00H,PROGN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CLR 00H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV R0,#40H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNEA,#00,NEXT1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN0<BR>NEXT1:&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#02,NEXT2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN1<BR>NEXT2:&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#03,NEXT3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN2<BR>NEXT3:&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#04,NEXT4<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN3<BR>NEXT4:&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#05,NEXT5<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN4<BR>NEXT5:&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#06,NEXT6<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN5<BR>NEXT6:&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#07,NEXT7<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN6<BR>NEXT7:&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#08,PROGN<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN7<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP PROGN<BR>ORG 8400H<BR>PROGN0:&nbsp;&nbsp; MOV R1,#7BH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#9H,ADD0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV @R1,#00H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP EXIT0<BR>ADD0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INC @R1<BR>EXIT0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8450H<BR>PROGN1:&nbsp;&nbsp;&nbsp; MOV R1,#7BH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#0H,SUB0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP EXIT1<BR>SUB0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEC @R1<BR>EXIT1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8500H<BR>PROGN2:&nbsp;&nbsp; MOV R1,#7AH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#9H,ADD1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV @R1,#0H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP EXIT2<BR>ADD1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INC @R1<BR>EXIT2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8550H<BR>PROGN3:&nbsp;&nbsp; MOV R1,#7AH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#0H,SUB1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV @R1,#9H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP EXIT3<BR>SUB1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEC @R1<BR>EXIT3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8600H<BR>PROGN4:&nbsp;&nbsp; MOV R1,#79H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#9H,ADD2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV @R1,#0H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP EXIT4<BR>ADD2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INC @R1<BR>EXIT4:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8650H<BR>PROGN5:&nbsp;&nbsp; MOV R1,#79H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#9H,SUB2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV @R1,#9H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP EXIT5<BR>SUB2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEC @R1<BR>EXIT5:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8700H<BR>PROGN6:&nbsp;&nbsp; MOV R1,#78H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#9H,ADD3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV @R1,#0H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN4<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP EXIT6<BR>ADD3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INC @R1<BR>EXIT6:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8750H<BR>PROGN7:&nbsp;&nbsp; MOV R1,#78H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CJNE A,#0H,SUB3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV @R1,#9H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL PROGN5<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LJMP EXIT7<BR>SUB3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEC @R1<BR>EXIT7:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LCALL 8900H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8800H<BR>INI79:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV DPTR,#0DFFFH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,#0DCH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX @DPTR,A<BR>WNDU:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX A,@DPTR<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JB ACC.7,WNDU<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,#0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX @DPTR,A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,#34<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX @DPTR,A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV IE,#81H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>ORG 8900H<BR>RDIR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV DPTR,#0DFFFH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A, #90H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX @DPTR,A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV R0,#7BH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV R7,#4<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV DPTR,#0DEFFH<BR>RDL0:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,@R0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ADD A,#6<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVC A,@A+PC<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CPL A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX @DPTR,A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEC R0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DJNZ R7,RDL0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET<BR>SEG:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DB 3FH,6,5BH,4FH,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DB 66H,6DH,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DB 7DH,7,7FH,6FH,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DB 77H,7CH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DB 39H,5EH,79H,71H,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DB 73H,3EH,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DB 31H,6FH,1CH,23H,40H,3,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DB 18H,38H,0<BR>ORG 8A00H<BR>PKEYI:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PUSH PSW<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PUSH DPL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PUSH DPH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PUSH ACC<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PUSH B<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SETB PSW.3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV DPTR,#0DFFFH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX A,@DPTR<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ANL A,#0FH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JZ PKYR<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV A,#40H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX @DPTR,A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV DPTR,#0DEFFH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVX A,@DPTR<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV R2,A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ANL A,#18H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RR A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RR A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RR A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV B,#2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MUL AB<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XCH A,R2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ANL A,#3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ADD A,R2<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV R0,#40H<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOV @R0,A<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SETB 0<BR>PKYR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POP B<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POP ACC<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POP DPH<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POP DHL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POP PSW<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RET1</P></DIV>
+目的很简单，就是有八个按钮，分别控制千、百、十、个位的+-（比如按百位的 + 数字就加 100），带进位，在 4 个 7 晶体管上显示相应的 4 位数字，初始值为 0000。
 
+```assembly
+ORG 8000H
+            LJMP MAIN
+ORG 8003H
+            LJMP PKEYI
+ORG         8100H
+MAIN:       MOV R1,#7BH
+            MOV R6,#4H
+START:      MOV @R1,#0
+            DEC R1
+            DJNZ R6,START
+            LCALL INI79
+            LCALL RDIR
+PROGN:      JNB 00H,PROGN
+            CLR 00H
+            MOV R0,#40H
+            MOV A,@R0
+            CJNEA,#00,NEXT1
+            LCALL PROGN0
+NEXT1:      CJNE A,#02,NEXT2
+            LCALL PROGN1
+NEXT2:      CJNE A,#03,NEXT3
+            LCALL PROGN2
+NEXT3:      CJNE A,#04,NEXT4
+            LCALL PROGN3
+NEXT4:      CJNE A,#05,NEXT5
+            LCALL PROGN4
+NEXT5:      CJNE A,#06,NEXT6
+            LCALL PROGN5
+NEXT6:      CJNE A,#07,NEXT7
+            LCALL PROGN6
+NEXT7:      CJNE A,#08,PROGN
+            LCALL PROGN7
+            LCALL 8900H
+            LJMP PROGN
+ORG 8400H
+PROGN0:     MOV R1,#7BH
+            MOV A,@R1
+            CJNE A,#9H,ADD0
+            MOV @R1,#00H
+            LJMP EXIT0
+ADD0:       INC @R1
+EXIT0:      LCALL 8900H
+            RET
+ORG 8450H
+PROGN1:     MOV R1,#7BH
+            MOV A,@R1
+            CJNE A,#0H,SUB0
+            LJMP EXIT1
+SUB0:       DEC @R1
+EXIT1:      LCALL 8900H
+            RET
+ORG 8500H
+PROGN2:     MOV R1,#7AH
+            MOV A,@R1
+            CJNE A,#9H,ADD1
+            MOV @R1,#0H
+            LCALL PROGN0
+            LJMP EXIT2
+ADD1:       INC @R1
+EXIT2:      LCALL 8900H
+            RET
+ORG 8550H
+PROGN3:     MOV R1,#7AH
+            MOV A,@R1
+            CJNE A,#0H,SUB1
+            MOV @R1,#9H
+            LCALL PROGN1
+            LJMP EXIT3
+SUB1:       DEC @R1
+EXIT3:      LCALL 8900H
+            RET
+ORG 8600H
+PROGN4:     MOV R1,#79H
+            MOV A,@R1
+            CJNE A,#9H,ADD2
+            MOV @R1,#0H
+            LCALL PROGN2
+            LJMP EXIT4
+ADD2:       INC @R1
+EXIT4:      LCALL 8900H
+              RET
+ORG 8650H
+PROGN5:     MOV R1,#79H
+            MOV A,@R1
+            CJNE A,#9H,SUB2
+            MOV @R1,#9H
+            LCALL PROGN3
+            LJMP EXIT5
+SUB2:       DEC @R1
+EXIT5:      LCALL 8900H
+            RET
+ORG 8700H
+PROGN6:     MOV R1,#78H
+            MOV A,@R1
+            CJNE A,#9H,ADD3
+            MOV @R1,#0H
+            LCALL PROGN4
+            LJMP EXIT6
+ADD3:       INC @R1
+EXIT6:      LCALL 8900H
+            RET
+ORG 8750H
+PROGN7:     MOV R1,#78H
+            MOV A,@R1
+            CJNE A,#0H,SUB3
+            MOV @R1,#9H
+            LCALL PROGN5
+            LJMP EXIT7
+SUB3:       DEC @R1
+EXIT7:      LCALL 8900H
+            RET
+ORG 8800H
+INI79:      MOV DPTR,#0DFFFH
+            MOV A,#0DCH
+            MOVX @DPTR,A
+WNDU:       MOVX A,@DPTR
+            JB ACC.7,WNDU
+            MOV A,#0
+            MOVX @DPTR,A
+            MOV A,#34
+            MOVX @DPTR,A
+            MOV IE,#81H
+            RET
+ORG 8900H
+RDIR:       MOV DPTR,#0DFFFH
+            MOV A, #90H
+            MOVX @DPTR,A
+            MOV R0,#7BH
+            MOV R7,#4
+            MOV DPTR,#0DEFFH
+RDL0:       MOV A,@R0
+            ADD A,#6
+            MOVC A,@A+PC
+            CPL A
+            MOVX @DPTR,A
+            DEC R0
+            DJNZ R7,RDL0
+            RET
+SEG:        DB 3FH,6,5BH,4FH,
+            DB 66H,6DH,
+            DB 7DH,7,7FH,6FH,
+            DB 77H,7CH
+            DB 39H,5EH,79H,71H,
+            DB 73H,3EH,
+            DB 31H,6FH,1CH,23H,40H,3,
+            DB 18H,38H,0
+ORG 8A00H
+PKEYI:      PUSH PSW
+            PUSH DPL
+            PUSH DPH
+            PUSH ACC
+            PUSH B
+            SETB PSW.3
+            MOV DPTR,#0DFFFH
+            MOVX A,@DPTR
+            ANL A,#0FH
+            JZ PKYR
+            MOV A,#40H
+            MOVX @DPTR,A
+            MOV DPTR,#0DEFFH
+            MOVX A,@DPTR
+            MOV R2,A
+            ANL A,#18H
+            RR A
+            RR A
+            RR A
+            MOV B,#2
+            MUL AB
+            XCH A,R2
+            ANL A,#3
+            ADD A,R2
+            MOV R0,#40H
+            MOV @R0,A
+            SETB 0
+PKYR:       POP B
+            POP ACC
+            POP DPH
+            POP DHL
+            POP PSW
+            RET1
+```
