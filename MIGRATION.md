@@ -82,7 +82,7 @@
 - [x] `2003/05/08/000017.mdx`: Behind-the-scenes story about the production of TV series "Towards the Republic"
 - [x] `2003/05/08/000018.mdx`: Analysis of the online gaming industry in China, especially disputes between major companies
 - [x] `2003/05/15/000019.mdx`: Report on how a SARS-related rumor spread across 14 Chinese provinces in just 4 days
-- [ ] `2003/05/29/000020.mdx`
+- [x] `2003/05/29/000020.mdx`: In-depth report on property owners' rights movement against government and developer in Guangzhou
 - [ ] `2003/06/05/000021.mdx`
 - [ ] `2003/06/05/000022.mdx`
 - [ ] `2003/06/05/000023.mdx`
