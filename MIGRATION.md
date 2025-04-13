@@ -67,7 +67,6 @@
 - 最后运行 `bunx autocorrect --fix {mxd_file_path} && bunx markdownlint-cli2 --fix {mxd_file_path}` 来格式化处理完的 `.mdx` 文件
 
 需要处理的博客的文件列表如下（已省略相对路径前缀 `src/content/post/` ）：
-**必须一个个文件手动处理，不要使用脚本**，处理完一个之后标记 `[x]`，下次运行脚本时跳过已处理过的文件。
 
 - [x] `2002/12/12/000007.mdx`: Investigative report on the Dalian plane crash caused by arson
 - [x] `2002/12/19/000008.mdx`: News report about Ba Jin's donated books found in secondhand bookstores
@@ -87,7 +86,7 @@
 - [x] `2003/06/05/000022.mdx`: In-depth investigation into Zhou Zhengyi's rise and fall as "Shanghai's richest man" and his business empire collapse
 - [x] `2003/06/05/000023.mdx`: Comprehensive report on President Hu Jintao's first diplomatic tour to Russia, including meetings with Putin and Koizumi
 - [x] `2003/07/03/000024.mdx`: Report on the literary battle between Jin Wenming and Yu Qiuyue over historical inaccuracies in Yu's essays
-- [ ] `2003/07/10/000025.mdx`
+- [x] `2003/07/10/000025.mdx`: In-depth report on Peking University's radical reform of faculty appointment and promotion system
 - [ ] `2003/07/17/000026.mdx`
 - [ ] `2003/07/17/000027.mdx`
 - [ ] `2003/07/31/000028.mdx`
@@ -288,6 +287,13 @@
 - [x] `2023/06/24/wagner-is-helping-putin.mdx`
 - [x] `2023/09/12/its-been-12-years-for-tim.mdx`
 - [x] `2025/03/15/multiplanet-civilization-v-earth-gravity.mdx`
+
+follow these steps:
+
+1. manually (DO NOT use script) proceed the next unchecked file
+2. mark the processed file as checked
+3. compact context to reduce token usage
+4. repeat step 1 until finishing all the files
 
 ## ⌛️ 修改 cactus 主题
 
