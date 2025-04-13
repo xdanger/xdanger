@@ -41,30 +41,30 @@
 - 将新目录的根目录下的 `package.json`, `astro.config.ts`, `tsconfig.json`, `tailwind.config.ts`, `postcss.config.ts`, `bun.lockb` 拷贝到本地项目根目录
 - 将 `src/` 拷贝到本地项目根目录
 
-## ⌛️ 转换博客文章的文件路径、文件名、Frontmatter、以及正文格式
+## ✅ 转换博客文章的文件路径、文件名、Frontmatter、以及正文格式
 
 因为规则较为模糊，不要使用脚本，而是手动更新 `src/content/post/` 目录下的所有博客文章：
 
 - ✅ 将博客文章的文件名从 `YYYY-MM-DD-title.html`, `YYYY/MM/YYYY-MM-DD-title.html` 转换为 `YYYY/MM/DD/title.mdx`，以保持之前已发布的博客的 URL 不变
   - 为了保持文件的 git 历史记录，使用 `git mv` 而不是直接移动文件
   - 已对所有文件完成此项更改，可以跳过
-- 将所有文章的 `date` 字段重命名为 `publishDate`
-- 将文章正文以你的理解转换为 Markdown JAX 格式
+- ✅ 将所有文章的 `date` 字段重命名为 `publishDate`
+- ✅ 将文章正文以你的理解转换为 Markdown JAX 格式
   - 保持文章内容不变，只调整格式以适配 Markdown JAX 的语法标准
   - 按 `.markdownlint.json` 配置文件中的规则，但忽略这些标准：
     - `MD013`：不对行数超过 80 行的行进行换行
     - `MD024`：允许有多个相同内容的标题
     - `MD037`：标记内允许有空格
     - `MD042`：允许空链接
-- 对于文章内容，编写一段用于放在网页的 `<description/>` 标签服务于 SEO 的描述，更新在 Frontmatter 的 `description` 字段
-- 对于 Frontmatter 里缺少 `title` 的文件，你来编写一个用于放在网页的 `<title/>` 标签内的标题，更新在 Frontmatter 的 `title` 字段
-- `tags` 字段：
+- ✅ 对于文章内容，编写一段用于放在网页的 `<description/>` 标签服务于 SEO 的描述，更新在 Frontmatter 的 `description` 字段
+- ✅ 对于 Frontmatter 里缺少 `title` 的文件，你来编写一个用于放在网页的 `<title/>` 标签内的标题，更新在 Frontmatter 的 `title` 字段
+- ✅ `tags` 字段：
   - 将 `category` 字段内的属性放入 `tags` 字段，删除 `category` 字段
   - 将 `tags` 字段的内容全部转成小写字母
   - 确保没有重复的 tag、没有空字符 tag
   - 每个 tag 用双引号包裹，多个 tag 用逗号分隔
   - 例如：`tags: ["moveabletype", "jekyll", "tech"]`
-- 最后运行 `bunx autocorrect --fix {mxd_file_path} && bunx markdownlint-cli2 --fix {mxd_file_path}` 来格式化处理完的 `.mdx` 文件
+- ✅ 最后运行 `bunx autocorrect --fix {mxd_file_path} && bunx markdownlint-cli2 --fix {mxd_file_path}` 来格式化处理完的 `.mdx` 文件
 
 需要处理的博客的文件列表如下（已省略相对路径前缀 `src/content/post/` ）：
 
