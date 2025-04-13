@@ -94,7 +94,7 @@
 - [x] `2003/09/04/000030.mdx`: In-depth analysis of China's urban demolition and relocation policies over a decade, examining how they've evolved from "public welfare" to commercial projects, causing social conflicts
 - [x] `2003/09/18/000031.mdx`: Analysis of Western criticism of China's RMB currency policy in 2003, showing how US and EU officials incorrectly blamed China's fixed exchange rate for manufacturing job losses
 - [x] `2003/10/09/000032.mdx`: Investigative report on the controversial demolition of Dongyue Temple's west wing, a 680-year-old Taoist temple in Beijing, for commercial real estate development
-- [ ] `2003/10/09/000033.mdx`
+- [x] `2003/10/09/000033.mdx`: Profile of 2003 Nobel Literature Prize winner J.M. Coetzee, exploring his life, literary works, and self-imposed exile from South Africa
 - [ ] `2003/10/16/000034.mdx`
 - [ ] `2003/11/06/000035.mdx`
 - [ ] `2003/11/06/000036.mdx`
