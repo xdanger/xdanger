@@ -51,16 +51,25 @@
 - 将所有文章的 `date` 字段重命名为 `publishDate`
 - 将文章正文以你的理解转换为 Markdown JAX 格式
   - 保持文章内容不变，只调整格式以适配 Markdown JAX 的语法标准
+  - 按 `.markdownlint.json` 配置文件中的规则，但忽略这些标准：
+    - `MD013`：不对行数超过 80 行的行进行换行
+    - `MD024`：允许有多个相同内容的标题
+    - `MD037`：标记内允许有空格
+    - `MD042`：允许空链接
 - 对于文章内容，编写一段用于放在网页的 `<description/>` 标签服务于 SEO 的描述，更新在 Frontmatter 的 `description` 字段
 - 对于 Frontmatter 里缺少 `title` 的文件，你来编写一个用于放在网页的 `<title/>` 标签内的标题，更新在 Frontmatter 的 `title` 字段
-- 将 `category` 字段内的属性放入 `tags` 字段，删除 `category` 字段
-- `tags` 字段的内容全部转成小写字母，并且确保没有重复的 tag、没有空字符 tag
+- `tags` 字段：
+  - 将 `category` 字段内的属性放入 `tags` 字段，删除 `category` 字段
+  - 将 `tags` 字段的内容全部转成小写字母
+  - 确保没有重复的 tag、没有空字符 tag
+  - 每个 tag 用双引号包裹，多个 tag 用逗号分隔
+  - 例如：`tags: ["moveabletype", "jekyll", "tech"]`
 - 最后运行 `bunx autocorrect --fix {mxd_file_path} && bunx markdownlint-cli2 --fix {mxd_file_path}` 来格式化处理完的 `.mdx` 文件
 
 需要处理的博客的文件列表如下（已省略相对路径前缀 `src/content/post/` ）：
 **必须一个个文件手动处理，不要使用脚本**，处理完一个之后标记 `[x]`，下次运行脚本时跳过已处理过的文件。
 
-- [ ] `2013/06/23/rebuild-blog-with-jekyll.mdx`
+- [x] `2013/06/23/rebuild-blog-with-jekyll.mdx`
 - [ ] `2025/03/15/multiplanet-civilization-v-earth-gravity.mdx`
 - [ ] `2023/05/18/montanas-ban-on-tiktok-is-unconstitutional.mdx`
 - [ ] `2023/05/15/compression-is-intelligence.mdx`
