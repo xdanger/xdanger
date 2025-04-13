@@ -96,7 +96,7 @@
 - [x] `2003/10/09/000032.mdx`: Investigative report on the controversial demolition of Dongyue Temple's west wing, a 680-year-old Taoist temple in Beijing, for commercial real estate development
 - [x] `2003/10/09/000033.mdx`: Profile of 2003 Nobel Literature Prize winner J.M. Coetzee, exploring his life, literary works, and self-imposed exile from South Africa
 - [x] `2003/10/16/000034.mdx`: Report on martial arts novelist Jin Yong's cultural events in China, including being named "Wulin Alliance Chief" at Huashan mountain and participating in discussions about wuxia culture
-- [ ] `2003/11/06/000035.mdx`
+- [x] `2003/11/06/000035.mdx`: Profile of Chinese entrepreneur Sun Dawu who built a rural enterprise empire while maintaining Confucian ethics, but faced legal troubles for "illegal public deposits"
 - [ ] `2003/11/06/000036.mdx`
 - [ ] `2003/11/13/000037.mdx`
 - [ ] `2003/11/23/000005.mdx`
