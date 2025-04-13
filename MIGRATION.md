@@ -41,45 +41,24 @@
 - 将新目录的根目录下的 `package.json`, `astro.config.ts`, `tsconfig.json`, `tailwind.config.ts`, `postcss.config.ts`, `bun.lockb` 拷贝到本地项目根目录
 - 将 `src/` 拷贝到本地项目根目录
 
-## ✅ 确保可正常运行
+## ⌛️ 转换博客文章的文件路径、文件名、Frontmatter、以及正文格式
 
-目标：可以正常运行 `bun run dev` 和 `bun run build`
+编写（或更新）脚本 `scripts/migrate-posts.js`，批量更新 `src/content/post/` 目录下的所有博客文章，以解决或实现：
 
-问题：
+- **更新文件名**：
+  - 将博客文章的文件名从 `YYYY-MM-DD-title.html`, `YYYY/MM/YYYY-MM-DD-title.html` 转换为 `YYYY/MM/DD/title.mdx`，以保持之前已发布的博客的 URL 不变
+  - 为了保持文件的 Git 历史记录，使用 `git mv` 而不是直接 `mv` 来移动文件
+- **更新 Frontmatter**：
+  - 因为之前使用 Jekyll 和 Next.js，博客文章的 `.html`, `.md`, `.mdx` 文件的 Frontmatter 里发布日期使用的是 `date`，没有设置 `description` 和 `publishDate`，需要：
+    - 将所有文章的 `date` 字段重命名为 `publishDate`
+    - 使用命令行 `claude -p "使用最简洁的语言编写 {file_path} 中内容的描述，用于放在网页的 <description/> 标签服务于 SEO"`，让 claude 总结出 `description` 字段
+  - 将 `category` 字段内的属性放入 `tags` 字段，删除 `category` 字段
+  - `tags` 字段的内容全部转成小写字母
+- **更新正文格式**：
+  - 将 `html` 格式的正文转换为 `Markdown JAX` 格式
+  - 转换后的文件内容格式需要经过 `bunx autocorrect --fix {file_path} && bunx markdownlint-cli2 --fix {file_path}` 格式化
 
-```bash
-bun run dev
-$ astro dev
-22:29:40 [types] Generated 1ms
-22:29:40 [content] Syncing content
-22:29:40 [content] Astro config changed
-22:29:40 [content] Astro version changed
-22:29:40 [content] Clearing content store
-[InvalidContentEntryDataError] post → 2013/06/2013-06-23-rebuild-blog-with-jekyll data does not match collection schema.
-description: Required
-publishDate: Did not match union.
-> Required
-  Hint:
-    See https://docs.astro.build/en/guides/content-collections/ for more information on content schemas.
-  Error reference:
-    https://docs.astro.build/en/reference/errors/invalid-content-entry-data-error/
-  Location:
-    /Users/xdanger/Repositories/gh.xdanger.xdanger/src/content/post/2013/06/2013-06-23-rebuild-blog-with-jekyll.md:0:0
-  Stack trace:
-    at getEntryDataAndImages (file:///Users/xdanger/Repositories/gh.xdanger.xdanger/node_modules/astro/dist/content/utils.js:163:26)
-    at async syncData (/Users/xdanger/Repositories/gh.xdanger.xdanger/node_modules/astro/dist/content/loaders/glob.js:93:28)
-error: script "dev" exited with code 1
-```
-
-问题是之前使用 Jekyll 和 Next.js 时
-
-- ✅ **Frontmatter 不匹配**：博客文章的 `.html`, `.md`, `.mdx` 文件的 Frontmatter 里发布日期使用的是 `date`，没有设置 `description` 和 `publishDate`
-  - 使用脚本 `scripts/fix-frontmatter.js` 将所有文章的 `date` 字段重命名为 `publishDate`，并自动从文章内容提取 `description` 字段。
-
-## ⌛️ 转换博客文章的文件名和文件格式
-
-- 将博客文章的文件名从 `src/content/post/YYYY-MM-DD-title.html` 转换为 `src/content/post/YYYY/MM/DD/title.mdx`，以保持 URL 不变
-- 将博客文章的文件格式从 `.html`, `.md` 转换为 `.mdx`，对于 HTML 文件需要转换内容正文
+执行 `scripts/migrate-posts.js` 完成上述转换，并仔细检查结果。
 
 ## ⌛️ 修改 cactus 主题
 
