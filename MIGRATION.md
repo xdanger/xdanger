@@ -69,19 +69,19 @@
 需要处理的博客的文件列表如下（已省略相对路径前缀 `src/content/post/` ）：
 **必须一个个文件手动处理，不要使用脚本**，处理完一个之后标记 `[x]`，下次运行脚本时跳过已处理过的文件。
 
-- [ ] `2002/12/12/000007.mdx`
-- [ ] `2002/12/19/000008.mdx`
-- [ ] `2002/12/26/000009.mdx`
-- [ ] `2003/01/01/000010.mdx`
-- [ ] `2003/01/09/000011.mdx`
-- [ ] `2003/01/23/000012.mdx`
-- [ ] `2003/02/13/000013.mdx`
-- [ ] `2003/03/13/000014.mdx`
-- [ ] `2003/03/20/000015.mdx`
-- [ ] `2003/04/03/000016.mdx`
-- [ ] `2003/05/08/000017.mdx`
-- [ ] `2003/05/08/000018.mdx`
-- [ ] `2003/05/15/000019.mdx`
+- [x] `2002/12/12/000007.mdx`: Investigative report on the Dalian plane crash caused by arson
+- [x] `2002/12/19/000008.mdx`: News report about Ba Jin's donated books found in secondhand bookstores
+- [x] `2002/12/26/000009.mdx`: South China Weekend's 2002 special report on Hu Jintao as the new CCP leader
+- [x] `2003/01/01/000010.mdx`: Interview with Kang Xiaoguang on elite social responsibility in China
+- [x] `2003/01/09/000011.mdx`: Article about forgotten legal elites from Soochow University Law School
+- [x] `2003/01/23/000012.mdx`: Analysis on why China is not to blame for Japan's deflation
+- [x] `2003/02/13/000013.mdx`: Report on early SARS outbreak in Guangzhou in February 2003
+- [x] `2003/03/13/000014.mdx`: In-depth analysis of constitutionalism in China featuring interviews with legal and political experts
+- [x] `2003/03/20/000015.mdx`: Essay reflecting on China's historical choices during three "Guiwei" years (1883, 1943, 2003)
+- [x] `2003/04/03/000016.mdx`: Investigative report on the Chinese fishing boat sunk by pirates in Sri Lankan waters
+- [x] `2003/05/08/000017.mdx`: Behind-the-scenes story about the production of TV series "Towards the Republic"
+- [x] `2003/05/08/000018.mdx`: Analysis of the online gaming industry in China, especially disputes between major companies
+- [x] `2003/05/15/000019.mdx`: Report on how a SARS-related rumor spread across 14 Chinese provinces in just 4 days
 - [ ] `2003/05/29/000020.mdx`
 - [ ] `2003/06/05/000021.mdx`
 - [ ] `2003/06/05/000022.mdx`
@@ -250,10 +250,10 @@
 - [ ] `2006/01/20/000034.mdx`
 - [ ] `2006/01/28/000035.mdx`
 - [ ] `2006/06/07/000046.mdx`
-- [ ] `2006/07/06/000047.mdx`
-- [ ] `2006/07/13/000050.mdx`
-- [ ] `2006/07/13/000051.mdx`
-- [ ] `2006/09/14/000052.mdx`
+- [x] `2006/07/06/000047.mdx`: Author's experience transitioning from Windows to Linux to Mac OS
+- [x] `2006/07/13/000050.mdx`: Critique of blind nationalism and mob mentality in online discussions
+- [x] `2006/07/13/000051.mdx`: Numbered responses about nationalism and China-Japan relations
+- [x] `2006/09/14/000052.mdx`: Reflections on XML and XSL academic assignment
 - [ ] `2006/09/15/000053.mdx`
 - [ ] `2006/09/16/000054.mdx`
 - [ ] `2006/09/25/000055.mdx`
