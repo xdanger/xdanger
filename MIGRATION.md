@@ -86,7 +86,7 @@
 - [x] `2003/06/05/000021.mdx`: Report on Three Gorges Dam relocation of Zigui county residents and their struggles
 - [x] `2003/06/05/000022.mdx`: In-depth investigation into Zhou Zhengyi's rise and fall as "Shanghai's richest man" and his business empire collapse
 - [x] `2003/06/05/000023.mdx`: Comprehensive report on President Hu Jintao's first diplomatic tour to Russia, including meetings with Putin and Koizumi
-- [ ] `2003/07/03/000024.mdx`
+- [x] `2003/07/03/000024.mdx`: Report on the literary battle between Jin Wenming and Yu Qiuyue over historical inaccuracies in Yu's essays
 - [ ] `2003/07/10/000025.mdx`
 - [ ] `2003/07/17/000026.mdx`
 - [ ] `2003/07/17/000027.mdx`
