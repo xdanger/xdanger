@@ -95,7 +95,7 @@
 - [x] `2003/09/18/000031.mdx`: Analysis of Western criticism of China's RMB currency policy in 2003, showing how US and EU officials incorrectly blamed China's fixed exchange rate for manufacturing job losses
 - [x] `2003/10/09/000032.mdx`: Investigative report on the controversial demolition of Dongyue Temple's west wing, a 680-year-old Taoist temple in Beijing, for commercial real estate development
 - [x] `2003/10/09/000033.mdx`: Profile of 2003 Nobel Literature Prize winner J.M. Coetzee, exploring his life, literary works, and self-imposed exile from South Africa
-- [ ] `2003/10/16/000034.mdx`
+- [x] `2003/10/16/000034.mdx`: Report on martial arts novelist Jin Yong's cultural events in China, including being named "Wulin Alliance Chief" at Huashan mountain and participating in discussions about wuxia culture
 - [ ] `2003/11/06/000035.mdx`
 - [ ] `2003/11/06/000036.mdx`
 - [ ] `2003/11/13/000037.mdx`
