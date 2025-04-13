@@ -97,28 +97,28 @@
 - [x] `2003/10/09/000033.mdx`: Profile of 2003 Nobel Literature Prize winner J.M. Coetzee, exploring his life, literary works, and self-imposed exile from South Africa
 - [x] `2003/10/16/000034.mdx`: Report on martial arts novelist Jin Yong's cultural events in China, including being named "Wulin Alliance Chief" at Huashan mountain and participating in discussions about wuxia culture
 - [x] `2003/11/06/000035.mdx`: Profile of Chinese entrepreneur Sun Dawu who built a rural enterprise empire while maintaining Confucian ethics, but faced legal troubles for "illegal public deposits"
-- [ ] `2003/11/06/000036.mdx`
-- [ ] `2003/11/13/000037.mdx`
-- [ ] `2003/11/23/000005.mdx`
-- [ ] `2003/11/26/000006.mdx`
-- [ ] `2003/11/27/000038.mdx`
-- [ ] `2003/12/04/000001.mdx`
-- [ ] `2003/12/05/000003.mdx`
-- [ ] `2003/12/05/000004.mdx`
-- [ ] `2003/12/07/000039.mdx`
-- [ ] `2003/12/08/000040.mdx`
-- [ ] `2003/12/08/000041.mdx`
-- [ ] `2003/12/09/000042.mdx`
-- [ ] `2003/12/12/000043.mdx`
-- [ ] `2003/12/13/000044.mdx`
-- [ ] `2003/12/13/000045.mdx`
-- [ ] `2003/12/14/000047.mdx`
-- [ ] `2003/12/15/000048.mdx`
-- [ ] `2003/12/15/000049.mdx`
-- [ ] `2003/12/16/000050.mdx`
-- [ ] `2003/12/18/000046.mdx`
-- [ ] `2003/12/18/000051.mdx`
-- [ ] `2003/12/19/000051.mdx`
+- [x] `2003/11/06/000036.mdx`: Analysis of the 2003 arrest of Russian oligarch Khodorkovsky, examining its political significance, the relationship between business and government in Russia's constitutional transition, and the balance between state power and business rights
+- [x] `2003/11/13/000037.mdx`: In-depth investigative report on the 2003 Hengyang fire disaster that killed 20 firefighters, revealing systematic corruption and regulatory failures behind the tragedy
+- [x] `2003/11/23/000005.mdx`: Brief commentary contrasting US and Chinese approaches to child safety regulations, prompted by news of a 2-year-old girl falling from a 5th-floor window
+- [x] `2003/11/26/000006.mdx`: Short post about creating a custom Google search interface, inspired by the soaso project
+- [x] `2003/11/27/000038.mdx`: In-depth report on the 50-year history of the Sanmenxia Dam project, examining its decision-making process, technical failures, and ongoing upstream-downstream conflicts
+- [x] `2003/12/04/000001.mdx`: Tutorial on installing MovableType blogging platform on Windows XP with Apache, ActivePerl, and MySQL, including troubleshooting common installation issues
+- [x] `2003/12/05/000003.mdx`: Translation and commentary on Jeremy Zawodny's "PageRank is Dead" article, discussing how Google's search algorithm evolved to downrank blogs despite their proper use of hyperlinks
+- [x] `2003/12/05/000004.mdx`: Brief post about installing the htmlArea WYSIWYG editor for MovableType and configuration tips
+- [x] `2003/12/07/000039.mdx`: Short post noting that Chinese resource sharing site VeryCD achieved Google PageRank 4
+- [x] `2003/12/08/000040.mdx`: Observations about Google's fast indexing of new web pages and Chinese character encoding issues compared to Baidu
+- [x] `2003/12/08/000041.mdx`: Commentary on China's football team's long-term failure against South Korea, with screenshots of rough play from a 2003 match
+- [x] `2003/12/09/000042.mdx`: Personal reflection on the sudden death of Taiwanese stuntman Ke Shouliang and comparisons to other celebrity deaths
+- [x] `2003/12/12/000043.mdx`: Negative review of Infernal Affairs III movie after Shanghai premiere, with comparisons to other disappointing sequels
+- [x] `2003/12/13/000044.mdx`: Technical guide for setting up cronolog with Apache on Windows to split logs for AWStats processing, with troubleshooting information
+- [x] `2003/12/13/000045.mdx`: In-depth analysis of Premier Wen Jiabao's 2003 US visit, examining the strategic significance and historical continuity in China's foreign policy
+- [x] `2003/12/14/000047.mdx`: News report about Saddam Hussein's capture with commentary on media coverage differences and quotes from MSNBC
+- [x] `2003/12/15/000048.mdx`: Brief post sharing a link to a Flash game for testing reaction speed
+- [x] `2003/12/15/000049.mdx`: Technical analysis of a Windows Notepad encoding bug when saving files with specific Chinese characters
+- [x] `2003/12/16/000050.mdx`: Investigative report exposing a fake Google site (google.net.cn) with detailed technical evidence of its inauthenticity
+- [x] `2003/12/18/000046.mdx`: Translation and overview of Google's PageRank algorithm with detailed technical explanation and mathematical formula
+- [x] `2003/12/18/000051.mdx`: Continuation of PageRank algorithm explanation focusing on the mathematical formula and the random surfer model
+- [x] `2003/12/19/000051.mdx`: Duplicate of the previous article about PageRank's mathematical formula and random surfer model (republished)
 - [ ] `2003/12/20/000052.mdx`
 - [ ] `2003/12/21/000053.mdx`
 - [ ] `2003/12/21/000054.mdx`

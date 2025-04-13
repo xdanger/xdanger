@@ -1,32 +1,42 @@
 ---
 layout: post
-title: "Google的PageRank算法（一）"
-category: "Tech"
-tags: []
-description: "继续。以下文字翻译自http://pr.efactory.de/e-pagerank-algorithm.shtml，部分内容参考了hedong的Google的PageRank算法学习。 Lawrence Page和Sergey Brin在个别场合描述了PageRank最初的算法。这就是 PR(A) = (1-d) +..."
+title: "Google 的 PageRank 算法（一）"
+tags: ["google", "pagerank", "algorithm", "seo", "tech", "translation"]
+description: "详细剖析 Google PageRank 算法的数学公式及其工作原理。本文翻译解释了 PageRank 的核心公式 PR(A) = (1-d) + d(PR(T1)/C(T1) + ... + PR(Tn)/C(Tn))，阐明了阻尼系数、入站链接和出站链接如何共同影响网页排名，并通过'随机冲浪模型'直观解释了这一革命性搜索排名技术的本质。"
 publishDate: "2003-12-18 18:36:37"
 ---
 
-<P>　　继续。以下文字翻译自<A href="http://pr.efactory.de/e-pagerank-algorithm.shtml">http://pr.efactory.de/e-pagerank-algorithm.shtml</A>，部分内容参考了<A href="http://hedong.3322.org/archives/000199.html">hedong的Google的PageRank算法学习</A>。
-<HR>
+继续。以下文字翻译自[http://pr.efactory.de/e-pagerank-algorithm.shtml](http://pr.efactory.de/e-pagerank-algorithm.shtml)，部分内容参考了[hedong 的 Google 的 PageRank 算法学习](http://hedong.3322.org/archives/000199.html)。
 
-<P></P>
-<P>　　Lawrence Page和Sergey Brin在个别场合描述了PageRank最初的算法。这就是</P>
-<P align=center><STRONG>PR(A) = (1-d) + d (PR(T1)/C(T1) + ... + PR(Tn)/C(Tn))</STRONG></P>
-<P>式中：</P>
-<UL>
-<LI><STRONG>PR(A)</STRONG> :网页A页的PageRank值； 
-<LI><STRONG>PR(Ti)</STRONG> :链接到A页的网页Ti的PageRank值； 
-<LI><STRONG>C(Ti)</STRONG> :网页Ti的出站链接数量； 
-<LI><STRONG>d </STRONG>:阻尼系数，0&lt;d&lt;1。</LI></UL>
-<br /><br />
-<P>　　可见，首先，PageRank并不是将整个网站排等级，而是以单个页面计算的。其次，页面A的PageRank值取决于那些连接到A的页面的PageRank的递归值。</P>
-<P>　　<STRONG>PR(Ti)</STRONG>值并不是均等影响页面<STRONG>PR(A)</STRONG>的。在PageRank的计算公式里，T对于A的影响还受T的出站链接数<STRONG>C(T)</STRONG>的影响。这就是说，T的出站链接越多，A受T的这个连接的影响就越少。</P>
-<P>　　<STRONG>PR(A)</STRONG>是所有<STRONG>PR(Ti)</STRONG>之和。所以，对于A来说，每多增加一个入站链接都会增加<STRONG>PR(A)</STRONG>。</P>
-<P>　　最后，所有<STRONG>PR(Ti)</STRONG>之和乘以一个阻尼系数<STRONG>d</STRONG>，它的值在0到1之间。因此，阻尼系数的使用，减少了其它页面对当前页面A的排序贡献。</P>
-<H3>随机冲浪模型</H3>
-<P>&nbsp;　　Lawrence Page和Sergey Brin为以上这个PageRank算法给出了一个非常简单直观的解释。他们将PageRank视作一种模型，就是用户不关心网页内容而随机点击链接。</P>
-<P>　　网页的PageRank值决定了随机访问到这个页面的概率。用户点击页面内的链接的概率，完全由页面上链接数量的多少决定的，这也是上面<STRONG>PR(Ti)</STRONG>/<STRONG>C(Ti)</STRONG>的原因。</P>
-<P>　　因此，一个页面通过随机冲浪到达的概率就是链入它的别的页面上的链接的被点击概率的和。并且，阻尼系数<STRONG>d</STRONG>减低了这个概率。阻尼系数<STRONG>d</STRONG>的引入，是因为用户不可能无限的点击链接，常常因无聊而随机跳入另一个页面。</P>
-<P>　　阻尼系数<STRONG>d</STRONG>定义为用户不断随机点击链接的概率，所以，它取决于点击的次数，被设定为0-1之间。<STRONG>d</STRONG>的值越高，继续点击链接的概率就越大。因此，用户停止点击并随机冲浪至另一页面的概率在式子中用常数<STRONG>(1-d)</STRONG>表示。无论入站链接如何，随机冲浪至一个页面的概率总是<STRONG>(1-d)</STRONG>。<STRONG>(1-d)</STRONG>本身也就是页面本身所具有的PageRank值。</P>
+---
 
+Lawrence Page 和 Sergey Brin 在个别场合描述了 PageRank 最初的算法。这就是：
+
+```math
+PR(A) = (1-d) + d (PR(T1)/C(T1) + ... + PR(Tn)/C(Tn))
+```
+
+式中：
+
+- **PR(A)** : 网页 A 页的 PageRank 值；
+- **PR(Ti)** : 链接到 A 页的网页 Ti 的 PageRank 值；
+- **C(Ti)** : 网页 Ti 的出站链接数量；
+- **d** : 阻尼系数，0<d<1。
+
+可见，首先，PageRank 并不是将整个网站排等级，而是以单个页面计算的。其次，页面 A 的 PageRank 值取决于那些连接到 A 的页面的 PageRank 的递归值。
+
+**PR(Ti)** 值并不是均等影响页面 **PR(A)** 的。在 PageRank 的计算公式里，T 对于 A 的影响还受 T 的出站链接数 **C(T)** 的影响。这就是说，T 的出站链接越多，A 受 T 的这个连接的影响就越少。
+
+**PR(A)** 是所有 **PR(Ti)** 之和。所以，对于 A 来说，每多增加一个入站链接都会增加 **PR(A)**。
+
+最后，所有 **PR(Ti)** 之和乘以一个阻尼系数 **d**，它的值在 0 到 1 之间。因此，阻尼系数的使用，减少了其它页面对当前页面 A 的排序贡献。
+
+### 随机冲浪模型
+
+Lawrence Page 和 Sergey Brin 为以上这个 PageRank 算法给出了一个非常简单直观的解释。他们将 PageRank 视作一种模型，就是用户不关心网页内容而随机点击链接。
+
+网页的 PageRank 值决定了随机访问到这个页面的概率。用户点击页面内的链接的概率，完全由页面上链接数量的多少决定的，这也是上面 **PR(Ti)**/**C(Ti)** 的原因。
+
+因此，一个页面通过随机冲浪到达的概率就是链入它的别的页面上的链接的被点击概率的和。并且，阻尼系数 **d** 减低了这个概率。阻尼系数 **d** 的引入，是因为用户不可能无限的点击链接，常常因无聊而随机跳入另一个页面。
+
+阻尼系数 **d** 定义为用户不断随机点击链接的概率，所以，它取决于点击的次数，被设定为 0-1 之间。**d** 的值越高，继续点击链接的概率就越大。因此，用户停止点击并随机冲浪至另一页面的概率在式子中用常数 **(1-d)** 表示。无论入站链接如何，随机冲浪至一个页面的概率总是 **(1-d)**。**(1-d)** 本身也就是页面本身所具有的 PageRank 值。

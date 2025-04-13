@@ -1,33 +1,57 @@
 ---
 layout: post
-title: "Google的PageRank概述"
-category: "Tech"
-tags: []
-description: "前段时间看了 hedong对于PageRank算法学习的文章http://hedong.3322.org/archives/000199.html，参考了PageRank的英文原始资料，感觉hedong写的内容稍微少了点，能有原版译文就更好了！Google了一下，没任何资料……还是自己开金山词霸看吧-.- 想想反正都看..."
+title: "Google 的 PageRank 概述"
+tags: ["google", "pagerank", "seo", "algorithm", "translation", "tech"]
+description: "本文是对 Google PageRank 算法的中文导论，作者翻译并解释了 PageRank 的基本概念、工作原理及其与传统链接流行度评估方法的区别。文章详细阐述了 PageRank 如何基于整个网络的链接结构来递归计算网页重要性，强调高质量入站链接对网页排名的重要性，以及这一创新如何帮助 Google 在搜索引擎领域取得突破性成功。"
 publishDate: "2003-12-18 02:27:36"
 ---
 
+![Google Logo](http://blog.xdanger.com/archives/pics/20031218a.gif)
 
-<P><IMG height=53 alt="Google Logo" src="http://blog.xdanger.com/archives/pics/20031218a.gif" width=128 align=left border=0>　　前段时间看了 hedong对于PageRank算法学习的文章<A href="http://hedong.3322.org/archives/000199.html">http://hedong.3322.org/archives/000199.html</A>，参考了<A href="http://pr.efactory.de/">PageRank的英文原始资料</A>，感觉hedong写的内容稍微少了点，能有原版译文就更好了！<A href="http://www.google.com/search?q=pagerank&amp;lr=lang_zh-CN%7Clang_zh-TW">Google了一下</A>，没任何资料……还是自己开金山词霸看吧-.-</P>
-<P>　　想想反正都看了，索性再花点时间写成文字记下来，方便今后的同道者。可是……555，偶e文实在太Poor了，因此将原文一段段附上，如有严重错误，请一定留言指正！</P>
-<P>　　这是第一段，译自：<A href="http://pr.efactory.de/">Google PageRank Introduction&nbsp;- http://pr.efactory.de/</A></P>
-<br /><br />
-<HR>
-　　Within the past few years, Google has become the far most utilized search engine worldwide. A decisive factor therefore was, besides high performance and ease of use, the superior quality of search results compared to other search engines. This quality of search results is substantially based on PageRank, a sophisticated method to rank web documents. 
-<P></P>
-<P>　　在过去几年之内，Google成为了全世界被使用的最多的搜索引擎。与其它搜索引擎比较，除高性能和易用以外，一个决定性的因素是它的优秀的搜索结果。搜索结果的这质量极大地来源于<A href="http://www.google.com/technology/">PageRank</A>——一个精密的排序网页文件等级的方式。</P>
-<P>　　The aim of these pages is to provide a broad survey of all aspects of PageRank. The contents of these pages primarily rest upon papers by Google founders Lawrence Page and Sergey Brin from their time as graduate students at Stanford University.<BR><BR>　　本文的主要目的就是对PageRank的各个方面做一次广泛的勘测。本文内容主要依据Google创始人Lawrence Page和Sergey Brin在他们作为斯坦福大学研究生时的文章。</P>
-<P>　　It is often argued that, especially considering the dynamic of the internet, too much time has passed since the scientific work on PageRank, as that it still could be the basis for the ranking methods of the Google search engine. There is no doubt that within the past years most likely many changes, adjustments and modifications regarding the ranking methods of Google have taken place, but PageRank was absolutely crucial for Google's success, so that at least the fundamental concept behind PageRank should still be constitutive.<BR><BR>　　经常被讨论的是，尤其是考虑到互联网的动态性，自从PageRank科学工作开始，许多时间被浪费了，因为他仍然可以是Google搜索引擎的等级等级的基本依据。毋庸置疑，在过去几年内有许多关于Google等级方法的调整和修改，但PageRank是Google成功的绝对关键，因此至少PageRank的根本概念在之后应该仍然不会改变的。</P>
-<P>　　Since the early stages of the world wide web, search engines have developed different methods to rank web pages. Until today, the occurence of a search phrase within a document is one major factor within ranking techniques of virtually any search engine. The occurence of a search phrase can thereby be weighted by the length of a document (ranking by keyword density) or by its accentuation within a document by HTML tags.</P>
-<P>PageRank的概念<BR><BR>　　从万维网的早期，搜索引擎开发不同的方法排序网页。实际上，直到今天，任一个搜索引擎对网页的排序，是根据搜索的词组短语在页面中的出现次数，并用页面长度和html标签的重要性提示等进行权重修订。<BR></P>
-<P>　　For the purpose of better search results and especially to make search engines resistant against automatically generated web pages based upon the analysis of content specific ranking criteria (doorway pages), the concept of link popularity was developed. Following this concept, the number of inbound links for a document measures its general importance. Hence, a web page is generally more important, if many other web pages link to it. The concept of link popularity often avoids good rankings for pages which are only created to deceive search engines and which don't have any significance within the web, but numerous webmasters elude it by creating masses of inbound links for doorway pages from just as insignificant other web pages.</P>
-<P>　　为了得到更好的搜索结果，尤其是使搜索引擎自动抵制那些基于对详细等级标准页面（入口页）内容的分析而自动生成的网页，连接人气值的概念开始被开发了。根据这个概念，一个网页文件的入链数量通常表示此文件的重要程度。因此，一般地，如果从其他网页链接到一个网页的数量越多，那么这个网页就越重要。链接人气值的概念通常可以避免那些只被创造出来欺骗搜索引擎并且没有任何实际意义的网页得到好的等级，然而，许多网站管理员为了避免发生这种情况，他们从其他没有意义的网页创建大量入站链接，而不是从入口页（doorway pages）。</P>
-<P>　　Contrary to the concept of link popularity, PageRank is not simply based upon the total number of inbound links. The basic approach of PageRank is that a document is in fact considered the more important the more other documents link to it, but those inbound links do not count equally. First of all, a document ranks high in terms of PageRank, if other high ranking documents link to it.<BR><BR>　　与链接人气值向比较，PageRank的概念并不是简单地根据入站链接的总数。PageRank基本的方法是，越是重要的文件链接一个文件，则这个文件就越重要，但那些入站链接并不是被平等计算的。首先，如果其他高等级的文件连接到它，那么根据PageRank的规则，此文件的等级也高。</P>
-<P>　　So, within the PageRank concept, the rank of a document is given by the rank of those documents which link to it. Their rank again is given by the rank of documents which link to them. Hence, the PageRank of a document is always determined recursively by the PageRank of other documents. Since - even if marginal and via many links - the rank of any document influences the rank of any other, PageRank is, in the end, based on the linking structure of the whole web. Although this approach seems to be very broad and complex, Page and Brin were able to put it into practice by a relatively trivial algorithm.<BR><BR>　　如此, 在PageRank概念中，文件的等级由与它连接那些文件的等级决定的。它们的等级再由与他们连接文件的等级决定。因此, 文件的PageRank由其他文件的PageRank总递归之和确定。因为，即使是在边缘的少量链接，任一个文件的等级都会影响些其他文件的等级，概言之，PageRank的等级是由整个网的连接结构决定的。虽然这种方法似乎是非常宽泛和复杂的, Page和Brin已经能够通过一个微不足道的运算法则将它投入实践了。 
-<HR>
+前段时间看了 hedong 对于 PageRank 算法学习的文章 [http://hedong.3322.org/archives/000199.html](http://hedong.3322.org/archives/000199.html)，参考了 [PageRank 的英文原始资料](http://pr.efactory.de/)，感觉 hedong 写的内容稍微少了点，能有原版译文就更好了！[Google 了一下](http://www.google.com/search?q=pagerank&lr=lang_zh-CN%7Clang_zh-TW)，没任何资料……还是自己开金山词霸看吧-.-
 
-<P>　　个人总结：PageRank绝对是个很科学的小创意。说他科学，你会在我以后的文章中看到Google是如何将数学（具体来说多数是统计学）理论淋漓尽致地发挥在搜索技术之中。说他“小”，因为这些理论对于搞数学的人来说实在太微不足道了，甚至稍微有些科学高数知识的人都能理解。</P>
-<P>　　我一向认为，搜索引擎对于互联网的价值就好比桌面操作系统对于计算机的价值，微软已经无可争议地占领PC桌面之后，互联网的桌面之争从Internet诞生起就异常惨烈，后来Yahoo!因为进入互联网最早而取得阶段性胜利。不过那时候的搜索引擎对于我们来说好比是马桶……不得不用，一用就恶心。那时无论是<A href="http://www.yahoo.com">Yahoo!</A> 、<A href="http://www.altavista.com/">AltaVista</A>、<A href="http://www.alltheweb">AllTheWeb</A>或者<A href="http://www.lycos.com/">Lycos</A>，搜索出来几乎都是大便。</P>
-<P>　　对于我来说，生命中出现搜索引擎的一天，是我同学的一个英国的同学告诉我用用看<A href="http://www.google.com">www.google.com</A>。</P>
-<P align=center><A href="http://blog.xdanger.com/archives/2003/12/19/000051.html">Google的PageRank算法（一）</A>&nbsp;&gt;&gt;</P>
+想想反正都看了，索性再花点时间写成文字记下来，方便今后的同道者。可是……555，偶 e 文实在太 Poor 了，因此将原文一段段附上，如有严重错误，请一定留言指正！
 
+这是第一段，译自：[Google PageRank Introduction - http://pr.efactory.de/](http://pr.efactory.de/)
+
+---
+
+Within the past few years, Google has become the far most utilized search engine worldwide. A decisive factor therefore was, besides high performance and ease of use, the superior quality of search results compared to other search engines. This quality of search results is substantially based on PageRank, a sophisticated method to rank web documents.
+
+在过去几年之内，Google 成为了全世界被使用的最多的搜索引擎。与其它搜索引擎比较，除高性能和易用以外，一个决定性的因素是它的优秀的搜索结果。搜索结果的这质量极大地来源于 [PageRank](http://www.google.com/technology/)——一个精密的排序网页文件等级的方式。
+
+The aim of these pages is to provide a broad survey of all aspects of PageRank. The contents of these pages primarily rest upon papers by Google founders Lawrence Page and Sergey Brin from their time as graduate students at Stanford University.
+
+本文的主要目的就是对 PageRank 的各个方面做一次广泛的勘测。本文内容主要依据 Google 创始人 Lawrence Page 和 Sergey Brin 在他们作为斯坦福大学研究生时的文章。
+
+It is often argued that, especially considering the dynamic of the internet, too much time has passed since the scientific work on PageRank, as that it still could be the basis for the ranking methods of the Google search engine. There is no doubt that within the past years most likely many changes, adjustments and modifications regarding the ranking methods of Google have taken place, but PageRank was absolutely crucial for Google's success, so that at least the fundamental concept behind PageRank should still be constitutive.
+
+经常被讨论的是，尤其是考虑到互联网的动态性，自从 PageRank 科学工作开始，许多时间被浪费了，因为他仍然可以是 Google 搜索引擎的等级等级的基本依据。毋庸置疑，在过去几年内有许多关于 Google 等级方法的调整和修改，但 PageRank 是 Google 成功的绝对关键，因此至少 PageRank 的根本概念在之后应该仍然不会改变的。
+
+Since the early stages of the world wide web, search engines have developed different methods to rank web pages. Until today, the occurence of a search phrase within a document is one major factor within ranking techniques of virtually any search engine. The occurence of a search phrase can thereby be weighted by the length of a document (ranking by keyword density) or by its accentuation within a document by HTML tags.
+
+### PageRank 的概念
+
+从万维网的早期，搜索引擎开发不同的方法排序网页。实际上，直到今天，任一个搜索引擎对网页的排序，是根据搜索的词组短语在页面中的出现次数，并用页面长度和 html 标签的重要性提示等进行权重修订。
+
+For the purpose of better search results and especially to make search engines resistant against automatically generated web pages based upon the analysis of content specific ranking criteria (doorway pages), the concept of link popularity was developed. Following this concept, the number of inbound links for a document measures its general importance. Hence, a web page is generally more important, if many other web pages link to it. The concept of link popularity often avoids good rankings for pages which are only created to deceive search engines and which don't have any significance within the web, but numerous webmasters elude it by creating masses of inbound links for doorway pages from just as insignificant other web pages.
+
+为了得到更好的搜索结果，尤其是使搜索引擎自动抵制那些基于对详细等级标准页面（入口页）内容的分析而自动生成的网页，连接人气值的概念开始被开发了。根据这个概念，一个网页文件的入链数量通常表示此文件的重要程度。因此，一般地，如果从其他网页链接到一个网页的数量越多，那么这个网页就越重要。链接人气值的概念通常可以避免那些只被创造出来欺骗搜索引擎并且没有任何实际意义的网页得到好的等级，然而，许多网站管理员为了避免发生这种情况，他们从其他没有意义的网页创建大量入站链接，而不是从入口页（doorway pages）。
+
+Contrary to the concept of link popularity, PageRank is not simply based upon the total number of inbound links. The basic approach of PageRank is that a document is in fact considered the more important the more other documents link to it, but those inbound links do not count equally. First of all, a document ranks high in terms of PageRank, if other high ranking documents link to it.
+
+与链接人气值向比较，PageRank 的概念并不是简单地根据入站链接的总数。PageRank 基本的方法是，越是重要的文件链接一个文件，则这个文件就越重要，但那些入站链接并不是被平等计算的。首先，如果其他高等级的文件连接到它，那么根据 PageRank 的规则，此文件的等级也高。
+
+So, within the PageRank concept, the rank of a document is given by the rank of those documents which link to it. Their rank again is given by the rank of documents which link to them. Hence, the PageRank of a document is always determined recursively by the PageRank of other documents. Since - even if marginal and via many links - the rank of any document influences the rank of any other, PageRank is, in the end, based on the linking structure of the whole web. Although this approach seems to be very broad and complex, Page and Brin were able to put it into practice by a relatively trivial algorithm.
+
+如此，在 PageRank 概念中，文件的等级由与它连接那些文件的等级决定的。它们的等级再由与他们连接文件的等级决定。因此，文件的 PageRank 由其他文件的 PageRank 总递归之和确定。因为，即使是在边缘的少量链接，任一个文件的等级都会影响些其他文件的等级，概言之，PageRank 的等级是由整个网的连接结构决定的。虽然这种方法似乎是非常宽泛和复杂的，Page 和 Brin 已经能够通过一个微不足道的运算法则将它投入实践了。
+
+---
+
+个人总结：PageRank 绝对是个很科学的小创意。说他科学，你会在我以后的文章中看到 Google 是如何将数学（具体来说多数是统计学）理论淋漓尽致地发挥在搜索技术之中。说他"小"，因为这些理论对于搞数学的人来说实在太微不足道了，甚至稍微有些科学高数知识的人都能理解。
+
+我一向认为，搜索引擎对于互联网的价值就好比桌面操作系统对于计算机的价值，微软已经无可争议地占领 PC 桌面之后，互联网的桌面之争从 Internet 诞生起就异常惨烈，后来 Yahoo! 因为进入互联网最早而取得阶段性胜利。不过那时候的搜索引擎对于我们来说好比是马桶……不得不用，一用就恶心。那时无论是 [Yahoo!](http://www.yahoo.com)、[AltaVista](http://www.altavista.com/)、[AllTheWeb](http://www.alltheweb)或者[Lycos](http://www.lycos.com/)，搜索出来几乎都是大便。
+
+对于我来说，生命中出现搜索引擎的一天，是我同学的一个英国的同学告诉我用用看 [www.google.com](http://www.google.com)。
+
+[Google 的 PageRank 算法（一）](http://blog.xdanger.com/archives/2003/12/19/000051.html) >>
