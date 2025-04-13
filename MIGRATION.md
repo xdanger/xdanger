@@ -89,7 +89,7 @@
 - [x] `2003/07/10/000025.mdx`: In-depth report on Peking University's radical reform of faculty appointment and promotion system
 - [x] `2003/07/17/000026.mdx`: Investigative report on the British Museum's preservation of Chinese artifacts and its funding and staffing issues
 - [x] `2003/07/17/000027.mdx`: Essay about Tan Sitong's heroic martyrdom during the Wuxu Reform Movement of 1898
-- [ ] `2003/07/31/000028.mdx`
+- [x] `2003/07/31/000028.mdx`: Investigative report on the controversial plan to build Yangliuhu Dam 1310 meters upstream from the Dujiangyan UNESCO World Heritage Site
 - [ ] `2003/08/14/000029.mdx`
 - [ ] `2003/09/04/000030.mdx`
 - [ ] `2003/09/18/000031.mdx`
