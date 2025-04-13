@@ -1,6 +1,7 @@
 {
 	"name": "eccentric-event",
 	"version": "6.1.1",
+	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
@@ -36,6 +37,7 @@
 		"satori": "0.12.1",
 		"satori-html": "^0.3.2",
 		"sharp": "^0.33.5",
+		"turndown": "^7.2.0",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
 	},

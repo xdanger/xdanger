@@ -44,7 +44,6 @@ spellcheck:
     - App Store
     # This means "appstore" into "App Store"
     - AppStore = App Store
-    - Git
     - Node.js
     - nodejs = Node.js
     - VIM

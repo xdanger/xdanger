@@ -47,16 +47,18 @@
 
 - **更新文件名**：
   - 将博客文章的文件名从 `YYYY-MM-DD-title.html`, `YYYY/MM/YYYY-MM-DD-title.html` 转换为 `YYYY/MM/DD/title.mdx`，以保持之前已发布的博客的 URL 不变
-  - 为了保持文件的 Git 历史记录，使用 `git mv` 而不是直接 `mv` 来移动文件
+  - 为了保持文件的 Git 历史记录，使用 `git mv` 而不是直接移动文件
 - **更新 Frontmatter**：
   - 因为之前使用 Jekyll 和 Next.js，博客文章的 `.html`, `.md`, `.mdx` 文件的 Frontmatter 里发布日期使用的是 `date`，没有设置 `description` 和 `publishDate`，需要：
     - 将所有文章的 `date` 字段重命名为 `publishDate`
-    - 使用命令行 `claude -p "使用最简洁的语言编写 {file_path} 中内容的描述，用于放在网页的 <description/> 标签服务于 SEO"`，让 claude 总结出 `description` 字段
+    - 使用命令行 `claude -p "使用最简洁的语言编写 {file_path} 中内容的描述，用于放在网页的 <description/> 标签服务于 SEO"`，让 claude 总结出 `description` 字段。使用缓存文件来记录哪些文件的 description 已经总结过，在重复执行脚本时可以对比 description 是否和缓存文件中的相同，避免重复总结
+    - 对于没有设置 `title` 字段的文章，使用命令行 `claude -p "对于 {file_path} 中内容编写一个标题，用于放在网页的 <title/> 标签"`，让 claude 总结出 `title` 字段
   - 将 `category` 字段内的属性放入 `tags` 字段，删除 `category` 字段
-  - `tags` 字段的内容全部转成小写字母
+  - `tags` 字段的内容全部转成小写字母，并且确保没有重复的 tag、没有空字符 tag
 - **更新正文格式**：
   - 将 `html` 格式的正文转换为 `Markdown JAX` 格式
   - 转换后的文件内容格式需要经过 `bunx autocorrect --fix {file_path} && bunx markdownlint-cli2 --fix {file_path}` 格式化
+- **幂等性**：`scripts/migrate-posts.js` 应当可以安全地重试而不会导致数据不一致，如果遇到错误，修改相应逻辑后继续执行是安全的
 
 执行 `scripts/migrate-posts.js` 完成上述转换，并仔细检查结果。
 

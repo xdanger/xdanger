@@ -97,6 +97,11 @@ export default defineConfig({
 			exclude: ["@resvg/resvg-js"],
 		},
 		plugins: [tailwind(), rawFonts([".ttf", ".woff"])],
+		resolve: {
+			alias: {
+				"@": "/src"
+			}
+		}
 	},
 	env: {
 		schema: {
