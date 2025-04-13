@@ -1,9 +1,10 @@
 ---
-layout:   post
-title:    "重力加速度 (g) 决定能否成为多行星文明"
-date:     "2025-03-15 23:00:00"
+layout: post
+title: "重力加速度 (g) 决定能否成为多行星文明"
 category: "Tech"
-tags:     [SpaceX, Starship, ElonMusk]
+tags: [SpaceX, Starship, ElonMusk]
+description: "今天看到 [Elon Musk 宣布](https://x.com/elonmusk/status/1900774290682683612) \"Starship 将于明年年底搭载 Optimus 前往火星。如果着陆顺利，人类登陆火星最早可能在 2029 年开始，不过 2031 年的可能性更大。\""
+publishDate: "2025-03-15 23:00:00"
 ---
 
 今天看到 [Elon Musk 宣布](https://x.com/elonmusk/status/1900774290682683612) "Starship 将于明年年底搭载 Optimus 前往火星。如果着陆顺利，人类登陆火星最早可能在 2029 年开始，不过 2031 年的可能性更大。"

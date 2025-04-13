@@ -1,9 +1,10 @@
 ---
-layout:   post
-title:    "蒙大拿州禁用 TikTok 的法案一定会被判违宪"
-date:     "2023-05-18 14:00:00"
+layout: post
+title: "蒙大拿州禁用 TikTok 的法案一定会被判违宪"
 category: "Law"
-tags:     []
+tags: []
+description: "- 宪法第一条第 10 款禁止各州通过破坏合同义务的法律，TikTok 现有的用户和创作者的合约应当被保护； - 法案的生效程度及方式也需遵循 “正当过渡” 的原则，给予相关各方适当调整期，过度突然的效力也面临法律质疑。"
+publishDate: "2023-05-18 14:00:00"
 ---
 
 蒙大拿州长 Greg Gianforte 签署了在全州禁用 TikTok 的法案，正式成为州法，自 2024 年 1 月 1 日起生效。

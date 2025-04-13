@@ -2,12 +2,12 @@
 
 步骤：
 
-## ✅ 1. 清除 Next.js 相关配置
+## ✅ 清除 Next.js 相关配置
 
 - 删除本地所有和 Next.js 相关的文件
 - 删除本地 `node_modules`, `.next`, `.out` 等目录
 
-## ✅ 2. 创建空白 Astro 项目
+## ✅ 创建空白 Astro 项目
 
 - 在其他目录使用 [cactus](https://github.com/chrismwilliams/astro-theme-cactus) 模版新起一个空白 Astro 项目
 
@@ -18,7 +18,7 @@
 
 - 确保可以正常运行
 
-## ✅ 3. 修改 URL 路由
+## ✅ 修改 URL 路由
 
 所有页面：
 
@@ -36,12 +36,12 @@
 - `src/content/note/welcome.mdx`：URL 为 `/notes/welcome`，也支持 `/notes/welcome.html`
 - `src/content/post/testing/long-title.mdx`：URL 为 `/testing/long-title`，也支持 `/testing/long-title.html`
 
-## ✅ 4. 迁移程序和配置
+## ✅ 迁移程序和配置
 
 - 将新目录的根目录下的 `package.json`, `astro.config.ts`, `tsconfig.json`, `tailwind.config.ts`, `postcss.config.ts`, `bun.lockb` 拷贝到本地项目根目录
 - 将 `src/` 拷贝到本地项目根目录
 
-## ⌛️ 5. 确保可正常运行
+## ✅ 确保可正常运行
 
 目标：可以正常运行 `bun run dev` 和 `bun run build`
 
@@ -73,14 +73,20 @@ error: script "dev" exited with code 1
 
 问题是之前使用 Jekyll 和 Next.js 时
 
-- **Frontmatter 不匹配**：博客文章的 `.html`, `.md`, `.mdx` 文件的 Frontmatter 里发布日期使用的是 `date`，没有设置 `description` 和 `publishDate`。需要逐个将之前文章的 Frontmatter 进行转换和迁移，自动补齐 `description` 字段。
+- ✅ **Frontmatter 不匹配**：博客文章的 `.html`, `.md`, `.mdx` 文件的 Frontmatter 里发布日期使用的是 `date`，没有设置 `description` 和 `publishDate`
+  - 使用脚本 `scripts/fix-frontmatter.js` 将所有文章的 `date` 字段重命名为 `publishDate`，并自动从文章内容提取 `description` 字段。
 
-## ⌛️ 6. 修改 cactus 主题
+## ⌛️ 转换博客文章的文件名和文件格式
+
+- 将博客文章的文件名从 `src/content/post/YYYY-MM-DD-title.html` 转换为 `src/content/post/YYYY/MM/DD/title.mdx`，以保持 URL 不变
+- 将博客文章的文件格式从 `.html`, `.md` 转换为 `.mdx`，对于 HTML 文件需要转换内容正文
+
+## ⌛️ 修改 cactus 主题
 
 - 像 GitHub 那样优先使用系统字体
 - 增加页面在宽屏上的宽度
 
-## ⌛️ 7. 强化 SEO
+## ⌛️ 强化 SEO
 
 - 使用 `@astrojs/sitemap` 生成 sitemap
 - 使用 `@astrojs/robots` 生成 robots.txt
@@ -88,4 +94,4 @@ error: script "dev" exited with code 1
 - 使用 `@astrojs/image` 生成图片
 - 使用 `@astrojs/seo` 生成 SEO 元数据
 
-## ⌛️ 8. 使用 Netlify 部署
+## ⌛️ 使用 Netlify 部署

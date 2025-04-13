@@ -1,9 +1,10 @@
 ---
-layout:   post
-title:    "压缩即智慧？"
-date:     "2023-05-18 01:00:00"
+layout: post
+title: "压缩即智慧？"
 category: "Tech"
-tags:     [MachineLearning, Insight]
+tags: [MachineLearning, Insight]
+description: "如果 ChatGPT 真的是上述所说的这样是对于真实世界信息的有损压缩，那么我们会有几个推论："
+publishDate: "2023-05-18 01:00:00"
 ---
 
 ## GPT 是一种文本的有损压缩/解压算法

@@ -1,9 +1,10 @@
 ---
-layout:   post
-title:    "2023 第一天，看看这个世界"
-date:     "2023-01-01 23:31:00"
+layout: post
+title: "2023 第一天，看看这个世界"
 category: "Tech"
-tags:     [MachineLearning, Insight]
+tags: [MachineLearning, Insight]
+description: "在我人生中，经历过 3 次让我感觉无限幸福的时刻："
+publishDate: "2023-01-01 23:31:00"
 ---
 
 在我人生中，经历过 3 次让我感觉无限幸福的时刻：

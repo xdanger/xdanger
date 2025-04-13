@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "Tim 从 Steve Jobs 接手 Apple 12 年了"
-date: "2023-09-12 19:00:00"
+description: "因为要保持作息习惯，今年的 WWDC 和昨天的 Apple Event 我都没看直播。不出意外，今天又是一大片梗图嘲笑 Apple 已没有创新能力。"
+publishDate: "2023-09-12 19:00:00"
 category: "Politics"
 tags: ["Apple"]
+publishDate: "2023/09/20 00:00:00"
 ---
 
 因为要保持作息习惯，今年的 WWDC 和昨天的 Apple Event 我都没看直播。不出意外，今天又是一大片梗图嘲笑 Apple 已没有创新能力。
