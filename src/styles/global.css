@@ -1,7 +1,7 @@
 /* would like to ignore ./src/pages/og-image/[slug].png.ts */
 @import "tailwindcss";
 /* config for tailwindcss-typography plugin */
-@config "../../tailwind.config.mjs";
+@config "tailwind.config.ts";
 
 /* use a selector-based strategy for dark mode */
 @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -14,7 +14,7 @@
 	--color-accent: oklch(55.27% 0.195 19.06);
 	--color-accent-2: oklch(18.15% 0 0);
 	--color-quote: oklch(55.27% 0.195 19.06);
-	--font-mono: "IA Writer Mono", "SF Mono", monospace;
+	--font-mono: "IA Writer Mono", "SF Mono", ui-monospace, monospace;
 }
 
 @layer base {
