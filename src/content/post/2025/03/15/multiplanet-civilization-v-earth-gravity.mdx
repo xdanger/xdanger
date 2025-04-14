@@ -24,7 +24,7 @@ $$\Delta v = v_e \ln \frac{m_0}{m_f}$$
 
 由火箭方程变化后可得：
 
-$$\frac{m_0}{m_f} = e^{\frac{\Delta v}{v_e}}$$
+$$\frac{m_0}{m_f} = \exp\left(\frac{\Delta v}{v_e}\right)$$
 
 $\frac{m_0}{m_f}$ 称为质量比（mass ratio），它随 $\frac{\Delta v}{v_e}$ 呈指数级增长
 
@@ -64,7 +64,7 @@ $\frac{m_0}{m_f}$ 称为质量比（mass ratio），它随 $\frac{\Delta v}{v_e}
 
 ## 质量比 $r_m$
 
-根据 $r_m = \frac{m_0}{m_f} = e^{\frac{\Delta v}{v_e}}$，在 $\Delta v$ 固定（需要 9.5 km/s）的情况下，$v_e$ 越大，质量比 $r_m$ 越小。
+根据 $r_m = \frac{m_0}{m_f} = \exp(\frac{\Delta v}{v_e})$，在 $\Delta v$ 固定（需要 9.5 km/s）的情况下，$v_e$ 越大，质量比 $r_m$ 越小。
 
 质量比高意味着：
 
@@ -139,7 +139,7 @@ $$\Delta v_\text{LEO} = 3.2 \ln\left(\frac{4975 + m_{payload}}{1575 + m_{payload
 
 这里我们暂停一下，回头看下之前的两个式子：
 
-1. 质量比 $r_m = \frac{m_0}{m_f} = e^{\frac{\Delta v}{v_e}}$
+1. 质量比 $r_m = \frac{m_0}{m_f} = \exp\left(\frac{\Delta v}{v_e}\right)$
 2. 火箭方程 $\Delta v = \sqrt{\frac{GM}{R+h}}$
 
 关键的数值关系是：
@@ -149,7 +149,7 @@ $$\Delta v_\text{LEO} = 3.2 \ln\left(\frac{4975 + m_{payload}}{1575 + m_{payload
 
 也就是说，运送有效载荷进入轨道所需的火箭的质量（和尺寸），与地球的质量呈现指数关系。
 
-$$ r_m =\frac{m_0}{m_f} = e^{\frac{\sqrt{\frac{GM}{R+h}}}{v_e}} = e^{\frac{\sqrt{\frac{g \cdot R^2}{R + h}}}{v_e}}$$
+$$ r_m = \frac{m_0}{m_f} = \exp\left(\frac{\sqrt{\frac{GM}{R+h}}}{v_e}\right) = \exp\left(\frac{\sqrt{\frac{g \cdot R^2}{R + h}}}{v_e}\right)$$
 
 使用现有 Starship 的性能参数计算不同重力系数下的 delta-v 和有效载荷：
 
