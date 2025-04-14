@@ -4,8 +4,8 @@ import FormattedDate from "@/components/FormattedDate.astro";
 import type { HTMLTag, Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-	note: CollectionEntry<"note">;
-	isPreview?: boolean | undefined;
+  note: CollectionEntry<"note">;
+  isPreview?: boolean | undefined;
 };
 
 const { as: Tag = "div", note, isPreview = false } = Astro.props;
@@ -21,7 +21,7 @@ const { Content } = await render(note);
 	<Tag class="title" class:list={{ "text-base": isPreview }}>
 		{
 			isPreview ? (
-				<a class="cactus-link" href={`/notes/${note.id}/`}>
+				<a class="cactus-link" href={`/notes/${note.id}`}>
 					{note.data.title}
 				</a>
 			) : (

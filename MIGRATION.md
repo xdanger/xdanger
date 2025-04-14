@@ -298,6 +298,7 @@ follow these steps:
 
 - ✅ 使用 `iA Writer Mono` 作为默认字体
 - ✅ 增加页面在宽屏上的宽度
+- ⌛️ 修改自我介绍，完善关于页面
 
 ## ⌛️ 强化 SEO
 

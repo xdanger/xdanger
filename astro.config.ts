@@ -14,14 +14,14 @@ import { siteConfig } from "./src/site.config";
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
 import { remarkReadingTime } from "./src/plugins/remark-reading-time";
-import remarkMath from 'remark-math'
+import remarkMath from "remark-math";
 
 // Rehype plugins
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeUnwrapImages from "rehype-unwrap-images";
-import rehypeKatex from 'rehype-katex'
+import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,7 +38,7 @@ export default defineConfig({
     webmanifest({
       // See: https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md
       name: siteConfig.title,
-      short_name: "Astro_Cactus", // optional
+      short_name: "xdanger", // optional
       description: siteConfig.description,
       lang: siteConfig.lang,
       icon: "public/icon.svg", // the source for generating favicon & icons
@@ -73,7 +73,10 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [
       rehypeHeadingIds,
-      [rehypeAutolinkHeadings, { behavior: "wrap", properties: { className: ["not-prose"] } }],
+      [
+        rehypeAutolinkHeadings,
+        { behavior: "wrap", properties: { className: ["not-prose"] } },
+      ],
       [
         rehypeExternalLinks,
         {
@@ -81,10 +84,15 @@ export default defineConfig({
           target: "_blank",
         },
       ],
-      rehypeKatex,
+      [rehypeKatex, { strict: true }],
       rehypeUnwrapImages,
     ],
-    remarkPlugins: [remarkReadingTime, remarkDirective, remarkAdmonitions, remarkMath],
+    remarkPlugins: [
+      remarkReadingTime,
+      remarkDirective,
+      remarkAdmonitions,
+      remarkMath,
+    ],
     remarkRehype: {
       footnoteLabelProperties: {
         className: [""],
@@ -103,9 +111,21 @@ export default defineConfig({
   },
   env: {
     schema: {
-      WEBMENTION_API_KEY: envField.string({ context: "server", access: "secret", optional: true }),
-      WEBMENTION_URL: envField.string({ context: "client", access: "public", optional: true }),
-      WEBMENTION_PINGBACK: envField.string({ context: "client", access: "public", optional: true }),
+      WEBMENTION_API_KEY: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      WEBMENTION_URL: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+      }),
+      WEBMENTION_PINGBACK: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+      }),
     },
   },
 });
