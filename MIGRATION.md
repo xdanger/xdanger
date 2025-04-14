@@ -294,17 +294,17 @@ follow these steps:
 3. compact context to reduce token usage
 4. repeat step 1 until finishing all the files
 
-## ⌛️ 修改 cactus 主题
+## ✅ 修改 cactus 主题
 
-- 像 GitHub 那样优先使用系统字体
-- 增加页面在宽屏上的宽度
+- ✅ 使用 `iA Writer Mono` 作为默认字体
+- ✅ 增加页面在宽屏上的宽度
 
 ## ⌛️ 强化 SEO
 
-- 使用 `@astrojs/sitemap` 生成 sitemap
-- 使用 `@astrojs/robots` 生成 robots.txt
-- 使用 `@astrojs/rss` 生成 RSS 订阅
-- 使用 `@astrojs/image` 生成图片
-- 使用 `@astrojs/seo` 生成 SEO 元数据
+- ⌛️ 使用 `@astrojs/sitemap` 生成 sitemap
+- ⌛️ 使用 `@astrojs/robots` 生成 robots.txt
+- ⌛️ 使用 `@astrojs/rss` 生成 RSS 订阅
+- ⌛️ 使用 `@astrojs/image` 生成图片
+- ⌛️ 使用 `@astrojs/seo` 生成 SEO 元数据
 
 ## ⌛️ 使用 Netlify 部署
