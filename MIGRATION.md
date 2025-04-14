@@ -296,9 +296,14 @@ follow these steps:
 
 ## ✅ 修改 cactus 主题
 
-- ✅ 使用 `iA Writer Mono` 作为默认字体
-- ✅ 增加页面在宽屏上的宽度
-- ⌛️ 修改自我介绍，完善关于页面
+- 使用 `iA Writer Mono` 作为默认字体
+- 增加页面在宽屏上的宽度
+- 修改自我介绍，完善关于页面
+
+## ✅ 使用 GitHub Actions 部署
+
+- 使用 `withastro/action@v3` 部署
+- 使用 `actions/deploy-pages@v4` 部署
 
 ## ⌛️ 强化 SEO
 
@@ -307,5 +312,3 @@ follow these steps:
 - ⌛️ 使用 `@astrojs/rss` 生成 RSS 订阅
 - ⌛️ 使用 `@astrojs/image` 生成图片
 - ⌛️ 使用 `@astrojs/seo` 生成 SEO 元数据
-
-## ⌛️ 使用 Netlify 部署
