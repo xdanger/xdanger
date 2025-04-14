@@ -14,12 +14,14 @@ import { siteConfig } from "./src/site.config";
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
 import { remarkReadingTime } from "./src/plugins/remark-reading-time";
+import remarkMath from 'remark-math'
 
 // Rehype plugins
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeUnwrapImages from "rehype-unwrap-images";
+import rehypeKatex from 'rehype-katex'
 
 // https://astro.build/config
 export default defineConfig({
@@ -79,9 +81,10 @@ export default defineConfig({
           target: "_blank",
         },
       ],
+      rehypeKatex,
       rehypeUnwrapImages,
     ],
-    remarkPlugins: [remarkReadingTime, remarkDirective, remarkAdmonitions],
+    remarkPlugins: [remarkReadingTime, remarkDirective, remarkAdmonitions, remarkMath],
     remarkRehype: {
       footnoteLabelProperties: {
         className: [""],
