@@ -25,11 +25,11 @@ publishDate: "2003-12-13 16:25:31"
 
 3. 设置 AWStats 中相应站点的配置文件，使用前一天的日志文件更新 AWStats 数据：
 
-   ```config
+   ```txt
    LogFile="d:\PATH\TO\%%YY-24\%%MM-24\%%DD-24\mysitename.log"
    ```
 
-4. 输出。动态页面的话就是 <http://logs.xdanger.com/cgi-bin/awstats.pl?config=blog.xdanger.com。静态的话还需要> AWStats 下载包里的一个额外工具 tools/awstats_buildstaticpages.pl
+4. 输出。动态页面的话就是 http://logs.xdanger.com/cgi-bin/awstats.pl?config=blog.xdanger.com 静态的话还需要 AWStats 下载包里的一个额外工具 tools/awstats_buildstaticpages.pl
 
    ```perl
    C:\Perl\bin\perl.exe

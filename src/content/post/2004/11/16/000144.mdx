@@ -10,8 +10,8 @@ publishDate: "2004-11-16 23:53:07"
 ### VeryCD 目前的网页服务器配置结构
 
 - 1 台 [MySQL](http://www.mysql.com/) 数据库 + NFS 文件服务器，无域名指向，定义为 host1.verycd.com；
-- 2 台静态页 + 资源搜索服务器，域名为 <www.verycd.com> 及 lib.verycd.com，DNS 轮巡，定义为 host2.verycd.com 及 host3.verycd.com，host3 上还有 emule.org.cn；
-- 2 台论坛服务器，域名为 bbs.verycd.com 及 blog.verycd.com，DNS 轮巡，定义为 host4.verycd.com 及 host5.verycd.com；
+- 2 台静态页 + 资源搜索服务器，域名分别为 `www.verycd.com` 及 `lib.verycd.com`，DNS 轮巡，定义为 `host2.verycd.com` 及 `host3.verycd.com`，host3 上还有 `emule.org.cn`；
+- 2 台论坛服务器，域名为 `bbs.verycd.com` 及 `blog.verycd.com`，DNS 轮巡，定义为 `host4.verycd.com` 及 `host5.verycd.com`；
 - OS 均为 [RedHad Linux 9](http://www.redhat.com/)，Web 服务器均为 [Apache 2.0.49](http://httpd.apache.org/)
 
 #### 构思
@@ -109,7 +109,7 @@ CustomLog "|/usr/local/apache2/bin/cronolog /var/log/httpd/%w.log" all
 
 新建 awstats.lib.verycd.conf awstats.bbs.verycd.conf awstats.emule.org.cn.conf 等配置文件（awstats.自定义配置名称.conf），保存于 awstats.pl 相同目录下，内容大致如下：
 
-```conf
+```txt
 Include "awstats.model.conf" # 引入主配置文件，共享参数
 # 各自配置
 SiteDomain="lib.verycd.com" # 主机名
