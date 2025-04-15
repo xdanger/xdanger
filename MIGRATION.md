@@ -309,6 +309,5 @@ follow these steps:
 
 - ✅ 使用 `@astrojs/sitemap` 生成 sitemap
 - ✅ 使用 `@astrojs/robots` 生成 robots.txt
-- ⌛️ 使用 `@astrojs/rss` 生成 RSS 订阅
-- ⌛️ 使用 `@astrojs/image` 生成图片
-- ⌛️ 使用 `@astrojs/seo` 生成 SEO 元数据
+- ✅ 使用 `@astrojs/rss` 生成 RSS 订阅
+- ⌛️ 以前的博客 URL 是类似 `2023/01/01/ml-is-the-infra-of-all-industry.html` 的格式，现在改为 `2023/01/01/ml-is-the-infra-of-all-industry`，需要让 `.html` 结尾的 URL 可以返回 `301` 永久重定向到新的 URL（如果没有 `.html` 结尾的 URL 确实存在）
