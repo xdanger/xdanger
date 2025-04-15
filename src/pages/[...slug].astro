@@ -4,27 +4,32 @@ import { getAllPosts } from "@/data/post";
 import PostLayout from "@/layouts/BlogPost.astro";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 
-// 创建低优先级路由，用于直接从根路径访问博客文章
+// 创建路由，处理从根路径访问博客文章
 export const getStaticPaths = (async () => {
   const blogEntries = await getAllPosts();
+  
   return blogEntries.flatMap((post) => {
     // 提取文章 id 作为 slug
     const slug = post.id;
-
-    return [
-      {
-        params: { slug },
+    const paths = [];
+    
+    // 标准路径 - 不带后缀
+    paths.push({
+      params: { slug },
+      props: { post },
+      priority: -1,
+    });
+    
+    // 对于旧文章，额外创建带.html后缀的路径
+    if (post.data.publishDate < new Date("2025-02-28")) {
+      paths.push({
+        params: { slug: `${slug}.html` },
         props: { post },
-        // 设置为最低优先级，仅在其他路由都不匹配时才使用此路由
-        priority: -1,
-      },
-      // {
-      //   params: { slug: `${slug}.html` },
-      //   props: { post },
-      //   // 设置为最低优先级，仅在其他路由都不匹配时才使用此路由
-      //   priority: -1,
-      // }
-    ];
+        priority: 0,  // 较高优先级
+      });
+    }
+    
+    return paths;
   });
 }) satisfies GetStaticPaths;
 

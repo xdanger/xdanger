@@ -2,15 +2,22 @@
 import { WEBMENTION_PINGBACK, WEBMENTION_URL } from "astro:env/client";
 import { siteConfig } from "@/site.config";
 import type { SiteMeta } from "@/types";
+import { getCanonicalUrl } from "@/utils/url";
 import "@/styles/global.css";
+import type { CollectionEntry } from "astro:content";
 
-type Props = SiteMeta;
+interface Props extends SiteMeta {
+  post?: CollectionEntry<"post">;
+}
 
-const { articleDate, description, ogImage, title } = Astro.props;
+const { articleDate, description, ogImage, title, post } = Astro.props;
 
 const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// 如果是文章页面并且提供了post对象，则使用getCanonicalUrl，否则使用默认的URL
+const canonicalURL = post 
+  ? new URL(getCanonicalUrl(post)) 
+  : new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url).href;
 ---
 

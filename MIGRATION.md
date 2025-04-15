@@ -311,13 +311,292 @@ follow these steps:
 - ✅ 使用 `@astrojs/robots` 生成 robots.txt
 - ✅ 使用 `@astrojs/rss` 生成 RSS 订阅
 
-## ⌛️ 保持向后兼容
+## ✅ 保持 URL 向后兼容
 
-对于 `publishDate` 在 2025-02-28 之前的 post（迁移之前的老博客），URL 是以 `.html` 结尾的，例如：
+### 问题
 
-- `/2009/02/13/000207.html`
-- `/2023/09/12/its-been-12-years-for-tim.html`
+博客经历了三个不同的历史时期，每个时期有不同的 URL 格式：
 
-对于 `publishDate` 在 2025-02-28 之后的新 post，URL 无需 `.html` 和 `/` 结尾，例如：
+1. MoveableType 时期的文章（发布日期 < `2013-05-31`）：
 
-- `/2025/0315-multiplanet-civilization-v-earth-gravity`
+   - URL 格式：`/YYYY/MM/DD/SEQ.html`（如：`/2009/02/13/000207.html`）
+   - 特点：使用序列号而非文章标题作为标识符
+
+2. Jekyll 时期的文章 (`2013-05-31` <= 发布日期 < `2025-02-28`)：
+
+   - URL 格式：`/YYYY/MM/DD/title.html`（如：`/2023/09/12/its-been-12-years-for-tim.html`）
+   - 特点：使用文章标题作为标识符，但仍然保留 `.html` 后缀
+
+3. Astro 时期的文章 (`2025-02-28` <= 发布日期)：
+   - URL 格式：`/YYYY/MMDD-title`（如：`/2025/0315-multiplanet-civilization-v-earth-gravity`）
+   - 特点：使用更简洁的日期格式，去掉了 `/` 分隔符和 `.html` 后缀
+
+为保持向后兼容性，需要确保旧的 URL 格式仍然有效，同时为新文章使用更现代的 URL 结构。
+
+### 解决方案
+
+#### 1. 为静态站点实现 URL 兼容性
+
+由于站点是静态生成的，无法依赖服务器重定向，我们需要一种在构建时处理 URL 格式的方法。
+
+创建 `src/utils/url.ts` 文件，实现以下功能：
+
+```typescript
+import type { CollectionEntry } from "astro:content";
+
+// 定义历史时期的分界日期
+export const JEKYLL_START_DATE = new Date("2013-05-31");
+export const ASTRO_START_DATE = new Date("2025-02-28");
+
+/**
+ * 判断文章属于哪个历史时期
+ * @param publishDate 文章发布日期
+ * @returns 文章所属的历史时期
+ */
+export function getBlogEra(
+  publishDate: Date,
+): "moveabletype" | "jekyll" | "astro" {
+  if (publishDate < JEKYLL_START_DATE) {
+    return "moveabletype";
+  } else if (publishDate < ASTRO_START_DATE) {
+    return "jekyll";
+  } else {
+    return "astro";
+  }
+}
+
+/**
+ * 根据发布日期决定文章的规范 URL 格式
+ * @param post 文章对象
+ * @returns 规范化的 URL 路径
+ */
+export function getCanonicalUrl(post: CollectionEntry<"post">): string {
+  const publishDate = post.data.publishDate;
+  const siteUrl = import.meta.env.SITE || "https://xdanger.com";
+  const postId = post.id.startsWith("/") ? post.id.substring(1) : post.id;
+
+  // 根据文章发布时间确定 URL 格式
+  const era = getBlogEra(publishDate);
+
+  if (era === "moveabletype" || era === "jekyll") {
+    // MoveableType 和 Jekyll 时期的文章都带 .html 后缀
+    return `${siteUrl}/${postId}.html`;
+  } else {
+    // Astro 时期的文章不带后缀
+    return `${siteUrl}/${postId}`;
+  }
+}
+
+/**
+ * 判断是否为新 URL 格式 (Astro 时期的文章)
+ */
+export function isAstroEraPost(post: CollectionEntry<"post">): boolean {
+  return post.data.publishDate >= ASTRO_START_DATE;
+}
+
+/**
+ * 根据文章 ID 获取正确的路径
+ * 用于内部链接、导航等
+ * @param post 文章对象
+ * @returns 正确格式的路径
+ */
+export function getPostPath(post: CollectionEntry<"post">): string {
+  const publishDate = post.data.publishDate;
+  const postId = post.id.startsWith("/") ? post.id.substring(1) : post.id;
+
+  // 根据文章所属时期确定 URL 格式
+  const era = getBlogEra(publishDate);
+
+  if (era === "moveabletype" || era === "jekyll") {
+    // MoveableType 和 Jekyll 时期的文章都带 .html 后缀
+    return `/${postId}.html`;
+  } else {
+    // Astro 时期的文章不带后缀
+    return `/${postId}`;
+  }
+}
+```
+
+#### 2. 修改 getStaticPaths 生成正确格式的 URL 页面
+
+修改 `src/pages/[...slug].astro` 文件，确保旧文章只生成带 `.html` 后缀的页面，新文章只生成不带后缀的页面：
+
+```typescript
+import { isAstroEraPost } from "@/utils/url";
+
+export const getStaticPaths = (async () => {
+  const blogEntries = await getAllPosts();
+
+  return blogEntries.map((post) => {
+    // 提取文章 id 作为 slug
+    const slug = post.id;
+
+    // MoveableType 和 Jekyll 时期的文章生成带 .html 后缀的 URL
+    if (!isAstroEraPost(post)) {
+      return {
+        params: { slug: `${slug}.html` },
+        props: { post },
+        priority: -1,
+      };
+    }
+
+    // 对于 Astro 时期的文章，生成不带后缀的 URL 格式
+    return {
+      params: { slug },
+      props: { post },
+      priority: -1,
+    };
+  });
+}) satisfies GetStaticPaths;
+```
+
+#### 3. 更新站点模板组件以使用正确的 URL
+
+为确保所有页面的内部链接和引用都使用正确的 URL 格式，修改以下组件：
+
+1. 更新 `src/components/blog/PostPreview.astro` 以使用 `getPostPath`：
+
+```typescript
+import { getPostPath } from "@/utils/url";
+
+// 在组件中使用
+const postUrl = getPostPath(post);
+```
+
+2. 更新 RSS feed 生成器以使用正确的 URL 格式：
+
+```typescript
+// src/pages/rss.xml.ts
+import { getCanonicalUrl } from "@/utils/url";
+
+// 在遍历文章生成 RSS 条目时
+items: sortedPosts.map((post) => ({
+  link: getCanonicalUrl(post), // 这会根据文章日期自动添加或省略 .html 后缀
+  // 其他 RSS 条目属性
+})),
+```
+
+3. 更新 Sitemap 生成器，只提供正确格式的 URL：
+
+创建 `src/pages/sitemap-custom.xml.ts` 覆盖默认的 sitemap：
+
+```typescript
+import { getCanonicalUrl } from "@/utils/url";
+import { getAllPosts } from "@/data/post";
+
+export async function GET() {
+  const posts = await getAllPosts();
+
+  // 生成规范化 URL
+  const urlEntries = posts.map((post) => {
+    const canonicalUrl = getCanonicalUrl(post);
+
+    // URL 条目
+    return `
+      <url>
+        <loc>${canonicalUrl}</loc>
+        <lastmod>${post.data.updatedDate || post.data.publishDate}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+      </url>
+    `;
+  });
+
+  // 生成完整的 sitemap
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+            xmlns:xhtml="http://www.w3.org/1999/xhtml">
+      ${urlEntries.join("")}
+    </urlset>
+  `;
+
+  return new Response(sitemap, {
+    headers: {
+      "Content-Type": "application/xml",
+    },
+  });
+}
+```
+
+#### 4. 修改文章创建规则
+
+根据文章所属的历史时期，遵循不同的命名和 URL 规则：
+
+1. MoveableType 时期的文章（发布日期 < `2013-05-31`）：
+
+   - 文件路径：`src/content/post/YYYY/MM/DD/SEQ.mdx`
+   - 生成的 URL：`/YYYY/MM/DD/SEQ.html`
+   - 示例：
+     - 文件：`src/content/post/2009/02/13/000207.mdx`
+     - URL：`/2009/02/13/000207.html`
+
+2. Jekyll 时期的文章 (`2013-05-31` <= 发布日期 < `2025-02-28`)：
+
+   - 文件路径：`src/content/post/YYYY/MM/DD/title.mdx`
+   - 生成的 URL：`/YYYY/MM/DD/title.html`
+   - 示例：
+     - 文件：`src/content/post/2023/09/12/its-been-12-years-for-tim.mdx`
+     - URL：`/2023/09/12/its-been-12-years-for-tim.html`
+
+3. Astro 时期的文章 (`2025-02-28` <= 发布日期)：
+   - 文件路径：`src/content/post/YYYY/MMDD-title.mdx`
+   - 生成的 URL：`/YYYY/MMDD-title`
+   - 示例：
+     - 文件：`src/content/post/2025/0315-multiplanet-civilization-v-earth-gravity.mdx`
+     - URL：`/2025/0315-multiplanet-civilization-v-earth-gravity`
+
+#### 5. 为页面添加规范链接标记
+
+在 `src/components/BaseHead.astro` 中添加规范链接标记，确保搜索引擎正确识别页面版本：
+
+```astro
+---
+// 如果是文章页面，导入并使用 getCanonicalUrl
+import { getCanonicalUrl } from "@/utils/url";
+const canonicalUrl = post ? getCanonicalUrl(post) : Astro.url.href;
+---
+
+<!-- 添加规范链接 -->
+<link rel="canonical" href={canonicalUrl} />
+```
+
+#### 6. 实现顺序
+
+1. 创建 `src/utils/url.ts` 工具函数
+2. 修改 `src/pages/[...slug].astro` 和 `src/pages/posts/[...slug].astro` 以生成两种格式的 URL
+3. 更新模板组件以使用正确的 URL 格式
+4. 更新 sitemap 和 RSS feed 生成器
+5. 添加规范链接标记
+6. 使用 `bun run build` 构建站点并检查生成的文件结构
+
+#### 7. 测试计划
+
+1. 测试静态生成的 URL：
+
+   - 确认 MoveableType 时期文章（< 2013-05-31）生成带 .html 后缀的静态 HTML，并使用序列号格式
+   - 确认 Jekyll 时期文章（2013-05-31 到 2025-02-28）生成带 .html 后缀的静态 HTML，并使用标题格式
+   - 确认 Astro 时期文章（>= 2025-02-28）生成不带后缀的静态 HTML 格式，并使用新的日期命名结构
+   - 确认访问旧文章的非 .html URL 会导致 404 错误（这是预期行为）
+
+2. 检查内部链接和引用：
+
+   - 确认所有内部链接都指向正确格式的 URL：
+     - MoveableType 和 Jekyll 时期文章使用 .html 后缀
+     - Astro 时期文章不带后缀
+   - 确认在 RSS feed 中使用的是正确格式的 URL
+
+3. 检查 SEO 优化：
+
+   - 确认 sitemap.xml 包含所有三种类型文章的正确格式 URL
+   - 确认每个页面都有正确的规范链接标记
+   - 确认 robots.txt 正确配置
+
+4. 兼容性测试：
+   - MoveableType 时期文章：
+     - 测试 `/YYYY/MM/DD/SEQ.html` 格式（应该成功）
+     - 测试 `/YYYY/MM/DD/SEQ` 格式（应该返回 404）
+   - Jekyll 时期文章：
+     - 测试 `/YYYY/MM/DD/title.html` 格式（应该成功）
+     - 测试 `/YYYY/MM/DD/title` 格式（应该返回 404）
+   - Astro 时期文章：
+     - 测试 `/YYYY/MMDD-title` 格式（应该成功）
