@@ -105,7 +105,7 @@ export default defineConfig({
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: true,
   // 设置路由优先级
-  trailingSlash: "never",
+  trailingSlash: "ignore",
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
