@@ -5,6 +5,8 @@ import PostLayout from "@/layouts/BlogPost.astro";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 
 // 保留原有路由，方便兼容旧链接
+import { ASTRO_START_DATE } from "@/utils/url";
+
 export const getStaticPaths = (async () => {
 	const blogEntries = await getAllPosts();
 	
@@ -13,16 +15,16 @@ export const getStaticPaths = (async () => {
 		const slug = post.id;
 		const paths = [];
 		
-		// 标准路径 - 不带后缀
-		paths.push({
-			params: { slug },
-			props: { post }
-		});
-		
-		// 对于旧文章，额外创建带.html后缀的路径
-		if (post.data.publishDate < new Date("2025-02-28")) {
+		// 对于旧文章，只创建带.html后缀的路径
+		if (post.data.publishDate < ASTRO_START_DATE) {
 			paths.push({
 				params: { slug: `${slug}.html` },
+				props: { post }
+			});
+		} else {
+			// 对于新文章，创建不带后缀的路径
+			paths.push({
+				params: { slug },
 				props: { post }
 			});
 		}

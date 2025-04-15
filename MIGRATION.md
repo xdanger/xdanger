@@ -353,9 +353,7 @@ export const ASTRO_START_DATE = new Date("2025-02-28");
  * @param publishDate 文章发布日期
  * @returns 文章所属的历史时期
  */
-export function getBlogEra(
-  publishDate: Date,
-): "moveabletype" | "jekyll" | "astro" {
+export function getBlogEra(publishDate: Date): "moveabletype" | "jekyll" | "astro" {
   if (publishDate < JEKYLL_START_DATE) {
     return "moveabletype";
   } else if (publishDate < ASTRO_START_DATE) {
@@ -427,7 +425,7 @@ import { isAstroEraPost } from "@/utils/url";
 export const getStaticPaths = (async () => {
   const blogEntries = await getAllPosts();
 
-  return blogEntries.map((post) => {
+  return blogEntries.map(post => {
     // 提取文章 id 作为 slug
     const slug = post.id;
 
@@ -488,7 +486,7 @@ export async function GET() {
   const posts = await getAllPosts();
 
   // 生成规范化 URL
-  const urlEntries = posts.map((post) => {
+  const urlEntries = posts.map(post => {
     const canonicalUrl = getCanonicalUrl(post);
 
     // URL 条目
@@ -571,32 +569,32 @@ const canonicalUrl = post ? getCanonicalUrl(post) : Astro.url.href;
 
 #### 7. 测试计划
 
-1. 测试静态生成的 URL：
+1. ⌛️ 测试静态生成的 URL：
 
-   - 确认 MoveableType 时期文章（< 2013-05-31）生成带 .html 后缀的静态 HTML，并使用序列号格式
-   - 确认 Jekyll 时期文章（2013-05-31 到 2025-02-28）生成带 .html 后缀的静态 HTML，并使用标题格式
-   - 确认 Astro 时期文章（>= 2025-02-28）生成不带后缀的静态 HTML 格式，并使用新的日期命名结构
-   - 确认访问旧文章的非 .html URL 会导致 404 错误（这是预期行为）
+   - ✅ 确认 MoveableType 时期文章（< 2013-05-31）生成带 .html 后缀的静态 HTML，并使用序列号格式
+   - ✅ 确认 Jekyll 时期文章（2013-05-31 到 2025-02-28）生成带 .html 后缀的静态 HTML，并使用标题格式
+   - ✅ 确认 Astro 时期文章（>= 2025-02-28）生成不带后缀的静态 HTML 格式，并使用新的日期命名结构
+   - ❌ 确认访问旧文章的非 .html URL 会导致 404 错误（这是预期行为）
 
-2. 检查内部链接和引用：
+2. ✅ 检查内部链接和引用：
 
    - 确认所有内部链接都指向正确格式的 URL：
      - MoveableType 和 Jekyll 时期文章使用 .html 后缀
      - Astro 时期文章不带后缀
    - 确认在 RSS feed 中使用的是正确格式的 URL
 
-3. 检查 SEO 优化：
+3. ✅ 检查 SEO 优化：
 
    - 确认 sitemap.xml 包含所有三种类型文章的正确格式 URL
    - 确认每个页面都有正确的规范链接标记
    - 确认 robots.txt 正确配置
 
-4. 兼容性测试：
-   - MoveableType 时期文章：
+4. ⌛️ 兼容性测试：
+   - ✅ MoveableType 时期文章：
      - 测试 `/YYYY/MM/DD/SEQ.html` 格式（应该成功）
      - 测试 `/YYYY/MM/DD/SEQ` 格式（应该返回 404）
-   - Jekyll 时期文章：
+   - ✅ Jekyll 时期文章：
      - 测试 `/YYYY/MM/DD/title.html` 格式（应该成功）
      - 测试 `/YYYY/MM/DD/title` 格式（应该返回 404）
-   - Astro 时期文章：
+   - ❌ Astro 时期文章：
      - 测试 `/YYYY/MMDD-title` 格式（应该成功）
