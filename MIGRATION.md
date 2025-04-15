@@ -305,9 +305,19 @@ follow these steps:
 - 使用 `withastro/action@v3` 部署
 - 使用 `actions/deploy-pages@v4` 部署
 
-## ⌛️ 向后兼容并强化 SEO
+## ✅ 强化 SEO
 
 - ✅ 使用 `@astrojs/sitemap` 生成 sitemap
 - ✅ 使用 `@astrojs/robots` 生成 robots.txt
 - ✅ 使用 `@astrojs/rss` 生成 RSS 订阅
-- ⌛️ 以前的博客 URL 是类似 `2023/01/01/ml-is-the-infra-of-all-industry.html` 的格式，现在改为 `2023/01/01/ml-is-the-infra-of-all-industry`，需要让 `.html` 结尾的 URL 可以返回 `301` 永久重定向到新的 URL（如果没有 `.html` 结尾的 URL 确实存在）
+
+## ⌛️ 保持向后兼容
+
+对于 `publishDate` 在 2025-02-28 之前的 post（迁移之前的老博客），URL 是以 `.html` 结尾的，例如：
+
+- `/2009/02/13/000207.html`
+- `/2023/09/12/its-been-12-years-for-tim.html`
+
+对于 `publishDate` 在 2025-02-28 之后的新 post，URL 无需 `.html` 和 `/` 结尾，例如：
+
+- `/2025/0315-multiplanet-civilization-v-earth-gravity`
