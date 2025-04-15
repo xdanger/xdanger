@@ -305,7 +305,7 @@ follow these steps:
 - 使用 `withastro/action@v3` 部署
 - 使用 `actions/deploy-pages@v4` 部署
 
-## ⌛️ 强化 SEO
+## ⌛️ 向后兼容并强化 SEO
 
 - ⌛️ 使用 `@astrojs/sitemap` 生成 sitemap
 - ⌛️ 使用 `@astrojs/robots` 生成 robots.txt

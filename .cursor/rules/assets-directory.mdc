@@ -1,6 +1,6 @@
 ---
 description: 
-globs: *.py,*.md
+globs: *.py,*.md,*.mdx
 alwaysApply: false
 ---
 Posts 里的图片、SVG …… 等所有图像文件，存放到 `public/images` 下，并使用当前或相关 Post 的年月作为子目录。`public` 对应于网站根目录，因此访问 `public/images` 下的文件的 URL 为 `/images`。

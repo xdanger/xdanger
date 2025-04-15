@@ -10,15 +10,20 @@
   "files.associations": {
     "*.mdx": "mdx"
   },
+  "ruff.nativeServer": "on",
+  "typescript.tsdk": "node_modules/typescript/lib",
   "[markdown][mdx][astro-markdown][javascript][json][typescript][astro-typescript]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2
   },
-  "[mdx]": {
-    "editor.defaultFormatter": "unifiedjs.vscode-mdx",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome",
+  "[mdx]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-mdx"
+  },
+  "[javascript][typescript][astro-typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
@@ -26,7 +31,5 @@
       "source.fixAll": "explicit",
       "source.organizeImports": "explicit"
     }
-  },
-  "ruff.nativeServer": "on",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  }
 }
