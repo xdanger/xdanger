@@ -10,7 +10,7 @@ import "@fontsource/ia-writer-mono";
 // import "@/styles/global.css";
 
 interface Props {
-  meta: SiteMeta & { post?: any };
+  meta: SiteMeta;
 }
 
 const {
@@ -19,16 +19,22 @@ const {
 ---
 
 <html class="scroll-smooth" lang={siteConfig.lang}>
-	<head>
-		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} post={post} />
-	</head>
-	<body class="bg-global-bg text-global-text mx-auto flex min-h-screen max-w-4xl flex-col px-4 pt-16 text-sm font-mono font-normal antialiased sm:px-8">
-		<ThemeProvider />
-		<SkipLink />
-		<Header />
-		<main id="main">
-			<slot />
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} post={post} />
+  </head>
+  <body class="overscroll-none dark:scrollbar-thumb-gray-700 bg-background font-mono antialiased">
+    <div class="flex flex-col min-h-svh min-w-svw text-foreground text-sm text-offgray dark:text-offgray-300">
+      <ThemeProvider />
+      <SkipLink />
+      <Header />
+      <main id="main" class="flex flex-grow flex-col pt-24 border-grid">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <!-- Overlay vertical borders for entire page (another approach) -->
+    <div class="fixed inset-0 pointer-events-none" style="z-index: 5">
+      <div class="max-w-4xl h-full mx-auto border-l border-r border-dashed border-gray-200 dark:border-gray-700"></div>
+    </div>
+  </body>
 </html>

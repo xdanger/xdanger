@@ -29,17 +29,17 @@ export const siteConfig: SiteConfig = {
 export const menuLinks: { path: string; title: string; icon: string }[] = [
   {
     path: "/",
-    title: "Home",
+    title: "home",
     icon: "solar:home-2-line-duotone",
   },
   {
     path: "/posts",
-    title: "Posts",
+    title: "posts",
     icon: "solar:notification-unread-lines-line-duotone",
   },
   {
     path: "/notes",
-    title: "Notes",
+    title: "notes",
     icon: "solar:notes-minimalistic-line-duotone",
   },
 ];

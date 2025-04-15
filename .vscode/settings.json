@@ -12,6 +12,9 @@
   },
   "ruff.nativeServer": "on",
   "typescript.tsdk": "node_modules/typescript/lib",
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
   "[markdown][mdx][astro-markdown][javascript][json][typescript][astro-typescript]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2

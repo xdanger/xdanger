@@ -8,29 +8,29 @@ import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { ASTRO_START_DATE } from "@/utils/url";
 
 export const getStaticPaths = (async () => {
-	const blogEntries = await getAllPosts();
-	
-	return blogEntries.flatMap((post) => {
-		// 提取文章 id 作为 slug
-		const slug = post.id;
-		const paths = [];
-		
-		// 对于旧文章，只创建带.html后缀的路径
-		if (post.data.publishDate < ASTRO_START_DATE) {
-			paths.push({
-				params: { slug: `${slug}.html` },
-				props: { post }
-			});
-		} else {
-			// 对于新文章，创建不带后缀的路径
-			paths.push({
-				params: { slug },
-				props: { post }
-			});
-		}
-		
-		return paths;
-	});
+  const blogEntries = await getAllPosts();
+
+  return blogEntries.flatMap(post => {
+    // 提取文章 id 作为 slug
+    const slug = post.id;
+    const paths = [];
+
+    // 对于旧文章，只创建带.html后缀的路径
+    if (post.data.publishDate < ASTRO_START_DATE) {
+      paths.push({
+        params: { slug: `${slug}.html` },
+        props: { post },
+      });
+    } else {
+      // 对于新文章，创建不带后缀的路径
+      paths.push({
+        params: { slug },
+        props: { post },
+      });
+    }
+
+    return paths;
+  });
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -40,5 +40,5 @@ const { Content } = await render(post);
 ---
 
 <PostLayout post={post}>
-	<Content />
+  <Content />
 </PostLayout>
