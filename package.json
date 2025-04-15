@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "cross-env NODE_OPTIONS='--trace-warnings' astro build",
-    "postbuild": "pagefind --site dist --strip-trailing-slash",
+    "postbuild": "pagefind --site dist",
     "preview": "astro preview",
     "lint": "biome lint .",
     "format": "bun run format:code && bun run format:imports && bun run format:md",
