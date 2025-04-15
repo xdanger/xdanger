@@ -307,8 +307,8 @@ follow these steps:
 
 ## ⌛️ 向后兼容并强化 SEO
 
-- ⌛️ 使用 `@astrojs/sitemap` 生成 sitemap
-- ⌛️ 使用 `@astrojs/robots` 生成 robots.txt
+- ✅ 使用 `@astrojs/sitemap` 生成 sitemap
+- ✅ 使用 `@astrojs/robots` 生成 robots.txt
 - ⌛️ 使用 `@astrojs/rss` 生成 RSS 订阅
 - ⌛️ 使用 `@astrojs/image` 生成图片
 - ⌛️ 使用 `@astrojs/seo` 生成 SEO 元数据

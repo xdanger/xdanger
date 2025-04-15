@@ -32,7 +32,10 @@ export default defineConfig({
   integrations: [
     expressiveCode(expressiveCodeOptions),
     icon(),
-    sitemap(),
+    sitemap({
+      changefreq: "weekly",
+      priority: 0.5,
+    }),
     mdx(),
     robotsTxt(),
     webmanifest({
