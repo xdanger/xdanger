@@ -90,6 +90,14 @@ import { Icon } from "astro-icon/components";
           element: "#cactus__search",
           showImages: false,
           showSubResults: true,
+          processTerm: (term) => term,
+          processResult: (result) => {
+            // 移除结果URL的尾部斜杠
+            if (result.url && result.url.endsWith('/')) {
+              result.url = result.url.slice(0, -1);
+            }
+            return result;
+          }
         });
       });
     }
