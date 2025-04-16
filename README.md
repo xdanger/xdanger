@@ -83,10 +83,13 @@ bun install
 
 - [x] 深入解决 URL 的处理
 - [x] 确保 linter/formatter 正确有效
-- [ ] 部署到 Vercel
+- [ ] 在本地测试 SSR 模式，确保 URL 处理正确
+- [ ] 在 Vercel 上 Preview 页面，确保所有功能符合预期
+- [ ] 加入 Speed Insights
 - [ ] 重构页面布局相关的 components，需要更合理封装组件，而不是现在大量复制黏贴
 - [ ] 尝试改动页面布局，在大尺寸屏幕上尝试居左，右侧空间留给 TOC
 
 ## LICENSE
 
-本项目代码采用 MIT 许可证。
+- 代码部分：遵循 Astro 的 MIT 协议
+- 文章内容：采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
