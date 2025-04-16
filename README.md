@@ -10,7 +10,7 @@
 - 集成了 Tailwind CSS 进行样式管理
 - 包含博客文章、笔记和标签页面
 
-## 开发环境
+## Specifications
 
 ### 系统要求
 
@@ -31,7 +31,7 @@ bun install
 - `bun run format` - 格式化代码
 - `bun run check` - 运行类型检查
 
-## 项目结构
+### 项目结构
 
 - `/src/content/post/` - 博客文章内容 (MDX 格式)
 - `/src/content/note/` - 笔记内容 (MDX 格式)
@@ -42,7 +42,7 @@ bun install
 - `/src/utils/` - 工具函数
 - `/public/` - 静态资源文件
 
-## URL 规则
+### URL 规则
 
 本项目包含三种 URL 格式以保持向后兼容性：
 
@@ -63,22 +63,29 @@ bun install
    - 文件路径：`src/content/post/YYYY/MMDD-title.mdx`
    - 生成的 URL：`/YYYY/MMDD-title`（更简洁的新格式，不带`.html`后缀）
 
-## 代码规范
+### 代码规范
 
 - `.astro`, `.tsx`, `.ts`, `.mjs`, `.jsx`, `.js`, `.json`, `.mdx` 文件需要使用 `bunx biome format --write {file_path} && bunx autocorrect --fix {file_path}` 检查和修复
 - `.mdx` 文件需要使用 `bunx markdownlint-cli2 --fix {file_path}` 格式化
 
-## 部署
-
-网站通过 GitHub Actions 自动部署，配置位于 `.github/workflows/` 目录。
-
-## 重要文件
+### 重要文件
 
 - `MIGRATION.md` - 包含从 Next.js 迁移到 Astro 的完整过程记录和待办事项
 - `astro.config.ts` - Astro 配置文件
 - `src/site.config.ts` - 网站核心配置
 - `src/utils/url.ts` - URL 格式处理工具函数
 
-## 许可证
+### Deployment
+
+网站通过 GitHub Actions 自动部署，配置位于 `.github/workflows/` 目录。
+
+## TODO
+
+- [ ] 深入解决 URL 的处理
+- [ ] 确保 linter/formatter 正确有效
+- [ ] 重构页面布局相关的 components，需要更合理封装组件，而不是现在大量复制黏贴
+- [ ] 尝试改动页面布局，在大尺寸屏幕上尝试居左，右侧空间留给 TOC
+
+## LICENSE
 
 本项目代码采用 MIT 许可证。
