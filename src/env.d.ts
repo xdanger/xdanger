@@ -2,16 +2,14 @@
 
 // Pagefind UI types
 declare module "@pagefind/default-ui" {
-	declare class PagefindUI {
-		constructor(arg: unknown);
-	}
+  declare class PagefindUI {
+    constructor(arg: unknown);
+  }
 }
 
 // Fix for Astro content collections image type
 declare module "astro:content" {
-  interface ImageFunction {
-    (): ImageMetadata;
-  }
+  type ImageFunction = () => ImageMetadata;
 
   interface DefineCollectionConfig<S extends import("astro/zod").ZodType> {
     schema?: (context: {

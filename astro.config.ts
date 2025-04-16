@@ -13,7 +13,7 @@ import { siteConfig } from "./src/site.config";
 // Remark plugins
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
-import { remarkReadingTime } from "./src/plugins/remark-reading-time";
+import { remarkReadingTime } from "./src/plugins/remark-reading-time"; /* Add reading time */
 import remarkMath from "remark-math";
 
 // Rehype plugins
@@ -140,7 +140,7 @@ export default defineConfig({
 function rawFonts(ext: string[]) {
   return {
     name: "vite-plugin-raw-fonts",
-    transform(_, id) {
+    transform(_: string, id: string) {
       if (ext.some((e) => id.endsWith(e))) {
         const buffer = fs.readFileSync(id);
         return {

@@ -1,22 +1,25 @@
 import { toString as mdastToString } from "mdast-util-to-string";
 import getReadingTime from "reading-time";
 import type { Root } from "mdast";
-import type { RemarkPlugin } from "@astrojs/markdown-remark";
+import type { Plugin } from "unified";
 
-interface RemarkData {
-  astro: {
-    frontmatter: {
-      readingTime?: string;
-      [key: string]: unknown;
-    };
-  };
-}
-
-export const remarkReadingTime: RemarkPlugin = () => {
-  return (tree: Root, { data }: { data: RemarkData }) => {
+// Define a remark plugin that adds reading time to frontmatter
+export const remarkReadingTime: Plugin<[], Root> =
+  () =>
+  (tree, { data }) => {
     const textOnPage = mdastToString(tree);
     const readingTime = getReadingTime(textOnPage);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
+    // Make sure data.astro exists
+    if (!data.astro) {
+      data.astro = {};
+    }
+
+    // Make sure data.astro.frontmatter exists
+    if (!data.astro.frontmatter) {
+      data.astro.frontmatter = {};
+    }
+
+    // Add reading time to frontmatter
     data.astro.frontmatter.readingTime = readingTime.text;
   };
-}

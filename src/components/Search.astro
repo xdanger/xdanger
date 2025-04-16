@@ -6,23 +6,13 @@ import { Icon } from "astro-icon/components";
 ---
 
 <site-search class="w-5 h-5" id="search">
-  <button
-    class="flex hover:text-accent cursor-pointer justify-center rounded-md"
-    aria-keyshortcuts="Control+K Meta+K"
-    data-open-modal
-    disabled
-  >
+  <button class="flex hover:text-accent cursor-pointer justify-center rounded-md" aria-keyshortcuts="Control+K Meta+K" data-open-modal disabled>
     <Icon name="solar:magnifer-linear" class="h-5 w-5" />
     <span class="sr-only">Open Search</span>
   </button>
-  <dialog
-    aria-label="search"
-    class="bg-global-bg h-full max-h-full w-full max-w-full border border-zinc-400 shadow-sm backdrop:backdrop-blur-sm open:flex sm:mx-auto sm:mt-16 sm:mb-auto sm:h-max sm:max-h-[calc(100%-8rem)] sm:min-h-[15rem] sm:w-5/6 sm:max-w-[48rem] sm:rounded-md"
-  >
+  <dialog aria-label="search" class="bg-global-bg h-full max-h-full w-full max-w-full border border-zinc-400 shadow-sm backdrop:backdrop-blur-sm open:flex sm:mx-auto sm:mt-16 sm:mb-auto sm:h-max sm:max-h-[calc(100%-8rem)] sm:min-h-[15rem] sm:w-5/6 sm:max-w-[48rem] sm:rounded-md">
     <div class="dialog-frame flex grow flex-col gap-4 p-6 pt-12 sm:pt-6">
-      <button class="ms-auto cursor-pointer rounded-md bg-zinc-200 p-2 font-semibold dark:bg-zinc-700" data-close-modal
-        >Close</button
-      >
+      <button class="ms-auto cursor-pointer rounded-md bg-zinc-200 p-2 font-semibold dark:bg-zinc-700" data-close-modal>Close</button>
       {
         import.meta.env.DEV ? (
           <div class="mx-auto text-center">
@@ -90,14 +80,14 @@ import { Icon } from "astro-icon/components";
           element: "#cactus__search",
           showImages: false,
           showSubResults: true,
-          processTerm: (term) => term,
-          processResult: (result) => {
-            // 移除结果URL的尾部斜杠
-            if (result.url && result.url.endsWith('/')) {
+          processTerm: (term: string) => term,
+          processResult: (result: { url: string }) => {
+            // 移除结果 URL 的尾部斜杠
+            if (result.url && result.url.endsWith("/")) {
               result.url = result.url.slice(0, -1);
             }
             return result;
-          }
+          },
         });
       });
     }
@@ -129,10 +119,7 @@ import { Icon } from "astro-icon/components";
       // check if it's a link
       const isLink = "href" in (event.target || {});
       // make sure the click is either a link or outside of the dialog
-      if (
-        isLink ||
-        (document.body.contains(event.target as Node) && !this.#dialogFrame?.contains(event.target as Node))
-      ) {
+      if (isLink || (document.body.contains(event.target as Node) && !this.#dialogFrame?.contains(event.target as Node))) {
         this.closeModal();
       }
     };
