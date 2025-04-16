@@ -1,14 +1,15 @@
-import fs from "node:fs";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
-import expressiveCode from "astro-expressive-code";
-import icon from "astro-icon";
-import robotsTxt from "astro-robots-txt";
-import webmanifest from "astro-webmanifest";
 import { defineConfig, envField } from "astro/config";
 import { expressiveCodeOptions } from "./src/site.config";
 import { siteConfig } from "./src/site.config";
+import expressiveCode from "astro-expressive-code";
+import fs from "node:fs";
+import icon from "astro-icon";
+import mdx from "@astrojs/mdx";
+import robotsTxt from "astro-robots-txt";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import vercel from "@astrojs/vercel";
+import webmanifest from "astro-webmanifest";
 
 // Remark plugins
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
@@ -25,6 +26,7 @@ import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
+  adapter: vercel(),
   build: {
     // https://docs.astro.build/zh-cn/reference/configuration-reference/#buildformat
     format: "preserve",
@@ -105,6 +107,7 @@ export default defineConfig({
       },
     },
   },
+  output: "server",
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: true,
   site: siteConfig.url,
