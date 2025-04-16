@@ -9,27 +9,27 @@ import satori, { type SatoriOptions } from "satori";
 import { html } from "satori-html";
 
 const ogOptions: SatoriOptions = {
-	// debug: true,
-	fonts: [
-		{
-			data: Buffer.from(RobotoMono),
-			name: "Roboto Mono",
-			style: "normal",
-			weight: 400,
-		},
-		{
-			data: Buffer.from(RobotoMonoBold),
-			name: "Roboto Mono",
-			style: "normal",
-			weight: 700,
-		},
-	],
-	height: 630,
-	width: 1200,
+  // debug: true,
+  fonts: [
+    {
+      data: Buffer.from(RobotoMono),
+      name: "Roboto Mono",
+      style: "normal",
+      weight: 400,
+    },
+    {
+      data: Buffer.from(RobotoMonoBold),
+      name: "Roboto Mono",
+      style: "normal",
+      weight: 700,
+    },
+  ],
+  height: 630,
+  width: 1200,
 };
 
 const markup = (title: string, pubDate: string) =>
-	html`<div tw="flex flex-col w-full h-full bg-[#1d1f21] text-[#c9cacc]">
+  html`<div tw="flex flex-col w-full h-full bg-[#1d1f21] text-[#c9cacc]">
 		<div tw="flex flex-col flex-1 w-full p-10 justify-center">
 			<p tw="text-2xl mb-6">${pubDate}</p>
 			<h1 tw="text-6xl font-bold leading-snug text-white">${title}</h1>
@@ -60,31 +60,31 @@ const markup = (title: string, pubDate: string) =>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 export async function GET(context: APIContext) {
-	const { pubDate, title } = context.props as Props;
+  const { pubDate, title } = context.props as Props;
 
-	const postDate = getFormattedDate(pubDate, {
-		month: "long",
-		weekday: "long",
-	});
-	const svg = await satori(markup(title, postDate), ogOptions);
-	const png = new Resvg(svg).render().asPng();
-	return new Response(png, {
-		headers: {
-			"Cache-Control": "public, max-age=31536000, immutable",
-			"Content-Type": "image/png",
-		},
-	});
+  const postDate = getFormattedDate(pubDate, {
+    month: "long",
+    weekday: "long",
+  });
+  const svg = await satori(markup(title, postDate), ogOptions);
+  const png = new Resvg(svg).render().asPng();
+  return new Response(png, {
+    headers: {
+      "Cache-Control": "public, max-age=31536000, immutable",
+      "Content-Type": "image/png",
+    },
+  });
 }
 
 export async function getStaticPaths() {
-	const posts = await getAllPosts();
-	return posts
-		.filter(({ data }) => !data.ogImage)
-		.map((post) => ({
-			params: { slug: post.id },
-			props: {
-				pubDate: post.data.updatedDate ?? post.data.publishDate,
-				title: post.data.title,
-			},
-		}));
+  const posts = await getAllPosts();
+  return posts
+    .filter(({ data }) => !data.ogImage)
+    .map((post) => ({
+      params: { slug: post.id },
+      props: {
+        pubDate: post.data.updatedDate ?? post.data.publishDate,
+        title: post.data.title,
+      },
+    }));
 }

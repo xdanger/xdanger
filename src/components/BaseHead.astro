@@ -15,8 +15,13 @@ const { articleDate, description, ogImage, title, post } = Astro.props;
 const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
 // 如果是文章页面并且提供了 post 对象，则使用 getCanonicalUrl，否则使用默认的 URL
-const canonicalURL = post ? new URL(getCanonicalUrl(post)) : new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url).href;
+const canonicalURL = post
+  ? new URL(getCanonicalUrl(post))
+  : new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(
+  ogImage ? ogImage : "/social-card.png",
+  Astro.url,
+).href;
 ---
 
 <meta charset="utf-8" />

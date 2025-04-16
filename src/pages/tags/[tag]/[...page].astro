@@ -12,8 +12,10 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const sortedPosts = allPosts.sort(collectionDateSort);
   const uniqueTags = getUniqueTags(sortedPosts);
 
-  return uniqueTags.flatMap(tag => {
-    const filterPosts = sortedPosts.filter(post => post.data.tags.includes(tag));
+  return uniqueTags.flatMap((tag) => {
+    const filterPosts = sortedPosts.filter((post) =>
+      post.data.tags.includes(tag),
+    );
     return paginate(filterPosts, {
       pageSize: 10,
       params: { tag },
