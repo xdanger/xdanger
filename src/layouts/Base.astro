@@ -6,15 +6,10 @@ import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import { siteConfig } from "@/site.config";
 import "@fontsource/ia-writer-mono";
+import Analytics from "@vercel/analytics/astro";
 
 const {
-  meta: {
-    articleDate,
-    description = siteConfig.description,
-    ogImage,
-    title,
-    post,
-  },
+  meta: { articleDate, description = siteConfig.description, ogImage, title, post },
 } = Astro.props;
 ---
 
@@ -36,5 +31,6 @@ const {
     <div class="fixed inset-0 pointer-events-none" style="z-index: 5">
       <div class="max-w-4xl h-full mx-auto border-l border-r border-dashed border-gray-200 dark:border-gray-700"></div>
     </div>
+    <Analytics />
   </body>
 </html>
