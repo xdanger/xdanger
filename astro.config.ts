@@ -26,7 +26,7 @@ import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel(),
+  // adapter: vercel(),
   build: {
     // https://docs.astro.build/zh-cn/reference/configuration-reference/#buildformat
     format: "preserve",
