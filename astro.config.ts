@@ -107,7 +107,7 @@ export default defineConfig({
       },
     },
   },
-  output: "server",
+  output: "static",
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: true,
   site: siteConfig.url,
