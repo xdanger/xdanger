@@ -80,6 +80,7 @@
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
 }
+
 /* you could refactor below to use light-dark(), depending on your target audience */
 @theme {
   --color-background: var(--background);
@@ -89,7 +90,8 @@
   --color-link: oklch(55.44% 0.0431 185.69);
   --color-accent: oklch(55.27% 0.195 19.06);
   --color-accent-2: oklch(18.15% 0 0);
-  --color-quote: var(--muted-foreground);
+  --color-quote: oklch(55.27% 0.195 19.06);
+  /* --color-quote: var(--muted-foreground); */
   --font-mono: "IA Writer Mono", "SF Mono", ui-monospace, monospace;
 }
 
@@ -193,13 +195,13 @@
 }
 
 @utility prose {
-  --tw-prose-body: var(--color-global-text);
-  --tw-prose-bold: var(--color-global-text);
-  --tw-prose-bullets: var(--color-global-text);
-  --tw-prose-code: var(--color-global-text);
+  --tw-prose-body: var(--color-foreground);
+  --tw-prose-bold: var(--color-foreground);
+  --tw-prose-bullets: var(--color-foreground);
+  --tw-prose-code: var(--color-foreground);
   --tw-prose-headings: var(--color-accent-2);
   --tw-prose-hr: 0.5px dashed #666;
-  --tw-prose-links: var(--color-global-text);
+  --tw-prose-links: var(--color-foreground);
   --tw-prose-quotes: var(--color-quote);
   --tw-prose-th-borders: #666;
 }
