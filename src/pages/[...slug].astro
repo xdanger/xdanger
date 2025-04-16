@@ -4,35 +4,12 @@ import { getAllPosts } from "@/data/post";
 import PostLayout from "@/layouts/BlogPost.astro";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 
-// 创建路由，处理从根路径访问博客文章
-import { ASTRO_START_DATE } from "@/utils/url";
-
 export const getStaticPaths = (async () => {
   const blogEntries = await getAllPosts();
-  
-  return blogEntries.flatMap((post) => {
-    // 提取文章 id 作为 slug
-    const slug = post.id;
-    const paths = [];
-    
-    // 对于旧文章，只创建带.html后缀的路径
-    if (post.data.publishDate < ASTRO_START_DATE) {
-      paths.push({
-        params: { slug: `${slug}.html` },
-        props: { post },
-        priority: 0,  // 较高优先级
-      });
-    } else {
-      // 对于新文章，创建不带后缀的路径
-      paths.push({
-        params: { slug },
-        props: { post },
-        priority: -1,
-      });
-    }
-    
-    return paths;
-  });
+  return blogEntries.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;

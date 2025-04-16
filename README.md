@@ -81,7 +81,7 @@ bun install
 
 ## TODO
 
-- [ ] 深入解决 URL 的处理
+- [x] 深入解决 URL 的处理
 - [ ] 确保 linter/formatter 正确有效
 - [ ] 重构页面布局相关的 components，需要更合理封装组件，而不是现在大量复制黏贴
 - [ ] 尝试改动页面布局，在大尺寸屏幕上尝试居左，右侧空间留给 TOC

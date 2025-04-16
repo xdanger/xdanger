@@ -14,10 +14,8 @@ const { articleDate, description, ogImage, title, post } = Astro.props;
 
 const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
-// 如果是文章页面并且提供了post对象，则使用getCanonicalUrl，否则使用默认的URL
-const canonicalURL = post 
-  ? new URL(getCanonicalUrl(post)) 
-  : new URL(Astro.url.pathname, Astro.site);
+// 如果是文章页面并且提供了 post 对象，则使用 getCanonicalUrl，否则使用默认的 URL
+const canonicalURL = post ? new URL(getCanonicalUrl(post)) : new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url).href;
 ---
 
@@ -28,15 +26,15 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 {/* Icons */}
 <link href="/icon.svg" rel="icon" type="image/svg+xml" />
 {
-	import.meta.env.PROD && (
-		<>
-			{/* Favicon & Apple Icon */}
-			<link rel="icon" href="/favicon-32x32.png" type="image/png" />
-			<link href="/icons/apple-touch-icon.png" rel="apple-touch-icon" />
-			{/* Manifest */}
-			<link href="/manifest.webmanifest" rel="manifest" />
-		</>
-	)
+  import.meta.env.PROD && (
+    <>
+      {/* Favicon & Apple Icon */}
+      <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+      <link href="/icons/apple-touch-icon.png" rel="apple-touch-icon" />
+      {/* Manifest */}
+      <link href="/manifest.webmanifest" rel="manifest" />
+    </>
+  )
 }
 
 {/* Canonical URL */}
@@ -58,12 +56,12 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <meta content="1200" property="og:image:width" />
 <meta content="630" property="og:image:height" />
 {
-	articleDate && (
-		<>
-			<meta content={siteConfig.author} property="article:author" />
-			<meta content={articleDate} property="article:published_time" />
-		</>
-	)
+  articleDate && (
+    <>
+      <meta content={siteConfig.author} property="article:author" />
+      <meta content={articleDate} property="article:published_time" />
+    </>
+  )
 }
 
 {/* Twitter */}
@@ -80,18 +78,18 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <link href="/rss.xml" title="Blog" rel="alternate" type="application/rss+xml" />
 <link href="/notes/rss.xml" title="Notes" rel="alternate" type="application/rss+xml" />
 
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha256-6NiFUFlJ86X0q91d0NU2lr0Tca0m/79PMQ3Nd8jNrok=" crossorigin="anonymous" async></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha256-GQlRJzV+1tKf4KY6awAMkTqJ9/GWO3Zd03Fel8mFLnU=" crossorigin="anonymous">
+<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha256-6NiFUFlJ86X0q91d0NU2lr0Tca0m/79PMQ3Nd8jNrok=" crossorigin="anonymous" async></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha256-GQlRJzV+1tKf4KY6awAMkTqJ9/GWO3Zd03Fel8mFLnU=" crossorigin="anonymous" />
 <!-- <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js" async></script> -->
 
 {/* Webmentions */}
 {
-	WEBMENTION_URL && (
-		<>
-			<link href={WEBMENTION_URL} rel="webmention" />
-			{WEBMENTION_PINGBACK && <link href={WEBMENTION_PINGBACK} rel="pingback" />}
-		</>
-	)
+  WEBMENTION_URL && (
+    <>
+      <link href={WEBMENTION_URL} rel="webmention" />
+      {WEBMENTION_PINGBACK && <link href={WEBMENTION_PINGBACK} rel="pingback" />}
+    </>
+  )
 }
 
 <meta content={Astro.generator} name="generator" />

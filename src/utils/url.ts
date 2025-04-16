@@ -22,14 +22,21 @@ export function getBlogEra(
 }
 
 /**
+ * 判断是否为新 URL 格式 (Astro 时期的文章)
+ */
+export function isAstroEraPost(post: CollectionEntry<"post">): boolean {
+  return post.data.publishDate >= ASTRO_START_DATE;
+}
+
+/**
  * 根据发布日期决定文章的规范 URL 格式
- * 用于canonical和外部链接
+ * 用于 canonical 和外部链接
  * @param post 文章对象
  * @returns 规范化的 URL 路径
  */
 export function getCanonicalUrl(post: CollectionEntry<"post">): string {
   const publishDate = post.data.publishDate;
-  const siteUrl = import.meta.env.SITE || "https://xdanger.com";
+  const siteUrl = import.meta.env.SITE;
   const postId = post.id.startsWith("/") ? post.id.substring(1) : post.id;
 
   // Astro 现在使用无后缀的 URL，但为了 SEO、历史链接等，我们提供 canonical 链接
@@ -42,13 +49,6 @@ export function getCanonicalUrl(post: CollectionEntry<"post">): string {
   }
   // Astro 时期的文章不带后缀
   return `${siteUrl}/${postId}`;
-}
-
-/**
- * 判断是否为新 URL 格式 (Astro 时期的文章)
- */
-export function isAstroEraPost(post: CollectionEntry<"post">): boolean {
-  return post.data.publishDate >= ASTRO_START_DATE;
 }
 
 /**
@@ -68,13 +68,4 @@ export function getPostPath(post: CollectionEntry<"post">): string {
   }
   // Astro 时期的文章使用无后缀形式
   return `/${postId}`;
-}
-
-/**
- * 生成文件路径，用于构建系统
- * 所有文件实际都是.html 后缀，但我们的链接可能是.html 或无后缀
- */
-export function getOutputFilePath(post: CollectionEntry<"post">): string {
-  const postId = post.id.startsWith("/") ? post.id.substring(1) : post.id;
-  return `/${postId}.html`;
 }

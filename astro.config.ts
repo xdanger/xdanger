@@ -25,7 +25,10 @@ import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
-  site: siteConfig.url,
+  build: {
+    // https://docs.astro.build/zh-cn/reference/configuration-reference/#buildformat
+    format: "preserve",
+  },
   image: {
     domains: ["webmention.io"],
   },
@@ -104,8 +107,9 @@ export default defineConfig({
   },
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: true,
-  // 设置路由优先级
-  trailingSlash: "ignore",
+  site: siteConfig.url,
+  // https://docs.astro.build/zh-cn/reference/configuration-reference/#trailingslash
+  trailingSlash: "never",
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
