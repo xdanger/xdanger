@@ -11,7 +11,7 @@ publishDate: "2003-12-16 19:27:51"
 
 1. 此网站内缺失大量连接。如首页的"图像"、"网上论坛"、"高级搜索"、"语言工具"这类 Google 非常成熟的服务模块连接过去都是 404 页面。并且像 /images/ 目录下的图片都不完全，比如 [http://www.google.com/images/calc_img.gif](http://www.google.com/images/calc_img.gif)，就不存在 [http://google.net.cn/images/calc_img.gif](http://google.net.cn/images/calc_img.gif)。如果是 Google 自己做的或者经过 Google 授权的，不可能连一个 images 目录都不能完整复制过来吧？
 
-2. Google 是上市公司，不是网络组织，Google 在全世界任何地方都不曾使用 .net 的域名（可能会抢注，但是都是转域名的，比如 [http://google.net](http://google.net)）。在 Google 最新工具栏里所列出的全部 85 个地区域名中没有一个 .net，都是 *.com.地区* 或者 *.co.地区* 或者干脆 *.地区*。难道在中国列外？
+2. Google 是上市公司，不是网络组织，Google 在全世界任何地方都不曾使用 .net 的域名（可能会抢注，但是都是转域名的，比如 [http://google.net](http://google.net)）。在 Google 最新工具栏里所列出的全部 85 个地区域名中没有一个 .net，都是 _.com.地区_ 或者 _.co.地区_ 或者干脆 _.地区_。难道在中国列外？
    ![Google 地区域名列表](http://blog.xdanger.com/archives/pics/20031216a.png)
 
 3. Google 不会委屈在他人的服务器下，做一个虚拟主机的使用者。试试看
@@ -23,12 +23,12 @@ publishDate: "2003-12-16 19:27:51"
    ![ping 结果](http://blog.xdanger.com/archives/pics/20031216c.png)
 
    再看看 [http://218.5.74.107](http://218.5.74.107) 是什么。
-   *Update on 2003-12-08 14:50: 应 google.net.cn 作者的合理要求，删去相应截图。*
+   _Update on 2003-12-08 14:50: 应 google.net.cn 作者的合理要求，删去相应截图。_
 
 4. Google 自己的网页快照都没有这个……[http://216.239.57.104/search?q=cache%3Agoogle.net.cn](http://216.239.57.104/search?q=cache%3Agoogle.net.cn)
    ![Google 快照查询结果](http://blog.xdanger.com/archives/pics/20031216b.png)
 
-5. 域名注册非常可疑。*Update on 2003-12-08 15:35: 应 google.net.cn 作者的合理要求，删去了域名注册记录相关文字。* 而正宗 Google 的域名注册信息应该是这样的：[http://218.30.103.79/cgi-bin/Whois.cgi?domain=google&com=yes&work=whois&big5=n](http://218.30.103.79/cgi-bin/Whois.cgi?domain=google&com=yes&work=whois&big5=n)
+5. 域名注册非常可疑。_Update on 2003-12-08 15:35: 应 google.net.cn 作者的合理要求，删去了域名注册记录相关文字。_ 而正宗 Google 的域名注册信息应该是这样的：[http://218.30.103.79/cgi-bin/Whois.cgi?domain=google&com=yes&work=whois&big5=n](http://218.30.103.79/cgi-bin/Whois.cgi?domain=google&com=yes&work=whois&big5=n)
 
 6. 最能说明问题的就是，此服务器根本不是 Google 惯用的系统平台！看看 [http://www.google.com](http://www.google.com) 的 web 服务器输出的头信息是什么：
 
@@ -55,7 +55,7 @@ publishDate: "2003-12-16 19:27:51"
 
    真实大笑话！Google 使用的竟然是 **Apache 2.0+PHP**！
 
-7. 随便输入一个关键字搜索，第一次总是使用较多的时间，而显示的搜索时间是 *0.XX* 秒。试试看刷新一下页面？哈哈，又是大破绽，***搜索用时*** 一直不变的！看来还是经过精心策划的，怕以后访问量太大服务器不堪重负，已经设计好搜索缓存。
+7. 随便输入一个关键字搜索，第一次总是使用较多的时间，而显示的搜索时间是 _0.XX_ 秒。试试看刷新一下页面？哈哈，又是大破绽，**_搜索用时_** 一直不变的！看来还是经过精心策划的，怕以后访问量太大服务器不堪重负，已经设计好搜索缓存。
 
 8. 搜索参数 oe 只能设定 GB2312，改成 UTF-8 都不行。这完全不是 Google 的风格，世界各地的 Google 默认都是使用 UTF-8 的 ie 和 oe，而不是地区编码。
 

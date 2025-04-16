@@ -9,7 +9,7 @@ publishDate: "2004-01-19 03:24:35"
 
 PmWiki 简介：PmWiki 是一个不需要数据库的以[PHP](http://www.php.net/)为主要语言编写的[wiki](http://directory.google.com/Top/Computers/Software/Groupware/Wiki/)，遵循[General Public License (GPL)](http://www.gnu.org/copyleft/gpl.html)协议，小巧方便，很适合个人网站用来制作规模不大的互动资源平台。
 
-我的安装平台：[Windows XP Pro SP1](http://www.microsoft.com/windowsxp/) + [Apache-1.3.*](http://www.apache.org/dyn/closer.cgi) + [PHP-4.3.*](http://cn2.php.net/get/php-4.3.4-Win32.zip/from/a/mirror)
+我的安装平台：[Windows XP Pro SP1](http://www.microsoft.com/windowsxp/) + [Apache-1.3.\*](http://www.apache.org/dyn/closer.cgi) + [PHP-4.3.\*](http://cn2.php.net/get/php-4.3.4-Win32.zip/from/a/mirror)
 理论上可拖宽为：[Windows](http://www.microsoft.com/windows/) + [Apache](http://www.apache.org/)/[IIS](http://www.microsoft.com/iis/) + [PHP](http://www.php.net/)
 本文不讨论 PmWiki 的使用问题，几乎任何使用上的问题都可以在其[帮助文档](http://www.pmichaud.com/wiki/PmWiki/PmWiki)中找到详细的说明，并且已经有人开始[汉化这些文档](http://xemacs.cosoft.org.cn/pmwiki/pmwiki.php/PmWikiZhCnUtf8/PmWiki)了，还可以参见[zheng](http://blogs.51.net/)的[PmWiki 学习笔记](http://blogs.51.net/pmwiki/pmwiki.php/WikiLearning/WikiLearning)。
 
@@ -99,7 +99,8 @@ PmWiki 允许你将配置文件单独存放于 `local/`目录下，或者是 PmW
    C:\GnuWin32\
    ```
 
-   这些*nix 转化过来的程序最好绝对路径中都不要包含空格，否则基本都会出错。这个也不例外，虽然可以成功安装，但是等一下还是无法使用。
+   这些\*nix 转化过来的程序最好绝对路径中都不要包含空格，否则基本都会出错。这个也不例外，虽然可以成功安装，但是等一下还是无法使用。
+
 3. 将下载的 patch-2.5.4-3-bin.exe 更名为 patch.exe 放到 C:\GnuWin32\bin\下。
 4. 设置 local.php，加上刚才没有设置的 $SysDiffCmd 和 $DefaultPasswords：
 

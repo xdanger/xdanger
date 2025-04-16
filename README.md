@@ -82,8 +82,9 @@ bun install
 ## TODO
 
 - [x] 深入解决 URL 的处理
-- [ ] 确保 linter/formatter 正确有效
+- [x] 确保 linter/formatter 正确有效
 - [ ] 使用 Deno 代替 Node.js
+- [ ] 部署到
 - [ ] 重构页面布局相关的 components，需要更合理封装组件，而不是现在大量复制黏贴
 - [ ] 尝试改动页面布局，在大尺寸屏幕上尝试居左，右侧空间留给 TOC
 

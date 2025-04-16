@@ -51,7 +51,7 @@ Copy 到 Apache 的 bin 目录：
 Format "%v %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" all
 ```
 
-就是在 Apache 默认的 combined 格式的最前面加了 %v 以区别不同的虚拟主机访问。如果该 Web 服务器没有设置虚拟主机的话，%v 出来的将是星号 (*)。查了 Apache 手册后，没找到能反映 [HTTP/1.1](http://www.w3.org/Protocols/rfc2616/rfc2616.html) 协议中 Host 字段所对应的变量。为了能和其他日志格式兼容，我用了个笨办法——直接将该服务器所对应的域名写在里面，于是，没有设置虚拟主机的 Appache 的日志格式成了类似：
+就是在 Apache 默认的 combined 格式的最前面加了 %v 以区别不同的虚拟主机访问。如果该 Web 服务器没有设置虚拟主机的话，%v 出来的将是星号 (\*)。查了 Apache 手册后，没找到能反映 [HTTP/1.1](http://www.w3.org/Protocols/rfc2616/rfc2616.html) 协议中 Host 字段所对应的变量。为了能和其他日志格式兼容，我用了个笨办法——直接将该服务器所对应的域名写在里面，于是，没有设置虚拟主机的 Appache 的日志格式成了类似：
 
 ```apache
 Format "bbs.verycd.com %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" all

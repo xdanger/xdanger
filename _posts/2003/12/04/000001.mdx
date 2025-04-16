@@ -9,7 +9,7 @@ publishDate: "2003-12-04 09:36:17"
 
 全部弄好的时候已经要熄灯了，所以这第一篇留到了今天来写。因为装的时候费了不少劲，赶快把还记得的过程写下来，生怕年久失修忘记怎么搞的了。
 
-我使用的是 Windows XP(Professional+SP1)+Apache 1.3.*+ActivePerl 5.8.*+MySQL 4.*
+我使用的是 Windows XP(Professional+SP1)+Apache 1.3._+ActivePerl 5.8._+MySQL 4.\*
 
 1. 从 [http://www.movabletype.org/download.shtml](http://www.movabletype.org/download.shtml) 下载 MT 的 Full 的压缩档案。
 
@@ -66,6 +66,6 @@ publishDate: "2003-12-04 09:36:17"
    datadir=c:/mysql/data
    ```
 
-1. 然后执行 mt-load.cgi，照例应该完成安装过程，但是……mt-load.cgi 提示 *Connection error: Access denied for user: 'root@127.0.0.1' (Using password: YES)*。奇怪了，我的 MySQL 因为只有本机上可以访问，所以没有密码，而且其他的程序运行正常。这时还是 Google 救了我……[http://www.virtualvenus.org/wiki/view/MT/ConnectionErrorAccessDenied](http://www.virtualvenus.org/wiki/view/MT/ConnectionErrorAccessDenied) ——寒~~
+1. 然后执行 mt-load.cgi，照例应该完成安装过程，但是……mt-load.cgi 提示 _Connection error: Access denied for user: 'root@127.0.0.1' (Using password: YES)_。奇怪了，我的 MySQL 因为只有本机上可以访问，所以没有密码，而且其他的程序运行正常。这时还是 Google 救了我……[http://www.virtualvenus.org/wiki/view/MT/ConnectionErrorAccessDenied](http://www.virtualvenus.org/wiki/view/MT/ConnectionErrorAccessDenied) ——寒~~
 
 1. 完成安装咯，配置 Blog 后别忘了修改 Melody 的密码。

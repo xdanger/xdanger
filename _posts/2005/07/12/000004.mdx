@@ -12,19 +12,23 @@ publishDate: "2005-07-12 22:36:37"
 [在 IE 里更是读到 Google Adsense 的 JS 时，整个页面就完全没反应，连正在连接或等待的信息都没了](http://www.flickr.com/photos/xdanger/25465542/)，害我刷了几次，以为是网络不好一直丢包，忙了一圈回来想关掉那个窗口时，方才看到整个页面都显示出来了，无语。曾兄忍无可忍，打算下个版本去掉 Google Adsense，其实大可不必的 :D
 
 在原位置放置以下代码
+
 ```html
 <div id="GoogleAdsense"></div>
 ```
 
 在 html 最后 &lt;/body&gt; 前加上
+
 ```html
 <div id="tempGoogleAdsense" style="display:none;">
-<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
-</div><!-- End #tempGoogleAdsense -->
-<script type="text/javascript"><!--
-document.getElementById("GoogleAdsense").innerHTML = document.getElementById("tempGoogleAdsense").innerHTML;
-document.getElementById("tempGoogleAdsense").innerHTML = "";
-//-->
+  <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+<!-- End #tempGoogleAdsense -->
+<script type="text/javascript">
+  <!--
+  document.getElementById("GoogleAdsense").innerHTML = document.getElementById("tempGoogleAdsense").innerHTML;
+  document.getElementById("tempGoogleAdsense").innerHTML = "";
+  //-->
 </script>
 ```
 
