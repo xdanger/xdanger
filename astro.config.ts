@@ -26,7 +26,7 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel(),
+  // adapter: vercel(),
   build: {
     // https://docs.astro.build/zh-cn/reference/configuration-reference/#buildformat
     format: "preserve",
@@ -99,7 +99,7 @@ export default defineConfig({
       },
     },
   },
-  output: "server",
+  output: "static",
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: true,
   site: siteConfig.url,

@@ -2,7 +2,7 @@
   "name": "eccentric-event",
   "version": "6.1.1",
   "type": "module",
-  "packageManager": "bun@1.2.5",
+  "packageManager": "bun@1.2.10",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -28,6 +28,7 @@
     "astro-robots-txt": "^1.0.0",
     "astro-webmanifest": "^1.0.0",
     "autocorrect": "^1.2.0",
+    "bun": "^1.2.10",
     "cssnano": "^7.0.6",
     "hastscript": "^9.0.1",
     "mdast-util-directive": "^3.1.0",
