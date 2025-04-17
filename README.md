@@ -14,7 +14,7 @@
 
 ### 系统要求
 
-- [Bun](https://bun.sh/) 1.2.5 或更高版本
+- [Bun](https://bun.sh/) 1.2.10 或更高版本
 
 ### 安装依赖
 
@@ -27,20 +27,19 @@ bun install
 - `bun run dev` - 启动开发服务器
 - `bun run build` - 构建生产版本
 - `bun run preview` - 预览构建后的网站
-- `bun run lint` - 运行代码检查
-- `bun run format` - 格式化代码
-- `bun run check` - 运行类型检查
+- `bun run lint` - 运行代码及文档检查
+- `bun run fix` - 格式化代码及文档
 
 ### 项目结构
 
-- `/src/content/post/` - 博客文章内容 (MDX 格式)
-- `/src/content/note/` - 笔记内容 (MDX 格式)
-- `/src/components/` - 组件
-- `/src/layouts/` - 页面布局
-- `/src/pages/` - 页面和路由
-- `/src/styles/` - 全局样式
-- `/src/utils/` - 工具函数
-- `/public/` - 静态资源文件
+- `_posts/` - 博客文章内容 (MDX 格式)
+- `_notes/` - 笔记内容 (MDX 格式)
+- `src/components/` - 组件
+- `src/layouts/` - 页面布局
+- `src/pages/` - 页面和路由
+- `src/styles/` - 全局样式
+- `src/utils/` - 工具函数
+- `public/` - 静态资源文件
 
 ### URL 规则
 
@@ -65,8 +64,8 @@ bun install
 
 ### 代码规范
 
-- `.astro`, `.tsx`, `.ts`, `.mjs`, `.jsx`, `.js`, `.json`, `.mdx` 文件需要使用 `bunx biome format --write {file_path} && bunx autocorrect --fix {file_path}` 检查和修复
-- `.mdx` 文件需要使用 `bunx markdownlint-cli2 --fix {file_path}` 格式化
+- **代码文件**：使用 `pretty-quick && biome check --write` 修复并格式化
+- **文档文件**：使用 `autocorrect --fix . && prettier --write` 修复并格式化
 
 ### 重要文件
 
@@ -93,14 +92,12 @@ bun install
 - [ ] Use Cypress/Playwright to establish an e2e tests framework
 - [ ] 整理目录结构和代码，让路由更简单合理
 - [ ] 重构页面布局相关的 components，需要更合理封装组件，而不是现在大量复制黏贴
-- [ ] 在 Vercel 上 Preview 页面，确保所有功能符合预期
 - [ ] 尝试改动页面布局，在大尺寸屏幕上尝试居左，右侧空间留给 TOC
 
 ### 另建分支探索 SSR
 
-- [ ] 在本地测试 SSR 模式，确保 URL 处理正确
-- [ ]
-- [ ] 加入 Speed Insights
+- [ ] 在本地跑通 SSR，确保 URL 处理正确
+- [ ] 在 Vercel 上跑通 SSR
 
 ## LICENSE
 
