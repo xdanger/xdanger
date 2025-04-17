@@ -9,7 +9,13 @@ import "@fontsource/ia-writer-mono";
 import Analytics from "@vercel/analytics/astro";
 
 const {
-  meta: { articleDate, description = siteConfig.description, ogImage, title, post },
+  meta: {
+    articleDate,
+    description = siteConfig.description,
+    ogImage,
+    title,
+    post,
+  },
 } = Astro.props;
 ---
 

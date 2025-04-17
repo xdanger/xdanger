@@ -12,9 +12,9 @@
     "lint:code": "biome check . && astro check --tsconfig tsconfig.json",
     "lint:md": "prettier --check **/*.md",
     "lint": "bun run lint:code && bun run lint:md",
-    "format:code": "biome format . --write",
-    "format:md": "prettier --write **/*.{md,mdx}",
-    "format": "bun run format:code && bun run format:md"
+    "fix:code": "biome check --write .",
+    "fix:md": "prettier --write **/*.{md,mdx}",
+    "fix": "bun run fix:code && bun run fix:md"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.1",

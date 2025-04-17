@@ -1,6 +1,6 @@
+import type { Root } from "mdast";
 import { toString as mdastToString } from "mdast-util-to-string";
 import getReadingTime from "reading-time";
-import type { Root } from "mdast";
 import type { Plugin } from "unified";
 
 // Define a remark plugin that adds reading time to frontmatter

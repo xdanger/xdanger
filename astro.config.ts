@@ -1,28 +1,28 @@
+import fs from "node:fs";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
+import tailwindcss from "@tailwindcss/vite";
+import expressiveCode from "astro-expressive-code";
+import icon from "astro-icon";
+import robotsTxt from "astro-robots-txt";
+import webmanifest from "astro-webmanifest";
 import { defineConfig, envField } from "astro/config";
 import { expressiveCodeOptions } from "./src/site.config";
 import { siteConfig } from "./src/site.config";
-import expressiveCode from "astro-expressive-code";
-import fs from "node:fs";
-import icon from "astro-icon";
-import mdx from "@astrojs/mdx";
-import robotsTxt from "astro-robots-txt";
-import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
-import vercel from "@astrojs/vercel";
-import webmanifest from "astro-webmanifest";
 
 // Remark plugins
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
+import remarkMath from "remark-math";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
 import { remarkReadingTime } from "./src/plugins/remark-reading-time"; /* Add reading time */
-import remarkMath from "remark-math";
 
 // Rehype plugins
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
-import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeKatex from "rehype-katex";
+import rehypeUnwrapImages from "rehype-unwrap-images";
 
 // https://astro.build/config
 export default defineConfig({
@@ -107,7 +107,7 @@ export default defineConfig({
       },
     },
   },
-  output: "static",
+  output: "server",
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: true,
   site: siteConfig.url,

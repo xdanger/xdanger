@@ -1,7 +1,7 @@
-import { getCanonicalUrl } from "@/utils/url";
-import { getAllPosts } from "@/data/post";
 import { getCollection } from "astro:content";
+import { getAllPosts } from "@/data/post";
 import { siteConfig } from "@/site.config";
+import { getCanonicalUrl } from "@/utils/url";
 
 export async function GET() {
   const posts = await getAllPosts();
