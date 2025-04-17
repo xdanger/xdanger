@@ -1,17 +1,8 @@
 import type { AdmonitionType } from "@/types";
-import { type Properties, h as _h } from "hastscript";
-import type {
-  Node,
-  Paragraph as P,
-  Parent,
-  PhrasingContent,
-  Root,
-} from "mdast";
-import type {
-  Directives,
-  LeafDirective,
-  TextDirective,
-} from "mdast-util-directive";
+import type { Properties } from "hastscript";
+import { h as _h } from "hastscript";
+import type { Node, Paragraph as P, Parent, PhrasingContent, Root } from "mdast";
+import type { Directives, LeafDirective, TextDirective } from "mdast-util-directive";
 import { directiveToMarkdown } from "mdast-util-directive";
 import { toMarkdown } from "mdast-util-to-markdown";
 import { toString as mdastToString } from "mdast-util-to-string";
@@ -19,13 +10,7 @@ import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
 // Supported admonition types
-const Admonitions = new Set<AdmonitionType>([
-  "tip",
-  "note",
-  "important",
-  "caution",
-  "warning",
-]);
+const Admonitions = new Set<AdmonitionType>(["tip", "note", "important", "caution", "warning"]);
 
 /** Checks if a string is a supported admonition type. */
 function isAdmonition(s: string): s is AdmonitionType {
@@ -112,9 +97,7 @@ export const remarkAdmonitions: Plugin<[], Root> = () => (tree) => {
         "data-admonition-type": admonitionType,
       },
       [
-        h("p", { class: "admonition-title", "aria-hidden": "true" }, [
-          ...titleNode,
-        ]),
+        h("p", { class: "admonition-title", "aria-hidden": "true" }, [...titleNode]),
         h("div", { class: "admonition-content" }, node.children),
       ],
     );

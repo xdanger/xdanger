@@ -7,7 +7,7 @@ export async function GET() {
   const posts = await getAllPosts();
   const notes = await getCollection("note");
 
-  // 生成博客文章的URL条目
+  // 生成博客文章的 URL 条目
   const postEntries = posts.map((post) => {
     const canonicalUrl = getCanonicalUrl(post);
     const lastmod = post.data.updatedDate || post.data.publishDate;
@@ -23,7 +23,7 @@ export async function GET() {
     `;
   });
 
-  // 生成笔记的URL条目
+  // 生成笔记的 URL 条目
   const noteEntries = notes.map((note) => {
     const noteUrl = `${siteConfig.url}/notes/${note.id}`;
     const lastmod = note.data.publishDate;

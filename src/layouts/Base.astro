@@ -9,22 +9,24 @@ import "@fontsource/ia-writer-mono";
 import Analytics from "@vercel/analytics/astro";
 
 const {
-  meta: {
-    articleDate,
-    description = siteConfig.description,
-    ogImage,
-    title,
-    post,
-  },
+  meta: { articleDate, description = siteConfig.description, ogImage, title, post },
 } = Astro.props;
 ---
 
 <html class="scroll-smooth" lang={siteConfig.lang}>
   <head>
-    <BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} post={post} />
+    <BaseHead
+      articleDate={articleDate}
+      description={description}
+      ogImage={ogImage}
+      title={title}
+      post={post}
+    />
   </head>
   <body class="overscroll-none dark:scrollbar-thumb-gray-700 bg-background font-mono antialiased">
-    <div class="flex flex-col min-h-svh min-w-svw text-foreground text-sm text-offgray dark:text-offgray-300">
+    <div
+      class="flex flex-col min-h-svh min-w-svw text-foreground text-sm text-offgray dark:text-offgray-300"
+    >
       <ThemeProvider />
       <SkipLink />
       <Header />
@@ -35,7 +37,10 @@ const {
     </div>
     <!-- Overlay vertical borders for entire page (another approach) -->
     <div class="fixed inset-0 pointer-events-none" style="z-index: 5">
-      <div class="max-w-4xl h-full mx-auto border-l border-r border-dashed border-gray-200 dark:border-gray-700"></div>
+      <div
+        class="max-w-4xl h-full mx-auto border-l border-r border-dashed border-gray-200 dark:border-gray-700"
+      >
+      </div>
     </div>
     <Analytics />
   </body>

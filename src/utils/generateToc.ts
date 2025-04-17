@@ -31,8 +31,7 @@ export function generateToc(
   );
   const toc: Array<TocItem> = [];
 
-  for (const heading of bodyHeadings)
-    injectChild(toc, { ...heading, children: [] });
+  for (const heading of bodyHeadings) injectChild(toc, { ...heading, children: [] });
 
   return toc;
 }

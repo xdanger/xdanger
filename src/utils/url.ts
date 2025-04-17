@@ -9,9 +9,7 @@ export const ASTRO_START_DATE = new Date("2025-02-28");
  * @param publishDate 文章发布日期
  * @returns 文章所属的历史时期
  */
-export function getBlogEra(
-  publishDate: Date,
-): "moveabletype" | "jekyll" | "astro" {
+export function getBlogEra(publishDate: Date): "moveabletype" | "jekyll" | "astro" {
   if (publishDate < JEKYLL_START_DATE) {
     return "moveabletype";
   }

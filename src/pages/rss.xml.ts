@@ -12,7 +12,7 @@ export const GET = async () => {
     site: import.meta.env.SITE,
     trailingSlash: false,
     items: posts.map((post) => {
-      // 获取文章的规范URL（会自动根据发布日期添加或省略.html后缀）
+      // 获取文章的规范 URL（会自动根据发布日期添加或省略.html 后缀）
       const fullUrl = getCanonicalUrl(post);
       // 移除网站域名部分，只保留路径
       const urlObj = new URL(fullUrl);

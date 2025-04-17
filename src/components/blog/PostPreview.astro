@@ -14,13 +14,13 @@ const postUrl = getPostPath(post);
 ---
 
 <FormattedDate
-	class="min-w-30 font-normal text-gray-600 dark:text-gray-400"
-	date={post.data.publishDate}
+  class="min-w-30 font-normal text-gray-600 dark:text-gray-400"
+  date={post.data.publishDate}
 />
 <Tag>
-	{post.data.draft && <span class="text-red-500">(Draft) </span>}
-	<a class="cactus-link" data-astro-prefetch href={postUrl}>
-		{post.data.title}
-	</a>
+  {post.data.draft && <span class="text-red-500">(Draft) </span>}
+  <a class="cactus-link" data-astro-prefetch href={postUrl}>
+    {post.data.title}
+  </a>
 </Tag>
 {withDesc && <q class="line-clamp-3 italic">{post.data.description}</q>}

@@ -14,7 +14,7 @@ import { Icon } from "astro-icon/components";
     <div class="w-full flex justify-between">
       <nav aria-label="Main menu" id="navigation-menu" class="flex gap-4 sm:gap-6 md:gap-8">
         {
-          menuLinks.map(link => (
+          menuLinks.map((link) => (
             <a
               aria-current={Astro.url.pathname === link.path ? "page" : false}
               class="hover:text-accent"

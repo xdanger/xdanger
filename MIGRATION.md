@@ -425,7 +425,7 @@ import { isAstroEraPost } from "@/utils/url";
 export const getStaticPaths = (async () => {
   const blogEntries = await getAllPosts();
 
-  return blogEntries.map(post => {
+  return blogEntries.map((post) => {
     // 提取文章 id 作为 slug
     const slug = post.id;
 
@@ -486,7 +486,7 @@ export async function GET() {
   const posts = await getAllPosts();
 
   // 生成规范化 URL
-  const urlEntries = posts.map(post => {
+  const urlEntries = posts.map((post) => {
     const canonicalUrl = getCanonicalUrl(post);
 
     // URL 条目

@@ -19,7 +19,12 @@ const meta = {
         {
           allTags.map(([tag, val]) => (
             <li class="flex items-center gap-x-2">
-              <a class="cactus-link inline-block" data-astro-prefetch href={`/tags/${tag}`} title={`View posts with the tag: ${tag}`}>
+              <a
+                class="cactus-link inline-block"
+                data-astro-prefetch
+                href={`/tags/${tag}`}
+                title={`View posts with the tag: ${tag}`}
+              >
                 &#35;{tag}
               </a>
               <span class="inline-block">

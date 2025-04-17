@@ -12,8 +12,6 @@ declare module "astro:content" {
   type ImageFunction = () => ImageMetadata;
 
   interface DefineCollectionConfig<S extends import("astro/zod").ZodType> {
-    schema?: (context: {
-      image: ImageFunction;
-    }) => S;
+    schema?: (context: { image: ImageFunction }) => S;
   }
 }
