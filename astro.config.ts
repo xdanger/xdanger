@@ -26,7 +26,7 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 
 // https://astro.build/config
 export default defineConfig({
-  // adapter: vercel(),
+  adapter: vercel(),
   build: {
     // https://docs.astro.build/zh-cn/reference/configuration-reference/#buildformat
     format: "preserve",
@@ -81,10 +81,7 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [
       rehypeHeadingIds,
-      [
-        rehypeAutolinkHeadings,
-        { behavior: "wrap", properties: { className: ["not-prose"] } },
-      ],
+      [rehypeAutolinkHeadings, { behavior: "wrap", properties: { className: ["not-prose"] } }],
       [
         rehypeExternalLinks,
         {
@@ -95,12 +92,7 @@ export default defineConfig({
       [rehypeKatex, { strict: true }],
       rehypeUnwrapImages,
     ],
-    remarkPlugins: [
-      remarkReadingTime,
-      remarkDirective,
-      remarkAdmonitions,
-      remarkMath,
-    ],
+    remarkPlugins: [remarkReadingTime, remarkDirective, remarkAdmonitions, remarkMath],
     remarkRehype: {
       footnoteLabelProperties: {
         className: [""],

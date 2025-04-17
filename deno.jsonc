@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true
+  },
+  "fmt": {
+    "lineWidth": 100,
+    "indentWidth": 2
+  },
+  "lint": {}
+}

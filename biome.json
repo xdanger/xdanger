@@ -2,22 +2,25 @@
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "files": {
     "ignore": [".astro", "dist", "node_modules", "public"],
-    "ignoreUnknown": false
+    "ignoreUnknown": true
   },
   "formatter": {
     "enabled": true,
     "formatWithErrors": true,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "lineWidth": 100
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "double"
+      "arrowParentheses": "always"
     }
   },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "style": {
+        "useImportType": "error"
+      }
     }
   },
   "organizeImports": {
