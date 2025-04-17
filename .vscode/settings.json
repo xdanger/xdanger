@@ -12,8 +12,8 @@
   },
   "ruff.nativeServer": "on",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
+  "[astro-typescript][javascript][typescript][json][jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[markdown][mdx][astro-markdown][javascript][json][typescript][astro-typescript]": {
     "editor.insertSpaces": true,
@@ -25,9 +25,7 @@
   "[mdx]": {
     "editor.defaultFormatter": "unifiedjs.vscode-mdx"
   },
-  "[javascript][typescript][astro-typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
+
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
