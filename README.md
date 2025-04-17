@@ -85,16 +85,20 @@ bun install
 
 - [x] 深入解决 URL 的处理，让生成的 URL 合理，让内链的 URL 符合预期（保持老 URL 不变的情况下，新文章使用新 URL 格式）
 - [x] 确保 linter/formatter 正确有效，混合使用 `autocorrect`, `prettier`, `biome`, `astro check`，并让他们各自发挥所长，不互相冲突
+- [ ] [Use Bun](https://docs.astro.build/en/recipes/bun/) to replace Node.js
+  - 🔖 [Build an app with Astro and Bun](https://bun.sh/guides/ecosystem/astro)
 - [ ] Upgrade Astro to v5.7.0
-  - [ ] Migrate custom fonts to [v5.7.0 fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/)
+  - 🔖 Migrate custom fonts to [v5.7.0 fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/)
+- [ ] Use Cypress/Playwright to establish an e2e tests framework
 - [ ] 整理目录结构和代码，让路由更简单合理
 - [ ] 重构页面布局相关的 components，需要更合理封装组件，而不是现在大量复制黏贴
 - [ ] 在 Vercel 上 Preview 页面，确保所有功能符合预期
 - [ ] 尝试改动页面布局，在大尺寸屏幕上尝试居左，右侧空间留给 TOC
 
-### 探索 SSR
+### 另建分支探索 SSR
 
 - [ ] 在本地测试 SSR 模式，确保 URL 处理正确
+- [ ]
 - [ ] 加入 Speed Insights
 
 ## LICENSE
