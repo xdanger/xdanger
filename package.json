@@ -9,8 +9,8 @@
     "build": "cross-env NODE_OPTIONS='--trace-warnings' astro build",
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
-    "lint": "autocorrect --lint --strict . && prettier --check **/*.{md,mdx} && biome check . && astro check --tsconfig tsconfig.json",
-    "fix": "autocorrect --fix . && prettier --write **/*.{md,mdx} && biome check --write ."
+    "lint": "autocorrect --lint --strict . && prettier --check **/*.{md,mdx} && pretty-quick --check && biome check . && astro check --tsconfig tsconfig.json",
+    "fix": "autocorrect --fix . && prettier --write **/*.{md,mdx} && pretty-quick && biome check --write ."
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.1",
@@ -33,6 +33,7 @@
     "mdast-util-directive": "^3.1.0",
     "mdast-util-to-markdown": "^2.1.2",
     "mdast-util-to-string": "^4.0.0",
+    "pretty-quick": "^4.1.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-external-links": "^3.0.0",
     "rehype-katex": "^7.0.1",
