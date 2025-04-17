@@ -5,7 +5,7 @@ description: "本文分享了 Google Adsense 加载优化技巧，解决广告�
 publishDate: "2005-07-12 22:36:37"
 ---
 
-今天想在[曾登高](http://blog.csdn.net/zdg/)那买一本他强烈推荐的[《Google成功的七堂课》](http://www.dearbook.com.cn/book/viewbook.aspx?pno=TS0029514)，想不到在 [Firefox](http://www.mozilla.net.cn/) 下网页打开到一半就读不出来了：
+今天想在[曾登高](http://blog.csdn.net/zdg/)那买一本他强烈推荐的[《Google 成功的七堂课》](http://www.dearbook.com.cn/book/viewbook.aspx?pno=TS0029514)，想不到在 [Firefox](http://www.mozilla.net.cn/) 下网页打开到一半就读不出来了：
 
 [![](http://files.xdanger.com/phlickr/21/25465542_e2653e5ed4.jpg)](http://www.flickr.com/photo_zoom.gne?id=25465542&size=o)
 
@@ -21,23 +21,27 @@ publishDate: "2005-07-12 22:36:37"
 
 ```html
 <div id="tempGoogleAdsense" style="display:none;">
-  <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+  <script
+    type="text/javascript"
+    src="http://pagead2.googlesyndication.com/pagead/show_ads.js"
+  ></script>
 </div>
 <!-- End #tempGoogleAdsense -->
 <script type="text/javascript">
   <!--
-  document.getElementById("GoogleAdsense").innerHTML = document.getElementById("tempGoogleAdsense").innerHTML;
+  document.getElementById("GoogleAdsense").innerHTML =
+    document.getElementById("tempGoogleAdsense").innerHTML;
   document.getElementById("tempGoogleAdsense").innerHTML = "";
   //-->
 </script>
 ```
 
-这样就会在页面 Loading 到最后的时候才去连接 Adsense 的服务器。有人这时候可能会发现个小问题：这个代码会不会使浏览器2次连接广告服务器？经过我的实验，IE 和 Firefox 都不会在一个页面内多次请求相同的 URL。
+这样就会在页面 Loading 到最后的时候才去连接 Adsense 的服务器。有人这时候可能会发现个小问题：这个代码会不会使浏览器 2 次连接广告服务器？经过我的实验，IE 和 Firefox 都不会在一个页面内多次请求相同的 URL。
 
-原本 JS 里的配置文件都可以在任意地方定义，并且可以是最多4维数组形式，让 Google 随机选一套你的配色。配色方案极其重要，好的配色可以成倍提高点击率。据我的经验：
+原本 JS 里的配置文件都可以在任意地方定义，并且可以是最多 4 维数组形式，让 Google 随机选一套你的配色。配色方案极其重要，好的配色可以成倍提高点击率。据我的经验：
 
 > 完全与内容融为一体 > 稍醒目但不能盖过内容 > 与内容融为一体但是不容易被看到 > 广告太醒目
 
 最好的方法就是**将背景色配成与网页背景色一致（内容部分的背景色），框架颜色取得较鲜明一些，但是要与网页的框架色是相似色，文字、连接的颜色务必和网页的文字、连接颜色一致。**总之就是先让用户稍微熟悉网页的内容，然后让他能看到 Google Adsense，看到的第一眼又让他不觉得是在看广告……
 
-还有，内容详细页面、搜索结果页面的点击率好于首页，因此大的咨询站应该将首页的广告位做CPM（千人印象成本）销售，在详细页面、搜索结果页面的黄金位置留给 Adsense，其强大的关键字匹配技术，使相同广告位产生的效益达到最大化。
+还有，内容详细页面、搜索结果页面的点击率好于首页，因此大的咨询站应该将首页的广告位做 CPM（千人印象成本）销售，在详细页面、搜索结果页面的黄金位置留给 Adsense，其强大的关键字匹配技术，使相同广告位产生的效益达到最大化。
