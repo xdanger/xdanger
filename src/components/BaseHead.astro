@@ -5,6 +5,7 @@ import type { SiteMeta } from "@/types";
 import { getCanonicalUrl } from "@/utils/url";
 import "@/styles/global.css";
 import type { CollectionEntry } from "astro:content";
+import { Font } from "astro:assets";
 
 interface Props extends SiteMeta {
   post?: CollectionEntry<"post">;
@@ -80,6 +81,15 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <link href="/rss.xml" title="Blog" rel="alternate" type="application/rss+xml" />
 <link href="/notes/rss.xml" title="Notes" rel="alternate" type="application/rss+xml" />
 
+{/* Fonts */}
+<!-- <Font cssVariable="--font-ia-writer-duo" preload /> -->
+<Font cssVariable="--font-ia-writer-mono" preload />
+<!-- <Font cssVariable="--font-geist" preload />
+<Font cssVariable="--font-geist-mono" preload />
+<Font cssVariable="--font-newsreader" preload />
+<Font cssVariable="--font-lxgw-wenkai" preload /> -->
+
+{/* KaTeX */}
 <script
   is:inline
   src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"

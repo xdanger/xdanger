@@ -5,7 +5,6 @@ import ThemeProvider from "@/components/ThemeProvider.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import { siteConfig } from "@/site.config";
-import "@fontsource/ia-writer-mono";
 import Analytics from "@vercel/analytics/astro";
 
 const {
@@ -23,7 +22,7 @@ const {
       post={post}
     />
   </head>
-  <body class="overscroll-none dark:scrollbar-thumb-gray-700 bg-background font-mono antialiased">
+  <body class="overscroll-none dark:scrollbar-thumb-gray-700 bg-background antialiased">
     <div
       class="flex flex-col min-h-svh min-w-svw text-foreground text-sm text-offgray dark:text-offgray-300"
     >

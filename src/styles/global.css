@@ -76,11 +76,6 @@
   --sidebar-ring: oklch(0.488 0.243 264.376);
 }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
-}
-
 /* you could refactor below to use light-dark(), depending on your target audience */
 @theme {
   --color-background: var(--background);
@@ -92,7 +87,9 @@
   --color-accent-2: oklch(18.15% 0 0);
   --color-quote: oklch(55.27% 0.195 19.06);
   /* --color-quote: var(--muted-foreground); */
-  --font-mono: "IA Writer Mono", "SF Mono", ui-monospace, monospace;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "iA Writer Mono", "SF Mono", ui-monospace, monospace;
+  --font-serif: "New York", "Newsreader", "LXGW WenKai", serif;
 }
 
 @layer base {
@@ -116,6 +113,14 @@
       --color-quote: oklch(94.8% 0.106 136.49);
     }
   }
+  body {
+    @apply font-mono;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
 
 @layer components {
