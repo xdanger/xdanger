@@ -89,6 +89,7 @@ bun install
   - ⌛️ [`\[...slug\].png.ts`](src/pages/og-image/[...slug].png.ts) ❌
 - [x] Upgrade Astro to v5.7.0
   - 🔖 Migrate custom fonts to [v5.7.0 fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/)
+  - Upgrade `@tailwindcss/vite` to latest version
 - [ ] Use Cypress/Playwright to establish an e2e tests framework
 - [ ] 整理目录结构和代码，让路由更简单合理
 - [ ] 重构页面布局相关的 components，需要更合理封装组件，而不是现在大量复制黏贴
