@@ -9,8 +9,8 @@
     "build": "cross-env NODE_OPTIONS='--trace-warnings' astro build",
     "postbuild": "pagefind --site dist",
     "preview": "astro preview",
-    "lint": "autocorrect --lint --strict . && prettier --check \"**/*.{md,mdx,json}\" && pretty-quick --check && biome check . && astro check --tsconfig tsconfig.json",
-    "fix": "autocorrect --fix . && prettier --write \"**/*.{md,mdx,json}\" && pretty-quick && biome check --write ."
+    "lint": "autocorrect --lint --strict . && prettier --check . && biome check . && astro check --tsconfig tsconfig.json",
+    "fix": "autocorrect --fix . && prettier --write . && biome check --write ."
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.1",
