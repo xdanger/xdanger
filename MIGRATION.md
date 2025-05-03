@@ -434,7 +434,7 @@ export const getStaticPaths = (async () => {
       return {
         params: { slug: `${slug}.html` },
         props: { post },
-        priority: -1,
+        priority: -1
       };
     }
 
@@ -442,7 +442,7 @@ export const getStaticPaths = (async () => {
     return {
       params: { slug },
       props: { post },
-      priority: -1,
+      priority: -1
     };
   });
 }) satisfies GetStaticPaths;
@@ -510,8 +510,8 @@ export async function GET() {
 
   return new Response(sitemap, {
     headers: {
-      "Content-Type": "application/xml",
-    },
+      "Content-Type": "application/xml"
+    }
   });
 }
 ```
