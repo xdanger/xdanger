@@ -27,29 +27,6 @@ export function isAstroEraPost(post: CollectionEntry<"post">): boolean {
 }
 
 /**
- * 根据发布日期决定文章的规范 URL 格式
- * 用于 canonical 和外部链接
- * @param post 文章对象
- * @returns 规范化的 URL 路径
- */
-export function getCanonicalUrl(post: CollectionEntry<"post">): string {
-  const publishDate = post.data.publishDate;
-  const siteUrl = import.meta.env.SITE;
-  const postId = post.id.startsWith("/") ? post.id.substring(1) : post.id;
-
-  // Astro 现在使用无后缀的 URL，但为了 SEO、历史链接等，我们提供 canonical 链接
-  // 在网站中我们统一使用无后缀的 URL，但 canonical URL 仍保留历史格式
-  const era = getBlogEra(publishDate);
-
-  if (era === "moveabletype" || era === "jekyll") {
-    // MoveableType 和 Jekyll 时期的文章在 canonical 中仍显示.html 后缀
-    return `${siteUrl}/${postId}.html`;
-  }
-  // Astro 时期的文章不带后缀
-  return `${siteUrl}/${postId}`;
-}
-
-/**
  * 根据文章 ID 获取正确的路径
  * 用于内部链接、导航等
  * @param post 文章对象
@@ -60,10 +37,21 @@ export function getPostPath(post: CollectionEntry<"post">): string {
   const era = getBlogEra(post.data.publishDate);
 
   // 在内部导航中应当保持历史连接格式，以保持 URL 向后兼容
-  if (era === "moveabletype" || era === "jekyll") {
-    // MoveableType 和 Jekyll 时期的文章链接应当带有.html 后缀
-    return `/${postId}.html`;
-  }
+  // if (era === "moveabletype" || era === "jekyll") {
+  //   // MoveableType 和 Jekyll 时期的文章链接应当带有.html 后缀
+  //   return `/${postId}.html`;
+  // }
   // Astro 时期的文章使用无后缀形式
-  return `/${postId}`;
+  return `/${postId}.html`; // 改成所有 post 都带 `.html` 后缀
+}
+
+/**
+ * 根据发布日期决定文章的规范 URL 格式
+ * 用于 canonical 和外部链接
+ * @param post 文章对象
+ * @returns 规范化的 URL 路径
+ */
+export function getCanonicalUrl(post: CollectionEntry<"post">): string {
+  const siteUrl = import.meta.env.SITE;
+  return `${siteUrl}/${getPostPath(post)}`;
 }

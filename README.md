@@ -60,12 +60,12 @@ bun install
 3. Astro 时期的文章 (`2025-02-28` <= 发布日期)：
 
    - 文件路径：`src/content/post/YYYY/MMDD-title.mdx`
-   - 生成的 URL：`/YYYY/MMDD-title`（更简洁的新格式，不带`.html`后缀）
+   - 生成的 URL：`/YYYY/MMDD-title.html`（更简洁的新格式）
 
 ### 代码规范
 
-- **代码文件**：使用 `pretty-quick && biome check --write` 修复并格式化
-- **文档文件**：使用 `autocorrect --fix . && prettier --write` 修复并格式化
+- **检查代码和文档**：`bun run lint`
+- **格式化代码和文档**：`bun run fix`
 
 ### 重要文件
 
