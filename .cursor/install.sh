@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Cloud Agent install for the krosdai/.github repository.
+# Cloud Agent install for the xdanger/xdanger repository.
 #
 # Prepares the lint/format toolchain used by this repo:
 #   - mise + the native AutoCorrect CLI (pinned via mise.toml / mise.lock)
