@@ -1,6 +1,6 @@
 # Code Review Policy
 
-The single source of truth for every automated code review agent in this repository.
+The default policy for the shared Claude Code Review workflow. It lives in [`xdanger/xdanger`](https://github.com/xdanger/xdanger) and applies to every repository that calls the workflow. A calling repository may add its own `REVIEW.md` on its default branch: its rules take precedence where the two conflict, and this policy covers the rest.
 
 ## Scope
 
