@@ -25,6 +25,11 @@ on:
         required: false
         default: dependabot[bot]
         type: string
+      runs_on:
+        description: Runner label for the review job, for callers with their own runners. Must be a Linux runner with `bash`, `git`, `jq` and `gh` on `PATH`.
+        required: false
+        default: ubuntu-latest
+        type: string
 
 permissions:
   # `actions: read` keeps Actions metadata readable for the running job.
@@ -57,7 +62,8 @@ jobs:
         !inputs.is_draft &&
         inputs.head_repo_full_name == github.repository
       )
-    runs-on: ubuntu-latest
+    # Direct `pull_request` runs have no inputs, so they fall back to the GitHub-hosted runner.
+    runs-on: ${{ inputs.runs_on || 'ubuntu-latest' }}
     timeout-minutes: 30
     env:
       # Resolve the PR number once for both direct PR-triggered runs and reusable workflow callers.
