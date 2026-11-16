@@ -50,6 +50,10 @@ Requests go straight to `https://api.anthropic.com`. An `ANTHROPIC_BASE_URL` var
 
 The workflow skips draft PRs and fork PRs, has a 30-minute timeout, and follows the review guidelines defined in [`REVIEW.md`](REVIEW.md).
 
+#### Choosing the runner
+
+The review job runs on `ubuntu-latest` by default. To run it on your own runners, add `runs_on: <runner-label>` to the `with:` block above. The label must name a Linux runner available to the calling repository.
+
 #### Migrating from `@v1`
 
 `v2` replaces the `ANTHROPIC_API_KEY` secret with Workload Identity Federation. Point `uses:` at `@v2` and delete the `secrets:` block: `v2` no longer declares that secret, so passing it fails workflow validation. The `ANTHROPIC_API_KEY` secrets and the `ANTHROPIC_BASE_URL` variable can be removed once no caller is left on `@v1`.
