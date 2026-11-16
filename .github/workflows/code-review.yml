@@ -26,7 +26,7 @@ on:
         default: dependabot[bot]
         type: string
       runs_on:
-        description: Runner label for the review job, for callers with their own runners. Must be a Linux runner.
+        description: Runner label for the review job, for callers with their own runners. Must be a Linux runner with `bash`, `git`, `jq` and `gh` on `PATH`.
         required: false
         default: ubuntu-latest
         type: string

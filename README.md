@@ -52,7 +52,7 @@ The workflow skips draft PRs and fork PRs, has a 30-minute timeout, and follows 
 
 #### Choosing the runner
 
-The review job runs on `ubuntu-latest` by default. To run it on your own runners, add `runs_on: <runner-label>` to the `with:` block above. The label must name a Linux runner available to the calling repository.
+The review job runs on `ubuntu-latest` by default. To run it on your own runners, add `runs_on: <runner-label>` to the `with:` block above. The label must name a Linux runner available to the calling repository, with `bash`, `git`, `jq` and `gh` on `PATH`. `ubuntu-latest` ships all four; minimal self-hosted images often lack `gh`.
 
 #### Migrating from `@v1`
 
