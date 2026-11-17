@@ -39,6 +39,8 @@ jobs:
 
 `head_repo_full_name` is required rather than optional so the same-repo check fails closed if a caller forgets to pass it.
 
+`v2` is a floating major tag: after each backward-compatible change merges to `main`, the tag is moved to that merge commit, so `@v2` callers pick it up on their next run. Breaking changes get a new major tag. Pin a commit SHA instead if you need a fixed version.
+
 Prerequisites:
 
 1. Install the [Claude GitHub App](https://github.com/apps/claude)
