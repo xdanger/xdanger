@@ -111,7 +111,43 @@ jobs:
             exit 1
           fi
 
+      # GitHub refuses to serve a PR diff above 20,000 lines or 300 files (HTTP 406), and the
+      # review cannot run without one. Skip such PRs with a visible notice instead of failing
+      # the check; every other error still fails the job.
+      - name: Check that GitHub serves the PR diff
+        id: diff-check
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          error_file="$RUNNER_TEMP/diff-check.err"
+          # Call the API directly: this step runs before checkout, and `gh pr diff` needs a git repository.
+          if gh api -H "Accept: application/vnd.github.diff" \
+            "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" > /dev/null 2> "$error_file"; then
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          error="$(cat "$error_file")"
+          if [[ "$error" != *"HTTP 406"* || "$error" != *"diff exceeded the maximum number of"* ]]; then
+            echo "$error" >&2
+            exit 1
+          fi
+          echo "skip=true" >> "$GITHUB_OUTPUT"
+          echo "::notice title=Code review skipped::GitHub does not serve diffs above 20,000 lines or 300 files, so PR #$PR_NUMBER was not reviewed. See the job summary."
+          {
+            echo "## Code review skipped"
+            echo
+            echo "GitHub would not serve the diff of PR #$PR_NUMBER, so the automated review did not run:"
+            echo
+            echo '```'
+            echo "$error"
+            echo '```'
+            echo
+            echo "Review this PR by hand, or split it into smaller PRs."
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Checkout repository
+        if: steps.diff-check.outputs.skip == 'false'
         uses: actions/checkout@v6
         with:
           # Direct pull_request runs: github.ref is already refs/pull/<n>/merge.
@@ -123,7 +159,7 @@ jobs:
           fetch-depth: 100
 
       - name: Checkout canonical review policy
-        if: inputs.pr_number
+        if: inputs.pr_number && steps.diff-check.outputs.skip == 'false'
         uses: actions/checkout@v6
         with:
           # For a reusable job these values identify the repository and exact
@@ -136,7 +172,7 @@ jobs:
           persist-credentials: false
 
       - name: Load downstream review policy
-        if: inputs.pr_number
+        if: inputs.pr_number && steps.diff-check.outputs.skip == 'false'
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -165,6 +201,7 @@ jobs:
           mv "$policy_file" "$REPOSITORY_REVIEW_POLICY_PATH"
 
       - name: Verify review policy is present
+        if: steps.diff-check.outputs.skip == 'false'
         shell: bash
         run: |
           if [[ ! -f "$DEFAULT_REVIEW_POLICY_PATH" ]]; then
@@ -180,6 +217,7 @@ jobs:
 
       - name: Configure review comment hook
         id: review-controls
+        if: steps.diff-check.outputs.skip == 'false'
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -391,6 +429,7 @@ jobs:
           fi
 
       - uses: anthropics/claude-code-action@2dca132ff0e0c4094ce6048b422c6915a071210b # v1.0.247
+        if: steps.diff-check.outputs.skip == 'false'
         with:
           # Workload Identity Federation: the action exchanges this job's GitHub OIDC token for a
           # short-lived Claude API access token, so no API key secret is involved. These values are

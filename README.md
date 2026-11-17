@@ -48,7 +48,7 @@ Prerequisites:
 
 Requests go straight to `https://api.anthropic.com`. An `ANTHROPIC_BASE_URL` variable is ignored, because the federated access token is only valid against the Claude API.
 
-The workflow skips draft PRs and fork PRs, has a 30-minute timeout, and follows the review guidelines defined in [`REVIEW.md`](REVIEW.md).
+The workflow skips draft PRs and fork PRs, as well as PRs whose diff GitHub will not serve (over 20,000 lines or 300 files): those pass with a notice in the job summary. It has a 30-minute timeout and follows the review guidelines defined in [`REVIEW.md`](REVIEW.md).
 
 #### Choosing the runner
 
